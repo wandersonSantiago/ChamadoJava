@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+
+        <title>Chamado</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/paginas/template.xhtml" >
+            <ui:define name="centro">
+
+                <h:form>
+                    <h3>
+                       Servidor  de email
+                    </h3>
+
+                    <div>
+                        <h:outputLabel value="Servidor:"/>
+                    </div>
+                    <div>
+                        <p:inputText id="servidor" />
+                    </div>
+		    <div>
+                        <h:outputLabel value="Porta:"/>
+                    </div>
+		    <div>
+                        <p:inputText id="porta" />
+                    </div>
+		    
+		    <div>
+                        <h:outputLabel value="Usuario:"/>
+                    </div>
+		    <div>
+                        <p:inputText id="usuario" />
+                    </div>
+		    
+		    <div>
+                        <h:outputLabel value="Senha:"/>
+                    </div>
+		    <div>
+                        <p:password id="senha" />
+                    </div>
+		    <div>
+                        <h:outputLabel value="Msg From:"/>
+                    </div>
+		    <div>
+                        <p:inputText id="msgfroma" />
+                    </div>
+		    
+		    <div>
+                        <h:outputLabel value="TLS"/>
+                    </div>
+		    <div>
+                       <p:selectBooleanCheckbox value="">
+                       </p:selectBooleanCheckbox>
+                    </div>
+		    
+		    <div>
+                        <h:outputLabel value="SSL:"/>
+                    </div>
+		    <div>
+                        <p:selectBooleanCheckbox value="">
+                       </p:selectBooleanCheckbox>
+                    </div>
+		    
+		    <p:separator/>
+		    <p:button value="Salvar"></p:button>
+              </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Loja</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/paginas/template.xhtml">
+            <ui:define name="centro">
+                <h:form>
+                    <p:tab id="cadastrarUsuario" title="Usuario" >
+                        <p:panel header="Cadastro Usuario" id="painel" >
+                            <p:messages />
+                            <h:panelGrid  id="painelGridUsuer" columns="2" columnClasses="label, value">
+                                <h5>
+                                    *Campos Obrigatórios
+                                </h5>
+                                <p:separator/>
+
+                                <h3>
+                                    Dados Usuario
+                                </h3>
+                                <p:separator/>
+                                <h:outputLabel for="user" value="Ativo:" />
+                                <p:selectOneMenu id="ativo"  required="true" label="erro" >
+                                    <f:selectItem itemLabel="sim" itemValue="true" />
+                                    <f:selectItem itemLabel="nao" itemValue="false" />
+                                </p:selectOneMenu>  
+
+                                <h:outputText value="Usuario: *" />
+                                <p:inputText  id="userUser"  size="30" required="true"  label="Nome" />
+
+
+                                <h:outputLabel value="Senha*:" for="senha" />
+
+                                <p:password id="senha" size="15" required="true" requiredMessage="campo senha obrigatorio"  >
+                                    <f:validateLength maximum="12" minimum="6" />
+                                </p:password>
+
+                                <h:outputLabel value=" Repete Senha: " for="repeteSenha" />
+
+                                <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
+                                    <f:validateLength maximum="12" minimum="6" />
+                                </p:password>
+
+                                <h:outputLabel value="Grupo "/>
+                                <p:selectOneMenu id="grupo"  editable="false" effect="fold">
+                                   
+                                                                                 
+                                </p:selectOneMenu>
+                                
+                              
+                            </h:panelGrid>
+                            <h1>
+
+                            </h1>
+                            <p:commandButton value="Gravar"  action="#{CtrUsuario.gravarUsuario}"  ajax="false" >
+                                <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
+
+                            </p:commandButton>				
+                        </p:panel>
+                    </p:tab>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

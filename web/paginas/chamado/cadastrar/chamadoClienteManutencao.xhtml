@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Chamado</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/paginas/template.xhtml" >
+            <ui:define name="centro">
+
+                <h:form>
+                    <h3>
+                        Chamado Manutenção
+                    </h3>
+
+                    <div>
+                        <h:outputLabel value="Titulo:"/>
+                    </div>
+                    <div>
+                        <p:inputText id="titulo" value="#{chamadoc.titulo}" />
+                    </div>
+                    <p:separator/>
+                    <div>
+                        <h:outputLabel value="Mensagem:" />
+                    </div>
+                    <div>
+                        <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px"  />
+                    </div>
+                    <p:separator/>
+                    <div>
+                        <p:outputLabel value="Prioridade:"/>
+                    </div>
+                    <div>
+                        <p:selectOneMenu id="prioridade" label="priori"  
+                                         required="false" requiredMessage="Campo prioridade obrigatorio" >
+                            <f:selectItem itemLabel="Selecione Prioridade" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Urgente" itemValue="Urgente" />
+                            <f:selectItem itemLabel="Media" itemValue="Media" />
+                            <f:selectItem itemLabel="Baixa" itemValue="Baixa" />
+                        </p:selectOneMenu>
+                    </div>
+                    <p:separator/>
+                    <h:panelGrid columns="2" > 
+                        <p:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" ajax="false">
+                            <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.gravarChamado}" />
+                        </p:commandButton>
+                        <p:commandButton value="Cancelar" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
