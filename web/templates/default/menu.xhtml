@@ -1,29 +1,30 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
-
-    <ul class="nav nav-sidebar" >
-        <li class="active"><a href="#">Informções</a></li>
-        
-        <li><a href="#">Ramal</a></li>
-        <li><a href="#">Telefones</a></li>
-    </ul>
-    <ul class="nav nav-sidebar">
-         <li class="active"><a href="#">Abrir Chamado</a></li>
-         <li><a href="paginas/chamado/cadastrar/chamadoClienteTi.xhtml">Chamado T.I</a></li>
-        <li><a href="paginas/chamado/cadastrar/chamadoClienteManutencao.xhtml">Chamado Manutenção</a></li>
-       
-    </ul>
-    <ul class="nav nav-sidebar">
-         <li class="active"><a href="#">Listar Chamado</a></li>
-        <li><a href="paginas/chamado/lista/listaChamadoTi.xhtml">Chamado T.I</a></li>
-        <li><a href="paginas/chamado/lista/listaChamadoManutencao.xhtml">Chamado Manutenção</a></li>
-   
-    </ul>        
-    <ul class="nav nav-sidebar">
-         <li class="active"><a href="#">Administrador</a></li>
-        <li><a href="paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml">cadastrar Usuario</a></li>
-        <li><a href="paginas/chamado/config/configuracao.xhtml">Servidor Email</a></li>
-   
-    </ul>        
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:form>
+        <ul class="nav nav-sidebar" >
+            <li class="active"><a href="#">Informções</a></li>
+            <li><a href="#">Ramal</a></li>
+            <li><a href="#">Telefones</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Abrir Chamado</a></li>
+            <li><h:commandLink value="Chamado T.I" action="/paginas/chamado/cadastrar/chamadoClienteTi.xhtml"> </h:commandLink></li>
+            <li><h:commandLink value="Chamado Manutenção" action="/paginas/chamado/cadastrar/chamadoClienteManutencao.xhtml"> </h:commandLink></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Listar Chamado</a></li>
+            <li><h:commandLink value="Chamado T.I" action="/paginas/chamado/lista/listaChamadoTi.xhtml"> </h:commandLink></li>
+            <li><h:commandLink value="Chamado Manutenção" action="/paginas/chamado/lista/listaChamadoManutencao.xhtml"> </h:commandLink></li>
+        </ul>        
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Administrador</a></li>
+            <li><h:commandLink value="Cadastrar Unidade" action="/paginas/chamado/administrador/permissao/unidade.xhtml"></h:commandLink></li>
+            <li><h:commandLink value="Cadastrar Usuario" action="/paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml"></h:commandLink></li>
+            <li><h:commandLink value="Permissões" action="/paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml"></h:commandLink></li>
+            
+            <li><h:commandLink value="Servidor Email" action="/paginas/chamado/config/configuracao.xhtml"></h:commandLink></li>
+        </ul>      
+    </h:form>
 </ui:composition>
 

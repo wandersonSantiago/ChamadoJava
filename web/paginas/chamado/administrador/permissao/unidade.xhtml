@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central">               
+        <h:form>
+            <p:tab id="cadastrarUnidade" title="Unidade" >
+                <p:panel id="painelSetor" header="Cadastro Unidade">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                        <p:separator/>
+
+                        <h4 style="color: black" >
+                            Dados Unidade
+                        </h4>
+                        <p:separator/>
+
+                        <h:outputText value="Nome: *" style="color: black" />
+                        <p:inputText  id="nome"  size="30" required="true" value="#" label="Nome"  />
+
+                        <h:outputLabel value="Raml*: " style="color: black" />
+                        <p:inputText  size="15"  required="true" value="#" />
+                       
+
+                        <h:outputLabel value="Telefone" style="color: black" />
+                        <p:inputMask mask="(99)9999-9999" required="true"  size="14" value="#"/>
+                   
+                    </h:panelGrid>
+
+                    <p:commandButton value="Gravar"  action="#"  ajax="false" >
+                        <f:setPropertyActionListener value="#" target="#" />
+                    </p:commandButton>				
+                </p:panel>
+            </p:tab>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -4,60 +4,62 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">  
-                <h:form>
-                    <p:tab id="cadastrarUsuario" title="Usuario" >
-                        <p:panel header="Cadastro Usuario" id="painel" >
-                            <p:messages />
-                            <h:panelGrid  id="painelGridUsuer" columns="2" columnClasses="label, value">
-                                <h5>
-                                    *Campos Obrigatórios
-                                </h5>
-                                <p:separator/>
+        <h:form>
 
-                                <h3>
-                                    Dados Usuario
-                                </h3>
-                                <p:separator/>
-                                <h:outputLabel for="user" value="Ativo:" />
-                                <p:selectOneMenu id="ativo"  required="true" label="erro" >
-                                    <f:selectItem itemLabel="sim" itemValue="true" />
-                                    <f:selectItem itemLabel="nao" itemValue="false" />
-                                </p:selectOneMenu>  
+            <p:panel header="Cadastro Usuario" id="painel" >
+                <p:messages />
+                <h:panelGrid  id="painelGridUsuer" columns="2" columnClasses="label, value">
+                    <h5 style="color: black" >
+                        *Campos Obrigatórios
+                    </h5>
+                    <p:separator/>
 
-                                <h:outputText value="Usuario: *" />
-                                <p:inputText  id="userUser"  size="30" required="true"  label="Nome" />
+                    <h3 style="color: black" >
+                        Dados Usuario
+                    </h3>
+                    <p:separator/>
+                    <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
+                    <p:selectOneMenu id="ativo"  required="true" label="erro" >
+                        <f:selectItem itemLabel="sim" itemValue="true" />
+                        <f:selectItem itemLabel="nao" itemValue="false" />
+                    </p:selectOneMenu>  
+
+                    <h:outputText value="Usuario: *" style="color: black" />
+                    <p:inputText  id="userUser"  size="30" required="true"  label="Nome" />
 
 
-                                <h:outputLabel value="Senha*:" for="senha" />
+                    <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
 
-                                <p:password id="senha" size="15" required="true" requiredMessage="campo senha obrigatorio"  >
-                                    <f:validateLength maximum="12" minimum="6" />
-                                </p:password>
+                    <p:password id="senha" size="15" required="true" requiredMessage="campo senha obrigatorio"  >
+                        <f:validateLength maximum="12" minimum="6" />
+                    </p:password>
 
-                                <h:outputLabel value=" Repete Senha: " for="repeteSenha" />
+                    <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
 
-                                <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
-                                    <f:validateLength maximum="12" minimum="6" />
-                                </p:password>
+                    <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
+                        <f:validateLength maximum="12" minimum="6" />
+                    </p:password>
 
-                                <h:outputLabel value="Grupo "/>
-                                <p:selectOneMenu id="grupo"  editable="false" effect="fold">
-                                   
-                                                                                 
-                                </p:selectOneMenu>
-                                
-                              
-                            </h:panelGrid>
-                            <h1>
+                    <h:outputLabel value="Grupo " style="color: black" />
+                    <p:selectOneMenu id="grupo"  editable="false" effect="fold">
+                    </p:selectOneMenu>
+                    <h:outputLabel value="Paginas " style="color: black" />
+                    <p:selectOneMenu id="paginas"  editable="false" effect="fold">
 
-                            </h1>
-                            <p:commandButton value="Gravar"  action="#{CtrUsuario.gravarUsuario}"  ajax="false" >
-                                <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
+                    </p:selectOneMenu>
 
-                            </p:commandButton>				
-                        </p:panel>
-                    </p:tab>
-                </h:form>
-            </ui:define>
-        </ui:composition>
+
+                </h:panelGrid>
+                <h1>
+
+                </h1>
+                <p:commandButton value="Gravar"  action="#{CtrUsuario.gravarUsuario}"  ajax="false" >
+                    <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
+
+                </p:commandButton>				
+            </p:panel>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
 
