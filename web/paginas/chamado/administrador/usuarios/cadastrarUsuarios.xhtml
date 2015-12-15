@@ -58,6 +58,12 @@
                 </p:commandButton>				
                              <p:dataTable var="usuario"  id="tabela" widgetVar="table" 
                                          paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+                                              <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Procurar:" />
+                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
                                 <p:column style="max-height: 8px" >
                                     <f:facet name="header">
                                         Usuario:

@@ -24,12 +24,12 @@
                 <h:outputText value="Pagina *" style="color: black" />
             </div>
             <div>
-                <p:inputText  id="pagina"  size="30" required="true" value="#" label="Nome"  />
+                <p:inputText  id="pagina"  size="30" required="true" value="#{paginas.nomepagina}" label="Nome"  />
             </div>
             <div>
 
-                <p:commandButton value="Gravar Paginas"  action="#"  ajax="false" >
-                    <f:setPropertyActionListener value="#" target="#" />
+                <p:commandButton value="Gravar Paginas"  action="#{CtrPagina.gravarPagina()}"  ajax="false" >
+                    <f:setPropertyActionListener value="#{pagina}" target="#{CtrPagina.pagina}" />
                 </p:commandButton>			
 
             </div>
@@ -85,8 +85,13 @@
             <p:dataTable value="#" var="cargo"  id="tabela" widgetVar="table"
                          paginator="true" rows="10" style="margin-bottom:20px" 
                          rowsPerPageTemplate="5,10,15,20,25,30">
-
-                <p:column filterBy="#" headerText="Grupo Paginas" style="max-height: 5px" >
+             <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Procurar:" />
+                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
+                <p:column  headerText="Grupo Paginas" style="max-height: 5px" >
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('table').filter()" >
                             <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -96,7 +101,7 @@
                     </f:facet>
                     <h:outputText value="#" />
                 </p:column>
-                <p:column filterBy="#" headerText="Paginas" style="max-height: 5px" >
+                <p:column  headerText="Paginas" style="max-height: 5px" >
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('table').filter()" >
                             <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />

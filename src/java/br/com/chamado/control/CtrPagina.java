@@ -23,6 +23,14 @@ public class CtrPagina {
     private final DaoPagina acessoHibernate;
     private Pagina pagina;
 
+    public Pagina getPagina() {
+        return pagina;
+    }
+
+    public void setPagina(Pagina pagina) {
+        this.pagina = pagina;
+    }
+
     public CtrPagina() {
 	acessoHibernate = new DaoPagina();
 	
