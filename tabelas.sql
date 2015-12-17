@@ -4,9 +4,9 @@ CREATE TABLE chamadoc
    unidade INTEGER NOT NULL 
    REFERENCES unidade(codunidade),
    data DATE NOT NULL,
-   status INTEGER NOT NULL DEFAULT(0) CONSTRAINT
+   status INTEGER NOT NULL DEFAULT(1) CONSTRAINT
    chk_status CHECK(status >= 0 AND status <= 3),
-   prioridade INTEGER NOT NULL DEFAULT(0) CONSTRAINT
+   prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT
    chk_prioridade CHECK(prioridade >= 0 AND prioridade <=3),
    codfuncsolic INTEGER NOT NULL,
    codfuncatend INTEGER,
