@@ -21,21 +21,21 @@
                         <p:inputText  id="nome"   size="30" required="true" value="#{unidade.descricao}" label="Nome"  />
 
                         <h:outputLabel value="Razão Social*: " style="color: black" />
-                        <p:inputText  size="15"  required="true" value="#{unidade.razaosocial}" />
+                        <p:inputText  id="razaosocial" size="15"  required="true" value="#{unidade.razaosocial}" />
                        
 
                         <h:outputLabel value="Endereço:" style="color: black" />
-                        <p:inputText required="true"  size="14" value="#{unidade.endereco}"/>
+                        <p:inputText id="endereco" required="true"  size="14" value="#{unidade.endereco}"/>
                    
                         <h:outputLabel value="Bairro" style="color: black" />
-                        <p:inputText required="true"  size="14" value="#{unidade.bairro}"/>
+                        <p:inputText id="bairro" required="true"  size="14" value="#{unidade.bairro}"/>
                         
                         <h:outputLabel value="cidade" style="color: black" />
-                        <p:inputText required="true"  size="14" value="#{unidade.cidade}"/>
+                        <p:inputText id="cidade" required="true"  size="14" value="#{unidade.cidade}"/>
                     </h:panelGrid>
 
             <p:commandButton value="Gravar"  action="#{ctrUnidade.gravarUnidade}"  ajax="false" >
-                        <f:setPropertyActionListener value="#" target="#" />
+		<f:setPropertyActionListener value="#{unidade}" target="#{ctrUnidade.unidade}" />
                     </p:commandButton>				
                
                  <p:dataTable value="#" var="cargo"  id="tabela" widgetVar="table"

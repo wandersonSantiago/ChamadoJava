@@ -6,13 +6,28 @@
 package br.com.chamado.model;
 
 import br.com.chamado.dao.DaoGenerico;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Eduardo de Godoy Ferrari
  */
-public class EmailConfig {
 
+@ManagedBean(name = "emailconfig")
+@SessionScoped
+@Entity
+public class EmailConfig {
+    
+    @Id 
+     @Column(name="codusuario", unique=true, nullable=false)
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int  codemail;
     private final String host ;
     private final int porta ;
     private final String usuario ;
@@ -43,6 +58,15 @@ public class EmailConfig {
 	}
 	return instancia;
     }
+
+    public int getCodemail() {
+	return codemail;
+    }
+
+    public void setCodemail(int codemail) {
+	this.codemail = codemail;
+    }
+    
     public String getHost() {
 	return host;
     }

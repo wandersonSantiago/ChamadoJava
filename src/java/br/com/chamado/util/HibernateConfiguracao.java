@@ -15,7 +15,7 @@ import br.com.chamado.model.Unidade;
 import br.com.chamado.model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.annotations.common.util.impl.Log;
+
 
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -41,15 +41,14 @@ public class HibernateConfiguracao {
     public void criaSessionFactory() {
         Configuration configuracao = new Configuration();
 
-        configuracao.addAnnotatedClass(Log.class);
         configuracao.addAnnotatedClass(Chamadoc.class);
-        configuracao.addAnnotatedClass(Grupo.class);
-        configuracao.addAnnotatedClass(GrupoPagina.class);
-        configuracao.addAnnotatedClass(Mensagem.class);
-        configuracao.addAnnotatedClass(Pagina.class);
-        configuracao.addAnnotatedClass(Unidade.class);
-        configuracao.addAnnotatedClass(Usuario.class);
-	configuracao.addAnnotatedClass(EmailConfig.class);
+       // configuracao.addAnnotatedClass(Grupo.class);
+       // configuracao.addAnnotatedClass(GrupoPagina.class);
+       // configuracao.addAnnotatedClass(Mensagem.class);
+       // configuracao.addAnnotatedClass(Pagina.class);
+       // configuracao.addAnnotatedClass(Unidade.class);
+       // configuracao.addAnnotatedClass(Usuario.class);
+	//configuracao.addAnnotatedClass(EmailConfig.class);
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuracao.getProperties()).build();
 
         sessionFactory = configuracao.buildSessionFactory(serviceRegistry);

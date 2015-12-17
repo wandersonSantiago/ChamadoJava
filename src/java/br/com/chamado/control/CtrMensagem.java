@@ -7,6 +7,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Mensagem;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +19,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "CtrMensagem")
 @SessionScoped
-public class CtrMensagem {
+public class CtrMensagem implements  Serializable{
 
     private final DaoMensagem acessoHibernate;
     private Mensagem mensagem;
@@ -52,4 +53,13 @@ public class CtrMensagem {
 	    return null;
 	}
     }
+
+    public Mensagem getMensagem() {
+	return mensagem;
+    }
+
+    public void setMensagem(Mensagem mensagem) {
+	this.mensagem = mensagem;
+    }
+  
 }

@@ -9,11 +9,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,52 +22,44 @@ import javax.persistence.TemporalType;
 @ManagedBean(name = "chamadoc")
 @SessionScoped
 @Entity
-@Table(name = "chamadoc", schema = "public"
-)
+@Table(name = "chamadoc")
 public class Chamadoc implements java.io.Serializable {
 
+    @Id
+    @Column(name = "numchamado", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numchamado;
-    private Unidade unidade;
+   /* @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unidade", nullable = false)
+    private Unidade unidade;*/
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data", nullable = false, length = 13)
     private Date data;
+    @Column(name = "status", nullable = false)
     private int status;
+    @Column(name = "prioridade", nullable = false)
     private int prioridade;
+    /*@Column(name = "codfuncsolic", nullable = false)
+    
     private int codfuncsolic;
-    private Integer codfuncatend;
+    @Column(name = "codfuncatend")
+    */private Integer codfuncatend;
+    
+    @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dataprevisao", length = 13)
     private Date dataprevisao;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-    private Set mensagems = new HashSet(0);
+    /*@ManyToMany
+    @JoinTable(name="chamadoc_has_mensagem", joinColumns={@JoinColumn(name="chamdo_id")}, inverseJoinColumns={@JoinColumn(name="mensagem_id")})
+    private Set<Mensagem> mensagems = new HashSet(0);*/
 
     public Chamadoc() {
     }
 
-    public Chamadoc(int numchamado, Unidade unidade, Date data, int status, int prioridade, int codfuncsolic, String titulo) {
-	this.numchamado = numchamado;
-	this.unidade = unidade;
-	this.data = data;
-	this.status = status;
-	this.prioridade = prioridade;
-	this.codfuncsolic = codfuncsolic;
-	this.titulo = titulo;
-    }
-
-    public Chamadoc(int numchamado, Unidade unidade, Date data, int status, int prioridade, int codfuncsolic, Integer codfuncatend, String titulo, Date dataprevisao, Date datafechamento, Set mensagems) {
-	this.numchamado = numchamado;
-	this.unidade = unidade;
-	this.data = data;
-	this.status = status;
-	this.prioridade = prioridade;
-	this.codfuncsolic = codfuncsolic;
-	this.codfuncatend = codfuncatend;
-	this.titulo = titulo;
-	this.dataprevisao = dataprevisao;
-	this.datafechamento = datafechamento;
-	this.mensagems = mensagems;
-    }
-
-    @Id
-
-    @Column(name = "numchamado", unique = true, nullable = false)
     public int getNumchamado() {
 	return this.numchamado;
     }
@@ -74,9 +67,7 @@ public class Chamadoc implements java.io.Serializable {
     public void setNumchamado(int numchamado) {
 	this.numchamado = numchamado;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "unidade", nullable = false)
+  /*
     public Unidade getUnidade() {
 	return this.unidade;
     }
@@ -84,9 +75,7 @@ public class Chamadoc implements java.io.Serializable {
     public void setUnidade(Unidade unidade) {
 	this.unidade = unidade;
     }
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "data", nullable = false, length = 13)
+    */
     public Date getData() {
 	return this.data;
     }
@@ -95,7 +84,6 @@ public class Chamadoc implements java.io.Serializable {
 	this.data = data;
     }
 
-    @Column(name = "status", nullable = false)
     public int getStatus() {
 	return this.status;
     }
@@ -104,7 +92,6 @@ public class Chamadoc implements java.io.Serializable {
 	this.status = status;
     }
 
-    @Column(name = "prioridade", nullable = false)
     public int getPrioridade() {
 	return this.prioridade;
     }
@@ -112,8 +99,7 @@ public class Chamadoc implements java.io.Serializable {
     public void setPrioridade(int prioridade) {
 	this.prioridade = prioridade;
     }
-
-    @Column(name = "codfuncsolic", nullable = false)
+   /*
     public int getCodfuncsolic() {
 	return this.codfuncsolic;
     }
@@ -121,8 +107,7 @@ public class Chamadoc implements java.io.Serializable {
     public void setCodfuncsolic(int codfuncsolic) {
 	this.codfuncsolic = codfuncsolic;
     }
-
-    @Column(name = "codfuncatend")
+   */
     public Integer getCodfuncatend() {
 	return this.codfuncatend;
     }
@@ -131,7 +116,6 @@ public class Chamadoc implements java.io.Serializable {
 	this.codfuncatend = codfuncatend;
     }
 
-    @Column(name = "titulo", nullable = false, length = 30)
     public String getTitulo() {
 	return this.titulo;
     }
@@ -140,8 +124,6 @@ public class Chamadoc implements java.io.Serializable {
 	this.titulo = titulo;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "dataprevisao", length = 13)
     public Date getDataprevisao() {
 	return this.dataprevisao;
     }
@@ -150,8 +132,6 @@ public class Chamadoc implements java.io.Serializable {
 	this.dataprevisao = dataprevisao;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "datafechamento", length = 13)
     public Date getDatafechamento() {
 	return this.datafechamento;
     }
@@ -160,13 +140,13 @@ public class Chamadoc implements java.io.Serializable {
 	this.datafechamento = datafechamento;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chamadoc")
+    /*
     public Set getMensagems() {
 	return this.mensagems;
     }
-
-    public void setMensagems(Set mensagems) {
+    
+    public void setMensagems(Set<Mensagem> mensagems) {
 	this.mensagems = mensagems;
     }
-
+   */
 }

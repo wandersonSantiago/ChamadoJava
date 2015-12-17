@@ -34,7 +34,7 @@ public class CtrUnidade {
     public String gravarUnidade() {
 	try {
 	    acessoHibernate.salvar(unidade);
-	    return "";
+	   return "index";
 	} catch (HibernateException e) {
 	    return "falha";
 	}
@@ -64,4 +64,13 @@ public class CtrUnidade {
         return null;
       }
     }
+
+    public Unidade getUnidade() {
+	return unidade;
+    }
+
+    public void setUnidade(Unidade unidade) {
+	this.unidade = unidade;
+    }
+    
 }

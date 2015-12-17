@@ -31,7 +31,7 @@ public class CtrUsuario {
 	try {
 
 	    acessoHibernate.salvar(usuario);
-	    return "";
+	    return "index.xhtml";
 	} catch (HibernateException e) {
 	    return "falha";
 	}

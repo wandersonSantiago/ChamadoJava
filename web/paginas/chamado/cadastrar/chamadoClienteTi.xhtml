@@ -21,7 +21,7 @@
                         <h:outputLabel value="Mensagem:"  />
                     </div>
                     <div>
-                        <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{chamadoc.mensagems}" />
+                       <!-- <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> -->
                     </div>
                     <p:separator/>
                     <div>
@@ -31,16 +31,16 @@
                     <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" label="priori"  
                                      required="false" requiredMessage="Campo prioridade obrigatorio" >
                         <f:selectItem itemLabel="Selecione Prioridade" itemValue="" noSelectionOption="true" />
-                        <f:selectItem itemLabel="Urgente" itemValue="Urgente" />
-                        <f:selectItem itemLabel="Media" itemValue="Media" />
-                        <f:selectItem itemLabel="Baixa" itemValue="Baixa" />
+                        <f:selectItem itemLabel="Urgente" itemValue="3" />
+                        <f:selectItem itemLabel="Media" itemValue="2" />
+                        <f:selectItem itemLabel="Baixa" itemValue="1" />
                     </p:selectOneMenu>
                         </div>
                     <p:separator/>
 
                          <h:panelGrid columns="2" > 
                         <p:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" ajax="false">
-                            <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.gravarChamado}" />
+                            <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
                         </p:commandButton>
                         <p:commandButton value="Cancelar" />
                     </h:panelGrid>
