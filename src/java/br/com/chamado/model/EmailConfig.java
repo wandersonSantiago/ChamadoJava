@@ -5,7 +5,8 @@
  */
 package br.com.chamado.model;
 
-import br.com.chamado.dao.DaoGenerico;
+
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
@@ -13,51 +14,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Eduardo de Godoy Ferrari
  */
 
-@ManagedBean(name = "emailconfig")
+@ManagedBean(name = "confemail")
 @SessionScoped
 @Entity
-public class EmailConfig {
+@Table(name="confemail")
+public class EmailConfig implements  Serializable{
     
     @Id 
-     @Column(name="codusuario", unique=true, nullable=false)
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="codemail", unique=true, nullable=false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int  codemail;
-    private final String host ;
-    private final int porta ;
-    private final String usuario ;
-    private final String senha ;
-    private final String msgFrom ;
-    private final boolean ssl ;
-    private final boolean tls ;
-    private static EmailConfig instancia;
-    private final DaoGenerico dao;
-    
-    private EmailConfig()
-    {
-         dao = new DaoGenerico();
-	 EmailConfig confDao = (EmailConfig) dao.carregarUm(1,EmailConfig.class);
-	 this.host = confDao.getHost();
-	 this.porta = confDao.getPorta();
-	 this.senha = confDao.getSenha();
-	 this.ssl = confDao.isSsl();
-	 this.tls = confDao.isTls();
-	 this.usuario = confDao.getUsuario();
-	 this.msgFrom = confDao.getMsgFrom();
-    }
-    public static EmailConfig getInstancia()
-    {
-        if(instancia == null)
-	{
-	   instancia = new EmailConfig();
-	}
-	return instancia;
-    }
+    @Column(name="host", unique=true, nullable=false)
+    private  String servidor ;
+    @Column(name="porta", nullable=false)
+    private  int porta ;
+    @Column(name="usuarioemail",  nullable=false)
+    private  String usuario ;
+    @Column(name="senhaemail",  nullable=false)
+    private  String senha ;
+    @Column(name="msgFrom", nullable=false)
+    private  String msgFrom ;
+    @Column(name="ssl", nullable=false)
+    private  boolean ssl ;
+    @Column(name="tls", nullable=false)
+    private  boolean tls ;
 
     public int getCodemail() {
 	return codemail;
@@ -66,36 +53,63 @@ public class EmailConfig {
     public void setCodemail(int codemail) {
 	this.codemail = codemail;
     }
-    
-    public String getHost() {
-	return host;
+
+    public String getServidor() {
+	return servidor;
     }
-  
+
+    public void setServidor(String servidor) {
+	this.servidor = servidor;
+    }
+    
+
     public int getPorta() {
 	return porta;
     }
+
+    public void setPorta(int porta) {
+	this.porta = porta;
+    }
+
     public String getUsuario() {
 	return usuario;
     }
 
-   
+    public void setUsuario(String usuario) {
+	this.usuario = usuario;
+    }
 
     public String getSenha() {
 	return senha;
     }
 
-   
+    public void setSenha(String senha) {
+	this.senha = senha;
+    }
+
     public String getMsgFrom() {
 	return msgFrom;
     }
 
+    public void setMsgFrom(String msgFrom) {
+	this.msgFrom = msgFrom;
+    }
 
     public boolean isSsl() {
 	return ssl;
     }
 
-    
+    public void setSsl(boolean ssl) {
+	this.ssl = ssl;
+    }
+
     public boolean isTls() {
 	return tls;
     }
+
+    public void setTls(boolean tls) {
+	this.tls = tls;
+    }
+   
+     
 }

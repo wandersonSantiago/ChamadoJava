@@ -16,7 +16,7 @@ import org.hibernate.HibernateException;
  *
  * @author Eduardo de Godoy Ferrari
  */
-@ManagedBean(name = "CtrUsuario")
+@ManagedBean(name = "ctrUsuario")
 @SessionScoped
 public class CtrUsuario {
 
@@ -29,7 +29,7 @@ public class CtrUsuario {
 
     public String gravarUsuario() {
 	try {
-
+   
 	    acessoHibernate.salvar(usuario);
 	    return "index.xhtml";
 	} catch (HibernateException e) {
@@ -55,4 +55,13 @@ public class CtrUsuario {
 	    return null;
 	}
     }
+
+    public Usuario getUsuario() {
+	return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
+    }
+    
 }

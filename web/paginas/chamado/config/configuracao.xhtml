@@ -5,62 +5,44 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">  
 
-                <h:form>
-                    <h3>
-                       Servidor  de email
-                    </h3>
+	<h:form>
+	    <h3>
+		Servidor  de email
+	    </h3>
+	    <h:panelGrid columns="2" columnClasses="label, value">
 
-                    <div>
-                        <h:outputLabel value="Servidor:"/>
-                    </div>
-                    <div>
-                        <p:inputText id="servidor" />
-                    </div>
-		    <div>
-                        <h:outputLabel value="Porta:"/>
-                    </div>
-		    <div>
-                        <p:inputText id="porta" />
-                    </div>
-		    
-		    <div>
-                        <h:outputLabel value="Usuario:"/>
-                    </div>
-		    <div>
-                        <p:inputText id="usuario" />
-                    </div>
-		    
-		    <div>
-                        <h:outputLabel value="Senha:"/>
-                    </div>
-		    <div>
-                        <p:password id="senha" />
-                    </div>
-		    <div>
-                        <h:outputLabel value="Msg From:"/>
-                    </div>
-		    <div>
-                        <p:inputText id="msgfroma" />
-                    </div>
-		    
-		    <div>
-                        <h:outputLabel value="TLS"/>
-                    </div>
-		    <div>
-                       <p:selectBooleanCheckbox value="">
-                       </p:selectBooleanCheckbox>
-                    </div>
-		    
-		    <div>
-                        <h:outputLabel value="SSL:"/>
-                    </div>
-		    <div>
-                        <p:selectBooleanCheckbox value="">
-                       </p:selectBooleanCheckbox>
-                    </div>
-		    
-		    <p:separator/>
-		    <p:button value="Salvar"></p:button>
-              </h:form>
-            </ui:define>
-        </ui:composition>
+		<h:outputLabel value="Servidor: *" style="color: black" />
+		<p:inputText  id="servidor"   size="30" required="true" value="#{confemail.servidor}" label="Servidor"  />
+
+		<h:outputLabel value="Porta: *" style="color: black" />
+		<p:inputText  id="porta"   size="30" required="true" value="#{confemail.porta}" label="Porta"  />
+
+		<h:outputLabel value="Usuario: *" style="color: black" />
+		<p:inputText  id="usuario"   size="30" required="true" value="#{confemail.usuario}" label="Usuario"  />
+
+
+		<h:outputLabel value="Senha:" for="senha"  style="color: black"/>
+		<p:password id="senha" size="15" required="false" value="#{confemail.senha}" >
+		    <f:validateLength maximum="12" minimum="6" />
+		</p:password>
+
+		<h:outputLabel value="Msg From:" style="color: black" />
+		<p:inputText  id="msgfroma"   size="30" required="true" value="#{confemail.msgFrom}" label="msgfroma"  />
+
+                <h:outputLabel value="TLS:" style="color: black"/>
+		<p:selectBooleanCheckbox value="#{confemail.tls}" />
+
+		<h:outputLabel value="SSL:" style="color: black"/>
+		<p:selectBooleanCheckbox value="#{confemail.ssl}" />
+
+
+		<p:commandButton value="Gravar"  action="#{ctrEmailConfig.gravarConfig()}"  ajax="false" >
+		    <f:setPropertyActionListener value="#{confemail}" target="#{ctrEmailConfig.confemail}" />
+		</p:commandButton>
+
+	    </h:panelGrid>
+
+
+	</h:form>
+    </ui:define>
+</ui:composition>

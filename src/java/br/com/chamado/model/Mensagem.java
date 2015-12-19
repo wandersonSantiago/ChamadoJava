@@ -2,10 +2,12 @@ package br.com.chamado.model;
 
 // Generated 04/12/2015 13:53:59 by Hibernate Tools 4.3.1
 import br.com.chamado.model.Usuario;
+import java.io.Serializable;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,10 +25,11 @@ import javax.persistence.TemporalType;
  */
 @ManagedBean(name = "mensagem")
 @SessionScoped
-@Entity
+@Embeddable
 @Table(name = "mensagem", schema = "public"
 )
-public class Mensagem implements java.io.Serializable {
+
+public class Mensagem implements Serializable {
 
     @Id
     @Column(name = "nummensagem", unique = true, nullable = false)
@@ -105,5 +109,5 @@ public class Mensagem implements java.io.Serializable {
     public void setTexto(String texto) {
 	this.texto = texto;
     }
-
+   
 }

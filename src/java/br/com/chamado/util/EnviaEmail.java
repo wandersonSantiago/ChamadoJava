@@ -1,5 +1,6 @@
 package br.com.chamado.util;
 
+import br.com.chamado.dao.DaoGenerico;
 import br.com.chamado.model.EmailConfig;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -7,15 +8,20 @@ import org.apache.commons.mail.SimpleEmail;
 
 public class EnviaEmail {
 
-    private static EmailConfig config;
+    private static EmailConfig config = null;
     private static EnviaEmail instancia = null;
    
     private  String emailDe = "";
     private  String assunto = "";
     private  String msg = "";
-   
     private EnviaEmail()
     {
+         if(config == null)
+	 {
+	     DaoGenerico dao  = new DaoGenerico();
+	     config = (EmailConfig) dao.carregarUm(1, EmailConfig.class);
+	     
+	 }
     }
     public static EnviaEmail getInstancia() 
     {
@@ -23,7 +29,7 @@ public class EnviaEmail {
        if(instancia == null)
        {
          instancia = new EnviaEmail();
- 	 config = EmailConfig.getInstancia();
+ 	
        }
        return instancia;
     }
@@ -43,7 +49,7 @@ public class EnviaEmail {
     public  synchronized  void enviar()  throws EmailException
     {
         SimpleEmail email = new SimpleEmail(); 
-	email.setHostName(config.getHost());
+	email.setHostName(config.getServidor());
 	email.setAuthentication(config.getUsuario(),config.getSenha());  
         email.setSmtpPort(config.getPorta());  
         email.setSSLOnConnect(config.isSsl());

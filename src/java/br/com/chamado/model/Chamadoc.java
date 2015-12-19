@@ -1,20 +1,18 @@
 package br.com.chamado.model;
 
 // Generated 04/12/2015 13:53:59 by Hibernate Tools 4.3.1
-import br.com.chamado.model.Unidade;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +21,7 @@ import javax.persistence.TemporalType;
 @SessionScoped
 @Entity
 @Table(name = "chamadoc")
-public class Chamadoc implements java.io.Serializable {
+public class Chamadoc implements Serializable {
 
     @Id
     @Column(name = "numchamado", unique = true, nullable = false)
@@ -53,11 +51,13 @@ public class Chamadoc implements java.io.Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-    /*@ManyToMany
-    @JoinTable(name="chamadoc_has_mensagem", joinColumns={@JoinColumn(name="chamdo_id")}, inverseJoinColumns={@JoinColumn(name="mensagem_id")})
-    private Set<Mensagem> mensagems = new HashSet(0);*/
+   
+    /*@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="numchamado")
+    private List msg;
 
     public Chamadoc() {
+	
     }
 
     public int getNumchamado() {

@@ -8,7 +8,8 @@
 
             
                 <h:panelGrid  id="painelGridUsuer" columns="2" >
-                    <h5 style="color: black" >
+                    
+		    <h5 style="color: black" >
                         *Campos Obrigatórios
                     </h5>
                     <p:separator/>
@@ -17,19 +18,23 @@
                         Dados Usuario
                     </h3>
                     <p:separator/>
-                    <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
+                    
+		    <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
                     <p:selectOneMenu id="ativo"  required="true" label="erro" >
                         <f:selectItem itemLabel="sim" itemValue="true" />
                         <f:selectItem itemLabel="nao" itemValue="false" />
-                    </p:selectOneMenu>  
+                    </p:selectOneMenu> 
 
+                    <h:outputLabel value="Nome usuario: *" style="color: black" />
+		    <p:inputText  id="userNome"  size="30" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
+		    
                     <h:outputText value="Usuario: *" style="color: black" />
-                    <p:inputText  id="userUser"  size="30" required="true"  label="Nome" />
+                    <p:inputText  id="userUser"  size="30" required="true" value="#{usuario.usuario}" label="Nome" />
 
 
                     <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
 
-                    <p:password id="senha" size="15" required="true" requiredMessage="campo senha obrigatorio"  >
+                    <p:password id="senha" size="15" required="true" value="#{usuario.senha}" requiredMessage="campo senha obrigatorio"  >
                         <f:validateLength maximum="12" minimum="6" />
                     </p:password>
 
@@ -39,6 +44,7 @@
                         <f:validateLength maximum="12" minimum="6" />
                     </p:password>
 
+		    
                     <h:outputLabel value="Grupo " style="color: black" />
                     <p:selectOneMenu id="grupo"  editable="false" effect="fold">
                     </p:selectOneMenu>
@@ -46,13 +52,13 @@
                     <p:selectOneMenu id="paginas"  editable="false" effect="fold">
 
                     </p:selectOneMenu>
-
+                    
 
                 </h:panelGrid>
                 <h1>
 
                 </h1>
-                <p:commandButton value="Gravar"  action="#{CtrUsuario.gravarUsuario}"  ajax="false" >
+                <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
                     <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
 
                 </p:commandButton>				
