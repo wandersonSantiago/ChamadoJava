@@ -38,40 +38,15 @@
         <h:form>
 
 
-            <p:dataTable value="#{ctrGrupo.carregarGrupo()}" var="grupo"  id="tabela" widgetVar="table"
-                         paginator="true" rows="10" style="margin-bottom:20px" 
-                         rowsPerPageTemplate="5,10,15,20,25,30" editable="true">
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Procurar:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
-                    </p:outputPanel>
-                </f:facet>
-                <p:column  style="max-height: 5px" >
+            <p:dataTable value="#{ctrGrupo.carregarGrupo()}" var="group" reflow="true" id="tabela" paginator="true"
+                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
+                <p:column  filterBy="#{group.nomegrupo}">
                     <f:facet name="header">
-                        Grupo:
+                        Nome:
                     </f:facet>
-                    <h:outputText value="#{grupo.nomegrupo}" />
-
+                    <h:outputText value="#{group.nomegrupo}"/>
                 </p:column>
-                <f:facet name="header">
-                    AÇÔES
-                </f:facet>
-
-                <p:growl id="messagem" showDetail="true" />
-
-                <p:commandButton value="Excluir" actionListener="#" update="tabela">
-                    <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert"  />
-                </p:commandButton>
-
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  >
-                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                </p:confirmDialog>
-
-
-                <p:commandButton value="Alterar" action="#" ajax="false" />
 
             </p:dataTable>
 

@@ -10,6 +10,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoUnidade;
 import br.com.chamado.model.Unidade;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -46,7 +47,7 @@ public class CtrUnidade {
        try
        {
 	   acessoHibernate.salvar(unidade);
-	   return "";
+	   return "unidade";
        }catch(HibernateException e)
        {
          return "falha";
@@ -58,12 +59,19 @@ public class CtrUnidade {
       try
       {
 	  
-	 return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
+	 return acessoHibernate.carregaTudoOrdernado(Unidade.class, "descricao");
       }catch(HibernateException e)
       {
         return null;
       }
     }
+        public List getUnidades() {
+	try {
+	    return acessoHibernate.carregaTudoOrdernado(Unidade.class, "descricao");
+	} catch (HibernateException e) {
+	    return new ArrayList();
+	}
+        }
 
     public Unidade getUnidade() {
 	return unidade;

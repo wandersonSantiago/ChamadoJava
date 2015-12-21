@@ -85,4 +85,5 @@ public class Unidade implements java.io.Serializable {
     public void setCidade(String cidade) {
 	this.cidade = cidade;
     }
+
 }

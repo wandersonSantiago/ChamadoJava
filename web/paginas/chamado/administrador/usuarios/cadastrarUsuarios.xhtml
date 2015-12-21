@@ -7,7 +7,7 @@
         <h:form>
 
 
-            <h:panelGrid  id="painelGridUsuer" columns="2" >
+            <h:panelGrid  id="painelGridUsuer" columns="1" >
                 <h3 style="color: black" >
                     Dados Usuario
                 </h3>
@@ -45,16 +45,33 @@
                 </p:password>
 
 
+                    <h:outputLabel value="Setor " style="color: black" />
+                 <p:selectOneMenu id="setor"  editable="false" effect="fold" required="true" 
+                                 requiredMessage="Campo Setor Obrigatorio" >
+                    <f:converter converterId="setorConverter" />
+                    <f:selectItem itemLabel=""  />
+                    <f:selectItems var="usuarioGrupo"  />                                    
+                </p:selectOneMenu>
+                
+                
                 <h:outputLabel value="Grupo " style="color: black" />
-                <p:selectOneMenu id="grupo"  editable="false" effect="fold">
+                 <p:selectOneMenu id="grupo" editable="false" effect="fold" required="true" 
+                                 requiredMessage="Campo Grupo Obrigatorio" >
+                    <f:converter converterId="grupoConverter" />
+                    <f:selectItem itemLabel=""  />
+                    <f:selectItems  var="usuarioGrupo" 
+                                    />                                    
                 </p:selectOneMenu>
-                <h:outputLabel value="Paginas " style="color: black" />
-                <p:selectOneMenu id="paginas"  editable="false" effect="fold">
-
-                </p:selectOneMenu>
+                
+                
                 <h:outputLabel value="Unidade " style="color: black" />
-                <p:selectOneMenu id="unidade"  editable="false" effect="fold">
 
+                <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
+                                 requiredMessage="Campo Unidade Obrigatorio" >
+                    <f:converter converterId="unidadeConverter" />
+                    <f:selectItem itemLabel=""  />
+                    <f:selectItems value="#{ctrUnidade.unidades}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.descricao}"
+                                   itemValue="#{usuarioUnidade}" />                                    
                 </p:selectOneMenu>
 
             </h:panelGrid>
@@ -64,71 +81,21 @@
             <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
                 <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
 
-            </p:commandButton>				
-            <p:dataTable var="usuario"  id="tabela" widgetVar="table" 
-                         paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Procurar:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
-                    </p:outputPanel>
-                </f:facet>
-                <p:column style="max-height: 8px" >
+            </p:commandButton>			
+
+
+            <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="user" reflow="true" id="tabela" paginator="true"
+                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+
+                <p:column filterBy="#{user.nome}">
                     <f:facet name="header">
-                        Usuario:
+                        Nome:
                     </f:facet>
-                    <h:outputText />
-                </p:column>
-                <p:column  headerText="Grupo:" style="max-height: 8px" >
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('table').filter()" >
-                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems   var="setorSetor" 
-                                             />
-                        </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText />
-                </p:column>
-                <p:column >
-                    <f:facet name="header">
-                        Data Cadastro:
-                    </f:facet>
-                    <p:outputLabel id="data"  >
-
-                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
-                    </p:outputLabel>
-                </p:column>
-                <p:column  headerText="Status">
-                    <f:facet name="filter">
-                        <p:selectOneButton onchange="PF('table').filter()">
-                            <f:converter converterId="javax.faces.Boolean" />
-                            <f:selectItem itemLabel="A" itemValue="true" itemDescription="Usuario Ativos" />
-                            <f:selectItem itemLabel="I" itemValue="false" itemDescription="Usuario Inativos" />
-                            <f:selectItem itemLabel="T" itemValue="" itemDescription="Todos Usuarios" />
-                        </p:selectOneButton>
-                    </f:facet>
-                    <h:outputText value="#{usuario.ativo ? 'Ativo': 'Inativo'}" />
+                    <h:outputText value="#{user.nome}"/>
                 </p:column>
 
-                <p:column >
-                    <f:facet name="header">
-                        AÇÔES
-                    </f:facet>
-
-                    <p:growl id="messagem" showDetail="true" />
-
-                    <p:commandButton value="Excluir"  update="tabela" >
-                        <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
-                    </p:commandButton>
-
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
-                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"  />
-                    </p:confirmDialog>
-
-                    <p:commandButton value="Alterar"  ajax="false"/>
-                </p:column>
             </p:dataTable>
+
 
         </h:form>
     </ui:define>

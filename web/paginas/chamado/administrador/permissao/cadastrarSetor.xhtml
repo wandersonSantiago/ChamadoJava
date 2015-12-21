@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central">               
+
+
+
+        <div>
+            <h4 style="color: black" >
+                Cadastro Setor
+            </h4>
+        </div>
+        <p:separator/>
+        <h:form>
+            <div>
+                <h5>
+                    *Campos Obrigatórios
+                </h5>
+            </div>
+
+            <p:separator/>
+            <div>
+                <h:outputText value="Nome: *" style="color: black" />
+            </div>
+            <div>
+                <p:inputText  id="nome"  size="30" required="true" value="#{setor.nome}" label="Nome"  />
+            </div>
+            <div>
+                <h:outputLabel value="Ramal*: " style="color: black"  />
+            </div>
+            <div>
+                <p:inputText  size="15"  required="true" value="#{setor.ramal}" />
+
+            </div>
+            <div>
+
+                <p:commandButton value="Gravar"  action="#{ctrSetor.gravarSetor}"  ajax="false" >
+                    <f:setPropertyActionListener value="#{setor}" target="#{ctrSetor.setor}" />
+                </p:commandButton>	
+            </div>
+            <p:separator/>
+        </h:form>
+        <h:form>
+
+
+            <p:dataTable  var="setor" reflow="true" id="tabela" paginator="true"
+                          rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+
+                <p:column  filterBy="#">
+                    <f:facet name="header">
+                        Nome:
+                    </f:facet>
+                    <h:outputText value="#"/>
+                </p:column>
+                <p:column  filterBy="#">
+                    <f:facet name="header">
+                        Ramal:
+                    </f:facet>
+                    <h:outputText value="#"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
