@@ -4,7 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">               
-        <h:form>
+   
 
             <div>
 
@@ -19,36 +19,9 @@
                 </h4>
             </div>
             <p:separator/>
-
-            <div>
-                <h:outputText value="Pagina *" style="color: black" />
-            </div>
-            <div>
-                <p:inputText  id="pagina"  size="30" required="true" value="#{paginas.nomepagina}" label="Nome"  />
-            </div>
-            <div>
-
-                <p:commandButton value="Gravar Paginas"  action="#{CtrPagina.gravarPagina()}"  ajax="false" >
-                    <f:setPropertyActionListener value="#{pagina}" target="#{CtrPagina.pagina}" />
-                </p:commandButton>			
-
-            </div>
-            <p:separator/>
-            <div>
-                <h:outputText value="Grupo de Paginas *" style="color: black" />
-            </div>
-            <div>
-                <p:inputText  id="grupo"  size="30" required="true" value="#" label="Nome"  />
-            </div>
-            <div>
-
-                <p:commandButton value="Gravar Grupo de Paginas"  action="#"  ajax="false" >
-                    <f:setPropertyActionListener value="#" target="#" />
-                </p:commandButton>			
-
-            </div>
-
-            <p:separator/>
+            <h:form>
+      
+                    
             <div>
                 <h:outputText value="Grupo de Paginas*:" /> 
             </div>
@@ -130,13 +103,12 @@
 
                 <p:commandButton value="Alterar" action="#" ajax="false" />
 
-             
             </p:dataTable>
 
+             </h:form>
 
 
 
-        </h:form>
 
 
     </ui:define>

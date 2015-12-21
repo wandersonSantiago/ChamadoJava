@@ -17,7 +17,7 @@ import org.hibernate.HibernateException;
  *
  * @author Eduardo de Godoy Ferrari
  */
-@ManagedBean(name = "ctrCtrGrupo")
+@ManagedBean(name = "ctrGrupo")
 @SessionScoped
 public class CtrGrupo {
 
@@ -27,6 +27,14 @@ public class CtrGrupo {
     public CtrGrupo() {
 	acessoHibernate = new DaoGrupo();
 
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     public String gravarGrupo() {

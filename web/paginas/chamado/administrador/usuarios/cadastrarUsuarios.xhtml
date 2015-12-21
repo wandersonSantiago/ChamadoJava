@@ -6,126 +6,129 @@
     <ui:define name="central">  
         <h:form>
 
-            
-                <h:panelGrid  id="painelGridUsuer" columns="2" >
-                    
-		    <h5 style="color: black" >
-                        *Campos Obrigatórios
-                    </h5>
-                    <p:separator/>
 
-                    <h3 style="color: black" >
-                        Dados Usuario
-                    </h3>
-                    <p:separator/>
-                    
-		    <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
-                    <p:selectOneMenu id="ativo"  required="true" label="erro" >
-                        <f:selectItem itemLabel="sim" itemValue="true" />
-                        <f:selectItem itemLabel="nao" itemValue="false" />
-                    </p:selectOneMenu> 
+            <h:panelGrid  id="painelGridUsuer" columns="2" >
+                <h3 style="color: black" >
+                    Dados Usuario
+                </h3>
 
-                    <h:outputLabel value="Nome usuario: *" style="color: black" />
-		    <p:inputText  id="userNome"  size="30" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
-		    
-                    <h:outputText value="Usuario: *" style="color: black" />
-                    <p:inputText  id="userUser"  size="30" required="true" value="#{usuario.usuario}" label="Nome" />
+                <p:separator/>
+
+                <h5 style="color: black" >
+                    *Campos Obrigatórios
+                </h5>
+                <p:separator/>
+
+                <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
+                <p:selectOneMenu id="ativo"  required="true" label="erro" >
+                    <f:selectItem itemLabel="sim" itemValue="true" />
+                    <f:selectItem itemLabel="nao" itemValue="false" />
+                </p:selectOneMenu> 
+
+                <h:outputLabel value="Nome usuario: *" style="color: black" />
+                <p:inputText  id="userNome"  size="30" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
+
+                <h:outputText value="Usuario: *" style="color: black" />
+                <p:inputText  id="userUser"  size="30" required="true" value="#{usuario.usuario}" label="Nome" />
 
 
-                    <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
+                <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
 
-                    <p:password id="senha" size="15" required="true" value="#{usuario.senha}" requiredMessage="campo senha obrigatorio"  >
-                        <f:validateLength maximum="12" minimum="6" />
-                    </p:password>
+                <p:password id="senha" size="15" required="true" value="#{usuario.senha}" requiredMessage="campo senha obrigatorio"  >
+                    <f:validateLength maximum="12" minimum="6" />
+                </p:password>
 
-                    <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
+                <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
 
-                    <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
-                        <f:validateLength maximum="12" minimum="6" />
-                    </p:password>
+                <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
+                    <f:validateLength maximum="12" minimum="6" />
+                </p:password>
 
-		    
-                    <h:outputLabel value="Grupo " style="color: black" />
-                    <p:selectOneMenu id="grupo"  editable="false" effect="fold">
-                    </p:selectOneMenu>
-                    <h:outputLabel value="Paginas " style="color: black" />
-                    <p:selectOneMenu id="paginas"  editable="false" effect="fold">
 
-                    </p:selectOneMenu>
-                    
+                <h:outputLabel value="Grupo " style="color: black" />
+                <p:selectOneMenu id="grupo"  editable="false" effect="fold">
+                </p:selectOneMenu>
+                <h:outputLabel value="Paginas " style="color: black" />
+                <p:selectOneMenu id="paginas"  editable="false" effect="fold">
 
-                </h:panelGrid>
-                <h1>
+                </p:selectOneMenu>
+                <h:outputLabel value="Unidade " style="color: black" />
+                <p:selectOneMenu id="unidade"  editable="false" effect="fold">
 
-                </h1>
-                <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
-                    <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
+                </p:selectOneMenu>
 
-                </p:commandButton>				
-                             <p:dataTable var="usuario"  id="tabela" widgetVar="table" 
-                                         paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-                                              <f:facet name="header">
-            <p:outputPanel>
-                <h:outputText value="Procurar:" />
-                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
-            </p:outputPanel>
-        </f:facet>
-                                <p:column style="max-height: 8px" >
-                                    <f:facet name="header">
-                                        Usuario:
-                                    </f:facet>
-                                    <h:outputText />
-                                </p:column>
-                                <p:column  headerText="Grupo:" style="max-height: 8px" >
-                                    <f:facet name="filter">
-                                        <p:selectOneMenu onchange="PF('table').filter()" >
-                                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                            <f:selectItems   var="setorSetor" 
-                                                    />
-                                        </p:selectOneMenu>
-                                    </f:facet>
-                                    <h:outputText />
-                                </p:column>
-                                <p:column >
-                                    <f:facet name="header">
-                                        Data Cadastro:
-                                    </f:facet>
-                                    <p:outputLabel id="data"  >
-                                            
-                                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
-                                </p:outputLabel>
-                                </p:column>
-                                <p:column  headerText="Status">
-                                    <f:facet name="filter">
-                                        <p:selectOneButton onchange="PF('table').filter()">
-                                            <f:converter converterId="javax.faces.Boolean" />
-                                            <f:selectItem itemLabel="A" itemValue="true" itemDescription="Usuario Ativos" />
-                                            <f:selectItem itemLabel="I" itemValue="false" itemDescription="Usuario Inativos" />
-                                            <f:selectItem itemLabel="T" itemValue="" itemDescription="Todos Usuarios" />
-                                        </p:selectOneButton>
-                                    </f:facet>
-                                    <h:outputText value="#{usuario.ativo ? 'Ativo': 'Inativo'}" />
-                                </p:column>
+            </h:panelGrid>
+            <h1>
 
-                                <p:column >
-                                    <f:facet name="header">
-                                        AÇÔES
-                                    </f:facet>
+            </h1>
+            <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
+                <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
 
-                                    <p:growl id="messagem" showDetail="true" />
+            </p:commandButton>				
+            <p:dataTable var="usuario"  id="tabela" widgetVar="table" 
+                         paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Procurar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                    </p:outputPanel>
+                </f:facet>
+                <p:column style="max-height: 8px" >
+                    <f:facet name="header">
+                        Usuario:
+                    </f:facet>
+                    <h:outputText />
+                </p:column>
+                <p:column  headerText="Grupo:" style="max-height: 8px" >
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('table').filter()" >
+                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems   var="setorSetor" 
+                                             />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText />
+                </p:column>
+                <p:column >
+                    <f:facet name="header">
+                        Data Cadastro:
+                    </f:facet>
+                    <p:outputLabel id="data"  >
 
-                                    <p:commandButton value="Excluir"  update="tabela" >
-                                        <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
-                                    </p:commandButton>
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                    </p:outputLabel>
+                </p:column>
+                <p:column  headerText="Status">
+                    <f:facet name="filter">
+                        <p:selectOneButton onchange="PF('table').filter()">
+                            <f:converter converterId="javax.faces.Boolean" />
+                            <f:selectItem itemLabel="A" itemValue="true" itemDescription="Usuario Ativos" />
+                            <f:selectItem itemLabel="I" itemValue="false" itemDescription="Usuario Inativos" />
+                            <f:selectItem itemLabel="T" itemValue="" itemDescription="Todos Usuarios" />
+                        </p:selectOneButton>
+                    </f:facet>
+                    <h:outputText value="#{usuario.ativo ? 'Ativo': 'Inativo'}" />
+                </p:column>
 
-                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
-                                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"  />
-                                    </p:confirmDialog>
+                <p:column >
+                    <f:facet name="header">
+                        AÇÔES
+                    </f:facet>
 
-                                    <p:commandButton value="Alterar"  ajax="false"/>
-                                </p:column>
-                            </p:dataTable>
+                    <p:growl id="messagem" showDetail="true" />
+
+                    <p:commandButton value="Excluir"  update="tabela" >
+                        <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"  />
+                    </p:confirmDialog>
+
+                    <p:commandButton value="Alterar"  ajax="false"/>
+                </p:column>
+            </p:dataTable>
 
         </h:form>
     </ui:define>
