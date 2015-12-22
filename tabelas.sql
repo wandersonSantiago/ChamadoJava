@@ -2,7 +2,7 @@ CREATE TABLE chamadoc
 (
    id serial PRIMARY KEY NOT NULL,
    unidade INTEGER NOT NULL 
-   REFERENCES unidade(codunidade),
+   REFERENCES unidade(id),
    data DATE NOT NULL,
    status INTEGER NOT NULL DEFAULT(1) CONSTRAINT
    chk_status CHECK(status >= 0 AND status <= 3),
@@ -20,10 +20,10 @@ CREATE TABLE mensagem
 (
    id serial PRIMARY KEY NOT NULL,
    numchamado  INTEGER NOT NULL 
-   REFERENCES chamadoc(numchamado),
+   REFERENCES chamadoc(id),
    data DATE ,
    codfuncautor INTEGER NOT NULL
-   REFERENCES usuario(codusuario), 
+   REFERENCES usuario(id), 
    nomearquivo VARCHAR(10),
    arquivo OID,
    texto TEXT NOT NULL
@@ -34,7 +34,7 @@ CREATE TABLE usuario(
 
   id serial PRIMARY KEY NOT NULL,
   unidade INTEGER NOT NULL 
-  REFERENCES unidade(codunidade),
+  REFERENCES unidade(ide),
   nome VARCHAR(30) NOT NULL ,
   usuario VARCHAR(30) NOT NULL CONSTRAINT
   unqusuario UNIQUE,
@@ -42,7 +42,7 @@ CREATE TABLE usuario(
   email VARCHAR(50) NOT NULL,
   tipousuario INTEGER NOT NULL CONSTRAINT
   chk_tipousuario CHECK(tipousuario >= 0 AND tipousuario <=2),
-  grupo INTEGER NOT NULL REFERENCES grupo(codgrupo)
+  grupo INTEGER NOT NULL REFERENCES grupo(id)
 );
 
 CREATE TABLE unidade(
@@ -68,8 +68,8 @@ CREATE TABLE pagina(
 CREATE TABLE grupopagina(
    
      id serial PRIMARY KEY NOT NULL,
-     codgrupo INTEGER NOT NULL REFERENCES grupo(codgrupo),
-     codpaigna INTEGER NOT NULL REFERENCES pagina(codpagina)); 
+     codgrupo INTEGER NOT NULL REFERENCES grupo(id),
+     codpaigna INTEGER NOT NULL REFERENCES pagina(id)); 
      
 CREATE TABLE confemail(
  
