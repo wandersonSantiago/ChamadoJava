@@ -1,8 +1,8 @@
 CREATE TABLE chamadoc
 (
-   numchamado serial PRIMARY KEY NOT NULL,
+   id serial PRIMARY KEY NOT NULL,
    unidade INTEGER NOT NULL 
-   REFERENCES unidade(codunidade),
+   REFERENCES unidade(id),
    data DATE NOT NULL,
    status INTEGER NOT NULL DEFAULT(1) CONSTRAINT
    chk_status CHECK(status >= 0 AND status <= 3),
@@ -18,23 +18,23 @@ CREATE TABLE chamadoc
 
 CREATE TABLE mensagem
 (
-   nummensagem serial PRIMARY KEY NOT NULL,
+   id serial PRIMARY KEY NOT NULL,
    numchamado  INTEGER NOT NULL 
-   REFERENCES chamadoc(numchamado),
+   REFERENCES chamadoc(id),
    data DATE ,
    codfuncautor INTEGER NOT NULL
-   REFERENCES usuario(codusuario), 
+   REFERENCES usuario(id), 
    nomearquivo VARCHAR(10),
    arquivo OID,
    texto TEXT NOT NULL
 );
 
-//foi adicionado o campo nome altera na classe
+
 CREATE TABLE usuario(
 
-  codusuario serial PRIMARY KEY NOT NULL,
+  id serial PRIMARY KEY NOT NULL,
   unidade INTEGER NOT NULL 
-  REFERENCES unidade(codunidade),
+  REFERENCES unidade(ide),
   nome VARCHAR(30) NOT NULL ,
   usuario VARCHAR(30) NOT NULL CONSTRAINT
   unqusuario UNIQUE,
@@ -42,12 +42,12 @@ CREATE TABLE usuario(
   email VARCHAR(50) NOT NULL,
   tipousuario INTEGER NOT NULL CONSTRAINT
   chk_tipousuario CHECK(tipousuario >= 0 AND tipousuario <=2),
-  grupo INTEGER NOT NULL REFERENCES grupo(codgrupo)
+  grupo INTEGER NOT NULL REFERENCES grupo(id)
 );
 
 CREATE TABLE unidade(
    
-    codunidade serial PRIMARY KEY NOT NULL, 
+    id serial PRIMARY KEY NOT NULL, 
     descricao VARCHAR(30) NOT NULL,
     razaosocial VARCHAR(30) NOT NULL,
     endereco VARCHAR(30) NOT NULL,
@@ -57,28 +57,63 @@ CREATE TABLE unidade(
 
 CREATE TABLE grupo(
 
-  codgrupo serial PRIMARY KEY NOT NULL,
+  id serial PRIMARY KEY NOT NULL,
   nomegrupo VARCHAR(30) NOT NULL);
 
 CREATE TABLE pagina(
    
-   codpagina serial PRIMARY KEY NOT NULL,
+   id serial PRIMARY KEY NOT NULL,
    nomepagina VARCHAR(30) NOT NULL);
 
 CREATE TABLE grupopagina(
    
-     codgrupopagina serial PRIMARY KEY NOT NULL,
-     codgrupo INTEGER NOT NULL REFERENCES grupo(codgrupo),
-     codpaigna INTEGER NOT NULL REFERENCES pagina(codpagina)); 
+     id serial PRIMARY KEY NOT NULL,
+     codgrupo INTEGER NOT NULL REFERENCES grupo(id),
+     codpaigna INTEGER NOT NULL REFERENCES pagina(id)); 
      
 CREATE TABLE confemail(
  
-  codemail serial PRIMARY KEY NOT NULL,
+  id serial PRIMARY KEY NOT NULL,
   host VARCHAR(30) NOT NULL,
   usuarioemail VARCHAR(30) NOT NULL ,
   senhaemail VARCHAR(30) NOT NULL,
   porta INTEGER NOT NULL,
-  ssl  BOOLEAN,  
-  tls  BOOLEAN,
+  ssl  BOOLEAN DEFAULT(false),  
+  tls  BOOLEAN DEFAULT(false),
   msgfrom VARCHAR(10));
+  
+  CREATE TABLE setor(
+   
+   id serial PRIMARY KEY NOT NULL,
+   nome VARCHAR(30) NOT NULL,
+   raml VARCHAR(30) NOT NULL);
+   
+   CREATE TABLE logemail(
+   
+   id serial PRIMARY KEY NOT NULL,
+   data DATE NOT NULL,
+   tipo VARCHAR(30) NOT NULL,
+   status VARCHAR(30) NOT NULL,
+   remetente VARCHAR(30) NOT NULL,
+   assunto VARCHAR(30) NOT NULL,
+   destinatario VARCHAR(30) NOT NULL);
+   
+   CREATE TABLE urgencia(
+    id serial PRIMARY KEY NOT NULL,
+    nome VARCHAR(30) NOT NULL,
+    habilitado BOOLEAN NOT NULL DEFAULT(false));
+    
+    CREATE TABLE status (
+      
+      id serial PRIMARY KEY NOT NULL,
+      nome VARCHAR(30) NOT NULL,
+      habilitado BOOLEAN NOT NULL DEFAULT(false));
+      
+      CREATE TABLE justificativa(
+      id serial PRIMARY KEY NOT NULL,
+      nome VARCHAR(30) NOT NULL,
+      validostatus INTEGER NOT NULL,
+      habilitado BOOLEAN NOT NULL DEFAULT(false));
+      
+      
   
