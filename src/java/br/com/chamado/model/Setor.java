@@ -5,8 +5,6 @@ package br.com.chamado.model;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -39,7 +37,6 @@ public class Setor implements Serializable {
     @Column(nullable = false, length = 15)
     @NotNull
     private int ramal;
-   
 
     public Setor() throws IllegalArgumentException {
 
@@ -56,8 +53,6 @@ public class Setor implements Serializable {
     public int getRamal() {
 	return ramal;
     }
-
-   
 
     public void setRamal(int ramal) throws IllegalArgumentException {
 
@@ -81,10 +76,6 @@ public class Setor implements Serializable {
 	    throw new IllegalArgumentException("Campo minimo 2 e maximo 30, TAMANHO[" + nome.length() + "]");
 	}
     }
-
-   
-
-   
 
     @Override
     public String toString() {

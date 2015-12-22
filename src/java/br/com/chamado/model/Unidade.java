@@ -16,14 +16,13 @@ import javax.persistence.Table;
 @ManagedBean(name = "unidade")
 @SessionScoped
 @Entity
-@Table(name = "unidade", schema = "public"
-)
+@Table(name = "unidade")
 public class Unidade implements java.io.Serializable {
 
     @Id
-    @Column(name = "codunidade", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codunidade;
+    private int id;
     @Column(name = "descricao", nullable = false, length = 30)
     private String descricao;
     @Column(name = "razaosocial", nullable = false, length = 30)
@@ -38,13 +37,14 @@ public class Unidade implements java.io.Serializable {
     public Unidade() {
     }
 
-    public int getCodunidade() {
-	return this.codunidade;
+    public int getId() {
+	return id;
     }
 
-    public void setCodunidade(int codunidade) {
-	this.codunidade = codunidade;
+    public void setId(int id) {
+	this.id = id;
     }
+    
 
     public String getDescricao() {
 	return this.descricao;

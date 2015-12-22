@@ -51,7 +51,7 @@ public class ConverterGrupo implements Converter {
             if (value instanceof Grupo) {
                 Grupo o = (Grupo) value;
 		
-                return getStringID(o.getCodgrupo());
+                return getStringID(o.getId());
             } else {
         
 		throw new IllegalArgumentException("objeto " + value + " possui o tipo "

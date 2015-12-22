@@ -49,7 +49,7 @@ public class converteUnidade implements Converter {
             if (value instanceof Unidade) {
                 Unidade o = (Unidade) value;
 		
-                return getStringID(o.getCodunidade());
+                return getStringID(o.getId());
             } else {
         
 		throw new IllegalArgumentException("objeto " + value + " possui o tipo "

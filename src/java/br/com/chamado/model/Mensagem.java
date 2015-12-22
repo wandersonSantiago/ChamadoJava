@@ -26,9 +26,9 @@ import javax.persistence.TemporalType;
 public class Mensagem implements Serializable {
 
     @Id
-    @Column(name = "nummensagem", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int nummensagem;
+    private int id;
     @Column(name = "numchamado", unique = true, nullable = false)
     private int numeChamado;
    // private Usuario usuario;
@@ -45,13 +45,16 @@ public class Mensagem implements Serializable {
     public Mensagem() {
     }
 
-    public int getNummensagem() {
-	return this.nummensagem;
+    public int getId() {
+	return id;
     }
 
-    public void setNummensagem(int nummensagem) {
-	this.nummensagem = nummensagem;
+    public void setId(int id) {
+	this.id = id;
     }
+     
+    
+    
    
     public int getNumeChamado() {
 	return numeChamado;

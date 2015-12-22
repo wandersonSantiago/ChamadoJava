@@ -3,9 +3,12 @@ package br.com.chamado.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,36 +21,29 @@ import javax.persistence.Table;
 )
 public class Pagina implements java.io.Serializable {
 
-    private int codpagina;
+    @Id
+    @Column(unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "nomepagina", nullable = false, length = 30)
     private String nomepagina;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pagina")
     private Set grupopaginas = new HashSet(0);
 
     public Pagina() {
     }
 
-    public Pagina(int codpagina, String nomepagina) {
-	this.codpagina = codpagina;
-	this.nomepagina = nomepagina;
+    public int getId() {
+	return id;
     }
 
-    public Pagina(int codpagina, String nomepagina, Set grupopaginas) {
-	this.codpagina = codpagina;
-	this.nomepagina = nomepagina;
-	this.grupopaginas = grupopaginas;
+    public void setId(int id) {
+	this.id = id;
     }
 
-    @Id
+    
 
-    @Column(name = "codpagina", unique = true, nullable = false)
-    public int getCodpagina() {
-	return this.codpagina;
-    }
-
-    public void setCodpagina(int codpagina) {
-	this.codpagina = codpagina;
-    }
-
-    @Column(name = "nomepagina", nullable = false, length = 30)
+    
     public String getNomepagina() {
 	return this.nomepagina;
     }
@@ -56,7 +52,7 @@ public class Pagina implements java.io.Serializable {
 	this.nomepagina = nomepagina;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pagina")
+    
     public Set getGrupopaginas() {
 	return this.grupopaginas;
     }

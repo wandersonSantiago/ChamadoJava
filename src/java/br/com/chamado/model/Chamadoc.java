@@ -24,9 +24,9 @@ import javax.persistence.TemporalType;
 public class Chamadoc implements Serializable {
 
     @Id
-    @Column(name = "numchamado", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numchamado;
+    private int id;
    /* @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unidade", nullable = false)
     private Unidade unidade;*/
@@ -51,16 +51,18 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-    
-    
-    
-    public int getNumchamado() {
-	return numchamado;
+
+    public int getId() {
+	return id;
     }
 
-    public void setNumchamado(int numchamado) {
-	this.numchamado = numchamado;
+    public void setId(int id) {
+	this.id = id;
     }
+    
+    
+    
+    
    
   /*
     public Unidade getUnidade() {

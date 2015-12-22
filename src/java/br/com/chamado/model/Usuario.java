@@ -24,19 +24,16 @@ import javax.persistence.UniqueConstraint;
 @ManagedBean(name = "usuario")
 @SessionScoped
 @Entity
-@Table(name="usuario"
-    ,schema="public"
-    , uniqueConstraints = @UniqueConstraint(columnNames="usuario") 
-)
+@Table(name="usuario")
 public class Usuario  implements java.io.Serializable {
 
      @Id 
-     @Column(name="codusuario", unique=true, nullable=false)
+     @Column(unique=true, nullable=false)
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private int codusuario;
-     @ManyToOne(fetch=FetchType.LAZY)
+     private int id;
+     /*@ManyToOne(fetch=FetchType.LAZY)
      @JoinColumn(name="unidade", nullable=false)
-     private Unidade unidade;
+     private Unidade unidade;*/
      @Column(name="nome", unique=true, nullable=false)
      private String nome;
      @Column(name="usuario", unique=true, nullable=false, length=30)
@@ -51,8 +48,13 @@ public class Usuario  implements java.io.Serializable {
 
     public Usuario() {
     }
-    public int getCodusuario() {
-        return this.codusuario;
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
     }
     
     public String getNome() {
@@ -63,18 +65,16 @@ public class Usuario  implements java.io.Serializable {
 	this.nome = nome;
     }
     
-    public void setCodusuario(int codusuario) {
-        this.codusuario = codusuario;
-    }
+    
 
-
+   /*
     public Unidade getUnidade() {
         return this.unidade;
     }
     
     public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
-    }
+    }*/
 
     
     

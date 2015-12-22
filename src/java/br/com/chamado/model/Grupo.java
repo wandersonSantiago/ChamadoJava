@@ -8,6 +8,8 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,40 +20,30 @@ import javax.persistence.Table;
 @ManagedBean(name = "grupo")
 @SessionScoped
 @Entity
-@Table(name = "grupo", schema = "public"
-)
+@Table(name = "grupo")
 public class Grupo implements java.io.Serializable {
 
-    private int codgrupo;
+    @Id
+    @Column(unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "nomegrupo", nullable = false, length = 30)
     private String nomegrupo;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "grupo")
     private Set grupopaginas = new HashSet(0);
 
     public Grupo() {
     }
 
-    public Grupo(int codgrupo, String nomegrupo) {
-	this.codgrupo = codgrupo;
-	this.nomegrupo = nomegrupo;
+    public int getId() {
+	return id;
     }
 
-    public Grupo(int codgrupo, String nomegrupo, Set grupopaginas) {
-	this.codgrupo = codgrupo;
-	this.nomegrupo = nomegrupo;
-	this.grupopaginas = grupopaginas;
+    public void setId(int id) {
+	this.id = id;
     }
-
-    @Id
-
-    @Column(name = "codgrupo", unique = true, nullable = false)
-    public int getCodgrupo() {
-	return this.codgrupo;
-    }
-
-    public void setCodgrupo(int codgrupo) {
-	this.codgrupo = codgrupo;
-    }
-
-    @Column(name = "nomegrupo", nullable = false, length = 30)
+    
     public String getNomegrupo() {
 	return this.nomegrupo;
     }
@@ -60,7 +52,6 @@ public class Grupo implements java.io.Serializable {
 	this.nomegrupo = nomegrupo;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "grupo")
     public Set getGrupopaginas() {
 	return this.grupopaginas;
     }

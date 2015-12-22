@@ -51,7 +51,7 @@ public class ConverterPagina implements Converter {
             if (value instanceof Pagina) {
                 Pagina o = (Pagina) value;
 		
-                return getStringID(o.getCodpagina());
+                return getStringID(o.getId());
             } else {
         
 		throw new IllegalArgumentException("objeto " + value + " possui o tipo "

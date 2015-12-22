@@ -28,9 +28,9 @@ import javax.persistence.Table;
 public class EmailConfig implements  Serializable{
     
     @Id 
-    @Column(name="codemail", unique=true, nullable=false)
+    @Column(unique=true, nullable=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int  codemail;
+    private int  id;
     @Column(name="host", unique=true, nullable=false)
     private  String servidor ;
     @Column(name="porta", nullable=false)
@@ -46,13 +46,15 @@ public class EmailConfig implements  Serializable{
     @Column(name="tls", nullable=false)
     private  boolean tls ;
 
-    public int getCodemail() {
-	return codemail;
+    public int getId() {
+	return id;
     }
 
-    public void setCodemail(int codemail) {
-	this.codemail = codemail;
+    public void setId(int id) {
+	this.id = id;
     }
+
+    
 
     public String getServidor() {
 	return servidor;
