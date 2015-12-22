@@ -4,9 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">               
-
-
-        <div>
+      <div>
 
             <h5 style="color: black" >
                 *Campos Obrigatórios
@@ -33,12 +31,11 @@
                 </p:commandButton>			
 
             </div>
+
         </h:form>
         <p:separator/>
         <h:form>
-
-
-            <p:dataTable value="#{CtrPagina.carregarPagina()}" var="pag" reflow="true" id="tabela" paginator="true"
+           <p:dataTable value="#{CtrPagina.carregarPagina()}" var="pag" reflow="true" id="tabela" paginator="true"
                          rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
                 <p:column  filterBy="#{pag.nomepagina}">
@@ -50,10 +47,5 @@
 
             </p:dataTable>
         </h:form>
-
-
-
-
-
     </ui:define>
 </ui:composition>
