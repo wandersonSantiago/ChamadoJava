@@ -1,6 +1,6 @@
 CREATE TABLE chamadoc
 (
-   numchamado serial PRIMARY KEY NOT NULL,
+   id serial PRIMARY KEY NOT NULL,
    unidade INTEGER NOT NULL 
    REFERENCES unidade(codunidade),
    data DATE NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE chamadoc
 
 CREATE TABLE mensagem
 (
-   nummensagem serial PRIMARY KEY NOT NULL,
+   id serial PRIMARY KEY NOT NULL,
    numchamado  INTEGER NOT NULL 
    REFERENCES chamadoc(numchamado),
    data DATE ,
@@ -29,10 +29,10 @@ CREATE TABLE mensagem
    texto TEXT NOT NULL
 );
 
-//foi adicionado o campo nome altera na classe
+
 CREATE TABLE usuario(
 
-  codusuario serial PRIMARY KEY NOT NULL,
+  id serial PRIMARY KEY NOT NULL,
   unidade INTEGER NOT NULL 
   REFERENCES unidade(codunidade),
   nome VARCHAR(30) NOT NULL ,
@@ -47,7 +47,7 @@ CREATE TABLE usuario(
 
 CREATE TABLE unidade(
    
-    codunidade serial PRIMARY KEY NOT NULL, 
+    id serial PRIMARY KEY NOT NULL, 
     descricao VARCHAR(30) NOT NULL,
     razaosocial VARCHAR(30) NOT NULL,
     endereco VARCHAR(30) NOT NULL,
@@ -57,28 +57,63 @@ CREATE TABLE unidade(
 
 CREATE TABLE grupo(
 
-  codgrupo serial PRIMARY KEY NOT NULL,
+  id serial PRIMARY KEY NOT NULL,
   nomegrupo VARCHAR(30) NOT NULL);
 
 CREATE TABLE pagina(
    
-   codpagina serial PRIMARY KEY NOT NULL,
+   id serial PRIMARY KEY NOT NULL,
    nomepagina VARCHAR(30) NOT NULL);
 
 CREATE TABLE grupopagina(
    
-     codgrupopagina serial PRIMARY KEY NOT NULL,
+     id serial PRIMARY KEY NOT NULL,
      codgrupo INTEGER NOT NULL REFERENCES grupo(codgrupo),
      codpaigna INTEGER NOT NULL REFERENCES pagina(codpagina)); 
      
 CREATE TABLE confemail(
  
-  codemail serial PRIMARY KEY NOT NULL,
+  id serial PRIMARY KEY NOT NULL,
   host VARCHAR(30) NOT NULL,
   usuarioemail VARCHAR(30) NOT NULL ,
   senhaemail VARCHAR(30) NOT NULL,
   porta INTEGER NOT NULL,
-  ssl  BOOLEAN,  
-  tls  BOOLEAN,
+  ssl  BOOLEAN DEFAULT(false),  
+  tls  BOOLEAN DEFAULT(false),
   msgfrom VARCHAR(10));
+  
+  CREATE TABLE setor(
+   
+   id serial PRIMARY KEY NOT NULL,
+   nome VARCHAR(30) NOT NULL,
+   raml VARCHAR(30) NOT NULL);
+   
+   CREATE TABLE logemail(
+   
+   id serial PRIMARY KEY NOT NULL,
+   data DATE NOT NULL,
+   tipo VARCHAR(30) NOT NULL,
+   status VARCHAR(30) NOT NULL,
+   remetente VARCHAR(30) NOT NULL,
+   assunto VARCHAR(30) NOT NULL,
+   destinatario VARCHAR(30) NOT NULL);
+   
+   CREATE TABLE urgencia(
+    id serial PRIMARY KEY NOT NULL,
+    nome VARCHAR(30) NOT NULL,
+    habilitado BOOLEAN NOT NULL DEFAULT(false));
+    
+    CREATE TABLE status (
+      
+      id serial PRIMARY KEY NOT NULL,
+      nome VARCHAR(30) NOT NULL,
+      habilitado BOOLEAN NOT NULL DEFAULT(false));
+      
+      CREATE TABLE justificativa(
+      id serial PRIMARY KEY NOT NULL,
+      nome VARCHAR(30) NOT NULL,
+      validostatus INTEGER NOT NULL,
+      habilitado BOOLEAN NOT NULL DEFAULT(false));
+      
+      
   
