@@ -21,7 +21,7 @@
                         <h:outputLabel value="Mensagem:"  />
                     </div>
                     <div>
-                       <!-- <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> -->
+                        <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> 
                     </div>
                     <p:separator/>
                     <div>
@@ -41,6 +41,7 @@
                          <h:panelGrid columns="2" > 
                         <p:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" ajax="false">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
+			    <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
                         </p:commandButton>
                         <p:commandButton value="Cancelar" />
                     </h:panelGrid>

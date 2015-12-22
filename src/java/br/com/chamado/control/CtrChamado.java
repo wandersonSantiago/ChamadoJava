@@ -3,6 +3,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoChamadoc;
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.Mensagem;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -20,24 +21,30 @@ public class CtrChamado implements  Serializable{
     
     private final  DaoChamadoc acessoHibernate;
     private Chamadoc chamadoc;
+   
+    private Mensagem mensagem;
     public CtrChamado()
     {
-	
-     acessoHibernate = new DaoChamadoc();
+      acessoHibernate = new DaoChamadoc();
     }
     
     public String gravarChamado() {
 	try {
 	   Date hoje = new Date();
+	   
 	   chamadoc.setData(hoje);
 	   acessoHibernate.salvar(chamadoc);
-	    return "index";
+	 
+	   mensagem.setNumeChamado(chamadoc.getNumchamado());
+	   mensagem.setData(hoje);
+	   acessoHibernate.salvar(mensagem);
+	   return "index";
 	} catch (HibernateException e) {
 	    System.out.println(e.getMessage());
 	    return "falha";
 	}
     }
- 
+
     public String  alterarChamado(Chamadoc chamdo)
     {
        try
@@ -70,6 +77,14 @@ public class CtrChamado implements  Serializable{
 	this.chamadoc = chamadoc;
     }
 
+    public Mensagem getMensagem() {
+	return mensagem;
+    }
+
+    public void setMensagem(Mensagem mensagem) {
+	this.mensagem = mensagem;
+    }
+    
    
     
 }

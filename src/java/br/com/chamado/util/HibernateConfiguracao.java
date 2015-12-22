@@ -7,6 +7,7 @@ package br.com.chamado.util;
 
 import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.EmailConfig;
+import br.com.chamado.model.Mensagem;
 import br.com.chamado.model.Unidade;
 import br.com.chamado.model.Usuario;
 import org.hibernate.Session;
@@ -40,7 +41,7 @@ public class HibernateConfiguracao {
         configuracao.addAnnotatedClass(Chamadoc.class);
        // configuracao.addAnnotatedClass(Grupo.class);
        // configuracao.addAnnotatedClass(GrupoPagina.class);
-       // configuracao.addAnnotatedClass(Mensagem.class);
+        configuracao.addAnnotatedClass(Mensagem.class);
        // configuracao.addAnnotatedClass(Pagina.class);
         configuracao.addAnnotatedClass(Unidade.class);
         configuracao.addAnnotatedClass(Usuario.class);

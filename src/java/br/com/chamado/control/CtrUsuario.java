@@ -22,14 +22,16 @@ public class CtrUsuario {
 
     private final DaoUsuario acessoHibernate;
     private Usuario usuario;
+   
     public CtrUsuario() {
+	
 	acessoHibernate = new DaoUsuario();
 
     }
 
     public String gravarUsuario() {
 	try {
-   
+       
 	    acessoHibernate.salvar(usuario);
 	    return "index.xhtml";
 	} catch (HibernateException e) {

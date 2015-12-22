@@ -7,15 +7,10 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,22 +20,18 @@ import javax.persistence.TemporalType;
  */
 @ManagedBean(name = "mensagem")
 @SessionScoped
-@Embeddable
-@Table(name = "mensagem", schema = "public"
-)
+@Entity
+@Table(name = "mensagem")
 
 public class Mensagem implements Serializable {
 
     @Id
     @Column(name = "nummensagem", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nummensagem;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "numchamado", nullable = false)
-    private Chamadoc chamadoc;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "codfuncautor", nullable = false)
-    private Usuario usuario;
+    @Column(name = "numchamado", unique = true, nullable = false)
+    private int numeChamado;
+   // private Usuario usuario;
     @Temporal(TemporalType.DATE)
     @Column(name = "data", length = 13)
     private Date data;
@@ -61,15 +52,15 @@ public class Mensagem implements Serializable {
     public void setNummensagem(int nummensagem) {
 	this.nummensagem = nummensagem;
     }
-
-    public Chamadoc getChamadoc() {
-	return this.chamadoc;
+   
+    public int getNumeChamado() {
+	return numeChamado;
     }
 
-    public void setChamadoc(Chamadoc chamadoc) {
-	this.chamadoc = chamadoc;
+    public void setNumeChamado(int numeChamado) {
+	this.numeChamado = numeChamado;
     }
-
+    /*
     public Usuario getUsuario() {
 	return this.usuario;
     }
@@ -77,7 +68,7 @@ public class Mensagem implements Serializable {
     public void setUsuario(Usuario usuario) {
 	this.usuario = usuario;
     }
-
+   */
     public Date getData() {
 	return this.data;
     }

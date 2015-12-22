@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,22 +51,17 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-   
-    /*@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name="numchamado")
-    private List msg;
-
-    public Chamadoc() {
-	
-    }
-
+    
+    
+    
     public int getNumchamado() {
-	return this.numchamado;
+	return numchamado;
     }
 
     public void setNumchamado(int numchamado) {
 	this.numchamado = numchamado;
     }
+   
   /*
     public Unidade getUnidade() {
 	return this.unidade;
@@ -140,13 +135,6 @@ public class Chamadoc implements Serializable {
 	this.datafechamento = datafechamento;
     }
 
-    /*
-    public Set getMensagems() {
-	return this.mensagems;
-    }
     
-    public void setMensagems(Set<Mensagem> mensagems) {
-	this.mensagems = mensagems;
-    }
-   */
+   
 }
