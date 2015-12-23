@@ -26,10 +26,10 @@
                 </p:selectOneMenu> 
 
                 <h:outputLabel value="Nome usuario: *" style="color: black" />
-                <p:inputText  id="userNome"  size="30" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
+                <p:inputText  id="userNome"  size="150" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
 
                 <h:outputText value="Usuario: *" style="color: black" />
-                <p:inputText  id="userUser"  size="30" required="true" value="#{usuario.usuario}" label="Nome" />
+                <p:inputText  id="userUser"  size="40" required="true" value="#{usuario.usuario}" label="Nome" />
 
 
                 <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
@@ -66,11 +66,11 @@
                 
                 <h:outputLabel value="Unidade " style="color: black" />
 
-                <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
+                <p:selectOneMenu id="unidade" value="#{usuario.nome}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Unidade Obrigatorio" >
                     <f:converter converterId="unidadeConverter" />
                     <f:selectItem itemLabel=""  />
-                    <f:selectItems value="#{ctrUnidade.unidades}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.descricao}"
+                    <f:selectItems value="#{ctrUnidade.unidades}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
                                    itemValue="#{usuarioUnidade}" />                                    
                 </p:selectOneMenu>
 

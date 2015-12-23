@@ -12,14 +12,14 @@
                 </div>
                 <div class="panel-body">
 
-                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamado" id="tabela" widgetVar="table" 
+                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" widgetVar="table" 
                                   paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
               
-                        <p:column  style="max-height: 8px" >
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.id}" >
                             <f:facet name="header">
                                 Numero:
                             </f:facet>
-                            <h:outputText  />
+                            <h:outputText  value="#{chamadoc.id}"/>
                         </p:column>
                         <p:column  style="max-height: 8px" >
                             <f:facet name="header">

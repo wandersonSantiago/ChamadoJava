@@ -11,9 +11,9 @@
                     <h3 class="panel-title" style="color: white" > Lista de Ramal Setores</h3>
                 </div>
                 <div class="panel-body">
-                    <p:separator/>
+                   
                     <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
-                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30" rowKey="#{setor.id}" selectionMode="single">
                         <p:column  filterBy="#{setor.nome}">
                             <f:facet name="header">
                                 Nome:

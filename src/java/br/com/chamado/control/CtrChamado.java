@@ -78,7 +78,7 @@ public class CtrChamado implements  Serializable{
       try
       {
 	  
-	 return acessoHibernate.carregaTudoOrdernado(Chamadoc.class, "numchamado");
+	 return acessoHibernate.carregaTudoOrdernado(Chamadoc.class, "id");
       }catch(HibernateException e)
       {
         return null;

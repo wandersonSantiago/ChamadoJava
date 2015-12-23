@@ -23,10 +23,14 @@ public class Unidade implements java.io.Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "descricao", nullable = false, length = 30)
-    private String descricao;
-    @Column(name = "razaosocial", nullable = false, length = 30)
-    private String razaosocial;
+    @Column(name = "nome", nullable = false, length = 30)
+    private String nome;
+    @Column(name = "mneumonico", nullable = false, length = 30)
+    private String mneumonico;
+    @Column(name = "fonePabx", nullable = false, length = 30)
+    private String fonePabx;
+    @Column(name = "foneDiretor", nullable = false, length = 30)
+    private String foneDiretor;
     @Column(name = "endereco", nullable = false, length = 30)
     private String endereco;
     @Column(name = "bairro", nullable = false, length = 30)
@@ -37,6 +41,38 @@ public class Unidade implements java.io.Serializable {
     public Unidade() {
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMneumonico() {
+        return mneumonico;
+    }
+
+    public void setMneumonico(String mneumonico) {
+        this.mneumonico = mneumonico;
+    }
+
+    public String getFonePabx() {
+        return fonePabx;
+    }
+
+    public void setFonePabx(String fonePabx) {
+        this.fonePabx = fonePabx;
+    }
+
+    public String getFoneDiretor() {
+        return foneDiretor;
+    }
+
+    public void setFoneDiretor(String foneDiretor) {
+        this.foneDiretor = foneDiretor;
+    }
+
     public int getId() {
 	return id;
     }
@@ -45,23 +81,6 @@ public class Unidade implements java.io.Serializable {
 	this.id = id;
     }
     
-
-    public String getDescricao() {
-	return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
-	this.descricao = descricao;
-    }
-
-    public String getRazaosocial() {
-	return this.razaosocial;
-    }
-
-    public void setRazaosocial(String razaosocial) {
-	this.razaosocial = razaosocial;
-    }
-
     public String getEndereco() {
 	return this.endereco;
     }

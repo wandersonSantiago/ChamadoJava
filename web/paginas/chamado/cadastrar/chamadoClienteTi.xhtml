@@ -19,9 +19,9 @@
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" label="priori"  
                                              required="false" requiredMessage="Campo prioridade obrigatorio" >
                                 <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                <f:selectItem itemLabel="Urgente" itemValue="3" />
+                                <f:selectItem itemLabel="Urgente" itemValue="1" />
                                 <f:selectItem itemLabel="Media" itemValue="2" />
-                                <f:selectItem itemLabel="Baixa" itemValue="1" />
+                                <f:selectItem itemLabel="Baixa" itemValue="3" />
                             </p:selectOneMenu>
                         </h:panelGrid>
                         <h:panelGrid columns="1">
@@ -63,6 +63,12 @@
                     </h:panelGrid>
                 </div>
             </div>
+        </h:form>
+        <h:form>
+            <p:fileUpload  mode="advanced" dragDropSupport="true"
+                           update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+            <p:growl id="messages" showDetail="true" />
         </h:form>
     </ui:define>
 </ui:composition>

@@ -49,20 +49,21 @@
             </div>
             <div class="panel-body">
                 <h:form>
-                    <p:dataTable  var="setor" reflow="true" id="tabela" paginator="true"
+                    <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
+                                 
                                   rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
-                        <p:column  filterBy="#">
+                        <p:column  filterBy="#{setor.nome   }">
                             <f:facet name="header">
                                 Nome:
                             </f:facet>
-                            <h:outputText value="#"/>
+                            <h:outputText value="#{setor.nome}"/>
                         </p:column>
-                        <p:column  filterBy="#">
+                        <p:column  filterBy="#{setor.ramal}">
                             <f:facet name="header">
                                 Ramal:
                             </f:facet>
-                            <h:outputText value="#"/>
+                            <h:outputText value="#{setor.ramal}"/>
                         </p:column>
 
                     </p:dataTable>

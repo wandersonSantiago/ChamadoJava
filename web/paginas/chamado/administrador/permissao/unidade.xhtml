@@ -21,34 +21,46 @@
                     <p:separator/>
 
                     <div>
-                        <h:outputText value="Nome: *" style="color: black" />
+                        <h:outputText id="ldbNome" value="Nome: *" style="color: black" />
                     </div>
                     <div>
-                        <p:inputText  id="nome"   size="30" required="true" value="#{unidade.descricao}" label="Nome"  />
+                        <p:inputText  id="nome"   size="150" required="true" value="#{unidade.nome}"   />
                     </div>
                     <div>
-                        <h:outputLabel value="Razão Social*: " style="color: black" />
+                        <h:outputLabel value="Mneumonico*: " style="color: black" />
                     </div>
                     <div>
-                        <p:inputText  id="razaosocial" size="15"  required="true" value="#{unidade.razaosocial}" />
+                        <p:inputText  id="mneumonico" size="100"  required="true" value="#{unidade.mneumonico}" />
+                    </div>
+                      <div>
+                        <h:outputLabel value="Tel-PABX" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputMask mask="(99)9999-9999" id="fonePabx" required="true"  size="14" value="#{unidade.fonePabx}"/>
+                    </div>
+                      <div>
+                        <h:outputLabel value="Tel-Diretor" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputMask mask="(99)9999-9999" id="foneDiretor" required="true"  size="14" value="#{unidade.foneDiretor}"/>
                     </div>
                     <div>
                         <h:outputLabel value="Endereço:" style="color: black" />
                     </div>
                     <div>
-                        <p:inputText id="endereco" required="true"  size="14" value="#{unidade.endereco}"/>
+                        <p:inputText id="endereco" required="true"  size="100" value="#{unidade.endereco}"/>
                     </div>
                     <div>
                         <h:outputLabel value="Bairro:" style="color: black" />
                     </div>
                     <div>
-                        <p:inputText id="bairro" required="true"  size="14" value="#{unidade.bairro}"/>
+                        <p:inputText id="bairro" required="true"  size="50" value="#{unidade.bairro}"/>
                     </div>
                     <div>
                         <h:outputLabel value="cidade:" style="color: black" />
                     </div>
                     <div>
-                        <p:inputText id="cidade" required="true"  size="14" value="#{unidade.cidade}"/>
+                        <p:inputText id="cidade" required="true"  size="50" value="#{unidade.cidade}"/>
                     </div>
                     <div>
                         <p:separator/>
@@ -67,14 +79,26 @@
                     <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
                 </div>
                 <div class="panel-body">
-                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="unid" reflow="true" id="tabela" paginator="true"
-                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30"  rowKey="#{unid.codunidade}" selectionMode="single" >
+                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="uniddade" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30"  rowKey="#{unidade.id}" selectionMode="single" >
 
-                        <p:column  filterBy="#{unid.descricao}">
+                        <p:column  filterBy="#{uniddade.mneumonico}">
                             <f:facet name="header">
-                                Nome:
+                                Mneumonico:
                             </f:facet>
-                            <h:outputText value="#{unid.descricao}"/>
+                            <h:outputText value="#{uniddade.mneumonico}"/>
+                        </p:column>
+                        <p:column  filterBy="#{unidade.fonePabx}">
+                            <f:facet name="header">
+                                Fone:
+                            </f:facet>
+                            <h:outputText value="#{unidade.fonePabx}"/>
+                        </p:column>
+                        <p:column  filterBy="#{unidade.cidade}">
+                            <f:facet name="header">
+                                Cidade:
+                            </f:facet>
+                            <h:outputText value="#{unidade.cidade}"/>
                         </p:column>
 
                     </p:dataTable>

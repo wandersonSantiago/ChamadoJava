@@ -35,7 +35,7 @@ public class CtrUnidade {
     public String gravarUnidade() {
 	try {
 	    acessoHibernate.salvar(unidade);
-	   return "index";
+	   return "/paginas/chamado/administrador/permissao/unidade";
 	} catch (HibernateException e) {
 	    return "falha";
 	}
@@ -59,7 +59,7 @@ public class CtrUnidade {
       try
       {
 	  
-	 return acessoHibernate.carregaTudoOrdernado(Unidade.class, "descricao");
+	 return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
       }catch(HibernateException e)
       {
         return null;
@@ -67,7 +67,7 @@ public class CtrUnidade {
     }
         public List getUnidades() {
 	try {
-	    return acessoHibernate.carregaTudoOrdernado(Unidade.class, "descricao");
+	    return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
 	} catch (HibernateException e) {
 	    return new ArrayList();
 	}

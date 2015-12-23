@@ -7,29 +7,39 @@
         <h:form>
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
-                    <h3 class="panel-title" style="color: white" > Lista de Telefones Unidades</h3>
+                    <h3 class="panel-title" style="color: white" >lista de telefones Unidades</h3>
                 </div>
                 <div class="panel-body">
+                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="uniddade" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30"  rowKey="#{unidade.id}" selectionMode="single" >
 
-                    <p:separator/>
-                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="unid" reflow="true" id="tabela" paginator="true"
-                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30" rowKey="#{unid.codunidade}" selectionMode="single">
-
-                        <p:column  filterBy="#{unid.descricao}">
+                        <p:column  filterBy="#{uniddade.mneumonico}">
                             <f:facet name="header">
-                                Unidade:
+                                Mneumonico:
                             </f:facet>
-                            <h:outputText value="#{unid.descricao}"/>
+                            <h:outputText value="#{uniddade.mneumonico}"/>
                         </p:column>
-
-                        <p:column  filterBy="#">
+                        <p:column  filterBy="#{unidade.fonePabx}">
                             <f:facet name="header">
-                                Telefone:
+                                Fone PABX:
                             </f:facet>
-                            <h:outputText value="#"/>
+                            <h:outputText value="#{unidade.fonePabx}"/>
+                        </p:column>
+                        <p:column  filterBy="#{unidade.foneDiretor}">
+                            <f:facet name="header">
+                                Fone Diretor:
+                            </f:facet>
+                            <h:outputText value="#{unidade.foneDiretor}"/>
+                        </p:column>
+                        <p:column  filterBy="#{unidade.cidade}">
+                            <f:facet name="header">
+                                Cidade:
+                            </f:facet>
+                            <h:outputText value="#{unidade.cidade}"/>
                         </p:column>
 
                     </p:dataTable>
+
                 </div>
             </div>
         </h:form>

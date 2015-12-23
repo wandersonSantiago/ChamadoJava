@@ -64,6 +64,12 @@
                 </div>
             </div>
         </h:form>
+        <h:form>
+            <p:fileUpload  mode="advanced" dragDropSupport="true"
+                           update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+            <p:growl id="messages" showDetail="true" />
+        </h:form>
     </ui:define>
 </ui:composition>
 
