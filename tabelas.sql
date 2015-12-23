@@ -48,7 +48,7 @@ CREATE TABLE usuario(
 CREATE TABLE unidade(
    
     id serial PRIMARY KEY NOT NULL, 
-    descricao VARCHAR(30) NOT NULL,
+    nome VARCHAR(30) NOT NULL,
     razaosocial VARCHAR(30) NOT NULL,
     endereco VARCHAR(30) NOT NULL,
     bairro VARCHAR(30) NOT NULL,
