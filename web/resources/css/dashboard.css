@@ -39,7 +39,7 @@ body {
     display: block;
     padding: 20px;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: visible; /* Scrollable contents if viewport is shorter than content. */
     background-color: white;
     border-right: 1px solid white;
   }
@@ -58,7 +58,7 @@ body {
 }
 .nav-sidebar > .active > a {
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   background-color: #1E90FF;
 }
 
