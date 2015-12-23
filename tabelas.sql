@@ -54,7 +54,8 @@ CREATE TABLE unidade(
     bairro VARCHAR(30) NOT NULL,
     cidade VARCHAR(30) NOT NULL,
     mneumonico VARCHAR(30) NOT NULL,
-    fonediretor VARCHAR(30) NOT NULL
+    fonediretor VARCHAR(30) NOT NULL,
+    fonepabx VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE grupo(
