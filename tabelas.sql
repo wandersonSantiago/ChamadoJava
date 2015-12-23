@@ -52,7 +52,9 @@ CREATE TABLE unidade(
     razaosocial VARCHAR(30) NOT NULL,
     endereco VARCHAR(30) NOT NULL,
     bairro VARCHAR(30) NOT NULL,
-    cidade VARCHAR(30) NOT NULL    
+    cidade VARCHAR(30) NOT NULL,
+    mneumonico VARCHAR(30) NOT NULL,
+    fonediretor VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE grupo(
