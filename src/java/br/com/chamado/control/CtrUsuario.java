@@ -32,7 +32,7 @@ public class CtrUsuario {
     public String gravarUsuario() {
 	try {
        
-	    acessoHibernate.salvar(usuario);
+ 	    acessoHibernate.salvar(usuario);
 	    return "index.xhtml";
 	} catch (HibernateException e) {
 	    return "falha";

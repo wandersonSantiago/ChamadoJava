@@ -45,15 +45,18 @@
                 </p:password>
 
 
-                    <h:outputLabel value="Setor " style="color: black" />
-                 <p:selectOneMenu id="setor"  editable="false" effect="fold" required="true" 
+
+
+		<h:outputLabel value="Setor " style="color: black" />
+		<p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Setor Obrigatorio" >
                     <f:converter converterId="setorConverter" />
-                    <f:selectItem itemLabel=""  />
-                    <f:selectItems var="usuarioGrupo"  />                                    
+                    <f:selectItem itemLabel=""   noSelectionOption="true" />
+		    <f:selectItems value="#{ctrSetor.carregaSetor}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
+				   itemValue="#{usuarioSetor}" />                                      
                 </p:selectOneMenu>
-                
-                
+
+                <!--
                 <h:outputLabel value="Grupo " style="color: black" />
                  <p:selectOneMenu id="grupo" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Grupo Obrigatorio" >
@@ -61,17 +64,17 @@
                     <f:selectItem itemLabel=""  />
                     <f:selectItems  var="usuarioGrupo" 
                                     />                                    
-                </p:selectOneMenu>
+                </p:selectOneMenu>-->
                 
                 
                 <h:outputLabel value="Unidade " style="color: black" />
 
-                <p:selectOneMenu id="unidade" value="#{usuario.nome}" editable="false" effect="fold" required="true" 
+                <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Unidade Obrigatorio" >
                     <f:converter converterId="unidadeConverter" />
                     <f:selectItem itemLabel=""  />
-                    <f:selectItems value="#{ctrUnidade.unidades}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
-                                   itemValue="#{usuarioUnidade}" />                                    
+                    <f:selectItems value="#{ctrUnidade.carregarUnidade}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
+                                   itemValue="#{usuarioUnidade()}" />                                    
                 </p:selectOneMenu>
 
             </h:panelGrid>

@@ -22,14 +22,14 @@ import org.hibernate.HibernateException;
 public class CtrMensagem implements  Serializable{
 
     private final DaoMensagem acessoHibernate;
-   // private Mensagem mensagem;
+    private Mensagem mensagem;
     public CtrMensagem() {
 	acessoHibernate = new DaoMensagem();
     }
 
     public String gravarMensagem() {
 	try {
-     //       acessoHibernate.salvar(mensagem);
+            acessoHibernate.salvar(mensagem);
 	    return "";
 	} catch (HibernateException e) {
 	    return "falha";
@@ -53,13 +53,13 @@ public class CtrMensagem implements  Serializable{
 	    return null;
 	}
     }
-   /*
+   
     public Mensagem getMensagem() {
 	return mensagem;
     }
 
     public void setMensagem(Mensagem mensagem) {
 	this.mensagem = mensagem;
-    }*/
+    }
   
 }

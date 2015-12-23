@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 
 
 @FacesConverter(forClass = Unidade.class, value = "unidadeConverter")
-public class converteUnidade implements Converter {
+public class ConverteUnidade implements Converter {
 
-     public converteUnidade()
+     public ConverteUnidade()
      {
        
      }

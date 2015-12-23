@@ -23,7 +23,7 @@ public class Unidade implements java.io.Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "nome", nullable = false, length = 30)
+    @Column(nullable = false, length = 30)
     private String nome;
     @Column(name = "mneumonico", nullable = false, length = 30)
     private String mneumonico;

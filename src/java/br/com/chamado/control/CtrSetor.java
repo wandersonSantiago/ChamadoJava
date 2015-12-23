@@ -8,6 +8,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoSetor;
 import br.com.chamado.model.Setor;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -38,32 +39,13 @@ public class CtrSetor {
 	    
 	    FacesMessage mensagem = new FacesMessage("Setor Salvo", "Concluido");
 	    FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
-	    limpar();
-	    return "/cadastrar/cadastrarSetor";
+	    return "";
 	} catch (HibernateException e) {
 	     
 	     FacesMessage message = new FacesMessage("Erro na hora de salvar!!","Erro");
              FacesContext.getCurrentInstance().addMessage("form:message", message); 
-	    return "/cadastrar/cadastrarSetor";
+	    return "";
 	}
-    }
-
-    public String excluirSetor(Setor setor) {
-	try {
-
-	    if (acessoHibernateSetor.verifcarIntegridade(setor) == false) {
-		acessoHibernateSetor.deletar(setor);
-		return "/pesquisar/pesquisaSetor";
-	    } else {
-		FacesMessage mensagem = new FacesMessage("Setor não pode ser Excluido", "Erro");
-		FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
-		return "/pesquisar/pesquisaSetor";
-	    }
-
-	} catch (HibernateException e) {
-	    return "falha";
-	}
-
     }
 
     public String alterarSetor(Setor setor) {
@@ -89,15 +71,8 @@ public class CtrSetor {
 
     }
 
-    public List getSetores() {
-	try {
-	    return acessoHibernateSetor.carregaTudoOrdernado(Setor.class, "nome");
-	} catch (HibernateException e) {
-	    return new ArrayList();
-	}
-    }
 
-    public List carregarSetor() {
+    public List carregaSetor() {
 	try {
 
 	    return acessoHibernateSetor.carregaTudoOrdernado(Setor.class, "nome");
@@ -113,12 +88,7 @@ public class CtrSetor {
     public void setSetor(Setor setor) {
 	this.setor = setor;
     }
+   
+    
 
-    public void limpar() {
-
-	this.setor.setNome("  ");
-        //this.setor.setQtFuncionario();
-	//this.setor.setRamal(00);
-	
-    }
 }

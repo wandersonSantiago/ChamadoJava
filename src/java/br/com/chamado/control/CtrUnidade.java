@@ -65,14 +65,6 @@ public class CtrUnidade {
         return null;
       }
     }
-        public List getUnidades() {
-	try {
-	    return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
-	} catch (HibernateException e) {
-	    return new ArrayList();
-	}
-        }
-
     public Unidade getUnidade() {
 	return unidade;
     }

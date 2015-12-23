@@ -31,9 +31,9 @@ public class Usuario  implements java.io.Serializable {
      @Column(unique=true, nullable=false)
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private int id;
-     /*@ManyToOne(fetch=FetchType.LAZY)
-     @JoinColumn(name="unidade", nullable=false)
-     private Unidade unidade;*/
+     @ManyToOne
+     @JoinColumn(name = "unidade")
+     private Unidade unidade;
      @Column(name="nome", unique=true, nullable=false)
      private String nome;
      @Column(name="usuario", unique=true, nullable=false, length=30)
@@ -44,7 +44,9 @@ public class Usuario  implements java.io.Serializable {
      private String email;
      @Column(name="tipousuario", nullable=false)
      private int tipousuario;
-     
+     @ManyToOne
+     @JoinColumn(name = "setor")
+     private Setor setor;
 
     public Usuario() {
     }
@@ -67,14 +69,14 @@ public class Usuario  implements java.io.Serializable {
     
     
 
-   /*
+   
     public Unidade getUnidade() {
         return this.unidade;
     }
     
     public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
-    }*/
+    }
 
     
     
@@ -113,6 +115,15 @@ public class Usuario  implements java.io.Serializable {
         this.tipousuario = tipousuario;
     }
 
+    public Setor getSetor() {
+	return setor;
+    }
+
+    public void setSetor(Setor setor) {
+	this.setor = setor;
+    }
+    
+   
 }
 
 
