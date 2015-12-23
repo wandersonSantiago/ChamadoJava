@@ -49,7 +49,7 @@ CREATE TABLE unidade(
    
     id serial PRIMARY KEY NOT NULL, 
     nome VARCHAR(30) NOT NULL,
-    razaosocial VARCHAR(30) NOT NULL,
+    razaosocial VARCHAR(30) ,
     endereco VARCHAR(30) NOT NULL,
     bairro VARCHAR(30) NOT NULL,
     cidade VARCHAR(30) NOT NULL,
