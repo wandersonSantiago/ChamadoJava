@@ -4,112 +4,115 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">               
-   
+        <h:form>
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Permissões</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
 
-            <div>
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                    </div>
 
-                <h5 style="color: black" >
-                    *Campos Obrigatórios
-                </h5>
+                    <p:separator/>
+
+
+
+                    <div>
+                        <h:outputText value="Grupo de Paginas*:" /> 
+                    </div>
+                    <div>
+                        <p:selectOneMenu id="grupoPaginas" value="#" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Setor Obrigatorio" >
+
+                            <f:selectItem itemLabel=""  />
+                            <f:selectItems value="#" var="colaboradorSetor" 
+                                           />                                    
+                        </p:selectOneMenu>
+                    </div>
+
+                    <p:separator/>
+                    <div>
+                        <h:outputText value="Paginas*:" /> 
+                    </div>
+                    <div>
+                        <p:selectOneMenu id="paginasGrava" value="#" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Setor Obrigatorio" >
+
+                            <f:selectItem itemLabel=""  />
+                            <f:selectItems value="#" var="colaboradorSetor" 
+                                           />                                    
+                        </p:selectOneMenu>
+                    </div>
+                    <p:separator/>
+                    <div>
+
+                        <h:commandButton value="Gravar Grupos"  action="#"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#" target="#" />
+                        </h:commandButton>			
+
+                    </div>
+                </div> 
             </div>
-            <p:separator/>
-            <div>
-                <h4 style="color: black" >
-                    Cadastro Permissões
-                </h4>
-            </div>
-            <p:separator/>
-            <h:form>
-      
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Lista de Permissões</h3>
+                </div>
+                <div class="panel-body">
+                    <p:dataTable value="#" var="cargo"  id="tabela" widgetVar="table"
+                                 paginator="true" rows="10" style="margin-bottom:20px" 
+                                 rowsPerPageTemplate="5,10,15,20,25,30">
                     
-            <div>
-                <h:outputText value="Grupo de Paginas*:" /> 
+                        <p:column  headerText="Grupo Paginas" style="max-height: 5px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#"  var="cargoCargo" itemLabel="#"
+                                                   itemValue="#" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#" />
+                        </p:column>
+                        <p:column  headerText="Paginas" style="max-height: 5px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#"  var="cargoCargo" itemLabel="#"
+                                                   itemValue="#" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#" />
+                        </p:column>
+
+                        <f:facet name="header">
+                            AÇÔES
+                        </f:facet>
+
+                        <p:growl id="messagem" showDetail="true" />
+
+                        <p:commandButton value="Excluir" actionListener="#" update="tabela">
+                            <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert"  />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  >
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
+
+                        <p:commandButton value="Alterar" action="#" ajax="false" />
+
+                    </p:dataTable>
+
+
+
+                </div>  
             </div>
-            <div>
-                <p:selectOneMenu id="grupoPaginas" value="#" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Setor Obrigatorio" >
 
-                    <f:selectItem itemLabel=""  />
-                    <f:selectItems value="#" var="colaboradorSetor" 
-                                   />                                    
-                </p:selectOneMenu>
-            </div>
-
-            <p:separator/>
-            <div>
-                <h:outputText value="Paginas*:" /> 
-            </div>
-            <div>
-                <p:selectOneMenu id="paginasGrava" value="#" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Setor Obrigatorio" >
-
-                    <f:selectItem itemLabel=""  />
-                    <f:selectItems value="#" var="colaboradorSetor" 
-                                   />                                    
-                </p:selectOneMenu>
-            </div>
-            <div>
-
-                <p:commandButton value="Gravar Grupos"  action="#"  ajax="false" >
-                    <f:setPropertyActionListener value="#" target="#" />
-                </p:commandButton>			
-
-            </div>
-            <p:dataTable value="#" var="cargo"  id="tabela" widgetVar="table"
-                         paginator="true" rows="10" style="margin-bottom:20px" 
-                         rowsPerPageTemplate="5,10,15,20,25,30">
-             <f:facet name="header">
-            <p:outputPanel>
-                <h:outputText value="Procurar:" />
-                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
-            </p:outputPanel>
-        </f:facet>
-                <p:column  headerText="Grupo Paginas" style="max-height: 5px" >
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('table').filter()" >
-                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#"  var="cargoCargo" itemLabel="#"
-                                           itemValue="#" />
-                        </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText value="#" />
-                </p:column>
-                <p:column  headerText="Paginas" style="max-height: 5px" >
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('table').filter()" >
-                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#"  var="cargoCargo" itemLabel="#"
-                                           itemValue="#" />
-                        </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText value="#" />
-                </p:column>
-
-                <f:facet name="header">
-                    AÇÔES
-                </f:facet>
-
-                <p:growl id="messagem" showDetail="true" />
-
-                <p:commandButton value="Excluir" actionListener="#" update="tabela">
-                    <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert"  />
-                </p:commandButton>
-
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  >
-                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                </p:confirmDialog>
-
-
-                <p:commandButton value="Alterar" action="#" ajax="false" />
-
-            </p:dataTable>
-
-             </h:form>
-
-
-
-
+        </h:form>
 
     </ui:define>
 </ui:composition>

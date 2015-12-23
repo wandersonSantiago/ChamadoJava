@@ -5,31 +5,31 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">               
 
-        <div>
-            <h4 style="color: black" >
-                Lista de Ramal Setores
-            </h4>
-        </div>
         <h:form>
-        <p:separator/>
-        <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
-                     rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" > Lista de Ramal Setores</h3>
+                </div>
+                <div class="panel-body">
+                    <p:separator/>
+                    <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+                        <p:column  filterBy="#{setor.nome}">
+                            <f:facet name="header">
+                                Nome:
+                            </f:facet>
+                            <h:outputText value="#{setor.nome}"/>
+                        </p:column>
 
-            <p:column  filterBy="#{setor.nome}">
-                <f:facet name="header">
-                    Nome:
-                </f:facet>
-                <h:outputText value="#{setor.nome}"/>
-            </p:column>
-
-            <p:column  filterBy="#{setor.ramal}">
-                <f:facet name="header">
-                    Ramal:
-                </f:facet>
-                <h:outputText value="#{setor.ramal}"/>
-            </p:column>
-
-        </p:dataTable>
+                        <p:column  filterBy="#{setor.ramal}">
+                            <f:facet name="header">
+                                Ramal:
+                            </f:facet>
+                            <h:outputText value="#{setor.ramal}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>

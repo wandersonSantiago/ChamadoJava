@@ -6,55 +6,58 @@
     <ui:define name="central">               
 
 
-        <div>
-            <h4 style="color: black" >
-                Cadastro Grupo
-            </h4>
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color:  #1E90FF">
+                <h3 class="panel-title" style="color: white" >Cadastro Grupo</h3>
+            </div>
+            <div class="panel-body">
+                <p:separator/>
+                <div>
+                    <h5 style="color: black" >
+                        *Campos Obrigatórios
+                    </h5>
+                </div>
+                <p:separator/>
+                <h:form>
+                    <div>
+                        <h:outputText value="Grupo *" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="grupo"  size="30" required="true" value="#{grupo.nomegrupo}" label="Nome"  />
+                    </div>
+                    <div>
+                        <p:separator/>
+                        <h:commandButton value="Gravar Grupo"  action="#{ctrGrupo.gravarGrupo}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{grupo}" target="#{ctrGrupo.grupo}" />
+                        </h:commandButton>			
 
+                    </div>
+                </h:form>
+            </div>
         </div>
         <p:separator/>
-        <div>
-            <h5 style="color: black" >
-                *Campos Obrigatórios
-            </h5>
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color:  #1E90FF">
+                <h3 class="panel-title" style="color: white" >Cadastro Grupo</h3>
+            </div>
+            <div class="panel-body">
+                <h:form>
+
+
+                    <p:dataTable value="#{ctrGrupo.carregarGrupo()}" var="group" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+
+                        <p:column  filterBy="#{group.nomegrupo}">
+                            <f:facet name="header">
+                                Nome:
+                            </f:facet>
+                            <h:outputText value="#{group.nomegrupo}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+            </div>
         </div>
-        <p:separator/>
-        <h:form>
-            <div>
-                <h:outputText value="Grupo *" style="color: black" />
-            </div>
-            <div>
-                <p:inputText  id="grupo"  size="30" required="true" value="#{grupo.nomegrupo}" label="Nome"  />
-            </div>
-            <div>
-
-                <p:commandButton value="Gravar Grupo"  action="#{ctrGrupo.gravarGrupo}"  ajax="false" >
-                    <f:setPropertyActionListener value="#{grupo}" target="#{ctrGrupo.grupo}" />
-                </p:commandButton>			
-
-            </div>
-        </h:form>
-        <p:separator/>
-        <h:form>
-
-
-            <p:dataTable value="#{ctrGrupo.carregarGrupo()}" var="group" reflow="true" id="tabela" paginator="true"
-                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-
-                <p:column  filterBy="#{group.nomegrupo}">
-                    <f:facet name="header">
-                        Nome:
-                    </f:facet>
-                    <h:outputText value="#{group.nomegrupo}"/>
-                </p:column>
-
-            </p:dataTable>
-
-        </h:form>
-
-
-
-
 
     </ui:define>
 </ui:composition>

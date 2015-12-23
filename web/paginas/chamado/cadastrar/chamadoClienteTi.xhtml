@@ -5,16 +5,44 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">  
 
-                <h:form>
-                    <h3>
-                        Chamado Tecnologia da Informação
-                    </h3>
+        <h:form>
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Chamado Tecnologia da Informação</h3>
+                </div>
+                <div class="panel-body">
+                    <h:panelGrid columns="2">
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Prioridade:"/>
+                            <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" label="priori"  
+                                             required="false" requiredMessage="Campo prioridade obrigatorio" >
+                                <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
+                                <f:selectItem itemLabel="Urgente" itemValue="3" />
+                                <f:selectItem itemLabel="Media" itemValue="2" />
+                                <f:selectItem itemLabel="Baixa" itemValue="1" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Categoria"/>
+                            <p:selectOneMenu id="categoria" value="#" label="priori"  
+                                             required="false" requiredMessage="Campo categoria obrigatorio" >
+                                <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
+                                <f:selectItem itemLabel="duvida" itemValue="3" />
+                                <f:selectItem itemLabel="problema" itemValue="2" />
+                                <f:selectItem itemLabel="solicitação de serviços" itemValue="1" />
+                                <f:selectItem itemLabel="sugestões" itemValue="0" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <p:separator/>
 
                     <div>
                         <h:outputLabel value="Titulo:"/>
                     </div>
                     <div>
-                        <p:inputText id="titulo" value="#{chamadoc.titulo}" />
+                        <p:inputText id="titulo" value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" />
                     </div>
                     <p:separator/>
                     <div>
@@ -24,29 +52,18 @@
                         <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> 
                     </div>
                     <p:separator/>
-                    <div>
-                    <p:outputLabel value="Prioridade:"/>
-                    </div>
-                    <div>
-                    <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" label="priori"  
-                                     required="false" requiredMessage="Campo prioridade obrigatorio" >
-                        <f:selectItem itemLabel="Selecione Prioridade" itemValue="" noSelectionOption="true" />
-                        <f:selectItem itemLabel="Urgente" itemValue="3" />
-                        <f:selectItem itemLabel="Media" itemValue="2" />
-                        <f:selectItem itemLabel="Baixa" itemValue="1" />
-                    </p:selectOneMenu>
-                        </div>
-                    <p:separator/>
 
-                         <h:panelGrid columns="2" > 
-                        <p:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" ajax="false">
+
+                    <h:panelGrid columns="2" > 
+                        <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
-			    <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
-                        </p:commandButton>
-                        <p:commandButton value="Cancelar" />
+                            <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
+                        </h:commandButton>
+                        <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                     </h:panelGrid>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
 
-                </h:form>
-            </ui:define>
-        </ui:composition>
-    

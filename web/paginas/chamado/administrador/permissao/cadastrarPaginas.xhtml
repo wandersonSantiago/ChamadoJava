@@ -4,48 +4,57 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">               
-      <div>
 
-            <h5 style="color: black" >
-                *Campos Obrigatórios
-            </h5>
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color:  #1E90FF">
+                <h3 class="panel-title" style="color: white" >Cadastro Paginas</h3>
+            </div>
+            <div class="panel-body">
+                <div>
+
+                    <h5 style="color: black" >
+                        *Campos Obrigatórios
+                    </h5>
+                </div>
+                <p:separator/>
+                <h:form>
+                    <div>
+                        <h:outputText value="Pagina *" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="pagina"  size="30" required="true" value="#{paginas.nomepagina}" label="Nome"  />
+                    </div>
+                    <div>
+                        <p:separator/>
+                        <h:commandButton value="Gravar Paginas"  action="#{CtrPagina.gravarPagina}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
+                            <f:setPropertyActionListener value="#{pagina}" target="#{CtrPagina.pagina}" />
+                        </h:commandButton>			
+
+                    </div>
+
+                </h:form>
+            </div>
         </div>
         <p:separator/>
-        <div>
-            <h4 style="color: black" >
-                Cadastro Paginas
-            </h4>
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color:  #1E90FF">
+                <h3 class="panel-title" style="color: white" >Lista Paginas</h3>
+            </div>
+            <div class="panel-body">
+                <h:form>
+                    <p:dataTable value="#{CtrPagina.carregarPagina()}" var="pag" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+
+                        <p:column  filterBy="#{pag.nomepagina}">
+                            <f:facet name="header">
+                                Nome:
+                            </f:facet>
+                            <h:outputText value="#{pag.nomepagina}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+            </div>
         </div>
-        <p:separator/>
-        <h:form>
-            <div>
-                <h:outputText value="Pagina *" style="color: black" />
-            </div>
-            <div>
-                <p:inputText  id="pagina"  size="30" required="true" value="#{paginas.nomepagina}" label="Nome"  />
-            </div>
-            <div>
-
-                <p:commandButton value="Gravar Paginas"  action="#{CtrPagina.gravarPagina}"  ajax="false" >
-                    <f:setPropertyActionListener value="#{pagina}" target="#{CtrPagina.pagina}" />
-                </p:commandButton>			
-
-            </div>
-
-        </h:form>
-        <p:separator/>
-        <h:form>
-           <p:dataTable value="#{CtrPagina.carregarPagina()}" var="pag" reflow="true" id="tabela" paginator="true"
-                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-
-                <p:column  filterBy="#{pag.nomepagina}">
-                    <f:facet name="header">
-                        Nome:
-                    </f:facet>
-                    <h:outputText value="#{pag.nomepagina}"/>
-                </p:column>
-
-            </p:dataTable>
-        </h:form>
     </ui:define>
 </ui:composition>

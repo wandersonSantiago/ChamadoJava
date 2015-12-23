@@ -7,71 +7,80 @@
         <h:form id="form">
             <p:growl id="msgs" showDetail="true"/>
 
-            <div>
-                <h5 style="color: black" >
-                    *Campos Obrigatórios
-                </h5>
-            </div>
-            <p:separator/>
-            <div>
-                <h4 style="color: black" >
-                    Dados Unidade
-                </h4>
-            </div>
-            <p:separator/>
-            <div>
-                <h:outputText value="Nome: *" style="color: black" />
-            </div>
-            <div>
-                <p:inputText  id="nome"   size="30" required="true" value="#{unidade.descricao}" label="Nome"  />
-            </div>
-            <div>
-                <h:outputLabel value="Razão Social*: " style="color: black" />
-            </div>
-            <div>
-                <p:inputText  id="razaosocial" size="15"  required="true" value="#{unidade.razaosocial}" />
-            </div>
-            <div>
-                <h:outputLabel value="Endereço:" style="color: black" />
-            </div>
-            <div>
-                <p:inputText id="endereco" required="true"  size="14" value="#{unidade.endereco}"/>
-            </div>
-            <div>
-                <h:outputLabel value="Bairro:" style="color: black" />
-            </div>
-            <div>
-                <p:inputText id="bairro" required="true"  size="14" value="#{unidade.bairro}"/>
-            </div>
-            <div>
-                <h:outputLabel value="cidade:" style="color: black" />
-            </div>
-            <div>
-                <p:inputText id="cidade" required="true"  size="14" value="#{unidade.cidade}"/>
-            </div>
-            <div>
-                <p:separator/>
-                <p:commandButton value="Gravar"  action="#{ctrUnidade.gravarUnidade}"  ajax="false" >
-                    <f:setPropertyActionListener value="#{unidade}" target="#{ctrUnidade.unidade}" />
-                </p:commandButton>				
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Unidade</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                    </div>
+
+                    <p:separator/>
+
+                    <div>
+                        <h:outputText value="Nome: *" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="nome"   size="30" required="true" value="#{unidade.descricao}" label="Nome"  />
+                    </div>
+                    <div>
+                        <h:outputLabel value="Razão Social*: " style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="razaosocial" size="15"  required="true" value="#{unidade.razaosocial}" />
+                    </div>
+                    <div>
+                        <h:outputLabel value="Endereço:" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText id="endereco" required="true"  size="14" value="#{unidade.endereco}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel value="Bairro:" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText id="bairro" required="true"  size="14" value="#{unidade.bairro}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel value="cidade:" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText id="cidade" required="true"  size="14" value="#{unidade.cidade}"/>
+                    </div>
+                    <div>
+                        <p:separator/>
+                        <h:commandButton value="Gravar"  action="#{ctrUnidade.gravarUnidade}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{unidade}" target="#{ctrUnidade.unidade}" />
+                        </h:commandButton>				
 
 
+                    </div>
+                </div>
             </div>
-            <p:separator/>
-
-            <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="unid" reflow="true" id="tabela" paginator="true"
-                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30"  rowKey="#{unid.codunidade}" selectionMode="single" >
-
-                <p:column  filterBy="#{unid.descricao}">
-                    <f:facet name="header">
-                        Nome:
-                    </f:facet>
-                    <h:outputText value="#{unid.descricao}"/>
-                </p:column>
-
-            </p:dataTable>
 
 
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
+                </div>
+                <div class="panel-body">
+                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="unid" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30"  rowKey="#{unid.codunidade}" selectionMode="single" >
+
+                        <p:column  filterBy="#{unid.descricao}">
+                            <f:facet name="header">
+                                Nome:
+                            </f:facet>
+                            <h:outputText value="#{unid.descricao}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </div>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>

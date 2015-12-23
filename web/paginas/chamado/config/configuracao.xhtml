@@ -5,44 +5,48 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">  
 
-	<h:form>
-	    <h3>
-		Servidor  de email
-	    </h3>
-	    <h:panelGrid columns="1" columnClasses="label, value">
+        <h:form>
 
-		<h:outputLabel value="Servidor: *" style="color: black" />
-		<p:inputText  id="servidor"   size="30" required="true" value="#{confemail.servidor}" label="Servidor"  />
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white; font-size: 16px" >Servidor  de email</h3>
+                </div>
+                <div class="panel-body">
+                    <h:panelGrid columns="1" columnClasses="label, value">
 
-		<h:outputLabel value="Porta: *" style="color: black" />
-		<p:inputText  id="porta"   size="30" required="true" value="#{confemail.porta}" label="Porta"  />
+                        <h:outputLabel value="Servidor: *" style="color: black; font-size: 15px" />
+                        <p:inputText  id="servidor"   size="30" required="true" value="#{confemail.servidor}" label="Servidor"  />
 
-		<h:outputLabel value="Usuario: *" style="color: black" />
-		<p:inputText  id="usuario"   size="30" required="true" value="#{confemail.usuario}" label="Usuario"  />
+                        <h:outputLabel value="Porta: *" style="color: black; font-size: 15px" />
+                        <p:inputText  id="porta"   size="30" required="true" value="#{confemail.porta}" label="Porta"  />
 
-
-		<h:outputLabel value="Senha:" for="senha"  style="color: black"/>
-		<p:password id="senha" size="15" required="false" value="#{confemail.senha}" >
-		    <f:validateLength maximum="12" minimum="6" />
-		</p:password>
-
-		<h:outputLabel value="Msg From:" style="color: black" />
-		<p:inputText  id="msgfroma"   size="30" required="true" value="#{confemail.msgFrom}" label="msgfroma"  />
-
-                <h:outputLabel value="TLS:" style="color: black"/>
-		<p:selectBooleanCheckbox value="#{confemail.tls}" />
-
-		<h:outputLabel value="SSL:" style="color: black"/>
-		<p:selectBooleanCheckbox value="#{confemail.ssl}" />
+                        <h:outputLabel value="Usuario: *" style="color: black; font-size: 15px" />
+                        <p:inputText  id="usuario"   size="30" required="true" value="#{confemail.usuario}" label="Usuario"  />
 
 
-		<p:commandButton value="Gravar"  action="#{ctrEmailConfig.gravarConfig()}"  ajax="false" >
-		    <f:setPropertyActionListener value="#{confemail}" target="#{ctrEmailConfig.confemail}" />
-		</p:commandButton>
+                        <h:outputLabel value="Senha:" for="senha"  style="color: black; font-size: 15px"/>
+                        <p:password id="senha" size="15" required="false" value="#{confemail.senha}" >
+                            <f:validateLength maximum="12" minimum="6" />
+                        </p:password>
 
-	    </h:panelGrid>
+                        <h:outputLabel value="Msg From:" style="color: black; font-size: 15px" />
+                        <p:inputText  id="msgfroma"   size="30" required="true" value="#{confemail.msgFrom}" label="msgfroma"  />
+
+                        <h:outputLabel value="TLS:" style="color: black; font-size: 15px"/>
+                        <p:selectBooleanCheckbox value="#{confemail.tls}" />
+
+                        <h:outputLabel value="SSL:" style="color: black; font-size: 15px"/>
+                        <p:selectBooleanCheckbox value="#{confemail.ssl}" />
 
 
-	</h:form>
+                        <h:commandButton value="Gravar"  action="#{ctrEmailConfig.gravarConfig()}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{confemail}" target="#{ctrEmailConfig.confemail}" />
+                        </h:commandButton>
+
+                    </h:panelGrid>
+                </div>
+            </div>
+
+        </h:form>
     </ui:define>
 </ui:composition>
