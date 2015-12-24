@@ -103,5 +103,27 @@ public class Mensagem implements Serializable {
     public void setTexto(String texto) {
 	this.texto = texto;
     }
+
+    @Override
+    public int hashCode() {
+	int hash = 5;
+	hash = 17 * hash + this.id;
+	return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final Mensagem other = (Mensagem) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
+    }
    
 }

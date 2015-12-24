@@ -29,13 +29,6 @@ public class CtrGrupo {
 
     }
 
-    public Grupo getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
 
     public String gravarGrupo() {
 	try {
@@ -64,4 +57,14 @@ public class CtrGrupo {
 	    return null;
 	}
     }
+    
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+    
+    
 }

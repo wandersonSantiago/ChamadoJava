@@ -5,14 +5,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -59,12 +56,7 @@ public class Chamadoc implements Serializable {
     public void setId(int id) {
 	this.id = id;
     }
-    
-    
-    
-    
-   
-  /*
+    /*
     public Unidade getUnidade() {
 	return this.unidade;
     }
@@ -137,6 +129,28 @@ public class Chamadoc implements Serializable {
 	this.datafechamento = datafechamento;
     }
 
+    @Override
+    public int hashCode() {
+	int hash = 3;
+	hash = 59 * hash + this.id;
+	return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final Chamadoc other = (Chamadoc) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
+    }
+   
     
    
 }

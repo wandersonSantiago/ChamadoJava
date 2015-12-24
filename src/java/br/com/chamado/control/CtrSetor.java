@@ -37,14 +37,12 @@ public class CtrSetor {
 	try {
 	    acessoHibernateSetor.salvar(setor);
 	    
-	    FacesMessage mensagem = new FacesMessage("Setor Salvo", "Concluido");
-	    FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
-	    return "";
+	  
+	    return "index";
 	} catch (HibernateException e) {
 	     
-	     FacesMessage message = new FacesMessage("Erro na hora de salvar!!","Erro");
-             FacesContext.getCurrentInstance().addMessage("form:message", message); 
-	    return "";
+	   
+	    return "index";
 	}
     }
 
@@ -62,8 +60,7 @@ public class CtrSetor {
 	try {
 	    acessoHibernateSetor.alterar(setor);
 
-	    FacesMessage mensagem = new FacesMessage("Setor Alterado", "Concluido");
-	    FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
+	  
 	    return "/alterar/alterarSetor";
 	} catch (HibernateException e) {
 	    return "falha";
@@ -72,7 +69,7 @@ public class CtrSetor {
     }
 
 
-    public List carregaSetor() {
+    public List carregarSetor() {
 	try {
 
 	    return acessoHibernateSetor.carregaTudoOrdernado(Setor.class, "nome");

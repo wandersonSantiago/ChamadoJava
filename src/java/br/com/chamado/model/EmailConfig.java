@@ -112,6 +112,28 @@ public class EmailConfig implements  Serializable{
     public void setTls(boolean tls) {
 	this.tls = tls;
     }
+
+    @Override
+    public int hashCode() {
+	int hash = 7;
+	hash = 29 * hash + this.id;
+	return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final EmailConfig other = (EmailConfig) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
+    }
    
      
 }

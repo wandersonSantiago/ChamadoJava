@@ -42,7 +42,7 @@ public class HibernateConfiguracao {
     public void criaSessionFactory() {
         Configuration configuracao = new Configuration();
         configuracao.addAnnotatedClass(Chamadoc.class);
-      //  configuracao.addAnnotatedClass(Grupo.class);
+        configuracao.addAnnotatedClass(Grupo.class);
       //  configuracao.addAnnotatedClass(GrupoPagina.class);
         configuracao.addAnnotatedClass(Mensagem.class);
       // configuracao.addAnnotatedClass(Pagina.class);

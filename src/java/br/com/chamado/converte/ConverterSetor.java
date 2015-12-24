@@ -1,13 +1,6 @@
 package br.com.chamado.converte;
 
 
-
-
-
-
-
-
-
 import br.com.chamado.dao.DaoSetor;
 import br.com.chamado.model.Setor;
 import javax.faces.component.UIComponent;

@@ -1,11 +1,11 @@
 package br.com.chamado.model;
-// Generated 09/12/2015 11:21:41 by Hibernate Tools 4.3.1
 
+
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,17 +20,19 @@ import javax.persistence.Table;
 @SessionScoped
 @Entity
 @Table(name = "grupopagina")
-public class GrupoPagina implements java.io.Serializable {
+public class GrupoPagina implements Serializable {
 
     @Id
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "codgrupo", nullable = false)
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "grupo")
     private Grupo grupo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "codpaigna", nullable = false)
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "pagina")
     private Pagina pagina;
 
     public GrupoPagina() {
@@ -60,4 +62,26 @@ public class GrupoPagina implements java.io.Serializable {
 	this.pagina = pagina;
     }
 
+    @Override
+    public int hashCode() {
+	int hash = 5;
+	hash = 19 * hash + this.id;
+	return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final GrupoPagina other = (GrupoPagina) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
+    }
+   
 }

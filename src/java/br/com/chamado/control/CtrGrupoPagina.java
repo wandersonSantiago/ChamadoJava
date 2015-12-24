@@ -54,4 +54,13 @@ public class CtrGrupoPagina {
 	    return null;
 	}
     }
+
+    public GrupoPagina getGrupoPagina() {
+	return grupoPagina;
+    }
+
+    public void setGrupoPagina(GrupoPagina grupoPagina) {
+	this.grupoPagina = grupoPagina;
+    }
+    
 }

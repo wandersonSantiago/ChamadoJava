@@ -30,7 +30,10 @@
 
                 <h:outputText value="Usuario: *" style="color: black" />
                 <p:inputText  id="userUser"  size="40" required="true" value="#{usuario.usuario}" label="Nome" />
-
+     
+		
+                <h:outputLabel value="Email: *" style="color: black" />
+                <p:inputText  id="userEmail"  size="150" required="true"  value="#{usuario.email}" label="Email Usuario" />
 
                 <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
 
@@ -44,49 +47,49 @@
                     <f:validateLength maximum="12" minimum="6" />
                 </p:password>
 
-
-
-
+		 
+		
 		<h:outputLabel value="Setor " style="color: black" />
 		<p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Setor Obrigatorio" >
                     <f:converter converterId="setorConverter" />
                     <f:selectItem itemLabel=""   noSelectionOption="true" />
-		    <f:selectItems value="#{ctrSetor.carregaSetor}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
+		    <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
 				   itemValue="#{usuarioSetor}" />                                      
                 </p:selectOneMenu>
 
-                <!--
-                <h:outputLabel value="Grupo " style="color: black" />
-                 <p:selectOneMenu id="grupo" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Grupo Obrigatorio" >
-                    <f:converter converterId="grupoConverter" />
-                    <f:selectItem itemLabel=""  />
-                    <f:selectItems  var="usuarioGrupo" 
-                                    />                                    
-                </p:selectOneMenu>-->
-                
-                
-                <h:outputLabel value="Unidade " style="color: black" />
+               
+		<h:outputLabel value="Unidade " style="color: black" />
 
                 <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Unidade Obrigatorio" >
                     <f:converter converterId="unidadeConverter" />
-                    <f:selectItem itemLabel=""  />
-                    <f:selectItems value="#{ctrUnidade.carregarUnidade}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
-                                   itemValue="#{usuarioUnidade()}" />                                    
+                    <f:selectItem itemLabel=""   noSelectionOption="true" />
+                    <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
+                                   itemValue="#{usuarioUnidade}" />                                    
                 </p:selectOneMenu>
 
-            </h:panelGrid>
+                 <!-- ERRO
+                <h:outputLabel value="Grupo " style="color: black" />
+		
+		<p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
+                                 requiredMessage="Campo Grupo Obrigatorio" >
+                    <f:converter converterId="grupoConverter" />
+                    <f:selectItem itemLabel=""   noSelectionOption="true" />
+                    <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nome}" 
+				    itemValue="#{usuarioGrupo}"/>     
+                </p:selectOneMenu>-->
+
+	    </h:panelGrid>
             <h1>
 
             </h1>
             <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
                 <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
 
-            </p:commandButton>			
+            </p:commandButton>	
 
-
+	    
             <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="user" reflow="true" id="tabela" paginator="true"
                          rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
@@ -98,9 +101,7 @@
                 </p:column>
 
             </p:dataTable>
-
-
-        </h:form>
+	</h:form>
     </ui:define>
 </ui:composition>
 

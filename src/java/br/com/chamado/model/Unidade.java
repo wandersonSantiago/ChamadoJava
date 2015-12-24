@@ -105,4 +105,31 @@ public class Unidade implements java.io.Serializable {
 	this.cidade = cidade;
     }
 
+    @Override
+    public String toString() {
+	return "Unidade{" + "nome=" + nome + '}';
+    }
+    
+    @Override
+    public int hashCode() {
+	int hash = 5;
+	hash = 29 * hash + this.id;
+	return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final Unidade other = (Unidade) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
+    }
+    
 }

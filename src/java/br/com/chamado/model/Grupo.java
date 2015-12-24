@@ -1,17 +1,14 @@
 package br.com.chamado.model;
 // Generated 09/12/2015 11:21:41 by Hibernate Tools 4.3.1
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,17 +18,15 @@ import javax.persistence.Table;
 @SessionScoped
 @Entity
 @Table(name = "grupo")
-public class Grupo implements java.io.Serializable {
+public class Grupo implements Serializable {
 
     @Id
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "nomegrupo", nullable = false, length = 30)
     private String nomegrupo;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "grupo")
-    private Set grupopaginas = new HashSet(0);
+    
 
     public Grupo() {
     }
@@ -52,12 +47,31 @@ public class Grupo implements java.io.Serializable {
 	this.nomegrupo = nomegrupo;
     }
 
-    public Set getGrupopaginas() {
-	return this.grupopaginas;
+    @Override
+    public String toString() {
+	return nomegrupo ;
     }
 
-    public void setGrupopaginas(Set grupopaginas) {
-	this.grupopaginas = grupopaginas;
+    @Override
+    public int hashCode() {
+	int hash = 3;
+	return hash;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final Grupo other = (Grupo) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
+    }
+    
 
 }
