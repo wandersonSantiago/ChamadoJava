@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central">  
+
+        <h:form>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Chamado Tecnologia da Informação</h3>
+                </div>
+                <div class="panel-footer" style="background-color: white">
+                    <div class="input-group">
+                        <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{unidade.nome}"   /></div>
+                     <h:panelGrid columns="2" > 
+                        <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
+                            <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
+                            <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
+                        </h:commandButton>
+                        <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                    </h:panelGrid>
+                </div>
+                <p:dataScroller value="#{ctrUnidade.carregarUnidade()}" var="unidade" chunkSize="10" style="background-color: white">
+                    <h:panelGrid columns="2" style="width:100%; background-color: white" columnClasses="detail,detail">
+                        <h:outputText value="#{ctrUnidade.unidade.mneumonico}" />
+
+                        <p:outputPanel style="background-color: white">
+                            <h:panelGrid columns="2" cellpadding="5" style="background-color: white">
+                                <h:outputText value="Id:" />
+                                <h:outputText value="#{unidade.nome}" style="font-weight: bold"/>
+
+                                <h:outputText value="Year:" />
+                                <h:outputText value="#{unidade.endereco}" style="font-weight: bold"/>
+
+                                <h:outputText value="Color:" />
+                                <h:outputText value="#{unidade.cidade}" style="font-weight: bold"/>
+                            </h:panelGrid>
+                            <br/>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </div>
+
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>
+
