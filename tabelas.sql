@@ -3,16 +3,18 @@ CREATE TABLE chamadoc
    id serial PRIMARY KEY NOT NULL,
    unidade INTEGER NOT NULL 
    REFERENCES unidade(id),
-   data DATE NOT NULL,
+   data TIMESTAMP NOT NULL,
    status INTEGER NOT NULL DEFAULT(1) CONSTRAINT
    chk_status CHECK(status >= 0 AND status <= 3),
-   prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT
+   prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT,
+   categoria INTEGER NOT NULL,    
    chk_prioridade CHECK(prioridade >= 0 AND prioridade <=3),
    codfuncsolic INTEGER NOT NULL,
    codfuncatend INTEGER,
    titulo VARCHAR(30) NOT NULL,
-   dataprevisao DATE,
-   datafechamento DATE 
+   dataprevisao TIMESTAMP,
+   datafechamento TIMESTAMP
+   
 );
 
 
@@ -21,7 +23,7 @@ CREATE TABLE mensagem
    id serial PRIMARY KEY NOT NULL,
    numchamado  INTEGER NOT NULL 
    REFERENCES chamadoc(id),
-   data DATE ,
+   data TIMESTAMP ,
    codfuncautor INTEGER NOT NULL
    REFERENCES usuario(id), 
    nomearquivo VARCHAR(10),
@@ -85,38 +87,40 @@ CREATE TABLE confemail(
   tls  BOOLEAN DEFAULT(false),
   msgfrom VARCHAR(10));
   
-  CREATE TABLE setor(
+CREATE TABLE setor(
    
    id serial PRIMARY KEY NOT NULL,
    nome VARCHAR(30) NOT NULL,
    raml VARCHAR(30) NOT NULL);
    
-   CREATE TABLE logemail(
+CREATE TABLE email(
    
    id serial PRIMARY KEY NOT NULL,
-   data DATE NOT NULL,
+   data TIMESTAMP NOT NULL,
    tipo VARCHAR(30) NOT NULL,
-   status VARCHAR(30) NOT NULL,
+   enviado BOOLEAN DEFAULT(false) NOT NULL,
    remetente VARCHAR(30) NOT NULL,
    assunto VARCHAR(30) NOT NULL,
+   texto TEXT NOT NULL,
    destinatario VARCHAR(30) NOT NULL);
-   
-   CREATE TABLE urgencia(
+    
+CREATE TABLE urgencia(
     id serial PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
     habilitado BOOLEAN NOT NULL DEFAULT(false));
     
-    CREATE TABLE status (
+CREATE TABLE status (
       
       id serial PRIMARY KEY NOT NULL,
       nome VARCHAR(30) NOT NULL,
       habilitado BOOLEAN NOT NULL DEFAULT(false));
       
-      CREATE TABLE justificativa(
+
+CREATE TABLE justificativa(
       id serial PRIMARY KEY NOT NULL,
       nome VARCHAR(30) NOT NULL,
       validostatus INTEGER NOT NULL,
       habilitado BOOLEAN NOT NULL DEFAULT(false));
-      
+ 
       
   

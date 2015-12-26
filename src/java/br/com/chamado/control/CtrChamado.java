@@ -3,16 +3,16 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoChamadoc;
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.Email;
 import br.com.chamado.model.Mensagem;
-import br.com.chamado.util.EnviaEmail;
+import br.com.chamado.util.ServicoEmail;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import org.apache.commons.mail.EmailException;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 
 /**
@@ -25,15 +25,21 @@ public class CtrChamado implements  Serializable{
     
     private final  DaoChamadoc acessoHibernate;
     private Chamadoc chamadoc;
-   
+    private final Email email;
     private Mensagem mensagem;
     public CtrChamado()
     {
       acessoHibernate = new DaoChamadoc();
+      email = new Email();
     }
     
     public String gravarChamado() {
-	try {
+	
+        ServicoEmail.iniciar();
+        
+        
+        
+        try {
 	   Date hoje = new Date();
 	   
 	   chamadoc.setData(hoje);
@@ -43,16 +49,14 @@ public class CtrChamado implements  Serializable{
 	   mensagem.setData(hoje);
 	   acessoHibernate.salvar(mensagem);
 	   
-	   EnviaEmail envia = EnviaEmail.getInstancia();
-	   
-	   envia.setAssunto("Novo chamado por");
-	   envia.setEmailDe("eduardo@smcaetano.com.br");
-	   envia.setMsg(mensagem.getTexto());
-	    try {
-		envia.enviar();
-	    } catch (EmailException ex) {
-		System.out.println(ex.getMessage());
-	    }
+           
+           email.setData(hoje);
+           email.setAssunto("Novo chamado por");
+           email.setDestinatari("eduardo@smcaetano.com.br");
+           email.setTexto(mensagem.getTexto());
+           acessoHibernate.salvar(email);
+           
+           
 	   
 	   return "index";
 	} catch (HibernateException e) {

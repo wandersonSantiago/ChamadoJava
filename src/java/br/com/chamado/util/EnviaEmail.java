@@ -51,7 +51,9 @@ public class EnviaEmail {
         SimpleEmail email = new SimpleEmail(); 
 	email.setHostName(config.getServidor());
 	email.setAuthentication(config.getUsuario(),config.getSenha());  
-        email.setSmtpPort(config.getPorta());  
+        //email.setSmtpPort(config.getPorta());  
+        email.setSmtpPort(465); 
+        
         email.setSSLOnConnect(config.isSsl());
 	email.setStartTLSRequired(config.isTls());
 	email.addTo(emailDe,"Teste");

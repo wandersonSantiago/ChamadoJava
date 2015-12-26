@@ -30,16 +30,16 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
-    @Column(name = "status", nullable = false)
+    @Column(name = "status",nullable = false)
     private int status;
     @Column(name = "prioridade", nullable = false)
     private int prioridade;
-    /*@Column(name = "codfuncsolic", nullable = false)
-    
+    @Column(name = "categoria", nullable = false)
+    private int categoria;
+    @Column(name = "codfuncsolic", nullable = false)
     private int codfuncsolic;
     @Column(name = "codfuncatend")
-    */private Integer codfuncatend;
-    
+    private Integer codfuncatend;
     @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
     @Temporal(TemporalType.DATE)
@@ -48,7 +48,12 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-
+   
+    public Chamadoc()
+    {
+       status = 1;
+       
+    }
     public int getId() {
 	return id;
     }
@@ -88,7 +93,15 @@ public class Chamadoc implements Serializable {
     public void setPrioridade(int prioridade) {
 	this.prioridade = prioridade;
     }
-   /*
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+   
     public int getCodfuncsolic() {
 	return this.codfuncsolic;
     }
@@ -96,7 +109,7 @@ public class Chamadoc implements Serializable {
     public void setCodfuncsolic(int codfuncsolic) {
 	this.codfuncsolic = codfuncsolic;
     }
-   */
+   
     public Integer getCodfuncatend() {
 	return this.codfuncatend;
     }

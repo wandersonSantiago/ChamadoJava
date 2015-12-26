@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">  
 
-        <h:form>
+        <h:form enctype="multipart/form-data">
 
 
             <div class="panel panel-primary">
@@ -26,13 +26,13 @@
                         </h:panelGrid>
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Categoria"/>
-                            <p:selectOneMenu id="categoria" value="#" label="priori"  
+                            <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" label="priori"  
                                              required="false" requiredMessage="Campo categoria obrigatorio" >
                                 <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                <f:selectItem itemLabel="duvida" itemValue="3" />
+                                <f:selectItem itemLabel="duvida" itemValue="1" />
                                 <f:selectItem itemLabel="problema" itemValue="2" />
-                                <f:selectItem itemLabel="solicitação de serviços" itemValue="1" />
-                                <f:selectItem itemLabel="sugestões" itemValue="0" />
+                                <f:selectItem itemLabel="solicitação de serviços" itemValue="3" />
+                                <f:selectItem itemLabel="sugestões" itemValue="4" />
                             </p:selectOneMenu>
                         </h:panelGrid>
                     </h:panelGrid>
@@ -52,7 +52,11 @@
                         <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> 
                     </div>
                     <p:separator/>
-
+                    <p:fileUpload  value="#{mensagem.arquivo}" mode="advanced" fileLimit="1" dragDropSupport="true"
+                           update="messages" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|zip|jpe?g|png)$/" />
+                    
+                     
+            <p:growl id="messages" showDetail="true" />
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
@@ -65,10 +69,7 @@
             </div>
         </h:form>
         <h:form>
-            <p:fileUpload  mode="advanced" dragDropSupport="true"
-                           update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
-            <p:growl id="messages" showDetail="true" />
+            
         </h:form>
     </ui:define>
 </ui:composition>
