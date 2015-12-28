@@ -53,7 +53,9 @@
                             </f:facet>
                             <h:outputText value="#{group.nomegrupo}"/>
                         </p:column>
-
+                        <p:column style="width:50px">
+                            <h:commandLink value="Editar" action="#{ctrGrupo.paginaAlterarGrupo(group)}" immediate="true" />
+                        </p:column>
                     </p:dataTable>
                 </h:form>
             </div>

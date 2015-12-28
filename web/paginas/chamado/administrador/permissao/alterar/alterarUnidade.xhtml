@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central">               
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Unidade</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                    </div>
+
+                    <p:separator/>
+
+                    <div>
+                        <h:outputText id="ldbNome" value="Nome: *" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="nome" style="width: 100%; max-width: 900px"  size="150" required="true" value="#{ctrUnidade.unidade.nome}"   />
+                    </div>
+                    <div>
+                        <h:outputLabel value="Mneumonico*: " style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="mneumonico" style="width: 100%; max-width: 700px" size="100"  required="true" value="#{ctrUnidade.unidade.mneumonico}" />
+                    </div>
+                    <div>
+                        <h:outputLabel value="Tel-PABX" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputMask mask="(99)9999-9999" id="fonePabx" required="true"  size="14" value="#{ctrUnidade.unidade.fonePabx}"/>
+                       
+                    </div>
+                    <div>
+                        <h:outputLabel value="Tel-Diretor" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputMask mask="(99)9999-9999" id="foneDiretor" required="true"  size="14" value="#{ctrUnidade.unidade.foneDiretor}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel value="Endereço:" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText id="endereco" style="width: 100%; max-width: 700px" required="true"  size="100" value="#{ctrUnidade.unidade.endereco}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel value="Bairro:" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText id="bairro" required="true" style="width: 100%; max-width: 300px"  size="50" value="#{ctrUnidade.unidade.bairro}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel value="cidade:" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText id="cidade" required="true" style="width: 100%; max-width: 200px"  size="50" value="#{ctrUnidade.unidade.cidade}"/>
+                    </div>
+                    <div>
+                        <p:separator/>
+                        <h:commandButton value="Alterar"  action="#{ctrUnidade.alterarUnidade()}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
+                            
+                        <h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/permissao/unidade"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
+   
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

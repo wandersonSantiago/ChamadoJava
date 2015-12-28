@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central">               
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color:  #1E90FF">
+                <h3 class="panel-title" style="color: white" >Cadastro Grupo</h3>
+            </div>
+            <div class="panel-body">
+                <p:separator/>
+                <div>
+                    <h5 style="color: black" >
+                        *Campos Obrigatórios
+                    </h5>
+                </div>
+                <p:separator/>
+                <h:form>
+                    <div>
+                        <h:outputText value="Grupo *" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="grupo"  size="30" required="true" value="#{ctrGrupo.grupo.nomegrupo}" label="Nome"  />
+                    </div>
+                    <div>
+                        <p:separator/>
+                        <h:commandButton value="Gravar Grupo"  action="#{ctrGrupo.gravarGrupo}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                    	<h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/permissao/cadastrarGrupos.xhtml"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />		
+
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <p:separator/>
+        
+
+    </ui:define>
+</ui:composition>

@@ -51,6 +51,9 @@
                             </f:facet>
                             <h:outputText value="#{pag.nomepagina}"/>
                         </p:column>
+                        <p:column style="width:50px">
+                            <h:commandLink value="Editar" action="#{CtrPagina.paginaAlterarPaginas(pag)}" immediate="true" />
+                        </p:column>
 
                     </p:dataTable>
                 </h:form>

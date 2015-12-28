@@ -19,44 +19,52 @@ import org.hibernate.HibernateException;
 @ManagedBean(name = "CtrPagina")
 @SessionScoped
 public class CtrPagina {
-    
+
     private final DaoPagina acessoHibernate;
     private Pagina pagina;
 
-    
-
     public CtrPagina() {
-	acessoHibernate = new DaoPagina();
-	
+        acessoHibernate = new DaoPagina();
+
     }
 
     public String gravarPagina() {
-	try {
-	    acessoHibernate.salvar(pagina);
-	    return "";
-	} catch (HibernateException e) {
-	    return "falha";
-	}
+        try {
+            acessoHibernate.salvar(pagina);
+            return "cadastrarPaginas";
+        } catch (HibernateException e) {
+            return "falha";
+        }
     }
-    
+
     public String alterarPagina(Pagina pagina) {
-	try {
-	    acessoHibernate.alterar(pagina);
-	    return "";
-	} catch (HibernateException e) {
-	    return "falha";
-	}
-	
+        try {
+            acessoHibernate.alterar(pagina);
+            return "cadastrarPaginas";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+
+    }
+
+    public String paginaAlterarPaginas(Pagina pag) {
+        try {
+            this.pagina = pag;
+            return "/paginas/chamado/administrador/permissao/alterar/alterarPaginas";
+        } catch (HibernateException e) {
+            return "falha";
+        }
     }
 
     public List carregarPagina() {
-	try {
-	    
-	    return acessoHibernate.carregaTudoOrdernado(Pagina.class, "nome");
-	} catch (HibernateException e) {
-	    return null;
-	}
+        try {
+
+            return acessoHibernate.carregaTudoOrdernado(Pagina.class, "nome");
+        } catch (HibernateException e) {
+            return null;
+        }
     }
+
     public Pagina getPagina() {
         return pagina;
     }
@@ -64,5 +72,5 @@ public class CtrPagina {
     public void setPagina(Pagina pagina) {
         this.pagina = pagina;
     }
-    
+
 }

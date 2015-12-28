@@ -48,6 +48,14 @@ public class CtrGrupo {
 	}
 
     }
+       public String paginaAlterarGrupo(Grupo grupo) {
+        try {
+            this.grupo = grupo;
+            return "/paginas/chamado/administrador/permissao/alterar/alterarGrupo";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
 
     public List carregarGrupo() {
 	try {

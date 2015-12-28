@@ -26,18 +26,18 @@
                 </p:selectOneMenu> 
 
                 <h:outputLabel value="Nome usuario: *" style="color: black" />
-                <p:inputText  id="userNome"  size="150" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
+                <p:inputText  id="userNome"  size="150" required="true"  value="#{ctrUsuario.usuario.nome}" label="Nome Usuario" />
 
                 <h:outputText value="Usuario: *" style="color: black" />
-                <p:inputText  id="userUser"  size="40" required="true" value="#{usuario.usuario}" label="Nome" />
+                <p:inputText  id="userUser"  size="40" required="true" value="#{ctrUsuario.usuario.usuario}" label="Nome" />
 
 
                 <h:outputLabel value="Email: *" style="color: black" />
-                <p:inputText  id="userEmail"  size="150" required="true"  value="#{usuario.email}" label="Email Usuario" />
+                <p:inputText  id="userEmail"  size="150" required="true"  value="#{ctrUsuario.usuario.email}" label="Email Usuario" />
 
                 <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
 
-                <p:password id="senha" size="15" required="true" value="#{usuario.senha}" requiredMessage="campo senha obrigatorio"  >
+                <p:password id="senha" size="15" required="true" value="#{ctrUsuario.usuario.senha}" requiredMessage="campo senha obrigatorio"  >
                     <f:validateLength maximum="12" minimum="6" />
                 </p:password>
 
@@ -50,7 +50,7 @@
 
 
                 <h:outputLabel value="Setor " style="color: black" />
-                <p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
+                <p:selectOneMenu id="setor"  value="#{ctrUsuario.usuario.setor}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Setor Obrigatorio" >
                     <f:converter converterId="setorConverter" />
                     <f:selectItem itemLabel=""   noSelectionOption="true" />
@@ -61,7 +61,7 @@
 
                 <h:outputLabel value="Unidade " style="color: black" />
 
-                <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
+                <p:selectOneMenu id="unidade" value="#{ctrUsuario.usuario.unidade}" editable="false" effect="fold" required="true" 
                                  requiredMessage="Campo Unidade Obrigatorio" >
                     <f:converter converterId="unidadeConverter" />
                     <f:selectItem itemLabel=""   noSelectionOption="true" />
@@ -84,26 +84,9 @@
             <h1>
 
             </h1>
-            <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
-                <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
+            <p:commandButton value="Gravar"  action="#{ctrUsuario.alterarUsuario}"  ajax="false" />
+            <h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
 
-            </p:commandButton>	
-
-
-            <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="user" reflow="true" id="tabela" paginator="true"
-                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-
-                <p:column filterBy="#{user.nome}">
-                    <f:facet name="header">
-                        Nome:
-                    </f:facet>
-                    <h:outputText value="#{user.nome}"/>
-                </p:column>
-                <p:column style="width:50px">
-                    <h:commandLink value="Editar" action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" />
-                </p:column>
-
-            </p:dataTable>
         </h:form>
     </ui:define>
 </ui:composition>

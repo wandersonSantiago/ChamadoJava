@@ -66,6 +66,10 @@
                             <h:outputText value="#{setor.ramal}"/>
                         </p:column>
 
+                           <p:column style="width:50px">
+                               <h:commandLink value="Editar" action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" />
+                        </p:column>
+                        
                     </p:dataTable>
                 </h:form>
             </div>

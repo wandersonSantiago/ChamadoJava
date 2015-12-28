@@ -39,16 +39,23 @@ public class CtrUsuario {
 	}
     }
 
-    public String alterarUsuario(Usuario usuario) {
+    public String alterarUsuario() {
 	try {
            acessoHibernate.alterar(usuario);
-	   return "index";
+	   return "/paginas/chamado/administrador/usuarios/cadastrarUsuarios";
 	} catch (HibernateException e) {
 	     return "falha";
 	}
 
     }
-
+    public String paginaAlterarUsuario(Usuario user) {
+        try {
+            this.usuario = user;
+            return "/paginas/chamado/administrador/permissao/alterar/alterarUsuario";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
     public List carregarUsuario() {
 	try {
 

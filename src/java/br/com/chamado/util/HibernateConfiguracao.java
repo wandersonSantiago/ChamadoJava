@@ -18,7 +18,6 @@ import br.com.chamado.model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -44,12 +43,12 @@ public class HibernateConfiguracao {
         Configuration configuracao = new Configuration();
         configuracao.addAnnotatedClass(Chamadoc.class);
         configuracao.addAnnotatedClass(Grupo.class);
-      //  configuracao.addAnnotatedClass(GrupoPagina.class);
+       // configuracao.addAnnotatedClass(GrupoPagina.class);
         configuracao.addAnnotatedClass(Mensagem.class);
-      // configuracao.addAnnotatedClass(Pagina.class);
+      //  configuracao.addAnnotatedClass(Pagina.class);
         configuracao.addAnnotatedClass(Unidade.class);
         configuracao.addAnnotatedClass(Usuario.class);
-	configuracao.addAnnotatedClass(EmailConfig.class);
+        configuracao.addAnnotatedClass(EmailConfig.class);
         configuracao.addAnnotatedClass(Setor.class);
         configuracao.addAnnotatedClass(Email.class);
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuracao.getProperties()).build();

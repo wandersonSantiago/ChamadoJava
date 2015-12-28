@@ -5,14 +5,13 @@
  */
 package br.com.chamado.control;
 
-
-
-
 import br.com.chamado.dao.DaoUnidade;
 import br.com.chamado.model.Unidade;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -22,54 +21,60 @@ import org.hibernate.HibernateException;
 @ManagedBean(name = "ctrUnidade")
 @SessionScoped
 public class CtrUnidade {
-    
-    
-    private final  DaoUnidade acessoHibernate ;
+
+    private final DaoUnidade acessoHibernate;
     private Unidade unidade;
-    public CtrUnidade()
-    {
-     acessoHibernate = new DaoUnidade();
-     
-    }
-    public String gravarUnidade() {
-	try {
-	    acessoHibernate.salvar(unidade);
-	   return "/paginas/chamado/administrador/permissao/unidade";
-	} catch (HibernateException e) {
-	    return "falha";
-	}
+
+    public CtrUnidade() {
+        acessoHibernate = new DaoUnidade();
+
     }
 
-   
-    public String alterarUnidade(Unidade Unidade)
-    {
-       try
-       {
-	   acessoHibernate.salvar(unidade);
-	   return "unidade";
-       }catch(HibernateException e)
-       {
-         return "falha";
-       }
-	    
+    public String gravarUnidade() {
+        try {
+            acessoHibernate.salvar(unidade);
+            return "/paginas/chamado/administrador/permissao/unidade";
+        } catch (HibernateException e) {
+            return "falha";
+        }
     }
-    public List carregarUnidade()
-    {
-      try
-      {
-	  
-	 return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
-      }catch(HibernateException e)
-      {
-        return null;
-      }
+
+    public String alterarUnidade() {
+        try {
+            acessoHibernate.alterar(unidade);
+             FacesMessage mensagem = new FacesMessage("Unidade Alterado", "Alterado");
+	    FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
+            return "/paginas/chamado/administrador/permissao/unidade";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+
     }
+
+    public String paginaAlterarUnidade(Unidade uni) {
+        try {
+            this.unidade = uni;
+            return "/paginas/chamado/administrador/permissao/alterar/alterarUnidade";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
+
+    public List carregarUnidade() {
+        try {
+
+            return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
+        } catch (HibernateException e) {
+            return null;
+        }
+    }
+
     public Unidade getUnidade() {
-	return unidade;
+        return unidade;
     }
 
     public void setUnidade(Unidade unidade) {
-	this.unidade = unidade;
+        this.unidade = unidade;
     }
-    
+
 }
