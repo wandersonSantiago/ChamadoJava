@@ -90,17 +90,50 @@
             </p:commandButton>	
 
 
-            <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="user" reflow="true" id="tabela" paginator="true"
+            <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="usuario" reflow="true" id="tabela" paginator="true"
                          rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
-                <p:column filterBy="#{user.nome}">
+                <p:column filterBy="#{usuario.nome}">
                     <f:facet name="header">
                         Nome:
                     </f:facet>
-                    <h:outputText value="#{user.nome}"/>
+                    <h:outputText value="#{usuario.nome}"/>
+                </p:column>
+                <p:column filterBy="#{usuario.usuario}">
+                    <f:facet name="header">
+                        Usuario:
+                    </f:facet>
+                    <h:outputText value="#{usuario.usuario}"/>
+                </p:column>
+                <p:column filterBy="#{usuario.setor}" headerText="SETOR:" style="max-height: 8px" >
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('table').filter()" >
+                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{ctrSetor.setores}"  var="setorSetor" itemLabel="#{setorSetor.nome}"
+                                           itemValue="#{setorSetor}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{usuario.setor}"/>
+                </p:column>
+                <p:column filterBy="#{usuario.unidade}" headerText="SETOR:" style="max-height: 8px" >
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('table').filter()" >
+                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{ctrUnidade.unidades}"  var="unidadeUnidade" itemLabel="#{unidadeUnidade.mneumonico}"
+                                           itemValue="#{unidadeUnidade}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{unidade.mneumonico}"/>
+                </p:column>
+
+                <p:column filterBy="#{usuario.grupo}">
+                    <f:facet name="header">
+                        Grupo:
+                    </f:facet>
+                    <h:outputText value="#{usuario.grupo}"/>
                 </p:column>
                 <p:column style="width:50px">
-                    <h:commandLink value="Editar" action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" />
+                    <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
                 </p:column>
 
             </p:dataTable>

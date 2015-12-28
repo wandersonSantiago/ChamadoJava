@@ -52,6 +52,14 @@ public class CtrSetor {
         }
     }
 
+    public List getSetores() {
+        try {
+            return acessoHibernateSetor.carregaTudoOrdernado(Setor.class, "nome");
+        } catch (HibernateException e) {
+            return new ArrayList();
+        }
+    }
+
     public String paginaAlterarSetor(Setor setor) {
         try {
             this.setor = setor;

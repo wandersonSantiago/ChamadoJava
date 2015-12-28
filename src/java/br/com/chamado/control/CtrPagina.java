@@ -8,8 +8,10 @@ package br.com.chamado.control;
 import br.com.chamado.dao.DaoPagina;
 import br.com.chamado.model.Pagina;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -37,10 +39,12 @@ public class CtrPagina {
         }
     }
 
-    public String alterarPagina(Pagina pagina) {
+    public String alterarPagina() {
         try {
             acessoHibernate.alterar(pagina);
-            return "cadastrarPaginas";
+               FacesMessage mensagem = new FacesMessage("Pagina Alterado", "Alterado");
+	    FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
+            return "/paginas/chamado/administrador/permissao/cadastrarPaginas";
         } catch (HibernateException e) {
             return "falha";
         }
@@ -59,7 +63,7 @@ public class CtrPagina {
     public List carregarPagina() {
         try {
 
-            return acessoHibernate.carregaTudoOrdernado(Pagina.class, "nome");
+            return acessoHibernate.carregaTudoOrdernado(Pagina.class, "nomepagina");
         } catch (HibernateException e) {
             return null;
         }

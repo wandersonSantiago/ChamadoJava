@@ -43,9 +43,9 @@ public class HibernateConfiguracao {
         Configuration configuracao = new Configuration();
         configuracao.addAnnotatedClass(Chamadoc.class);
         configuracao.addAnnotatedClass(Grupo.class);
-       // configuracao.addAnnotatedClass(GrupoPagina.class);
+      //  configuracao.addAnnotatedClass(GrupoPagina.class);
         configuracao.addAnnotatedClass(Mensagem.class);
-      //  configuracao.addAnnotatedClass(Pagina.class);
+        configuracao.addAnnotatedClass(Pagina.class);
         configuracao.addAnnotatedClass(Unidade.class);
         configuracao.addAnnotatedClass(Usuario.class);
         configuracao.addAnnotatedClass(EmailConfig.class);

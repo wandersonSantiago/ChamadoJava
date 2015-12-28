@@ -60,7 +60,7 @@ public class CtrGrupo {
     public List carregarGrupo() {
 	try {
 
-	    return acessoHibernate.carregaTudoOrdernado(Grupo.class, "nome");
+	    return acessoHibernate.carregaTudoOrdernado(Grupo.class, "nomegrupo");
 	} catch (HibernateException e) {
 	    return null;
 	}
