@@ -35,10 +35,6 @@ public class CtrChamado implements  Serializable{
     
     public String gravarChamado() {
 	
-        ServicoEmail.iniciar();
-        
-        
-        
         try {
 	   Date hoje = new Date();
 	   

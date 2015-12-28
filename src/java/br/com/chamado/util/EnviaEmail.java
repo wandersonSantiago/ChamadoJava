@@ -10,7 +10,7 @@ public class EnviaEmail {
 
     private static EmailConfig config = null;
     private static EnviaEmail instancia = null;
-   
+    private boolean status = false;
     private  String emailDe = "";
     private  String assunto = "";
     private  String msg = "";
@@ -45,15 +45,29 @@ public class EnviaEmail {
     public void setMsg(String msg) {
 	this.msg = msg;
     }
-    
-    public  synchronized  void enviar()  throws EmailException
+    public boolean getStatus()
     {
+      return status;
+    }
+    public boolean testaEnvio()
+    {
+        assunto = "Teste de Email";
+        emailDe = config.getUsuario();
+        msg = "Teste de Email OK";
+        enviar();
+        
+        return status;
+        
+    }
+    public  synchronized  void enviar() 
+    {
+        try
+        {
         SimpleEmail email = new SimpleEmail(); 
 	email.setHostName(config.getServidor());
 	email.setAuthentication(config.getUsuario(),config.getSenha());  
-        //email.setSmtpPort(config.getPorta());  
-        email.setSmtpPort(465); 
-        
+        email.setSmtpPort(config.getPorta());  
+       
         email.setSSLOnConnect(config.isSsl());
 	email.setStartTLSRequired(config.isTls());
 	email.addTo(emailDe,"Teste");
@@ -61,5 +75,10 @@ public class EnviaEmail {
 	email.setSubject(assunto);
 	email.setMsg(msg);
         email.send();
+        }catch(EmailException e)
+        {
+           status = false;
+            System.out.println(e.getMessage());
+        }
 	}
 }

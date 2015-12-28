@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central">  
+
+        <h:form>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white; font-size: 16px" >Servidor  de email</h3>
+                </div>
+                <div class="panel-body">
+                    <h:panelGrid columns="1" columnClasses="label, value">
+
+                        <h:outputLabel value="Status: *" style="color: black; font-size: 15px" />
+
+                        <div>
+                        <h:commandButton value="Iniciar Serviço"  action="#{servicoEmail.iniciar}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                           
+                        </h:commandButton>
+                            <h:commandButton value="Para Serviço"  action="#{servicoEmail.para()}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                           
+                        </h:commandButton>
+                        </div>  
+                    </h:panelGrid>
+                </div>
+            </div>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

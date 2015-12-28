@@ -6,16 +6,17 @@ CREATE TABLE chamadoc
    data TIMESTAMP NOT NULL,
    status INTEGER NOT NULL DEFAULT(1) CONSTRAINT
    chk_status CHECK(status >= 0 AND status <= 3),
-   prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT,
-   categoria INTEGER NOT NULL,    
+   prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT 
    chk_prioridade CHECK(prioridade >= 0 AND prioridade <=3),
+   categoria INTEGER NOT NULL,    
    codfuncsolic INTEGER NOT NULL,
    codfuncatend INTEGER,
    titulo VARCHAR(30) NOT NULL,
    dataprevisao TIMESTAMP,
-   datafechamento TIMESTAMP
-   
-);
+   datafechamento TIMESTAMP);
+
+
+
 
 
 CREATE TABLE mensagem
@@ -36,7 +37,7 @@ CREATE TABLE usuario(
 
   id serial PRIMARY KEY NOT NULL,
   unidade INTEGER NOT NULL 
-  REFERENCES unidade(ide),
+  REFERENCES unidade(id),
   nome VARCHAR(30) NOT NULL ,
   usuario VARCHAR(30) NOT NULL CONSTRAINT
   unqusuario UNIQUE,
