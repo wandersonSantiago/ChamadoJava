@@ -10,14 +10,14 @@
                     <h3 class="panel-title" style="color: white" >lista de telefones Unidades</h3>
                 </div>
                 <div class="panel-body">
-                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="uniddade" reflow="true" id="tabela" paginator="true"
+                    <p:dataTable value="#{ctrUnidade.carregarUnidade()}" var="unidade" reflow="true" id="tabela" paginator="true"
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30"  rowKey="#{unidade.id}" selectionMode="single" >
 
-                        <p:column  filterBy="#{uniddade.mneumonico}">
+                        <p:column  filterBy="#{unidade.mneumonico}">
                             <f:facet name="header">
                                 Mneumonico:
                             </f:facet>
-                            <h:outputText value="#{uniddade.mneumonico}"/>
+                            <h:outputText value="#{unidade.mneumonico}"/>
                         </p:column>
                         <p:column  filterBy="#{unidade.fonePabx}">
                             <f:facet name="header">
