@@ -75,7 +75,7 @@ CREATE TABLE grupopagina(
    
      id serial PRIMARY KEY NOT NULL,
      codgrupo INTEGER NOT NULL REFERENCES grupo(id),
-     codpaigna INTEGER NOT NULL REFERENCES pagina(id)); 
+     codpagina INTEGER NOT NULL REFERENCES pagina(id)); 
      
 CREATE TABLE confemail(
  
