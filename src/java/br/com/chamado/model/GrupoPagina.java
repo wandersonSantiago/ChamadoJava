@@ -28,11 +28,11 @@ public class GrupoPagina implements Serializable {
     private int id;
     @Column(nullable = false)
     @ManyToOne
-    @JoinColumn(name = "grupo")
+    @JoinColumn(name = "codgrupo")
     private Grupo codgrupo;
     @Column(nullable = false)
     @ManyToOne
-    @JoinColumn(name = "pagina")
+    @JoinColumn(name = "codpagina")
     private Pagina codpagina;
 
     public GrupoPagina() {
