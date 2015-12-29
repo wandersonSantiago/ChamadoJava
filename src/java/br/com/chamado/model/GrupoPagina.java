@@ -29,13 +29,29 @@ public class GrupoPagina implements Serializable {
     @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "grupo")
-    private Grupo grupo;
+    private Grupo codgrupo;
     @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "pagina")
-    private Pagina pagina;
+    private Pagina codpagina;
 
     public GrupoPagina() {
+    }
+
+    public Grupo getCodgrupo() {
+        return codgrupo;
+    }
+
+    public void setCodgrupo(Grupo codgrupo) {
+        this.codgrupo = codgrupo;
+    }
+
+    public Pagina getCodpagina() {
+        return codpagina;
+    }
+
+    public void setCodpagina(Pagina codpagina) {
+        this.codpagina = codpagina;
     }
 
     public int getId() {
@@ -46,21 +62,7 @@ public class GrupoPagina implements Serializable {
 	this.id = id;
     }
 
-    public Grupo getGrupo() {
-	return this.grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-	this.grupo = grupo;
-    }
-
-    public Pagina getPagina() {
-	return this.pagina;
-    }
-
-    public void setPagina(Pagina pagina) {
-	this.pagina = pagina;
-    }
+   
 
     @Override
     public int hashCode() {

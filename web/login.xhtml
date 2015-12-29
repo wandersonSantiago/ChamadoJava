@@ -87,19 +87,19 @@
                         <h:outputLabel value="Usuario:"  />
                     </div>
                     <div>
-                        <h:inputText style="min-width: 400px; min-height: 30px" value="#{ctrUsuario.usuario.nome}"  />
+                        <h:inputText style="min-width: 400px; min-height: 30px" value="#{ctrLogin.usuario.usuario}"  />
                     </div>
                     <br/>
                     <div>
                         <h:outputLabel value="Senha:"/>
                     </div>
                     <div>
-                        <h:inputSecret style="min-width: 400px; min-height: 30px"  value="#{ctrUsuario.usuario.senha}"/>
+                        <h:inputSecret style="min-width: 400px; min-height: 30px"  value="#{ctrLogin.usuario.senha}"/>
                     </div>
                     <br/>
                     <h:form>
                         <div>
-                            <h:commandButton value="Entrar" action="/index.xhtml" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                            <h:commandButton value="Entrar" action="#{ctrLogin.login}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                         </div>
                     </h:form>
                 </div>

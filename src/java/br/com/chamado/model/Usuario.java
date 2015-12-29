@@ -1,6 +1,7 @@
 package br.com.chamado.model;
 // Generated 04/12/2015 13:53:59 by Hibernate Tools 4.3.1
 
+import br.com.chamado.util.Criptografia;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
@@ -44,8 +45,17 @@ public class Usuario implements java.io.Serializable {
     @ManyToOne
     @JoinColumn(name = "grupo")
     private Grupo grupo;
+    private String repetirSenha;
 
     public Usuario() {
+    }
+
+    public String getRepetirSenha() {
+        return repetirSenha;
+    }
+
+    public void setRepetirSenha(String repetirSenha) {
+        this.repetirSenha = repetirSenha;
     }
 
     public int getId() {
@@ -120,6 +130,12 @@ public class Usuario implements java.io.Serializable {
 	this.grupo = grupo;
     }
     
+        public void criptografar()
+     {
+        String tempSenha = Criptografia.criptografar(senha);
+	this.senha = tempSenha;
+	this.repetirSenha = tempSenha;
+     }
     @Override
     public String toString() {
 	return "Usuario{" + "nome=" + nome + '}';
