@@ -33,51 +33,8 @@
 
     <h:body>
         <center>
-            <div >
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div >
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
-            <div>
-                <br/>
-            </div>
+           
+            <h:form>
             <div class="panel panel-primary" style="max-width: 500px" >
                 <div class="panel-heading" style="background-color:  #1E90FF; max-width: 500px">
                     <h3 class="panel-title" style="color: white" >Login</h3> </div>
@@ -87,14 +44,14 @@
                         <h:outputLabel value="Usuario:"  />
                     </div>
                     <div>
-                        <h:inputText style="min-width: 400px; min-height: 30px" value="#{ctrLogin.usuario.usuario}"  />
+                        <h:inputText style="min-width: 400px; min-height: 30px" value="#{ctrLogin.usuarioLogin.usuario}"  />
                     </div>
                     <br/>
                     <div>
                         <h:outputLabel value="Senha:"/>
                     </div>
                     <div>
-                        <h:inputSecret style="min-width: 400px; min-height: 30px"  value="#{ctrLogin.usuario.senha}"/>
+                        <h:inputSecret style="min-width: 400px; min-height: 30px"  value="#{ctrLogin.usuarioLogin.senha}"/>
                     </div>
                     <br/>
                     <h:form>
@@ -104,12 +61,7 @@
                     </h:form>
                 </div>
             </div>
-            <div>
-                <br/>
-            </div>
-            <div >
-                <br/>
-            </div>
+           </h:form>
         </center>
     </h:body>
 </html>

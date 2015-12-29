@@ -26,11 +26,9 @@ public class GrupoPagina implements Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "codgrupo")
     private Grupo codgrupo;
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "codpagina")
     private Pagina codpagina;

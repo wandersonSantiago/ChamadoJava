@@ -18,11 +18,8 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginController {
 
-    private Usuario user = new Usuario();
+    private Usuario usuarioLogin = new Usuario();
     private boolean logado = false;
-    private boolean admin = false;
-    private boolean userAltera = false;
-    private boolean userAtivo = false;
     private Usuario usuarioTemp = null;
     private final DaoUsuario daoUsuario = new DaoUsuario();
 
@@ -33,29 +30,33 @@ public class LoginController {
 
         FacesMessage message = null;
         
-        usuarioTemp = daoUsuario.buscarUsuario(user.getUsuario());
-
       
-        if (user.getUsuario().equals(usuarioTemp.getUsuario()) && user.getSenha().equals(usuarioTemp.getSenha())) {
+        usuarioTemp = daoUsuario.buscarUsuario(usuarioLogin.getUsuario());
+        
+        if(usuarioTemp == null)
+        {
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario", "usuário não existe na base de dados");
+        }
+        else {
+      
+        if (usuarioLogin.getUsuario().equals(usuarioTemp.getUsuario()) && usuarioLogin.getSenha().equals(usuarioTemp.getSenha())) {
 
           logado = true;
                
               System.out.println("logado Usuario");
-                
-                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", user.getUsuario());
-                return "index";
-       
+               return "index";
+       } else {
 
-        } else {
-
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Não logado", "Usuario invalido");
-            return "unidade";
+            
+            return "index";
         }
+        }
+         return "index";
 
     }
     public Usuario usuariLogado() {
 
-        return user;
+        return usuarioLogin;
 
     }
 
@@ -73,11 +74,13 @@ public class LoginController {
         this.logado = logado;
     }
 
-    public Usuario getUsuario() {
-        return user;
+    public Usuario getUsuarioLogin() {
+        return usuarioLogin;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.user = usuario;
+    public void setUsuarioLogin(Usuario usuarioLogin) {
+        this.usuarioLogin = usuarioLogin;
     }
+   
 }
+    

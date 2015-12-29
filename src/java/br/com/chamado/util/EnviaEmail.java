@@ -75,6 +75,7 @@ public class EnviaEmail {
 	email.setSubject(assunto);
 	email.setMsg(msg);
         email.send();
+        status = true;
         }catch(EmailException e)
         {
            status = false;

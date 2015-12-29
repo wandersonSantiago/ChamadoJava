@@ -45,122 +45,113 @@ public class Usuario implements java.io.Serializable {
     @ManyToOne
     @JoinColumn(name = "grupo")
     private Grupo grupo;
-    private String repetirSenha;
 
     public Usuario() {
     }
 
-    public String getRepetirSenha() {
-        return repetirSenha;
-    }
-
-    public void setRepetirSenha(String repetirSenha) {
-        this.repetirSenha = repetirSenha;
-    }
-
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getNome() {
-	return nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-	this.nome = nome;
+        this.nome = nome;
     }
 
     public Unidade getUnidade() {
-	return this.unidade;
+        return this.unidade;
     }
 
     public void setUnidade(Unidade unidade) {
-	this.unidade = unidade;
+        this.unidade = unidade;
     }
 
     public String getUsuario() {
-	return this.usuario;
+        return this.usuario;
     }
 
     public void setUsuario(String usuario) {
-	this.usuario = usuario;
+        this.usuario = usuario;
     }
 
     public String getSenha() {
-	return this.senha;
+        return this.senha;
     }
 
     public void setSenha(String senha) {
-	this.senha = senha;
+        this.senha = senha;
     }
 
     public String getEmail() {
-	return this.email;
+        return this.email;
     }
 
     public void setEmail(String email) {
-	this.email = email;
+        this.email = email;
     }
 
     public int getTipousuario() {
-	return this.tipousuario;
+        return this.tipousuario;
     }
 
     public void setTipousuario(int tipousuario) {
-	this.tipousuario = tipousuario;
+        this.tipousuario = tipousuario;
     }
 
     public Setor getSetor() {
-	return setor;
+        return setor;
     }
 
     public void setSetor(Setor setor) {
-	this.setor = setor;
+        this.setor = setor;
     }
 
     public Grupo getGrupo() {
-	return grupo;
+        return grupo;
     }
 
     public void setGrupo(Grupo grupo) {
-	this.grupo = grupo;
+        this.grupo = grupo;
     }
-    
-        public void criptografar()
-     {
+
+    public void criptografar() {
         String tempSenha = Criptografia.criptografar(senha);
-	this.senha = tempSenha;
-	this.repetirSenha = tempSenha;
-     }
+        this.senha = tempSenha;
+
+    }
+
     @Override
     public String toString() {
-	return "Usuario{" + "nome=" + nome + '}';
+        return "Usuario{" + "nome=" + nome + '}';
     }
 
     @Override
     public int hashCode() {
-	int hash = 5;
-	hash = 61 * hash + this.id;
-	return hash;
+        int hash = 5;
+        hash = 61 * hash + this.id;
+        return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	final Usuario other = (Usuario) obj;
-	if (this.id != other.id) {
-	    return false;
-	}
-	return true;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 
 }
