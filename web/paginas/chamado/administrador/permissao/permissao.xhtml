@@ -24,13 +24,13 @@
                     <div>
                         <h:outputText value="Grupo de Paginas*:" /> 
                     </div>
-                    <div>
-                        <p:selectOneMenu id="grupoPaginas" value="#" editable="false" effect="fold" required="true" 
-                                         requiredMessage="Campo Setor Obrigatorio" >
-
-                            <f:selectItem itemLabel=""  />
-                            <f:selectItems value="#" var="colaboradorSetor" 
-                                           />                                    
+                 <div>
+                     <p:selectOneMenu id="grupoPagina" value="#{grupopagina.pagina}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Pagina Obrigatorio" >
+                            <f:converter converterId="paginaConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.nomepagina}" 
+                                            itemValue="#{pagina}"/>     
                         </p:selectOneMenu>
                     </div>
 
@@ -38,20 +38,20 @@
                     <div>
                         <h:outputText value="Paginas*:" /> 
                     </div>
-                    <div>
-                        <p:selectOneMenu id="paginasGrava" value="#" editable="false" effect="fold" required="true" 
-                                         requiredMessage="Campo Setor Obrigatorio" >
-
-                            <f:selectItem itemLabel=""  />
-                            <f:selectItems value="#" var="colaboradorSetor" 
-                                           />                                    
+                <div>
+                    <p:selectOneMenu id="grupoGrupo" value="#{grupopagina.grupo}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Pagina Obrigatorio" >
+                            <f:converter converterId="grupoConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nomegrupo}" 
+                                            itemValue="#{usuarioGrupo}"/>     
                         </p:selectOneMenu>
                     </div>
                     <p:separator/>
                     <div>
 
-                        <h:commandButton value="Gravar Grupos"  action="#"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
-                            <f:setPropertyActionListener value="#" target="#" />
+                        <h:commandButton value="Gravar Grupos"  action="#{CtrGrupoPagina.gravarGrupo}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{grupoPagina}" target="#{CtrGrupoPagina.grupoPagina}" />
                         </h:commandButton>			
 
                     </div>

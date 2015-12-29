@@ -3,91 +3,98 @@
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="central">  
-        <h:form>
+    <ui:define name="central">               
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Unidade</h3>
+                </div>
+                <div class="panel-body">
+                    <h:panelGrid columns="1">
+                        <h3 style="color: black" >
+                            Dados Usuario
+                        </h3>
+
+                        <p:separator/>
+
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                        <p:separator/>
+
+                        <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
+                        <p:selectOneMenu id="ativo"  required="true" label="erro" >
+                            <f:selectItem itemLabel="sim" itemValue="true" />
+                            <f:selectItem itemLabel="nao" itemValue="false" />
+                        </p:selectOneMenu> 
+
+                        <h:outputLabel value="Nome usuario: *" style="color: black" />
+                        <p:inputText  id="userNome"  size="150" required="true"  value="#{ctrUsuario.usuario.nome}" label="Nome Usuario" />
+
+                        <h:outputText value="Usuario: *" style="color: black" />
+                        <p:inputText  id="userUser"  size="40" required="true" value="#{ctrUsuario.usuario.usuario}" label="Nome" />
 
 
-            <h:panelGrid  id="painelGridUsuer" columns="1" >
-                <h3 style="color: black" >
-                    Dados Usuario
-                </h3>
+                        <h:outputLabel value="Email: *" style="color: black" />
+                        <p:inputText  id="userEmail"  size="150" required="true"  value="#{ctrUsuario.usuario.email}" label="Email Usuario" />
 
-                <p:separator/>
+                        <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
 
-                <h5 style="color: black" >
-                    *Campos Obrigatórios
-                </h5>
-                <p:separator/>
+                        <p:password id="senha" size="15" required="true" value="#{ctrUsuario.usuario.senha}" requiredMessage="campo senha obrigatorio"  >
+                            <f:validateLength maximum="12" minimum="6" />
+                        </p:password>
 
-                <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
-                <p:selectOneMenu id="ativo"  required="true" label="erro" >
-                    <f:selectItem itemLabel="sim" itemValue="true" />
-                    <f:selectItem itemLabel="nao" itemValue="false" />
-                </p:selectOneMenu> 
+                        <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
 
-                <h:outputLabel value="Nome usuario: *" style="color: black" />
-                <p:inputText  id="userNome"  size="150" required="true"  value="#{ctrUsuario.usuario.nome}" label="Nome Usuario" />
-
-                <h:outputText value="Usuario: *" style="color: black" />
-                <p:inputText  id="userUser"  size="40" required="true" value="#{ctrUsuario.usuario.usuario}" label="Nome" />
-
-
-                <h:outputLabel value="Email: *" style="color: black" />
-                <p:inputText  id="userEmail"  size="150" required="true"  value="#{ctrUsuario.usuario.email}" label="Email Usuario" />
-
-                <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
-
-                <p:password id="senha" size="15" required="true" value="#{ctrUsuario.usuario.senha}" requiredMessage="campo senha obrigatorio"  >
-                    <f:validateLength maximum="12" minimum="6" />
-                </p:password>
-
-                <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
-
-                <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
-                    <f:validateLength maximum="12" minimum="6" />
-                </p:password>
+                        <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
+                            <f:validateLength maximum="12" minimum="6" />
+                        </p:password>
 
 
 
-                <h:outputLabel value="Setor " style="color: black" />
-                <p:selectOneMenu id="setor"  value="#{ctrUsuario.usuario.setor}" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Setor Obrigatorio" >
-                    <f:converter converterId="setorConverter" />
-                    <f:selectItem itemLabel=""   noSelectionOption="true" />
-                    <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
-                                   itemValue="#{usuarioSetor}" />                                      
-                </p:selectOneMenu>
+                        <h:outputLabel value="Setor " style="color: black" />
+                        <p:selectOneMenu id="setor"  value="#{ctrUsuario.usuario.setor}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Setor Obrigatorio" >
+                            <f:converter converterId="setorConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
+                                           itemValue="#{usuarioSetor}" />                                      
+                        </p:selectOneMenu>
 
 
-                <h:outputLabel value="Unidade " style="color: black" />
+                        <h:outputLabel value="Unidade " style="color: black" />
 
-                <p:selectOneMenu id="unidade" value="#{ctrUsuario.usuario.unidade}" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Unidade Obrigatorio" >
-                    <f:converter converterId="unidadeConverter" />
-                    <f:selectItem itemLabel=""   noSelectionOption="true" />
-                    <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
-                                   itemValue="#{usuarioUnidade}" />                                    
-                </p:selectOneMenu>
+                        <p:selectOneMenu id="unidade" value="#{ctrUsuario.usuario.unidade}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Unidade Obrigatorio" >
+                            <f:converter converterId="unidadeConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
+                                           itemValue="#{usuarioUnidade}" />                                    
+                        </p:selectOneMenu>
 
-                <!-- ERRO
-               <h:outputLabel value="Grupo " style="color: black" />
-               
-               <p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
-                                requiredMessage="Campo Grupo Obrigatorio" >
-                   <f:converter converterId="grupoConverter" />
-                   <f:selectItem itemLabel=""   noSelectionOption="true" />
-                   <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nome}" 
-                                   itemValue="#{usuarioGrupo}"/>     
-               </p:selectOneMenu>-->
+                      
+                       <h:outputLabel value="Grupo " style="color: black" />
+                       
+                       <p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
+                                        requiredMessage="Campo Grupo Obrigatorio" >
+                           <f:converter converterId="grupoConverter" />
+                           <f:selectItem itemLabel=""   noSelectionOption="true" />
+                           <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nomegrupo}" 
+                                           itemValue="#{usuarioGrupo}"/>     
+                       </p:selectOneMenu>
 
-            </h:panelGrid>
-            <h1>
+                    </h:panelGrid>
+                    <p:separator />
+                    <div>
+                        <h:commandButton value="Gravar"  action="#{ctrUsuario.alterarUsuario}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
+                        <h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml"  immediate="true" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
+                    </div>
+                </div>
+            </div>
 
-            </h1>
-            <h:commandButton value="Gravar"  action="#{ctrUsuario.alterarUsuario}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
-            <h:commandButton value="Cancelar"  action="../usuarios/cadastrarUsuarios.xhtml"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
 
         </h:form>
     </ui:define>
 </ui:composition>
-

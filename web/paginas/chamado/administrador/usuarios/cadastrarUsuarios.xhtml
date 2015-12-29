@@ -5,138 +5,154 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central">  
         <h:form>
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Usuario</h3>
+                </div>
+                <div class="panel-body">
 
 
-            <h:panelGrid  id="painelGridUsuer" columns="1" >
-                <h3 style="color: black" >
-                    Dados Usuario
-                </h3>
-
-                <p:separator/>
-
-                <h5 style="color: black" >
-                    *Campos Obrigatórios
-                </h5>
-                <p:separator/>
-
-                <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
-                <p:selectOneMenu id="ativo"  required="true" label="erro" >
-                    <f:selectItem itemLabel="sim" itemValue="true" />
-                    <f:selectItem itemLabel="nao" itemValue="false" />
-                </p:selectOneMenu> 
-
-                <h:outputLabel value="Nome usuario: *" style="color: black" />
-                <p:inputText  id="userNome"  size="150" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
-
-                <h:outputText value="Usuario: *" style="color: black" />
-                <p:inputText  id="userUser"  size="40" required="true" value="#{usuario.usuario}" label="Nome" />
+                    <h:panelGrid  id="painelGridUsuer" columns="1" >
 
 
-                <h:outputLabel value="Email: *" style="color: black" />
-                <p:inputText  id="userEmail"  size="150" required="true"  value="#{usuario.email}" label="Email Usuario" />
+                        <p:separator/>
 
-                <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                        <p:separator/>
 
-                <p:password id="senha" size="15" required="true" value="#{usuario.senha}" requiredMessage="campo senha obrigatorio"  >
-                    <f:validateLength maximum="12" minimum="6" />
-                </p:password>
+                        <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
+                        <p:selectOneMenu id="ativo"  required="true" label="erro" >
+                            <f:selectItem itemLabel="sim" itemValue="true" />
+                            <f:selectItem itemLabel="nao" itemValue="false" />
+                        </p:selectOneMenu> 
 
-                <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
+                        <h:outputLabel value="Nome usuario: *" style="color: black" />
+                        <p:inputText  id="userNome"  size="150" required="true"  value="#{usuario.nome}" label="Nome Usuario" />
 
-                <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
-                    <f:validateLength maximum="12" minimum="6" />
-                </p:password>
+                        <h:outputText value="Usuario: *" style="color: black" />
+                        <p:inputText  id="userUser"  size="40" required="true" value="#{usuario.usuario}" label="Nome" />
+
+
+                        <h:outputLabel value="Email: *" style="color: black" />
+                        <p:inputText  id="userEmail"  size="150" required="true"  value="#{usuario.email}" label="Email Usuario" />
+
+                        <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
+
+                        <p:password id="senha" size="15" required="true" value="#{usuario.senha}" requiredMessage="campo senha obrigatorio"  >
+                            <f:validateLength maximum="12" minimum="6" />
+                        </p:password>
+
+                        <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
+
+                        <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
+                            <f:validateLength maximum="12" minimum="6" />
+                        </p:password>
 
 
 
-                <h:outputLabel value="Setor " style="color: black" />
-                <p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Setor Obrigatorio" >
-                    <f:converter converterId="setorConverter" />
-                    <f:selectItem itemLabel=""   noSelectionOption="true" />
-                    <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
-                                   itemValue="#{usuarioSetor}" />                                      
-                </p:selectOneMenu>
-
-
-                <h:outputLabel value="Unidade " style="color: black" />
-
-                <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
-                                 requiredMessage="Campo Unidade Obrigatorio" >
-                    <f:converter converterId="unidadeConverter" />
-                    <f:selectItem itemLabel=""   noSelectionOption="true" />
-                    <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
-                                   itemValue="#{usuarioUnidade}" />                                    
-                </p:selectOneMenu>
-
-                <!-- ERRO
-               <h:outputLabel value="Grupo " style="color: black" />
-               
-               <p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
-                                requiredMessage="Campo Grupo Obrigatorio" >
-                   <f:converter converterId="grupoConverter" />
-                   <f:selectItem itemLabel=""   noSelectionOption="true" />
-                   <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nome}" 
-                                   itemValue="#{usuarioGrupo}"/>     
-               </p:selectOneMenu>-->
-
-            </h:panelGrid>
-            <h1>
-
-            </h1>
-            <p:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}"  ajax="false" >
-                <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
-
-            </p:commandButton>	
-
-
-            <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="usuario" reflow="true" id="tabela" paginator="true"
-                         rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-
-                <p:column filterBy="#{usuario.nome}">
-                    <f:facet name="header">
-                        Nome:
-                    </f:facet>
-                    <h:outputText value="#{usuario.nome}"/>
-                </p:column>
-                <p:column filterBy="#{usuario.usuario}">
-                    <f:facet name="header">
-                        Usuario:
-                    </f:facet>
-                    <h:outputText value="#{usuario.usuario}"/>
-                </p:column>
-                <p:column filterBy="#{usuario.setor}" headerText="SETOR:" style="max-height: 8px" >
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('table').filter()" >
-                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{ctrSetor.setores}"  var="setorSetor" itemLabel="#{setorSetor.nome}"
-                                           itemValue="#{setorSetor}" />
+                        <h:outputLabel value="Setor " style="color: black" />
+                        <p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Setor Obrigatorio" >
+                            <f:converter converterId="setorConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
+                                           itemValue="#{usuarioSetor}" />                                      
                         </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText value="#{usuario.setor}"/>
-                </p:column>
-                <p:column filterBy="#{usuario.unidade}" headerText="SETOR:" style="max-height: 8px" >
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('table').filter()" >
-                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{ctrUnidade.unidades}"  var="unidadeUnidade" itemLabel="#{unidadeUnidade.mneumonico}"
-                                           itemValue="#{unidadeUnidade}" />
+
+
+                        <h:outputLabel value="Unidade " style="color: black" />
+
+                        <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Unidade Obrigatorio" >
+                            <f:converter converterId="unidadeConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
+                                           itemValue="#{usuarioUnidade}" />                                    
                         </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText value="#{unidade.mneumonico}"/>
-                </p:column>
 
-                <p:column filterBy="#{usuario.grupo}">
-                    <f:facet name="header">
-                        Grupo:
-                    </f:facet>
-                    <h:outputText value="#{usuario.grupo}"/>
-                </p:column>
-                <p:column style="width:50px">
-                    <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
-                </p:column>
 
-            </p:dataTable>
+                        <h:outputLabel value="Grupo " style="color: black" />
+
+                        <p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Grupo Obrigatorio" >
+                            <f:converter converterId="grupoConverter" />
+                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nomegrupo}" 
+                                            itemValue="#{usuarioGrupo}"/>     
+                        </p:selectOneMenu>
+
+                    </h:panelGrid>
+                    <h1>
+
+                    </h1>
+                    <h:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
+                        <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
+                    </h:commandButton>	
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Lista de Usuarios</h3>
+                </div>
+                <div class="panel-body">
+
+
+                    <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="usuario" reflow="true" id="tabela" paginator="true"
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+
+                        <p:column filterBy="#{usuario.nome}">
+                            <f:facet name="header">
+                                NOME:
+                            </f:facet>
+                            <h:outputText value="#{usuario.nome}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.usuario}">
+                            <f:facet name="header">
+                                USUARIO:
+                            </f:facet>
+                            <h:outputText value="#{usuario.usuario}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.setor}" headerText="SETOR:" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrSetor.setores}"  var="setorSetor" itemLabel="#{setorSetor.nome}"
+                                                   itemValue="#{setorSetor}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{usuario.setor}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.unidade}" headerText="UNIDADE:" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrUnidade.unidades}"  var="unidadeUnidade" itemLabel="#{unidadeUnidade.mneumonico}"
+                                                   itemValue="#{unidadeUnidade}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{usuario.unidade.mneumonico}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.grupo}" headerText="GRUPO:" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrGrupo.grupos}"  var="grupoGrupo" itemLabel="#{grupoGrupo.nomegrupo}"
+                                                   itemValue="#{grupoGrupo}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{usuario.grupo.nomegrupo}"/>
+                        </p:column>
+
+                        <p:column style="width:50px">
+                            <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </div>
+
         </h:form>
     </ui:define>
 </ui:composition>

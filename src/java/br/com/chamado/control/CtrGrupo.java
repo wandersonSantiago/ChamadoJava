@@ -65,6 +65,14 @@ public class CtrGrupo {
 	    return null;
 	}
     }
+        public List getGrupos() {
+	try {
+
+	    return acessoHibernate.carregaTudoOrdernado(Grupo.class, "nomegrupo");
+	} catch (HibernateException e) {
+	    return null;
+	}
+    }
     
     public Grupo getGrupo() {
         return grupo;
