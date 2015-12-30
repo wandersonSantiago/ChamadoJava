@@ -18,19 +18,16 @@
                     </div>
 
                     <p:separator/>
-
-
-
                     <div>
-                        <h:outputText value="Paginas *:" /> 
+                        <h:outputText value="Usuarios *:" /> 
                     </div>
-                 <div>
-                     <p:selectOneMenu id="grupoPagina" value="#{grupopagina.pagina}" editable="false" effect="fold" required="true" 
+                    <div>
+                        <p:selectOneMenu id="grupoPagina" value="#{permissao.usuario}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Pagina Obrigatorio" >
-                            <f:converter converterId="paginaConverter" />
+                            <f:converter converterId="usuarioConverter" />
                             <f:selectItem itemLabel=""   noSelectionOption="true" />
-                            <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.nomepagina}" 
-                                            itemValue="#{pagina}"/>     
+                            <f:selectItems  value="#{ctrUsuario.carregarUsuario()}"  var="usuario"  itemLabel="#{usuario.usuario}" 
+                                            itemValue="#{usuario}"/>     
                         </p:selectOneMenu>
                     </div>
 
@@ -38,20 +35,20 @@
                     <div>
                         <h:outputText value="Grupo *:" /> 
                     </div>
-                <div>
-                    <p:selectOneMenu id="grupoGrupo" value="#{grupopagina.grupo}" editable="false" effect="fold" required="true" 
+                    <div>
+                        <p:selectOneMenu id="grupoGrupo" value="#{permissao.pagina}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Pagina Obrigatorio" >
-                            <f:converter converterId="grupoConverter" />
+                            <f:converter converterId="paginaConverter" />
                             <f:selectItem itemLabel=""   noSelectionOption="true" />
-                            <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nomegrupo}" 
-                                            itemValue="#{usuarioGrupo}"/>     
+                            <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.nomepagina}" 
+                                            itemValue="#{pagina}"/>     
                         </p:selectOneMenu>
                     </div>
                     <p:separator/>
                     <div>
 
-                        <h:commandButton value="Gravar Grupos"  action="#{CtrGrupoPagina.gravarGrupo}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
-                            <f:setPropertyActionListener value="#{grupoPagina}" target="#{CtrGrupoPagina.grupoPagina}" />
+                        <h:commandButton value="Gravar Grupos"  action="#{ctrPermissao.gravarPermissao()}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{permissao}" target="#{ctrPermissao.permissao}" />
                         </h:commandButton>			
 
                     </div>
@@ -62,32 +59,31 @@
                     <h3 class="panel-title" style="color: white" >Lista de Permissões</h3>
                 </div>
                 <div class="panel-body">
-                    <p:dataTable value="#" var="cargo"  id="tabela" widgetVar="table"
+                    <p:dataTable value="#{ctrPermissao.carregarPermissao()}" var="cargo"  id="tabela" widgetVar="table"
                                  paginator="true" rows="10" style="margin-bottom:20px" 
                                  rowsPerPageTemplate="5,10,15,20,25,30">
-                    
-                        <p:column  headerText="Grupo Paginas" style="max-height: 5px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#"  var="cargoCargo" itemLabel="#"
-                                                   itemValue="#" />
-                                </p:selectOneMenu>
+
+                        <p:column filterBy="#{permissao.usuario.usuario}">
+                            <f:facet name="header">
+                                USUARIO:
                             </f:facet>
-                            <h:outputText value="#" />
-                        </p:column>
-                        <p:column  headerText="Paginas" style="max-height: 5px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#"  var="cargoCargo" itemLabel="#"
-                                                   itemValue="#" />
-                                </p:selectOneMenu>
-                            </f:facet>
-                            <h:outputText value="#" />
+                            <h:outputText value="#{permissao.usuario.usuario}"/>
                         </p:column>
 
-                        <f:facet name="header">
+                        
+                        <p:column filterBy="#{permissao.pagina}" headerText="Paginas:" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:converter converterId="paginaConverter" />
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{CtrPagina.carregarPagina()}"  var="paginaPermissao" itemLabel="#{paginaPermissao.nomepagina}"
+                                                   itemValue="#{paginaPermissao}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{permissao.pagina.nomepagina}"/>
+                        </p:column>
+
+                         <f:facet name="header">
                             AÇÔES
                         </f:facet>
 

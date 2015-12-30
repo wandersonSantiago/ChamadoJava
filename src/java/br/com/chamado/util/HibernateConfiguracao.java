@@ -12,6 +12,7 @@ import br.com.chamado.model.Grupo;
 import br.com.chamado.model.GrupoPagina;
 import br.com.chamado.model.Mensagem;
 import br.com.chamado.model.Pagina;
+import br.com.chamado.model.Permissao;
 import br.com.chamado.model.Setor;
 import br.com.chamado.model.Unidade;
 import br.com.chamado.model.Usuario;
@@ -43,7 +44,7 @@ public class HibernateConfiguracao {
         Configuration configuracao = new Configuration();
         configuracao.addAnnotatedClass(Chamadoc.class);
         configuracao.addAnnotatedClass(Grupo.class);
-        configuracao.addAnnotatedClass(GrupoPagina.class);
+        //configuracao.addAnnotatedClass(Permissao.class);
         configuracao.addAnnotatedClass(Mensagem.class);
         configuracao.addAnnotatedClass(Pagina.class);
         configuracao.addAnnotatedClass(Unidade.class);

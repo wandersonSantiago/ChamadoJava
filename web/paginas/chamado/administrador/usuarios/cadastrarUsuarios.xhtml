@@ -72,17 +72,6 @@
                                            itemValue="#{usuarioUnidade}" />                                    
                         </p:selectOneMenu>
 
-
-                        <h:outputLabel value="Grupo " style="color: black" />
-
-                        <p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
-                                         requiredMessage="Campo Grupo Obrigatorio" >
-                            <f:converter converterId="grupoConverter" />
-                            <f:selectItem itemLabel=""   noSelectionOption="true" />
-                            <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nomegrupo}" 
-                                            itemValue="#{usuarioGrupo}"/>     
-                        </p:selectOneMenu>
-
                     </h:panelGrid>
                     <h1>
 
@@ -134,17 +123,6 @@
                             </f:facet>
                             <h:outputText value="#{usuario.unidade.mneumonico}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.grupo}" headerText="GRUPO:" style="max-height: 8px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrGrupo.grupos}"  var="grupoGrupo" itemLabel="#{grupoGrupo.nomegrupo}"
-                                                   itemValue="#{grupoGrupo}" />
-                                </p:selectOneMenu>
-                            </f:facet>
-                            <h:outputText value="#{usuario.grupo.nomegrupo}"/>
-                        </p:column>
-
                         <p:column style="width:50px">
                             <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
                         </p:column>

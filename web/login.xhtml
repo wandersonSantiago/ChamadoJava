@@ -20,7 +20,7 @@
 
             <h:outputStylesheet name="css/dashboard.css" />
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+   
 
             <h:outputScript name="bootstrap/js/bootstrap.js" />
         </f:facet>
@@ -33,35 +33,37 @@
 
     <h:body>
         <center>
-           
-            <h:form>
-            <div class="panel panel-primary" style="max-width: 500px" >
-                <div class="panel-heading" style="background-color:  #1E90FF; max-width: 500px">
-                    <h3 class="panel-title" style="color: white" >Login</h3> </div>
-                <div class="panel-body">
 
-                    <div>
-                        <h:outputLabel value="Usuario:"  />
-                    </div>
-                    <div>
-                        <h:inputText style="min-width: 400px; min-height: 30px" value="#{ctrLogin.usuarioLogin.usuario}"  />
-                    </div>
-                    <br/>
-                    <div>
-                        <h:outputLabel value="Senha:"/>
-                    </div>
-                    <div>
-                        <h:inputSecret style="min-width: 400px; min-height: 30px"  value="#{ctrLogin.usuarioLogin.senha}"/>
-                    </div>
-                    <br/>
-                    <h:form>
+            <h:form>
+                <div class="panel panel-primary " style="max-width: 500px"  >
+                    <div class="panel-heading" style="background-color:  #1E90FF; max-width: 500px">
+                        <h3 class="panel-title" style="color: white" >Login</h3> </div>
+                    <div class="panel-body text-center">
                         <div>
-                            <h:commandButton value="Entrar" action="#{ctrLogin.login}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                            <h:outputLabel value="Usuario:"  />
                         </div>
-                    </h:form>
+                        <div>
+                            <h:inputText style="min-width: 400px; min-height: 30px" value="#{ctrLogin.usuarioLogin.usuario}"
+                                         required="true" id="userNome" requiredMessage="Usuario obrigatorio" label="User"   />
+                        </div>
+                        <br/>
+                        <div>
+                            <h:outputLabel value="Senha:"/>
+                        </div>
+                        <div>
+                            <h:inputSecret style="min-width: 400px; min-height: 30px"  value="#{ctrLogin.usuarioLogin.senha}"
+                                           required="true" requiredMessage="Senha" />
+                        </div>
+                        <br/>
+                        <h:form>
+                            <div>
+                                <h:commandButton value="Entrar" action="#{ctrLogin.login}" class="btn-default"
+                                                 style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                            </div>                                                 
+                        </h:form>
+                    </div>
                 </div>
-            </div>
-           </h:form>
+            </h:form>
         </center>
     </h:body>
 </html>

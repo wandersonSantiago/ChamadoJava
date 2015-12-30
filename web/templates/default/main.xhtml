@@ -31,7 +31,7 @@
 
     </h:head>
 
-    <h:body>
+    <h:body rendered="#{ctrLogin.logado != false}">
         <ui:include src="painelSuperior.xhtml" />
         <ui:include src="painelCentral.xhtml" />
     </h:body>

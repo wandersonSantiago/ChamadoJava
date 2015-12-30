@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -40,15 +41,19 @@ public class LoginController {
         } else if (usuarioLogin.getUsuario().equals(usuarioTemp.getUsuario()) && usuarioLogin.getSenha().equals(usuarioTemp.getSenha())) {
 
             logado = true;
-
+           
             return "index";
         } else {
 
-            return "erroAcesso";
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario", "usuário não existe na base de dados");
+            return "";
         }
-        return "erroAcesso";
+      
+        message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario", "usuário não existe na base de dados");
+        return "";
     }
-/*
+
+    /*
     public Boolean userPermissão(Pagina pagina){
        if(usuarioLogin.getGrupo().equals(pagina))
     {
@@ -58,7 +63,7 @@ public class LoginController {
         return false;
        
     }
-    */
+     */
     public Usuario usuariLogado() {
 
         return usuarioLogin;
@@ -80,6 +85,7 @@ public class LoginController {
     }
 
     public Usuario getUsuarioLogin() {
+        
         return usuarioLogin;
     }
 
