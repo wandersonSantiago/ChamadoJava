@@ -5,14 +5,13 @@ import br.com.chamado.dao.DaoChamadoc;
 import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.Email;
 import br.com.chamado.model.Mensagem;
-import br.com.chamado.util.ServicoEmail;
-
+import br.com.chamado.model.SessionContext;
+import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 
 /**
@@ -36,25 +35,25 @@ public class CtrChamado implements  Serializable{
     public String gravarChamado() {
 	
         try {
-	   Date hoje = new Date();
+	    Usuario user = SessionContext.getInstance().getUsuarioLogado();
+            Date hoje = new Date();
 	   
 	   chamadoc.setData(hoje);
-	   acessoHibernate.salvar(chamadoc);
-	 
+	   chamadoc.setUnidade(user.getUnidade());
+           chamadoc.setCodfuncsolic(user);
+           acessoHibernate.salvar(chamadoc);
 	   mensagem.setNumeChamado(chamadoc.getId());
 	   mensagem.setData(hoje);
-	   acessoHibernate.salvar(mensagem);
+ 	   mensagem.setCodfuncautor(user);
+           acessoHibernate.salvar(mensagem);
 	   
-           
            email.setData(hoje);
            email.setAssunto("Novo chamado por");
            email.setDestinatari("eduardo@smcaetano.com.br");
            email.setTexto(mensagem.getTexto());
            acessoHibernate.salvar(email);
            
-           
-	   
-	   return "index";
+           return "index";
 	} catch (HibernateException e) {
 	    System.out.println(e.getMessage());
 	    return "falha";

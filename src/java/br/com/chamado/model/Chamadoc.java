@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,9 +26,9 @@ public class Chamadoc implements Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "unidade", nullable = false)
-    private Unidade unidade;*/
+    private Unidade unidade;
     @Temporal(TemporalType.DATE)
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
@@ -36,8 +38,9 @@ public class Chamadoc implements Serializable {
     private int prioridade;
     @Column(name = "categoria", nullable = false)
     private int categoria;
-    @Column(name = "codfuncsolic", nullable = false)
-    private int codfuncsolic;
+    @ManyToOne
+    @JoinColumn(name = "codfuncsolic", nullable = false)
+    private Usuario codfuncsolic;
     @Column(name = "codfuncatend")
     private Integer codfuncatend;
     @Column(name = "titulo", nullable = false, length = 30)
@@ -61,7 +64,7 @@ public class Chamadoc implements Serializable {
     public void setId(int id) {
 	this.id = id;
     }
-    /*
+    
     public Unidade getUnidade() {
 	return this.unidade;
     }
@@ -69,7 +72,7 @@ public class Chamadoc implements Serializable {
     public void setUnidade(Unidade unidade) {
 	this.unidade = unidade;
     }
-    */
+    
     public Date getData() {
 	return this.data;
     }
@@ -101,17 +104,18 @@ public class Chamadoc implements Serializable {
     public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
+
    
-    public int getCodfuncsolic() {
-	return this.codfuncsolic;
+    public Usuario getCodfuncsolic() {
+	return codfuncsolic;
     }
 
-    public void setCodfuncsolic(int codfuncsolic) {
-	this.codfuncsolic = codfuncsolic;
+    public void setCodfuncsolic(Usuario codfuncsolic) {   
+        this.codfuncsolic = codfuncsolic;
     }
-   
+
     public Integer getCodfuncatend() {
-	return this.codfuncatend;
+        return this.codfuncatend;
     }
 
     public void setCodfuncatend(Integer codfuncatend) {

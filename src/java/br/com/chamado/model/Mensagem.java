@@ -12,7 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,7 +37,9 @@ public class Mensagem implements Serializable {
     private int id;
     @Column(name = "numchamado", unique = true, nullable = false)
     private int numeChamado;
-   // private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "codfuncautor", nullable = false)
+    private Usuario codfuncautor;
     @Temporal(TemporalType.DATE)
     @Column(name = "data", length = 13)
     private Date data;
@@ -72,15 +76,17 @@ public class Mensagem implements Serializable {
     public void setNumeChamado(int numeChamado) {
 	this.numeChamado = numeChamado;
     }
-    /*
-    public Usuario getUsuario() {
-	return this.usuario;
+
+    public Usuario getCodfuncautor() {
+        return codfuncautor;
     }
 
-    public void setUsuario(Usuario usuario) {
-	this.usuario = usuario;
+    public void setCodfuncautor(Usuario codfuncautor) {
+        this.codfuncautor = codfuncautor;
     }
-   */
+    
+    
+     
     public Date getData() {
 	return this.data;
     }
