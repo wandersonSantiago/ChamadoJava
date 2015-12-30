@@ -1,4 +1,4 @@
-package br.com.chamado.control;
+package br.com.chamado.model;
 
 import br.com.chamado.dao.DaoUsuario;
 import br.com.chamado.model.Pagina;
