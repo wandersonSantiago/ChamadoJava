@@ -2,7 +2,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"  
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:define name="central">  
 
         <h:form>
@@ -22,6 +23,7 @@
                         <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                     </h:panelGrid>
                 </div>
+                
                 <p:dataScroller value="#{ctrUnidade.carregarUnidade()}" var="unidade" chunkSize="10" style="background-color: white">
                     <h:panelGrid columns="2" style="width:100%; background-color: white" columnClasses="detail,detail">
                         <h:outputText value="#{ctrUnidade.unidade.mneumonico}" />
@@ -42,6 +44,7 @@
                     </h:panelGrid>
                 </p:dataScroller>
             </div>
+        
 
         </h:form>
 
