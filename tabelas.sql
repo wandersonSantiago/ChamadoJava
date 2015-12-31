@@ -15,10 +15,6 @@ CREATE TABLE chamadoc
    dataprevisao TIMESTAMP,
    datafechamento TIMESTAMP);
 
-
-
-
-
 CREATE TABLE mensagem
 (
    id serial PRIMARY KEY NOT NULL,
@@ -40,13 +36,12 @@ CREATE TABLE usuario(
   REFERENCES unidade(id),
   nome VARCHAR(30) NOT NULL ,
   usuario VARCHAR(30) NOT NULL CONSTRAINT
-  unqusuario UNIQUE,
+  uniqueusuario UNIQUE,
   senha VARCHAR(256) NOT NULL,
   email VARCHAR(50) NOT NULL,
   tipousuario INTEGER NOT NULL CONSTRAINT
-  chk_tipousuario CHECK(tipousuario >= 0 AND tipousuario <=2),
-  grupo INTEGER NOT NULL REFERENCES grupo(id)
-);
+  chk_tipousuario CHECK(tipousuario >= 0 AND tipousuario <=2)
+ );
 
 CREATE TABLE unidade(
    
@@ -61,20 +56,15 @@ CREATE TABLE unidade(
     fonepabx VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE grupo(
-
-  id serial PRIMARY KEY NOT NULL,
-  nomegrupo VARCHAR(30) NOT NULL);
-
 CREATE TABLE pagina(
    
    id serial PRIMARY KEY NOT NULL,
    nomepagina VARCHAR(30) NOT NULL);
 
-CREATE TABLE grupopagina(
+CREATE TABLE permissao(
    
      id serial PRIMARY KEY NOT NULL,
-     codgrupo INTEGER NOT NULL REFERENCES grupo(id),
+     codusuario INTEGER NOT NULL REFERENCES usuario(id),
      codpagina INTEGER NOT NULL REFERENCES pagina(id)); 
      
 CREATE TABLE confemail(
@@ -84,27 +74,26 @@ CREATE TABLE confemail(
   usuarioemail VARCHAR(30) NOT NULL ,
   senhaemail VARCHAR(30) NOT NULL,
   porta INTEGER NOT NULL,
-  ssl  BOOLEAN DEFAULT(false),  
-  tls  BOOLEAN DEFAULT(false),
-  msgfrom VARCHAR(10));
+  ssl  BOOLEAN DEFAULT(false) NOT NULL,  
+  tls  BOOLEAN DEFAULT(false) NOT NULL,
+  msgfrom VARCHAR(10) NOT NULL);
   
 CREATE TABLE setor(
    
    id serial PRIMARY KEY NOT NULL,
    nome VARCHAR(30) NOT NULL,
-   raml VARCHAR(30) NOT NULL);
+   ramal VARCHAR(30) NOT NULL);
    
 CREATE TABLE email(
    
    id serial PRIMARY KEY NOT NULL,
    data TIMESTAMP NOT NULL,
-   tipo VARCHAR(30) NOT NULL,
    enviado BOOLEAN DEFAULT(false) NOT NULL,
-   remetente VARCHAR(30) NOT NULL,
    assunto VARCHAR(30) NOT NULL,
    texto TEXT NOT NULL,
-   destinatario VARCHAR(30) NOT NULL);
-    
+   destinatario VARCHAR(30) NOT NULL,
+   dataenvio  TIMESTAMP);
+   
 CREATE TABLE urgencia(
     id serial PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
