@@ -74,17 +74,6 @@
                                            itemValue="#{usuarioUnidade}" />                                    
                         </p:selectOneMenu>
 
-                      
-                       <h:outputLabel value="Grupo " style="color: black" />
-                       
-                       <p:selectOneMenu id="grupo" value="#{usuario.grupo}" editable="false" effect="fold" required="true" 
-                                        requiredMessage="Campo Grupo Obrigatorio" >
-                           <f:converter converterId="grupoConverter" />
-                           <f:selectItem itemLabel=""   noSelectionOption="true" />
-                           <f:selectItems  value="#{ctrGrupo.carregarGrupo()}"  var="usuarioGrupo"  itemLabel="#{usuarioGrupo.nomegrupo}" 
-                                           itemValue="#{usuarioGrupo}"/>     
-                       </p:selectOneMenu>
-
                     </h:panelGrid>
                     <p:separator />
                     <div>

@@ -48,7 +48,7 @@ public class CtrChamado implements  Serializable{
            acessoHibernate.salvar(mensagem);
 	   
            email.setData(hoje);
-           email.setAssunto("Novo chamado por");
+           email.setAssunto("Novo chamado por:"+ user.getNome());
            email.setDestinatari("eduardo@smcaetano.com.br");
            email.setTexto(mensagem.getTexto());
            acessoHibernate.salvar(email);

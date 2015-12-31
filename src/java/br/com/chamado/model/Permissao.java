@@ -32,10 +32,10 @@ public class Permissao implements  Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
-    @JoinColumn(name = "usuario")
+    @JoinColumn(name = "codusuario")
     private Usuario usuario;
     @ManyToOne
-    @JoinColumn(name = "pagina")
+    @JoinColumn(name = "codpagina")
     private Pagina pagina;
 
     public int getId() {

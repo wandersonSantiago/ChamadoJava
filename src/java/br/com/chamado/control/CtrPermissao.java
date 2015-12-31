@@ -53,7 +53,7 @@ public class CtrPermissao {
     public List carregarPermissao() {
         try {
 
-            return  acessoHibernatePermissao.carregaTudoOrdernado(Permissao.class, "usuario");
+            return  acessoHibernatePermissao.carregaTudoOrdernado(Permissao.class, "id");
         } catch (HibernateException e) {
             return new ArrayList();
         }

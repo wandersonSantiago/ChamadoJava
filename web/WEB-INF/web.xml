@@ -22,7 +22,11 @@
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
         <location>/faces/login.xhtml</location>
     </error-page>
-    <welcome-file-list>
+   <error-page>
+    <error-code>404</error-code>
+    <location>/erro404.html</location>
+   </error-page> 
+  <welcome-file-list>
         <welcome-file>faces/login.xhtml</welcome-file>
     </welcome-file-list>
     <context-param>

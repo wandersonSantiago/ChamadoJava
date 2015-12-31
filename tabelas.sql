@@ -89,7 +89,7 @@ CREATE TABLE email(
    id serial PRIMARY KEY NOT NULL,
    data TIMESTAMP NOT NULL,
    enviado BOOLEAN DEFAULT(false) NOT NULL,
-   assunto VARCHAR(30) NOT NULL,
+   assunto VARCHAR(60) NOT NULL,
    texto TEXT NOT NULL,
    destinatario VARCHAR(30) NOT NULL,
    dataenvio  TIMESTAMP);

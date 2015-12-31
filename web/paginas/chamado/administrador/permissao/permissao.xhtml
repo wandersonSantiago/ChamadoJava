@@ -22,7 +22,7 @@
                         <h:outputText value="Usuarios *:" /> 
                     </div>
                     <div>
-                        <p:selectOneMenu id="grupoPagina" value="#{permissao.usuario}" editable="false" effect="fold" required="true" 
+                        <p:selectOneMenu id="permissaoUsuario" value="#{permissao.usuario}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Pagina Obrigatorio" >
                             <f:converter converterId="usuarioConverter" />
                             <f:selectItem itemLabel=""   noSelectionOption="true" />
@@ -33,10 +33,10 @@
 
                     <p:separator/>
                     <div>
-                        <h:outputText value="Grupo *:" /> 
+                        <h:outputText value="Pagina *:" /> 
                     </div>
                     <div>
-                        <p:selectOneMenu id="grupoGrupo" value="#{permissao.pagina}" editable="false" effect="fold" required="true" 
+                        <p:selectOneMenu id="permissaoPagina" value="#{permissao.pagina}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Pagina Obrigatorio" >
                             <f:converter converterId="paginaConverter" />
                             <f:selectItem itemLabel=""   noSelectionOption="true" />
@@ -47,7 +47,7 @@
                     <p:separator/>
                     <div>
 
-                        <h:commandButton value="Gravar Grupos"  action="#{ctrPermissao.gravarPermissao()}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                        <h:commandButton value="Gravar"  action="#{ctrPermissao.gravarPermissao}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
                             <f:setPropertyActionListener value="#{permissao}" target="#{ctrPermissao.permissao}" />
                         </h:commandButton>			
 

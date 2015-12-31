@@ -37,7 +37,7 @@ public class LoginController {
         usuarioTemp = daoUsuario.buscarUsuario(usuarioLogin.getUsuario());
        
       
-         
+        usuarioLogin.criptografar();
         if (usuarioTemp == null) {
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario", "usuário não existe na base de dados");
         } else if (usuarioLogin.getUsuario().equals(usuarioTemp.getUsuario()) && usuarioLogin.getSenha().equals(usuarioTemp.getSenha())) {

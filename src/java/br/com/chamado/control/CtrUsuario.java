@@ -31,7 +31,7 @@ public class CtrUsuario {
 
     public String gravarUsuario() {
 	try {
-           System.out.println("Gravando OK");
+            usuario.criptografar();
  	    acessoHibernate.salvar(usuario);
 	    return "index";
 	} catch (HibernateException e) {
@@ -41,7 +41,8 @@ public class CtrUsuario {
 
     public String alterarUsuario() {
 	try {
-           acessoHibernate.alterar(usuario);
+            usuario.criptografar();
+            acessoHibernate.alterar(usuario);
 	   return "/paginas/chamado/administrador/usuarios/cadastrarUsuarios";
 	} catch (HibernateException e) {
 	     return "falha";
