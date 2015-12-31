@@ -27,7 +27,7 @@ public class DaoUsuario extends DaoGenerico {
         transaction.commit();
 
         Usuario objUsuario = (Usuario) obj;
-
+        session.close();
         return objUsuario;
     }
 

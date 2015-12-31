@@ -24,7 +24,7 @@ public class DaoEmail extends DaoGenerico{
         Session session = hibernateConfiguracao.openSession();
         Query query = session.createQuery("from Email where enviado = false");
         List lista = query.list();
-        
+        session.close();
         
        return lista;
         

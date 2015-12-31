@@ -62,6 +62,7 @@ public class DaoGenerico {
 	  Criteria criterica = session.createCriteria(classe);
 	  criterica.addOrder(Order.asc(ordem));
 	  List lista = criterica.list();
+          session.close();
 	  return lista;
     }
     public Object carregarUm(int id ,Class<?> classe)
@@ -72,7 +73,8 @@ public class DaoGenerico {
 	criteria.add(Restrictions.eq("id",id));
 	Object obj = criteria.uniqueResult();
 	transaction.commit();
-	return obj;
+	session.close();
+        return obj;
     }
     public boolean veriricar(String campo ,String valor,Class<?> classe)
     {
@@ -82,7 +84,7 @@ public class DaoGenerico {
 	criteria.add(Restrictions.eq(campo,valor));
 	Object obj = criteria.uniqueResult();
 	transaction.commit();
-	
+	session.close();
 	if(obj == null)
 	{
 	   return true;

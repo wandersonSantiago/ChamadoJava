@@ -26,6 +26,7 @@ public class DaoChamadoc extends DaoGenerico{
 	Criteria criteria = session.createCriteria(Chamadoc.class);
 	criteria.add(Restrictions.eq("status",status));
 	List list = criteria.list();
+        session.close();
 	return list;
        }
 }
