@@ -3,6 +3,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoEmailConfig;
 import br.com.chamado.model.EmailConfig;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.hibernate.HibernateException;
@@ -13,7 +14,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrEmailConfig")
 @SessionScoped
-public class CtrEmailConfig {
+public class CtrEmailConfig implements  Serializable {
 
     private final DaoEmailConfig acessoHibernate;
     private EmailConfig confemail;

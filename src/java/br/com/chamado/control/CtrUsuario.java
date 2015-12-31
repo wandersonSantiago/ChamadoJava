@@ -7,6 +7,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoUsuario;
 import br.com.chamado.model.Usuario;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +19,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrUsuario")
 @SessionScoped
-public class CtrUsuario {
+public class CtrUsuario implements  Serializable{
 
     private final DaoUsuario acessoHibernate;
     private Usuario usuario;

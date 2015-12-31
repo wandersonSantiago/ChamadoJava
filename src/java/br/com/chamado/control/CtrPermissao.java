@@ -7,6 +7,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoPermissao;
 import br.com.chamado.model.Permissao;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -19,7 +20,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrPermissao")
 @SessionScoped
-public class CtrPermissao {
+public class CtrPermissao implements  Serializable{
     
     private final DaoPermissao acessoHibernatePermissao;
     private Permissao permissao;

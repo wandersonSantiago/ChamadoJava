@@ -6,9 +6,11 @@
 package br.com.chamado.dao;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -30,4 +32,15 @@ public class DaoEmail extends DaoGenerico{
         
         
     }
+    public String salvaList(ArrayList lista)
+    {
+        Session session = hibernateConfiguracao.openSession();
+	Transaction transaction = session.beginTransaction();
+	session.save(lista);
+	transaction.commit();
+	session.close();
+        return "";
+    }
+    
+    
 }

@@ -7,6 +7,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoPagina;
 import br.com.chamado.model.Pagina;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,7 +21,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "CtrPagina")
 @SessionScoped
-public class CtrPagina {
+public class CtrPagina implements  Serializable{
 
     private final DaoPagina acessoHibernate;
     private Pagina pagina;

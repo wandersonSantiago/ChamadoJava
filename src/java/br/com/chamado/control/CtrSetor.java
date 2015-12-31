@@ -7,6 +7,7 @@ package br.com.chamado.control;
  */
 import br.com.chamado.dao.DaoSetor;
 import br.com.chamado.model.Setor;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrSetor")
 @SessionScoped
-public class CtrSetor {
+public class CtrSetor implements  Serializable{
 
     private final DaoSetor acessoHibernateSetor;
     private Setor setor;

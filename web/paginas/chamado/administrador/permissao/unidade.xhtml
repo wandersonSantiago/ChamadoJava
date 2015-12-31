@@ -19,7 +19,13 @@
                     </div>
 
                     <p:separator/>
-
+                    <p:growl id="msg" showDetail="true" escape="false" />
+ 
+    <h3 style="margin-top: 0">Basic PickList</h3>
+    <p:pickList id="pickList" value="#{pickListView.cities}" var="cities" itemLabel="#{cities}" itemValue="#{cities}" />
+ 
+    <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
+ 
                     <div>
                         <h:outputText id="ldbNome" value="Nome: *" style="color: black" />
                     </div>

@@ -7,6 +7,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoUnidade;
 import br.com.chamado.model.Unidade;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,7 +21,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrUnidade")
 @SessionScoped
-public class CtrUnidade {
+public class CtrUnidade implements  Serializable{
 
     private final DaoUnidade acessoHibernate;
     private Unidade unidade;
