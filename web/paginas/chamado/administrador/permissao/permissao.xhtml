@@ -16,9 +16,13 @@
                             *Campos Obrigatórios
                         </h5>
                     </div>
-                    <div>
-                        
-                    </div>
+                   
+                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{permissao.pagina}"  style="width:190px" >
+                         <f:converter converterId="paginaConverter" />
+                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
+                                            itemValue="#{pagina}"/>     
+                    </p:selectManyMenu>
+                    
                     <p:separator/>
                     <div>
                         <h:outputText value="Usuarios *:" /> 
@@ -37,15 +41,16 @@
                     <div>
                         <h:outputText value="Pagina *:" /> 
                     </div>
+                    <!--
                     <div>
                         <p:selectOneMenu id="permissaoPagina" value="#{permissao.pagina}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Pagina Obrigatorio" >
                             <f:converter converterId="paginaConverter" />
                             <f:selectItem itemLabel=""   noSelectionOption="true" />
-                            <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.nomepagina}" 
+                            <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                             itemValue="#{pagina}"/>     
                         </p:selectOneMenu>
-                    </div>
+                    </div> -->
                     <p:separator/>
                     <div>
 

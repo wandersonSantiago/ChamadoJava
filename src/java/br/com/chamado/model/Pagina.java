@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,9 +25,14 @@ public class Pagina implements Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false, length = 30)
+    private String descricao;
     @Column(name = "nomepagina", nullable = false, length = 30)
     private String nomepagina;
-
+    
+   //@ManyToOne
+    //private Permissao permissao;
+   
     public Pagina() {
     }
 
@@ -46,6 +52,24 @@ public class Pagina implements Serializable {
 	this.nomepagina = nomepagina;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    /*
+    public Permissao getPermissao() {
+        return permissao;
+    }
+
+    public void setPermissao(Permissao permissao) {
+        this.permissao = permissao;
+    }*/
+   
+   
+    
     @Override
     public int hashCode() {
 	int hash = 7;

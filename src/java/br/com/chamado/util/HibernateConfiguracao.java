@@ -9,7 +9,6 @@ import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.Email;
 import br.com.chamado.model.EmailConfig;
 import br.com.chamado.model.Grupo;
-import br.com.chamado.model.GrupoPagina;
 import br.com.chamado.model.Mensagem;
 import br.com.chamado.model.Pagina;
 import br.com.chamado.model.Permissao;
@@ -44,11 +43,16 @@ public class HibernateConfiguracao {
         Configuration configuracao = new Configuration();
         configuracao.addAnnotatedClass(Chamadoc.class);
         configuracao.addAnnotatedClass(Grupo.class);
-        configuracao.addAnnotatedClass(Permissao.class);
-        configuracao.addAnnotatedClass(Mensagem.class);
-        configuracao.addAnnotatedClass(Pagina.class);
-        configuracao.addAnnotatedClass(Unidade.class);
         configuracao.addAnnotatedClass(Usuario.class);
+        configuracao.addAnnotatedClass(Pagina.class);
+        configuracao.addAnnotatedClass(Permissao.class);
+       
+      
+         
+        configuracao.addAnnotatedClass(Mensagem.class);
+        
+        configuracao.addAnnotatedClass(Unidade.class);
+       
         configuracao.addAnnotatedClass(EmailConfig.class);
         configuracao.addAnnotatedClass(Setor.class);
         configuracao.addAnnotatedClass(Email.class);

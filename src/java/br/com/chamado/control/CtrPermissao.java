@@ -6,6 +6,7 @@
 package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoPermissao;
+import br.com.chamado.model.Pagina;
 import br.com.chamado.model.Permissao;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,8 +33,11 @@ public class CtrPermissao implements  Serializable{
     }
     public String gravarPermissao() {
         try {
-            acessoHibernatePermissao.salvar(permissao);
-
+           // acessoHibernatePermissao.salvar(permissao);
+            
+           List<Pagina> lista = permissao.getPagina();
+           
+           
             return "index";
         } catch (HibernateException e) {
 

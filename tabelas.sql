@@ -57,6 +57,7 @@ CREATE TABLE unidade(
 CREATE TABLE pagina(
    
    id serial PRIMARY KEY NOT NULL,
+   descricao  VARCHAR(30) NOT NULL,
    nomepagina VARCHAR(30) NOT NULL);
 
 CREATE TABLE permissao(

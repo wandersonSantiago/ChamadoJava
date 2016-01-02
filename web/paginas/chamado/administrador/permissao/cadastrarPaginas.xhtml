@@ -18,6 +18,13 @@
                 </div>
                 <p:separator/>
                 <h:form>
+                     <div>
+                        <h:outputText value="Descrição *" style="color: black" />
+                    </div>
+                    <div>
+                        <p:inputText  id="descricao"  size="30" required="true" value="#{pagina.descricao}" label="Descrição"  />
+                    </div>
+                    
                     <div>
                         <h:outputText value="Pagina *" style="color: black" />
                     </div>
@@ -45,11 +52,11 @@
                     <p:dataTable value="#{CtrPagina.carregarPagina()}" var="pagina" reflow="true" id="tabela" paginator="true"
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
-                        <p:column  filterBy="#{pagina.nomepagina}">
+                        <p:column  filterBy="#{pagina.descricao}">
                             <f:facet name="header">
                                 Nome:
                             </f:facet>
-                            <h:outputText value="#{pagina.nomepagina}"/>
+                            <h:outputText value="#{pagina.descricao}"/>
                         </p:column>
                         <p:column style="width:50px">
                             <h:commandLink value="Editar" action="#{CtrPagina.paginaAlterarPaginas(pagina)}" immediate="true" />
