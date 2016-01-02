@@ -42,7 +42,7 @@
                         <h:outputLabel value="Titulo:"/>
                     </div>
                     <div>
-                        <p:inputText id="titulo" value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" />
+                        <p:inputText id="titulo"  value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" />
                     </div>
                     <p:separator/>
                     <div>
@@ -52,14 +52,14 @@
                         <p:inputTextarea id="mensagem" style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> 
                     </div>
                     <p:separator/>
-                    <p:fileUpload  value="#{mensagem.arquivo}" mode="advanced" fileLimit="1" dragDropSupport="true"
-                           update="messages" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|zip|jpe?g|png)$/" />
-                    
-                     
+                   
+                  <p:growl id="messagesteste" showDetail="true" />
+ 
+               
             <p:growl id="messages" showDetail="true" />
 
                     <h:panelGrid columns="2" > 
-                        <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
+                        <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
                         </h:commandButton>

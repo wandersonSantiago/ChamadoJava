@@ -37,14 +37,12 @@ public class Usuario implements java.io.Serializable {
     private String senha;
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-    @Column(name = "tipousuario", nullable = false)
-    private int tipousuario;
+    /*@Column(name = "tipousuario", nullable = false)
+    private int tipousuario;*/
     @ManyToOne
     @JoinColumn(name = "setor")
     private Setor setor;
-    @ManyToOne
-    @JoinColumn(name = "grupo")
-    private Grupo grupo;
+   
 
     public Usuario() {
     }
@@ -96,14 +94,14 @@ public class Usuario implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    /*
     public int getTipousuario() {
         return this.tipousuario;
     }
 
     public void setTipousuario(int tipousuario) {
         this.tipousuario = tipousuario;
-    }
+    }*/
 
     public Setor getSetor() {
         return setor;
@@ -111,14 +109,6 @@ public class Usuario implements java.io.Serializable {
 
     public void setSetor(Setor setor) {
         this.setor = setor;
-    }
-
-    public Grupo getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
     }
 
     public void criptografar() {

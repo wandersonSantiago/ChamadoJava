@@ -3,6 +3,7 @@ package br.com.chamado.model;
 import br.com.chamado.dao.DaoUsuario;
 import br.com.chamado.model.Pagina;
 import br.com.chamado.model.Usuario;
+import br.com.chamado.util.Insert;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,7 +28,10 @@ public class LoginController {
     private final DaoUsuario daoUsuario = new DaoUsuario();
 
     public LoginController() {
-    }
+   
+        Insert insert  = new Insert();
+        insert.gerar();
+        }
 
     public String login() {
 

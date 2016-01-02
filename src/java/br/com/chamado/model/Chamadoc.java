@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @ManagedBean(name = "chamadoc")
 @SessionScoped
 @Entity
@@ -57,6 +58,7 @@ public class Chamadoc implements Serializable {
        status = 1;
        
     }
+
     public int getId() {
 	return id;
     }

@@ -39,9 +39,7 @@ CREATE TABLE usuario(
   uniqueusuario UNIQUE,
   senha VARCHAR(256) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  tipousuario INTEGER NOT NULL CONSTRAINT
-  chk_tipousuario CHECK(tipousuario >= 0 AND tipousuario <=2)
- );
+  setor INTEGER NOT NULL);
 
 CREATE TABLE unidade(
    
