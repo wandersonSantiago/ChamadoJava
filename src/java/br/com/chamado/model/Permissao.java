@@ -39,14 +39,9 @@ public class Permissao implements  Serializable{
     @ManyToOne
     @JoinColumn(name = "codusuario")
     private Usuario usuario;
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "codpagina")
-    private Pagina pagina;*/
-
-   // @OneToMany(mappedBy = "permissao", cascade = CascadeType.ALL)
-    @JoinColumn(name = "codpagina")
-    @ElementCollection
-    private List<Pagina> pagina;
+    private Pagina pagina;
     
     public int getId() {
         return id;
@@ -63,7 +58,7 @@ public class Permissao implements  Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-   /*
+   
     public Pagina getPagina() {
         return pagina;
     }
@@ -71,20 +66,8 @@ public class Permissao implements  Serializable{
     public void setPagina(Pagina pagina) {
         this.pagina = pagina;
     }
-    */
+    
    
-    public List<Pagina> getPagina() {
-        
-        if(pagina == null)
-        {
-           pagina = new ArrayList<Pagina>();
-        }
-        return pagina;
-    }
-
-    public void setPagina(List<Pagina> pagina) {
-        this.pagina = pagina;
-    }
     
     @Override
     public int hashCode() {

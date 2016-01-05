@@ -25,7 +25,7 @@ public class CtrPermissao implements  Serializable{
     
     private final DaoPermissao acessoHibernatePermissao;
     private Permissao permissao;
-    
+    private ArrayList<Pagina> paginas = new ArrayList<Pagina>();
     
     public CtrPermissao()
     {
@@ -33,11 +33,9 @@ public class CtrPermissao implements  Serializable{
     }
     public String gravarPermissao() {
         try {
-           // acessoHibernatePermissao.salvar(permissao);
-            
-           List<Pagina> lista = permissao.getPagina();
-           
-           
+            acessoHibernatePermissao.salvar(permissao, paginas);
+            //acessoHibernatePermissao.salvar(permissao);
+            paginas = null;
             return "index";
         } catch (HibernateException e) {
 
@@ -71,5 +69,15 @@ public class CtrPermissao implements  Serializable{
     public void setPermissao(Permissao permissao) {
         this.permissao = permissao;
     }
+
+    public ArrayList<Pagina> getPaginas() {
+        return paginas;
+    }
+
+    public void setPaginas(ArrayList<Pagina> paginas) {
+        this.paginas = paginas;
+    }
+    
+    
   
 }

@@ -17,6 +17,7 @@ import br.com.chamado.util.HibernateConfiguracao;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -62,8 +63,28 @@ public class DaoGenerico {
 	  Criteria criterica = session.createCriteria(classe);
 	  criterica.addOrder(Order.asc(ordem));
 	  List lista = criterica.list();
+          criterica.list();
           session.close();
 	  return lista;
+    }
+    public List carregaTudoOrdernado(Class classe,String ordem,int unidade)
+    {
+      Session session = hibernateConfiguracao.openSession();
+      
+      Query query = null;
+      
+      if(unidade == 1)
+      {
+        query = session.createQuery("from "+classe.getName()+" order by " + ordem);
+      }
+      else
+      {
+       query = session.createQuery("from "+classe.getName() +" where unidade = " +unidade+ " order by " + ordem);
+      }
+      List lista = query.list();
+      session.close();
+      return lista;
+        
     }
     public Object carregarUm(int id ,Class<?> classe)
     {

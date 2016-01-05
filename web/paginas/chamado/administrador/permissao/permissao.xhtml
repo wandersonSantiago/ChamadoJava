@@ -17,7 +17,7 @@
                         </h5>
                     </div>
                    
-                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{permissao.pagina}"  style="width:190px" >
+                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:190px" >
                          <f:converter converterId="paginaConverter" />
                          <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                             itemValue="#{pagina}"/>     
