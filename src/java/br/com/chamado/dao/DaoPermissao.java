@@ -8,8 +8,7 @@ package br.com.chamado.dao;
 import br.com.chamado.model.Pagina;
 import br.com.chamado.model.Permissao;
 import java.util.ArrayList;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 /**
  *
@@ -17,18 +16,17 @@ import org.hibernate.Transaction;
  */
 public class DaoPermissao extends DaoGenerico{
  
+    private DaoGenerico daoGenerico;
+    
     public String salvar(Permissao permissao,ArrayList<Pagina> lista)
     {
+        daoGenerico = new DaoGenerico();
         for(int i = 0 ; i < lista.size(); i++)
         {
-            Session session = hibernateConfiguracao.openSession();
-            Transaction transaction = session.beginTransaction();
-	    permissao.setPagina(lista.get(i));
-            session.save(permissao);
-	    transaction.commit();  
-            session.close(); 
+           permissao.setPagina(lista.get(i));
+           daoGenerico.salvar(permissao);
         }
-        lista = null;
+       
 	
         return "index.xhtml";
     }

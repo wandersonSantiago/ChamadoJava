@@ -25,16 +25,7 @@ public final class Criptografia {
         }
 
    }
-   /*
-    MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-byte messageDigest[] = algorithm.digest(original.getBytes("UTF-8"));
- 
-StringBuilder hexString = new StringBuilder();
-for (byte b : messageDigest) {
-  hexString.append(String.format("%02X", 0xFF & b));
-}
-String senha = hexString.toString();
-    */
+  
     private static char[] hexCodes(byte[] texto)
     {
        char[] hexOutput = new char[texto.length * 2];

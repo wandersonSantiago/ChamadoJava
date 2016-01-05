@@ -7,6 +7,8 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoGrupo;
 import br.com.chamado.model.Grupo;
+import java.util.Collection;
+import java.util.Collections;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -63,6 +65,7 @@ public class CtrGrupo {
 	    return acessoHibernate.carregaTudoOrdernado(Grupo.class, "nomegrupo");
 	} catch (HibernateException e) {
 	    return null;
+        
 	}
     }
         public List getGrupos() {

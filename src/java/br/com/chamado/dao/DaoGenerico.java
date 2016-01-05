@@ -67,13 +67,13 @@ public class DaoGenerico {
           session.close();
 	  return lista;
     }
-    public List carregaTudoOrdernado(Class classe,String ordem,int unidade)
+    public List carregaTudoOrdernado(Class classe,String ordem,int unidade,int setor)
     {
       Session session = hibernateConfiguracao.openSession();
       
-      Query query = null;
+      Query query ;
       
-      if(unidade == 1)
+      if(unidade == 1 && setor == 1)
       {
         query = session.createQuery("from "+classe.getName()+" order by " + ordem);
       }
@@ -97,8 +97,10 @@ public class DaoGenerico {
 	session.close();
         return obj;
     }
+   
     public boolean veriricar(String campo ,String valor,Class<?> classe)
     {
+        
         Session session = hibernateConfiguracao.openSession();
 	Transaction transaction = session.beginTransaction();
 	Criteria criteria = session.createCriteria(classe);
@@ -106,13 +108,6 @@ public class DaoGenerico {
 	Object obj = criteria.uniqueResult();
 	transaction.commit();
 	session.close();
-	if(obj == null)
-	{
-	   return true;
-	}
-	else
-	{
-	    return false;
-	}
+	return obj == null ? true:false;
     }
 }

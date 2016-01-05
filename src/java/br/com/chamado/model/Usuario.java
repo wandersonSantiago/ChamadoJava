@@ -37,8 +37,6 @@ public class Usuario implements java.io.Serializable {
     private String senha;
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-    /*@Column(name = "tipousuario", nullable = false)
-    private int tipousuario;*/
     @ManyToOne
     @JoinColumn(name = "setor")
     private Setor setor;
@@ -94,16 +92,7 @@ public class Usuario implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    /*
-    public int getTipousuario() {
-        return this.tipousuario;
-    }
-
-    public void setTipousuario(int tipousuario) {
-        this.tipousuario = tipousuario;
-    }*/
-
-    public Setor getSetor() {
+     public Setor getSetor() {
         return setor;
     }
 

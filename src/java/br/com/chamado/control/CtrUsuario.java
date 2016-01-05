@@ -9,6 +9,7 @@ import br.com.chamado.dao.DaoUsuario;
 import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -62,11 +63,11 @@ public class CtrUsuario implements  Serializable{
     public List carregarUsuario() {
 	try {
             Usuario user = SessionContext.getInstance().getUsuarioLogado();      
-           //return acessoHibernate.carregaTudoOrdernado(Usuario.class, "nome");
-           return acessoHibernate.carregaTudoOrdernado(Usuario.class,"nome",user.getUnidade().getId());
+            return acessoHibernate.carregaTudoOrdernado(Usuario.class,"nome",user.getUnidade().getId(),user.getSetor().getId());
             
 	} catch (HibernateException e) {
-	    return null;
+	    
+            return Collections.emptyList();
 	}
     }
 
