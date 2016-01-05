@@ -64,14 +64,9 @@
 
                             <p:growl id="messagem" showDetail="true" />
 
-                            <p:commandButton value="Abrir"  update="tabela">
-                                <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
-                            </p:commandButton>
-
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
+                            <p:commandButton value="Abrir"  update="tabela" action="/paginas/chamado/cadastrar/chamadoAbertoCliente.xhtml" />
+                              
+                        
 
                         </p:column>
                     </p:dataTable>

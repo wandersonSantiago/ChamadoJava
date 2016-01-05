@@ -24,20 +24,20 @@
                     </h:panelGrid>
                 </div>
                 
-                <p:dataScroller value="#{ctrUnidade.carregarUnidade()}" var="unidade" chunkSize="10" style="background-color: white">
+                <p:dataScroller value="#{ctrChamado.carregarChamado()}" var="unidade" chunkSize="10" style="background-color: white">
                     <h:panelGrid columns="2" style="width:100%; background-color: white" columnClasses="detail,detail">
-                        <h:outputText value="#{ctrUnidade.unidade.mneumonico}" />
+                        <h:outputText value="#{ctrChamado.chamadoc.data}" />
 
                         <p:outputPanel style="background-color: white">
                             <h:panelGrid columns="2" cellpadding="5" style="background-color: white">
                                 <h:outputText value="Id:" />
-                                <h:outputText value="#{unidade.nome}" style="font-weight: bold"/>
+                                <h:outputText value="#{chamadoc.titulo}" style="font-weight: bold"/>
 
                                 <h:outputText value="Year:" />
-                                <h:outputText value="#{unidade.endereco}" style="font-weight: bold"/>
+                                <h:outputText value="#{chamadoc.categoria}" style="font-weight: bold"/>
 
                                 <h:outputText value="Color:" />
-                                <h:outputText value="#{unidade.cidade}" style="font-weight: bold"/>
+                                <h:outputText value="#{chamadoc.data}" style="font-weight: bold"/>
                             </h:panelGrid>
                             <br/>
                         </p:outputPanel>

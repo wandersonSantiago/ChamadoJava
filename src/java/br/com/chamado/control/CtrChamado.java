@@ -64,7 +64,7 @@ public class CtrChamado implements  Serializable{
            email.setTexto(mensagem.getTexto());
          
            
-           return "index";
+           return "/index";
 	} catch (HibernateException e) {
 	    System.out.println(e.getMessage());
 	    return "falha";
