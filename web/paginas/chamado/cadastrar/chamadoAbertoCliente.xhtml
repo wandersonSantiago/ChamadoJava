@@ -14,8 +14,53 @@
                 </div>
                 <div class="panel-footer" style="background-color: white">
                     <div class="input-group">
-                        <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{unidade.nome}"   /></div>
-                     <h:panelGrid columns="2" > 
+
+                        <p:panelGrid columns="5" >
+                            <h:panelGrid columns="2" >
+                                <div>
+                                    <h:outputLabel value="Numero:"/>
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.id}"/>
+                                </div>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" >
+                                <div>
+                                    <h:outputLabel value="Data:" />
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.data}"/>
+                                </div>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" >
+                                <div>
+                                    <h:outputLabel value="Data Encerramento:"/>  
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.datafechamento}"/>
+                                </div>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" >
+
+                                <div>
+                                    <h:outputLabel value="Status:" /> 
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.status}"/>
+                                </div>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <div>
+                                    <h:outputLabel value="Atendido po:" />
+                                </div>
+
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.codfuncatend}"/>
+                                </div>
+                            </h:panelGrid>
+                        </p:panelGrid>
+                        <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{mensagem.texto}"   /></div>
+                    <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
@@ -23,28 +68,25 @@
                         <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                     </h:panelGrid>
                 </div>
-                
+
                 <p:dataScroller value="#{ctrChamado.carregarChamado()}" var="unidade" chunkSize="10" style="background-color: white">
                     <h:panelGrid columns="2" style="width:100%; background-color: white" columnClasses="detail,detail">
-                        
+
 
                         <p:outputPanel style="background-color: white">
                             <h:panelGrid columns="2" cellpadding="5" style="background-color: white">
-                                <h:outputText value="Id:" />
-                                <h:outputText value="#{chamadoc.titulo}" style="font-weight: bold"/>
-
-                                <h:outputText value="Year:" />
-                                <h:outputText value="#{chamadoc.categoria}" style="font-weight: bold"/>
-
-                                <h:outputText value="Color:" />
-                                <h:outputText value="#{chamadoc.data}" style="font-weight: bold"/>
+                                <h:outputText value="Por:" />
+                                <h:outputText value="#{ctrChamado.chamadoc.codfuncsolic.nome}" style="font-weight: bold"/>
+                                <h:outputText value="Mensagen:" />
+                                <h:outputText value="#{ctrChamado.chamadoc.titulo}" style="font-weight: bold"/>
                             </h:panelGrid>
+                            <p:separator/>
                             <br/>
                         </p:outputPanel>
                     </h:panelGrid>
                 </p:dataScroller>
             </div>
-        
+
 
         </h:form>
 

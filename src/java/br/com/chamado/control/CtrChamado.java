@@ -78,6 +78,15 @@ public class CtrChamado implements Serializable {
 
     }
 
+    public String paginaChamadoAberto(Chamadoc chamado) {
+        try {
+            this.chamadoc = chamado;
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
+
     public List carregarChamado() {
         try {
 

@@ -66,7 +66,7 @@
                                 AÇÔES:
                             </f:facet>
                             <p:growl id="messagem" showDetail="true" />
-                            <p:commandButton value="Abrir"  update="tabela" action="/paginas/chamado/cadastrar/chamadoAbertoCliente.xhtml" />
+                            <p:commandButton value="Abrir"  update="tabela" action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
                         </p:column>
                     </p:dataTable>
                 </div>
