@@ -58,7 +58,14 @@
                                     <h:outputLabel value="#{ctrChamado.chamadoc.codfuncatend}"/>
                                 </div>
                             </h:panelGrid>
+                            
                         </p:panelGrid>
+                         <div>
+                                    <h:outputLabel value="Titulo:" />
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.titulo}"/>
+                                </div>
                         <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{mensagem.texto}"   /></div>
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
@@ -76,7 +83,7 @@
                         <p:outputPanel style="background-color: white">
                             <h:panelGrid columns="2" cellpadding="5" style="background-color: white">
                                 <h:outputText value="Por:" />
-                                <h:outputText value="#{ctrChamado.chamadoc.codfuncsolic.nome}" style="font-weight: bold"/>
+                                <h:outputText value="#{ctrChamado.chamadoc.codfuncsolic.nome}   -Data: #{ctrChamado.chamadoc.data}" style="font-weight: bold"/>
                                 <h:outputText value="Mensagen:" />
                                 <h:outputText value="#{ctrChamado.chamadoc.titulo}" style="font-weight: bold"/>
                             </h:panelGrid>
