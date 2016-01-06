@@ -35,7 +35,11 @@ public class Setor implements Serializable {
     public Setor() throws IllegalArgumentException {
 
     }
-
+    public Setor(String nome,int ramal)
+    {
+      this.nome = nome;
+      this.ramal = ramal;
+    }
     public int getId() {
 	return id;
     }

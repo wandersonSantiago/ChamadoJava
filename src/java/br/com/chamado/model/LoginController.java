@@ -37,22 +37,20 @@ public class LoginController {
 
        
        usuarioTemp = daoUsuario.buscarUsuario(usuarioLogin.getUsuario());
-       
-      
-        usuarioLogin.criptografar();
-        if (usuarioTemp == null) {
-           
-        } else if (usuarioLogin.getUsuario().equals(usuarioTemp.getUsuario()) && usuarioLogin.getSenha().equals(usuarioTemp.getSenha())) {
-
-             SessionContext.getInstance().setAttribute("usuarioLogado", usuarioTemp);
+       usuarioLogin.criptografar();
+        if (usuarioTemp != null) {
+           if (usuarioLogin.getUsuario().equals(usuarioTemp.getUsuario()) && usuarioLogin.getSenha().equals(usuarioTemp.getSenha())) {
+               SessionContext.getInstance().setAttribute("usuarioLogado", usuarioTemp);
             logado = true;
 
             return "index";
-        } else {
+        
+           }
+               
+        } 
 
             return "erroAcesso";
-        }
-        return "erroAcesso";
+       
     }
   
     public Usuario usuariLogado() {

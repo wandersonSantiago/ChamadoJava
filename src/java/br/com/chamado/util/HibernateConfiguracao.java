@@ -46,9 +46,6 @@ public class HibernateConfiguracao {
         configuracao.addAnnotatedClass(Usuario.class);
         configuracao.addAnnotatedClass(Pagina.class);
         configuracao.addAnnotatedClass(Permissao.class);
-       
-      
-         
         configuracao.addAnnotatedClass(Mensagem.class);
         
         configuracao.addAnnotatedClass(Unidade.class);

@@ -1,4 +1,3 @@
-
 package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoChamadoc;
@@ -23,94 +22,85 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrChamado")
 @SessionScoped
-public class CtrChamado implements  Serializable{
-    
-    private final  DaoChamadoc acessoHibernate;
+public class CtrChamado implements Serializable {
+
+    private final DaoChamadoc acessoHibernate;
     private final DaoMensagem acessoHibernateMensagem;
     private Chamadoc chamadoc;
     private final Email email;
     private final DaoEmail acessoHibernateEmail;
     private Mensagem mensagem;
-    public CtrChamado()
-    {
-      acessoHibernate = new DaoChamadoc();
-      acessoHibernateMensagem = new DaoMensagem();
-      email = new Email();
-      acessoHibernateEmail = new DaoEmail();
-    
-    }
-    
-    public String gravarChamado() {
-	
-        try {
-	    Usuario user = SessionContext.getInstance().getUsuarioLogado();
-            Date hoje = new Date();
-	   
-	   chamadoc.setData(hoje);
-	   chamadoc.setUnidade(user.getUnidade());
-           chamadoc.setCodfuncsolic(user);
-           acessoHibernate.salvar(chamadoc);
-	   
-           mensagem.setNumeChamado(chamadoc.getId());
-	   mensagem.setData(hoje);
- 	   mensagem.setCodfuncautor(user);
-           acessoHibernateMensagem.salvar(mensagem);
-           
-           email.setData(hoje);
-           email.setAssunto("Novo chamado por:"+ user.getNome());
-           email.setDestinatari("eduardo@smcaetano.com.br");
-           
-           
-           email.setTexto(mensagem.getTexto());
-         
-           
-           return "/index";
-	} catch (HibernateException e) {
-	    System.out.println(e.getMessage());
-	    return "falha";
-	}
+
+    public CtrChamado() {
+        acessoHibernate = new DaoChamadoc();
+        acessoHibernateMensagem = new DaoMensagem();
+        email = new Email();
+        acessoHibernateEmail = new DaoEmail();
+
     }
 
-    public String  alterarChamado(Chamadoc chamdo)
-    {
-       try
-       {
-	    acessoHibernate.alterar(chamdo);
-	   return "";
-       }catch(HibernateException e)
-       {
-         return "falha";
-       }
-	    
+    public String gravarChamado() {
+
+        try {
+            Usuario user = SessionContext.getInstance().getUsuarioLogado();
+            Date hojeData = new Date();
+
+            chamadoc.setData(hojeData);
+            chamadoc.setUnidade(user.getUnidade());
+            chamadoc.setCodfuncsolic(user);
+            acessoHibernate.salvar(chamadoc);
+
+            mensagem.setNumeChamado(chamadoc.getId());
+            mensagem.setData(hojeData);
+            mensagem.setCodfuncautor(user);
+            acessoHibernateMensagem.salvar(mensagem);
+
+            email.setData(hojeData);
+            email.setAssunto("Novo chamado por:" + user.getNome());
+            email.setDestinatari("eduardo@smcaetano.com.br");
+
+            email.setTexto(mensagem.getTexto());
+
+            return "/index";
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+            return "falha";
+        }
     }
-    public List carregarChamado()
-    {
-      try
-      {
-	  
-	 return acessoHibernate.carregaTudoOrdernado(Chamadoc.class, "id");
-      }catch(HibernateException e)
-      {
-        return null;
-      }
+
+    public String alterarChamado(Chamadoc chamdo) {
+        try {
+            acessoHibernate.alterar(chamdo);
+            return "";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+
+    }
+
+    public List carregarChamado() {
+        try {
+
+            return acessoHibernate.carregaTudoOrdernado(Chamadoc.class, "id");
+        } catch (HibernateException e) {
+            return null;
+        }
     }
 
     public Chamadoc getChamadoc() {
-	return chamadoc;
+        return chamadoc;
     }
 
     public void setChamadoc(Chamadoc chamadoc) {
-	this.chamadoc = chamadoc;
+        this.chamadoc = chamadoc;
     }
 
     public Mensagem getMensagem() {
-	return mensagem;
+        return mensagem;
     }
 
     public void setMensagem(Mensagem mensagem) {
-	this.mensagem = mensagem;
+        this.mensagem = mensagem;
     }
-    
-   
-    
+
 }

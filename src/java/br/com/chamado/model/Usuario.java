@@ -44,7 +44,15 @@ public class Usuario implements java.io.Serializable {
 
     public Usuario() {
     }
-
+    public Usuario(Unidade unidade,String nome,String usuario,String senha,String email,Setor setor)
+    {
+       this.unidade = unidade;
+       this.nome = nome;
+       this.usuario = usuario;
+       this.senha = senha;
+       this.email = email;
+       this.setor = setor;
+    }
     public int getId() {
         return id;
     }
