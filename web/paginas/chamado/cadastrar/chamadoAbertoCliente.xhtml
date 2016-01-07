@@ -69,7 +69,7 @@
                         <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" > 
-                        <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
+                        <h:commandButton value="Enviar" action="#{ctrChamado.alterarChamado(chamadoc)}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
                         </h:commandButton>
@@ -82,15 +82,15 @@
                     <p:separator style="color: black"/>
                 </div>
 
-                <p:dataScroller value="#{ctrChamado.carregarChamado()}" var="unidade" chunkSize="10" style="background-color: white">
+                <p:dataScroller value="#{CtrMensagem.carregarMensagem(chamadoc)}" var="mensagem" chunkSize="10" style="background-color: white">
                     <h:panelGrid columns="1" style="width:100%; background-color: white" columnClasses="detail,detail">
 
 
                         <p:outputPanel style="background-color: white">
                             <h:panelGrid columns="1" cellpadding="5" style="background-color: white">
 
-                                <h:outputText value=" Por: #{ctrChamado.chamadoc.codfuncsolic.nome}   -Data: #{ctrChamado.chamadoc.data}" style=" font-size: 20px; color: blue"/>
-                                <h:outputText value="#{ctrChamado.chamadoc.titulo}" style=" font-size: 20px; color: black"/>
+                                <h:outputText value=" Por: #{mensagem.codfuncautor.nome}   -Data: #{mensagem.data}" style=" font-size: 20px; color: blue"/>
+                                <h:outputText value="#{mensagem.texto}" style=" font-size: 20px; color: black"/>
                             </h:panelGrid>
                             <p:separator style="color: black; background-color: black"/>
                             <br/>
