@@ -6,6 +6,7 @@
 package br.com.chamado.dao;
 
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.Setor;
 import br.com.chamado.model.Usuario;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -45,5 +46,20 @@ public class DaoUsuario extends DaoGenerico {
         session.close();
         return lista;
     }
-
+    public List carregaUsuarioTi(Usuario usuarioSessao)
+    {
+        Query query;
+        Session session = hibernateConfiguracao.openSession();
+        if(usuarioSessao.isTiCentral())
+        {
+         query = session.createQuery("from Usuario where setor =  1");
+        }
+        else
+        {
+         query = session.createQuery("from Usuario where setor =  1 AND unidade = " + usuarioSessao.getUnidade().getId()) ;
+        }
+        List lista = query.list();
+        session.close();
+        return lista;
+    }
 }
