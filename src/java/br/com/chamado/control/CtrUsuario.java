@@ -62,10 +62,9 @@ public class CtrUsuario implements  Serializable{
     }
     public List carregarUsuario() {
 	try {
-            Usuario user = SessionContext.getInstance().getUsuarioLogado();      
-            return acessoHibernate.carregaTudoOrdernado(Usuario.class,"nome",user.getUnidade().getId(),user.getSetor().getId());
-            
-	} catch (HibernateException e) {
+            Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();      
+            return acessoHibernate.carregaUsuarioOrdernado(usuarioSessao);
+         } catch (HibernateException e) {
 	    
             return Collections.emptyList();
 	}

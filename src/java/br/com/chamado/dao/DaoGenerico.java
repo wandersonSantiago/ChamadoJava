@@ -1,10 +1,5 @@
 package br.com.chamado.dao;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
 /**
@@ -12,12 +7,10 @@ package br.com.chamado.dao;
  * @author WandersonSantiago
  */
 
-
 import br.com.chamado.util.HibernateConfiguracao;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -66,25 +59,6 @@ public class DaoGenerico {
           criterica.list();
           session.close();
 	  return lista;
-    }
-    public List carregaTudoOrdernado(Class classe,String ordem,int unidade,int setor)
-    {
-      Session session = hibernateConfiguracao.openSession();
-      
-      Query query ;
-      
-      if(unidade == 1 && setor == 1)
-      {
-        query = session.createQuery("from "+classe.getName()+" order by " + ordem);
-      }
-      else
-      {
-       query = session.createQuery("from "+classe.getName() +" where unidade = " +unidade+ " order by " + ordem);
-      }
-      List lista = query.list();
-      session.close();
-      return lista;
-        
     }
     public Object carregarUm(int id ,Class<?> classe)
     {

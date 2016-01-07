@@ -7,8 +7,10 @@ package br.com.chamado.dao;
 
 
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.Usuario;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -20,7 +22,7 @@ import org.hibernate.criterion.Restrictions;
  */
 public class DaoChamadoc extends DaoGenerico{
     
-      public List carregaStatus(int status)
+     /* public List carregaStatus(int status)
       { 
         Session session = hibernateConfiguracao.openSession();
 	Criteria criteria = session.createCriteria(Chamadoc.class);
@@ -28,5 +30,17 @@ public class DaoChamadoc extends DaoGenerico{
 	List list = criteria.list();
         session.close();
 	return list;
-       }
+       }*/
+       public List carregaChamadoOrdernado(Usuario usuario)
+      {
+        if(usuario.isTiCentral())
+        {
+           return new DaoGenerico().carregaTudoOrdernado(Chamadoc.class,"id");
+        }
+        Session session = hibernateConfiguracao.openSession();
+        Query query = session.createQuery("from Chamadoc where  codfuncsolic = " + usuario.getId());
+        List lista = query.list();
+        session.close();
+        return lista;
+    }
 }

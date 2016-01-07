@@ -10,6 +10,8 @@ import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -89,10 +91,11 @@ public class CtrChamado implements Serializable {
 
     public List carregarChamado() {
         try {
-
-            return acessoHibernate.carregaTudoOrdernado(Chamadoc.class, "id");
+             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
+             return acessoHibernate.carregaChamadoOrdernado(usuarioSessao);
         } catch (HibernateException e) {
-            return null;
+            
+           return Collections.emptyList();
         }
     }
 

@@ -6,7 +6,9 @@
 package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoUnidade;
+import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Unidade;
+import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -52,9 +54,9 @@ public class CtrUnidade implements  Serializable{
 
     }
 
-    public String paginaAlterarUnidade(Unidade uni) {
+    public String paginaAlterarUnidade(Unidade unidade) {
         try {
-            this.unidade = uni;
+            this.unidade = unidade;
             return "/paginas/chamado/administrador/permissao/alterar/alterarUnidade";
         } catch (HibernateException e) {
             return "falha";
@@ -63,8 +65,10 @@ public class CtrUnidade implements  Serializable{
 
     public List carregarUnidade() {
         try {
-
-            return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
+            Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
+            return acessoHibernate.carregaUnidaedOrdernado(usuarioSessao);
+            //return acessoHibernate.carregaTudoOrdernado(Unidade.class, "nome");
+          
         } catch (HibernateException e) {
             return null;
         }

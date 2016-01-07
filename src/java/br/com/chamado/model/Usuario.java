@@ -113,7 +113,10 @@ public class Usuario implements java.io.Serializable {
         this.senha = tempSenha;
 
     }
-
+    public boolean isTiCentral()
+    {
+       return (1 == unidade.getId()  &&  1 == setor.getId());
+    }
     @Override
     public String toString() {
         return "Usuario{" + "nome=" + nome + '}';
