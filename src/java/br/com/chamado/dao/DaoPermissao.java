@@ -18,12 +18,12 @@ public class DaoPermissao extends DaoGenerico{
  
     private DaoGenerico daoGenerico;
     
-    public String salvar(Permissao permissao,ArrayList<Pagina> lista)
+    public String salvarPermissao(Permissao permissao,ArrayList<Pagina> paginas)
     {
         daoGenerico = new DaoGenerico();
-        for(int i = 0 ; i < lista.size(); i++)
+        for(int i = 0 ; i < paginas.size(); i++)
         {
-           permissao.setPagina(lista.get(i));
+           permissao.setPagina(paginas.get(i));
            daoGenerico.salvar(permissao);
         }
        
