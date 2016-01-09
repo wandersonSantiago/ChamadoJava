@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.chamado.dao;
 
-import br.com.chamado.model.Chamadoc;
-import br.com.chamado.model.Setor;
 import br.com.chamado.model.Usuario;
 import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -21,6 +13,8 @@ import org.hibernate.criterion.Restrictions;
  */
 public class DaoUsuario extends DaoGenerico {
 
+    private final DaoGenerico daoGenerico = new DaoGenerico();
+    private String hql;
     public Usuario buscarUsuario(String usuario) {
 
         Session session = hibernateConfiguracao.openSession();
@@ -29,7 +23,6 @@ public class DaoUsuario extends DaoGenerico {
         criteria.add(Restrictions.eq("usuario", usuario));
         Object obj = criteria.uniqueResult();
         transaction.commit();
-
         Usuario objUsuario = (Usuario) obj;
         session.close();
         return objUsuario;
@@ -38,28 +31,21 @@ public class DaoUsuario extends DaoGenerico {
     {
       if(usuarioSessao.isTiCentral())
         {
-           return new DaoGenerico().carregaTudoOrdernado(Usuario.class,"id");
+           return daoGenerico.carregaTudoOrdernado(Usuario.class,"id");
         }
-        Session session = hibernateConfiguracao.openSession();
-        Query query = session.createQuery("from Usuario where unidade = " + usuarioSessao.getUnidade().getId());
-        List lista = query.list();
-        session.close();
-        return lista;
+        hql = "from Usuario where unidade = " + usuarioSessao.getUnidade().getId();
+        return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
     }
     public List carregaUsuarioTi(Usuario usuarioSessao)
     {
-        Query query;
-        Session session = hibernateConfiguracao.openSession();
         if(usuarioSessao.isTiCentral())
         {
-         query = session.createQuery("from Usuario where setor =  1");
+          hql = "from Usuario where setor =  1";
         }
         else
         {
-         query = session.createQuery("from Usuario where setor =  1 AND unidade = " + usuarioSessao.getUnidade().getId()) ;
+         hql = "from Usuario where setor =  1 AND unidade = " + usuarioSessao.getUnidade().getId();
         }
-        List lista = query.list();
-        session.close();
-        return lista;
+       return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
     }
 }
