@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.chamado.util;
 
 import java.security.MessageDigest;
@@ -12,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
  *
  * @author Eduardo de Godoy Ferrari
  */
-public final class Criptografia {
+public final class CriptografarSenha {
     
     private static MessageDigest md;
 
@@ -25,8 +20,7 @@ public final class Criptografia {
         }
 
    }
-  
-    private static char[] hexCodes(byte[] texto)
+   private static char[] hexCodes(byte[] texto)
     {
        char[] hexOutput = new char[texto.length * 2];
        String hexString;

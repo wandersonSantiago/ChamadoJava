@@ -15,12 +15,12 @@ public class DaoUsuario extends DaoGenerico {
 
     private final DaoGenerico daoGenerico = new DaoGenerico();
     private String hql;
-    public Usuario buscarUsuario(String usuario) {
+    public Usuario buscarUsuario(Usuario usuario) {
 
         Session session = hibernateConfiguracao.openSession();
         Transaction transaction = session.beginTransaction();
         Criteria criteria = session.createCriteria(Usuario.class);
-        criteria.add(Restrictions.eq("usuario", usuario));
+        criteria.add(Restrictions.eq("usuario", usuario.getUsuario()));
         Object obj = criteria.uniqueResult();
         transaction.commit();
         Usuario objUsuario = (Usuario) obj;

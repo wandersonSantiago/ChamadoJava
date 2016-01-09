@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.chamado.converte;
 
 import br.com.chamado.dao.DaoPermissao;
-import br.com.chamado.dao.DaoUnidade;
-import br.com.chamado.model.Grupo;
 import br.com.chamado.model.Permissao;
-import br.com.chamado.model.Unidade;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.FacesConverter;
@@ -18,7 +10,7 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Eduardo de Godoy Ferrari
  */
-@FacesConverter(forClass = Grupo.class, value = "permissaoConverter")
+@FacesConverter(forClass = Permissao.class, value = "permissaoConverter")
 public class ConvertePermissao {
      public ConvertePermissao()
      {
