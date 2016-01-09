@@ -34,8 +34,7 @@ public class CtrUsuario implements  Serializable{
 
     public String gravarUsuario() {
 	try {
-            usuario.criptografar();
- 	    acessoHibernate.salvar(usuario);
+            acessoHibernate.salvar(usuario);
 	    return "index";
 	} catch (HibernateException e) {
 	    return "falha";

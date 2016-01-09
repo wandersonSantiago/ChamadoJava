@@ -76,7 +76,7 @@
                     <h1>
 
                     </h1>
-                    <h:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
+                    <h:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}" actionListener="#{usuario.criptografar}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
                         <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
                     </h:commandButton>	
                 </div>
