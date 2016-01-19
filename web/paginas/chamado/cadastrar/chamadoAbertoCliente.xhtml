@@ -15,7 +15,7 @@
                 <div class="panel-footer" style="background-color: white">
                     <div class="input-group">
 
-                        <p:panelGrid columns="5" >
+                        <p:panelGrid columns="7" style="width: 100%" >
                             <h:panelGrid columns="2" >
                                 <div>
                                     <h:outputLabel value="Numero:"/>
@@ -29,7 +29,9 @@
                                     <h:outputLabel value="Data:" />
                                 </div>
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.data}"/>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.data}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                    </h:outputLabel>
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="2" >
@@ -47,8 +49,33 @@
                                 </div>
                                 <div>
                                     <h:outputLabel value="#{ctrChamado.chamadoc.status}"/>
+                                    <f:selectItem itemLabel="Urgente" itemValue="1" />
+                                    <f:selectItem itemLabel="Media" itemValue="2" />
+                                    <f:selectItem itemLabel="Baixa" itemValue="3" />
                                 </div>
                             </h:panelGrid>
+                            <h:panelGrid columns="1">
+                                <p:outputLabel value="Prioridade:"/>
+                                <p:selectOneMenu id="prioridade" value="#{ctrChamado.chamadoc.prioridade}" label="priori"  
+                                                 required="false" requiredMessage="Campo prioridade obrigatorio" >
+                                    <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
+                                    <f:selectItem itemLabel="Urgente" itemValue="1" />
+                                    <f:selectItem itemLabel="Media" itemValue="2" />
+                                    <f:selectItem itemLabel="Baixa" itemValue="3" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1">
+                                <p:outputLabel value="Categoria"/>
+                                <p:selectOneMenu id="categoria" value="#{ctrChamado.chamadoc.categoria}" label="priori"  
+                                                 required="false" requiredMessage="Campo categoria obrigatorio" >
+                                    <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
+                                    <f:selectItem itemLabel="duvida" itemValue="1" />
+                                    <f:selectItem itemLabel="problema" itemValue="2" />
+                                    <f:selectItem itemLabel="solicitação de serviços" itemValue="3" />
+                                    <f:selectItem itemLabel="sugestões" itemValue="4" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+
                             <h:panelGrid columns="2">
                                 <div>
                                     <h:outputLabel value="Atendido po:" />
@@ -73,7 +100,7 @@
                             <f:setPropertyActionListener value="#{mensagem}" target="#{CtrMensagem.mensagem}" />
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{CtrMensagem.chamadoc}" />
                         </h:commandButton>
-                  
+
                     </h:panelGrid>
                     <p:separator/>
                     <div>
@@ -89,7 +116,10 @@
                         <p:outputPanel style="background-color: white">
                             <h:panelGrid columns="1" cellpadding="5" style="background-color: white">
 
-                                <h:outputText value=" Por: #{mensagem.codfuncautor.nome}   -Data: #{mensagem.data}" style=" font-size: 20px; color: blue"/>
+                                <h:outputText value=" Por: #{mensagem.codfuncautor.nome}"   style=" font-size: 20px; color: blue" />
+                               <h:outputLabel value="#{mensagem.data}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                    </h:outputLabel>
                                 <h:outputText value="#{mensagem.texto}" style=" font-size: 20px; color: black"/>
                             </h:panelGrid>
                             <p:separator style="color: black; background-color: black"/>

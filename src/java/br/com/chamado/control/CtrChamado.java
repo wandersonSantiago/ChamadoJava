@@ -30,6 +30,15 @@ public class CtrChamado implements Serializable {
     private final Email email;
     private final DaoEmail acessoHibernateEmail;
     private Mensagem mensagem;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public CtrChamado() {
         acessoHibernate = new DaoChamadoc();
