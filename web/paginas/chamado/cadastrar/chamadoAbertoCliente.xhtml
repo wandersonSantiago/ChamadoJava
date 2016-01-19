@@ -69,11 +69,11 @@
                         <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" > 
-                        <h:commandButton value="Enviar" action="#{ctrChamado.alterarChamado(chamadoc)}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
-                            <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
-                            <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
+                        <h:commandButton value="Enviar Teste" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
+                            <f:setPropertyActionListener value="#{mensagem}" target="#{CtrMensagem.mensagem}" />
+                            <f:setPropertyActionListener value="#{chamadoc}" target="#{CtrMensagem.chamadoc}" />
                         </h:commandButton>
-                        <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                  
                     </h:panelGrid>
                     <p:separator/>
                     <div>
@@ -82,7 +82,7 @@
                     <p:separator style="color: black"/>
                 </div>
 
-                <p:dataScroller value="#{CtrMensagem.carregarMensagem(chamadoc)}" var="mensagem" chunkSize="10" style="background-color: white">
+                <p:dataScroller value="#{CtrMensagem.carregarMensagem(ctrChamado.chamadoc)}" var="mensagem" chunkSize="10" style="background-color: white">
                     <h:panelGrid columns="1" style="width:100%; background-color: white" columnClasses="detail,detail">
 
 

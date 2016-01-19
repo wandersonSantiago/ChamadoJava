@@ -3,7 +3,10 @@ package br.com.chamado.control;
 import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.Mensagem;
+import br.com.chamado.model.SessionContext;
+import br.com.chamado.model.Usuario;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,15 +22,20 @@ public class CtrMensagem implements  Serializable{
 
     private final DaoMensagem acessoHibernate;
     private Mensagem mensagem;
-    private Chamadoc chamado;
+    private Chamadoc chamadoc;
     public CtrMensagem() {
 	acessoHibernate = new DaoMensagem();
     }
 
     public String gravarMensagem() {
 	try {
+            Date hojeData = new Date();
+            mensagem.setData(hojeData);
+            mensagem.setNumeChamado(chamadoc.getId());
+            Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
+            mensagem.setCodfuncautor(usuarioSessao);
             acessoHibernate.salvar(mensagem);
-	    return "";
+	    return "index";
 	} catch (HibernateException e) {
 	    return "falha";
 	}
@@ -59,5 +67,13 @@ public class CtrMensagem implements  Serializable{
     public void setMensagem(Mensagem mensagem) {
 	this.mensagem = mensagem;
     }
-  
+
+    public Chamadoc getChamadoc() {
+        return chamadoc;
+    }
+
+    public void setChamadoc(Chamadoc chamadoc) {
+        this.chamadoc = chamadoc;
+    }
+   
 }
