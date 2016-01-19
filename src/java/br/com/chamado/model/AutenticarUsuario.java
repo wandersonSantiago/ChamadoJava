@@ -1,6 +1,7 @@
 package br.com.chamado.model;
 
 import br.com.chamado.dao.DaoUsuario;
+import br.com.chamado.util.Insert;
 
 /**
  *
@@ -19,6 +20,8 @@ public class AutenticarUsuario {
     }
 
     public void autenticarUsuario() {
+        
+        new Insert().gerar();
         verificarSeUsuarioExiste();
         verificarSeUsuariosSaoIguais();
         adicionarUsuarioNaSessao();
