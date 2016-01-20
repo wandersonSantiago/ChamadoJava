@@ -17,7 +17,15 @@ public class DaoChamadoc extends DaoGenerico{
         {
            return daoGenerico.carregaTudoOrdernado(Chamadoc.class,"id");
         }
+        else if(usuario.isTi())
+        {
+           hql = "from Chamadoc where unidade = " + usuario.getUnidade().getId();
+           return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        }
+        else
+        {
         hql = "from Chamadoc where  codfuncsolic = " + usuario.getId();
         return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        }
     }
 }

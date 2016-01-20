@@ -126,6 +126,10 @@ public class Usuario implements Serializable {
     {
        return (UNIDADE_CENTRAL == unidade.getId()  &&  SETOR_TI == setor.getId());
     }
+    public boolean isTi()
+    {
+        return SETOR_TI == setor.getId();
+    }
     @Override
     public String toString() {
         return "Usuario{" + "nome=" + nome + '}';
