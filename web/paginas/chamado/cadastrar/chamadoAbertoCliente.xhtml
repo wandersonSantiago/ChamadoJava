@@ -97,8 +97,9 @@
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar Teste" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
+                            <f:setPropertyActionListener value="#{ctrChamado.chamadoc}" target="#{CtrMensagem.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{CtrMensagem.mensagem}" />
-                            <f:setPropertyActionListener value="#{chamadoc}" target="#{CtrMensagem.chamadoc}" />
+                            
                         </h:commandButton>
 
                     </h:panelGrid>

@@ -21,7 +21,7 @@ public class AutenticarUsuario {
 
     public void autenticarUsuario() {
         
-        new Insert().gerar();
+         new Insert().gerar();
         verificarSeUsuarioExiste();
         verificarSeUsuariosSaoIguais();
         adicionarUsuarioNaSessao();

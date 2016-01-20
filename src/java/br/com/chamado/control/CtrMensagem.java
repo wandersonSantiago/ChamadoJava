@@ -35,7 +35,8 @@ public class CtrMensagem implements  Serializable{
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
             mensagem.setCodfuncautor(usuarioSessao);
             acessoHibernate.salvar(mensagem);
-	    return "index";
+	   
+            return "index";
 	} catch (HibernateException e) {
 	    return "falha";
 	}
