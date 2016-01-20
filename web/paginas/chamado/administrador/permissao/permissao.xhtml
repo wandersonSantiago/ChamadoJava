@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <p:selectOneMenu id="permissaoUsuario" value="#{permissao.usuario}" editable="false" effect="fold" required="true" 
-                                         requiredMessage="Campo Pagina Obrigatorio" >
+                                         requiredMessage="Campo Usuario Obrigatorio" >
                             <f:converter converterId="usuarioConverter" />
                             <f:selectItem itemLabel=""   noSelectionOption="true" />
                             <f:selectItems  value="#{ctrUsuario.carregarUsuario()}"  var="usuario"  itemLabel="#{usuario.usuario}" 
@@ -41,7 +41,7 @@
                     <div>
                         <h:outputText value="Pagina *:" /> 
                     </div>
-                    <!--
+                   
                     <div>
                         <p:selectOneMenu id="permissaoPagina" value="#{permissao.pagina}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Pagina Obrigatorio" >
@@ -50,7 +50,7 @@
                             <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                             itemValue="#{pagina}"/>     
                         </p:selectOneMenu>
-                    </div> -->
+                    </div> 
                     <p:separator/>
                     <div>
 
@@ -77,18 +77,8 @@
                             <h:outputText value="#{permissao.usuario.usuario}"/>
                         </p:column>
 
-                        <!--
-                        <p:column filterBy="#{permissao.pagina}" headerText="Paginas:" style="max-height: 8px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:converter converterId="paginaConverter" />
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{CtrPagina.carregarPagina()}"  var="paginaPermissao" itemLabel="#{paginaPermissao.nomepagina}"
-                                                   itemValue="#{paginaPermissao}" />
-                                </p:selectOneMenu>
-                            </f:facet>
-                            <h:outputText value="#{permissao.pagina.nomepagina}"/>
-                        </p:column>-->
+                       
+                    
 
                         <f:facet name="header">
                             AÇÔES

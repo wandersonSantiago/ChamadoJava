@@ -115,11 +115,11 @@
 
                         <p:outputPanel style="background-color: white">
                             <h:panelGrid columns="1" cellpadding="5" style="background-color: white">
-
+                                <h:outputLabel value=" data: #{mensagem.data}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                </h:outputLabel>
                                 <h:outputText value=" Por: #{mensagem.codfuncautor.nome}"   style=" font-size: 20px; color: blue" />
-                               <h:outputLabel value="#{mensagem.data}">
-                                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
-                                    </h:outputLabel>
+
                                 <h:outputText value="#{mensagem.texto}" style=" font-size: 20px; color: black"/>
                             </h:panelGrid>
                             <p:separator style="color: black; background-color: black"/>

@@ -33,6 +33,18 @@
                         <p:inputText  size="15"  required="true" value="#{ctrSetor.setor.ramal}" />
 
                     </div>
+                            <div>
+                        <h:outputText value="Unidade*:" /> 
+                    </div>
+                    <div>
+                        <p:selectOneMenu id="unidade" value="#{ctrSetor.setor.unidade}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Setor Obrigatorio" >
+                            <f:converter converterId="unidadeConverter" />
+                            <f:selectItem itemLabel=""  />
+                            <f:selectItems value="#{ctrUnidade.unidades}" var="setorUnidade" itemLabel="#{setorUnidade.mneumonico}"
+                                           itemValue="#{setorUnidade}" />                                    
+                        </p:selectOneMenu>
+                    </div>
                     <div>
                         <p:separator/>
                         <h:commandButton value="Gravar"  action="#{ctrSetor.updateSetor}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />

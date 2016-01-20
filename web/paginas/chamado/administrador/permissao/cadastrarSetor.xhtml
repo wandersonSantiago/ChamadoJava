@@ -34,12 +34,26 @@
 
                     </div>
                     <div>
-                        <p:separator/>
+                        <h:outputText value="Unidade*:" /> 
+                    </div>
+                    <div>
+                        <p:selectOneMenu id="unidade" value="#{setor.unidade}" editable="false" effect="fold" required="true" 
+                                         requiredMessage="Campo Setor Obrigatorio" >
+                            <f:converter converterId="unidadeConverter" />
+                            <f:selectItem itemLabel=""  />
+                            <f:selectItems value="#{ctrUnidade.unidades}" var="setorUnidade" itemLabel="#{setorUnidade.mneumonico}"
+                                           itemValue="#{setorUnidade}" />                                    
+                        </p:selectOneMenu>
+                    </div>
+                    <p:separator/>
+
+                    <div>
+
                         <h:commandButton value="Gravar"  action="#{ctrSetor.gravarSetor}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
                             <f:setPropertyActionListener value="#{setor}" target="#{ctrSetor.setor}" />
                         </h:commandButton>	
                     </div>
-                   
+
                 </h:form>
             </div>
         </div>
@@ -50,8 +64,8 @@
             <div class="panel-body">
                 <h:form>
                     <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
-                                 
-                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+
+                                 rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
                         <p:column  filterBy="#{setor.nome   }">
                             <f:facet name="header">
@@ -66,10 +80,10 @@
                             <h:outputText value="#{setor.ramal}"/>
                         </p:column>
 
-                           <p:column style="width:50px">
-                               <h:commandLink value="Editar" action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" />
+                        <p:column style="width:50px">
+                            <h:commandLink value="Editar" action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" />
                         </p:column>
-                        
+
                     </p:dataTable>
                 </h:form>
             </div>

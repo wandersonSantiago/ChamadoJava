@@ -88,7 +88,7 @@
                 <div class="panel-body">
 
 
-                    <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="usuario" reflow="true" id="tabela" paginator="true"
+                    <p:dataTable value="#{ctrUsuario.carregarUsuario()}" var="usuario" reflow="true" id="tabela" paginator="true" widgetVar="table"
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
                         <p:column filterBy="#{usuario.nome}">
@@ -103,16 +103,6 @@
                             </f:facet>
                             <h:outputText value="#{usuario.usuario}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.setor}" headerText="SETOR:" style="max-height: 8px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrSetor.setores}"  var="setorSetor" itemLabel="#{setorSetor.nome}"
-                                                   itemValue="#{setorSetor}" />
-                                </p:selectOneMenu>
-                            </f:facet>
-                            <h:outputText value="#{usuario.setor}"/>
-                        </p:column>
                         <p:column filterBy="#{usuario.unidade}" headerText="UNIDADE:" style="max-height: 8px" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
@@ -123,6 +113,17 @@
                             </f:facet>
                             <h:outputText value="#{usuario.unidade.mneumonico}"/>
                         </p:column>
+                        <p:column filterBy="#{usuario.setor}" headerText="SETOR:" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrSetor.setores}"  var="setorSetor" itemLabel="#{setorSetor.nome}"
+                                                   itemValue="#{setorSetor}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{usuario.setor}"/>
+                        </p:column>
+                        
                         <p:column style="width:50px">
                             <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
                         </p:column>

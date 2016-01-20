@@ -14,14 +14,20 @@
                    
                     <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30" rowKey="#{setor.id}" selectionMode="single">
+                        <p:column  filterBy="#{setor.unidade.mneumonico}">
+                            <f:facet name="header">
+                                Unidade:
+                            </f:facet>
+                            <h:outputText value="#{setor.unidade.mneumonico}"/>
+                        </p:column>
                         <p:column  filterBy="#{setor.nome}">
                             <f:facet name="header">
-                                Nome:
+                                Setor:
                             </f:facet>
                             <h:outputText value="#{setor.nome}"/>
                         </p:column>
 
-                        <p:column  filterBy="#{setor.ramal}">
+                        <p:column  >
                             <f:facet name="header">
                                 Ramal:
                             </f:facet>
