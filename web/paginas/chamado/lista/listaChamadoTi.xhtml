@@ -28,10 +28,13 @@
                             <h:outputText value="#{chamadoc.codfuncsolic.nome}" />
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.data}">
+                           
                             <f:facet name="header">
                                 abertura:
                             </f:facet>
-                            <h:outputText value="#{chamadoc.data}" />
+                            <h:outputText value="#{chamadoc.data}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                            </h:outputText>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
                             <f:facet name="header">

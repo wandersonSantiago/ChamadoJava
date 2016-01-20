@@ -16,14 +16,8 @@
                             *Campos Obrigatórios
                         </h5>
                     </div>
-                   
-                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:190px" >
-                         <f:converter converterId="paginaConverter" />
-                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
-                                            itemValue="#{pagina}"/>     
-                    </p:selectManyMenu>
-                    
-                    <p:separator/>
+
+
                     <div>
                         <h:outputText value="Usuarios *:" /> 
                     </div>
@@ -36,21 +30,16 @@
                                             itemValue="#{usuario}"/>     
                         </p:selectOneMenu>
                     </div>
-
                     <p:separator/>
-                    <div>
-                        <h:outputText value="Pagina *:" /> 
-                    </div>
-                   
-                    <div>
-                        <p:selectOneMenu id="permissaoPagina" value="#{permissao.pagina}" editable="false" effect="fold" required="true" 
-                                         requiredMessage="Campo Pagina Obrigatorio" >
-                            <f:converter converterId="paginaConverter" />
-                            <f:selectItem itemLabel=""   noSelectionOption="true" />
-                            <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
-                                            itemValue="#{pagina}"/>     
-                        </p:selectOneMenu>
-                    </div> 
+                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:190px" >
+                        <f:converter converterId="paginaConverter" />
+                        <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
+                                        itemValue="#{pagina}"/>     
+                    </p:selectManyMenu>
+
+
+
+
                     <p:separator/>
                     <div>
 
@@ -77,8 +66,8 @@
                             <h:outputText value="#{permissao.usuario.usuario}"/>
                         </p:column>
 
-                       
-                    
+
+
 
                         <f:facet name="header">
                             AÇÔES

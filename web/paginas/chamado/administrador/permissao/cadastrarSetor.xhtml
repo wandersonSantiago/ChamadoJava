@@ -41,7 +41,7 @@
                                          requiredMessage="Campo Setor Obrigatorio" >
                             <f:converter converterId="unidadeConverter" />
                             <f:selectItem itemLabel=""  />
-                            <f:selectItems value="#{ctrUnidade.unidades}" var="setorUnidade" itemLabel="#{setorUnidade.mneumonico}"
+                            <f:selectItems value="#{ctrUnidade.unidades}" var="setorUnidade" itemLabel="#{setorUnidade.nome}"
                                            itemValue="#{setorUnidade}" />                                    
                         </p:selectOneMenu>
                     </div>
