@@ -6,7 +6,7 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:define name="central">  
 
-        <h:form>
+        <h:form rendered="#{liberaAcesso.chamadoAbertoCliente() != false}">
 
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
@@ -57,7 +57,7 @@
                             <h:panelGrid columns="1">
                                 <p:outputLabel value="Prioridade:"/>
                                 <p:selectOneMenu id="prioridade" value="#{ctrChamado.chamadoc.prioridade}" label="priori"  
-                                                 required="false" requiredMessage="Campo prioridade obrigatorio" >
+                                                 editable="false">
                                     <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
                                     <f:selectItem itemLabel="Urgente" itemValue="1" />
                                     <f:selectItem itemLabel="Media" itemValue="2" />
@@ -93,7 +93,7 @@
                         <div>
                             <h:outputLabel value="#{ctrChamado.chamadoc.titulo}" style="font-weight: bold; font-size: 20px" />
                         </div>
-                        <p:inputText  id="nome" style="width: 100%"  size="300" required="true" value="#{mensagem.texto}"   /></div>
+                        <p:inputTextarea  id="nome" style="width: 100%"   required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar Teste" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">

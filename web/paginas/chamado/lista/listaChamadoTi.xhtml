@@ -3,7 +3,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="central">  
+    <ui:define name="central" rendered="#{liberaAcesso.listaChamadoTi() != false}">  
 
         <h:form>
             <div class="panel panel-primary">
