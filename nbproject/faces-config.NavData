@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="paginas/chamado/lista/foneUnidades.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/cadastrarPaginas.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="paginas/chamado/lista/listaChamadoManutencao.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="templates/default/menu.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/unidade.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="paginas/chamado/cadastrar/chamadoAbertoCliente.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="index.html" x="650" y="450" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/cadastrarSetor.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/alterar/alterarSetor.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="erro404.html" x="650" y="750" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/permissao.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="index.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="ex.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/alterar/alterarUsuario.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="templates/default/painelCentral.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="paginas/chamado/config/servicoemail.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="paginas/chamado/lista/listaChamadoTi.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="login.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="templates/default/painelSuperior.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="templates/default/main.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="erroAcesso.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="paginas/chamado/cadastrar/chamadoClienteManutencao.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="paginas/chamado/lista/ramalSetor.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="paginas/chamado/cadastrar/chamadoClienteTi.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/alterar/alterarUnidade.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="paginas/chamado/config/configuracao.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="paginas/chamado/administrador/permissao/alterar/alterarPaginas.xhtml" x="400" y="600" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

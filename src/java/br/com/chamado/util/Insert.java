@@ -22,6 +22,7 @@ public class Insert {
     private Usuario usuario;
 
     public Insert() {
+        
         acessoHibernate = new DaoGenerico();
     }
 
