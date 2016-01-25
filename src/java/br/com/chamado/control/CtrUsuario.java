@@ -5,6 +5,7 @@
  */
 package br.com.chamado.control;
 
+import br.com.chamado.dao.DaoPermissao;
 import br.com.chamado.dao.DaoUsuario;
 import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
@@ -62,10 +63,13 @@ public class CtrUsuario implements  Serializable{
     public List carregarUsuario() {
 	try {
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();      
+            
+            new DaoPermissao().buscarPermissoes(usuarioSessao);
             return acessoHibernate.carregaUsuarioOrdernado(usuarioSessao);
          } catch (HibernateException e) {
 	    
-            return Collections.emptyList();
+             System.out.println(e.getMessage());
+             return Collections.emptyList();
 	}
     }
    public List carregaUsuarioTi()

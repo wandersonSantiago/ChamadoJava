@@ -25,7 +25,15 @@ public class DaoPermissao extends DaoGenerico{
     }
     public List buscarPermissoes(Usuario usuarioSessao)
     {
-        hql = "from Permissao where codusuario = " + usuarioSessao.getId();
-        return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        daoGenerico = new DaoGenerico();
+        hql = "from Permissao where codusuario =" + usuarioSessao.getId();
+        List permissoes = daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        List paginas = new ArrayList<Pagina>();
+        for(int i = 0 ; i < permissoes.size(); i++)
+        {
+           Permissao permissao = (Permissao) permissoes.get(i);
+           paginas.add(permissao.getPagina());
+        }
+        return paginas;
     }
 }
