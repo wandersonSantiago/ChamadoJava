@@ -3,9 +3,9 @@
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="central" rendered="#{liberaAcesso.chamadoClienteTi() != false}">  
+    <ui:define name="central" >  
 
-        <h:form enctype="multipart/form-data">
+        <h:form enctype="multipart/form-data" rendered="#{liberaAcesso.chamadoClienteTi() != false}">
 
 
             <div class="panel panel-primary">

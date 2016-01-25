@@ -3,8 +3,8 @@
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="central" rendered="#{liberaAcesso.cadastrarPaginas() != false}">               
-
+    <ui:define name="central" >               
+  <h:form rendered="#{liberaAcesso.cadastrarPaginas() != false}">
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color:  #1E90FF">
                 <h3 class="panel-title" style="color: white" >Cadastro Paginas</h3>
@@ -17,7 +17,7 @@
                     </h5>
                 </div>
                 <p:separator/>
-                <h:form>
+              
                      <div>
                         <h:outputText value="Descrição *" style="color: black" />
                     </div>
@@ -39,7 +39,7 @@
 
                     </div>
 
-                </h:form>
+                
             </div>
         </div>
         <p:separator/>
@@ -68,5 +68,6 @@
                 </h:form>
             </div>
         </div>
+        </h:form>
     </ui:define>
 </ui:composition>

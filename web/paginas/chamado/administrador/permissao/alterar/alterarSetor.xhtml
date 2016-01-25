@@ -3,16 +3,16 @@
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="central" rendered="#{liberaAcesso.alterarSetor() != false}">               
+    <ui:define name="central" >               
+        <h:form rendered="#{liberaAcesso.alterarSetor() != false}">
 
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
+                </div>
+                <div class="panel-body">
+                    <p:separator/>
 
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color:  #1E90FF">
-                <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
-            </div>
-            <div class="panel-body">
-                <p:separator/>
-                <h:form>
                     <div>
                         <h5>
                             *Campos Obrigatórios
@@ -33,7 +33,7 @@
                         <p:inputText  size="15"  required="true" value="#{ctrSetor.setor.ramal}" />
 
                     </div>
-                            <div>
+                    <div>
                         <h:outputText value="Unidade*:" /> 
                     </div>
                     <div>
@@ -49,12 +49,12 @@
                         <p:separator/>
                         <h:commandButton value="Gravar"  action="#{ctrSetor.updateSetor}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                         <h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/permissao/cadastrarSetor.xhtml"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
-                     	
+
                     </div>
-                   
-                </h:form>
+
+
+                </div>
             </div>
-        </div>
- 
+        </h:form>
     </ui:define>
 </ui:composition>

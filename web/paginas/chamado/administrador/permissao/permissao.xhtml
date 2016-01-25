@@ -3,8 +3,8 @@
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="central" rendered="#{liberaAcesso.permissao() != false}">               
-        <h:form>
+    <ui:define name="central" >               
+        <h:form rendered="#{liberaAcesso.permissao() != false}">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
                     <h3 class="panel-title" style="color: white" >Cadastro Permissões</h3>
@@ -59,11 +59,11 @@
                                  paginator="true" rows="10" style="margin-bottom:20px" 
                                  rowsPerPageTemplate="5,10,15,20,25,30">
 
-                        <p:column filterBy="#{permissao.usuario.usuario}">
+                        <p:column filterBy="#{cargo.usuario.usuario}">
                             <f:facet name="header">
                                 USUARIO:
                             </f:facet>
-                            <h:outputText value="#{permissao.usuario.usuario}"/>
+                            <h:outputText value="#{cargo.usuario.usuario}"/>
                         </p:column>
 
 

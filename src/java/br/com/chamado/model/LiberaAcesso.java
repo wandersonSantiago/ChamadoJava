@@ -5,8 +5,13 @@
  */
 package br.com.chamado.model;
 
+import br.com.chamado.dao.DaoPermissao;
+import br.com.chamado.dao.DaoUsuario;
+import java.util.List;
+import static javassist.CtMethod.ConstParameter.string;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -16,13 +21,20 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 
 public class LiberaAcesso {
-
+private DaoPermissao permissao;
     public LiberaAcesso() {
 
     }
+Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
 
     public Boolean alterarPaginas() {
-        return true;
+    
+        if(){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public Boolean alterarSetor() {
@@ -49,10 +61,10 @@ public class LiberaAcesso {
         return true;
     }
 
-    public Boolean UnidadeXhtml() {
+    public Boolean cadastrarUnidade(){
         return true;
     }
-
+ 
     public Boolean cadastrarUsuarios() {
         return true;
     }
