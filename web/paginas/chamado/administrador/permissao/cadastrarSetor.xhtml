@@ -18,7 +18,7 @@
                             *Campos Obrigatórios
                         </h5>
                     </div>
-
+            
                     <p:separator/>
                     <div>
                         <h:outputText value="Nome: *" style="color: black" />
@@ -62,7 +62,7 @@
                 <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
             </div>
             <div class="panel-body">
-                <h:form>
+           
                     <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
 
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
@@ -85,7 +85,7 @@
                         </p:column>
 
                     </p:dataTable>
-                </h:form>
+              
             </div>
         </div>
        </h:form>

@@ -21,20 +21,13 @@ import org.hibernate.HibernateException;
 @SessionScoped
 
 public class LiberaAcesso {
-private DaoPermissao permissao;
+
     public LiberaAcesso() {
 
     }
-Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
 
     public Boolean alterarPaginas() {
-    
-        if(){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
     }
 
     public Boolean alterarSetor() {
@@ -61,10 +54,10 @@ Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
         return true;
     }
 
-    public Boolean cadastrarUnidade(){
+    public Boolean cadastrarUnidade() {
         return true;
     }
- 
+
     public Boolean cadastrarUsuarios() {
         return true;
     }
