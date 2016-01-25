@@ -30,7 +30,7 @@
                             <f:selectItem itemLabel="nao" itemValue="false" />
                         </p:selectOneMenu> 
 
-                        <h:outputLabel value="Nome usuario: *" style="color: black" />
+                        <h:outputLabel value="Nome usuario: #{ctrUsuario.usuario.nome}*" style="color: black" />
                         <p:inputText  id="userNome"  size="150" required="true"  value="#{ctrUsuario.usuario.nome}" label="Nome Usuario" />
 
                         <h:outputText value="Usuario: *" style="color: black" />

@@ -50,6 +50,14 @@ public class CtrPermissao implements  Serializable{
         }
 
     }
+      public String paginaAlterarUnidade(Permissao permission) {
+        try {
+            this.permissao = permission;
+            return "/paginas/chamado/administrador/permissao/alterar/alterarPermissao";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
     
     public List carregarPermissao() {
         try {

@@ -55,23 +55,22 @@
                     <h3 class="panel-title" style="color: white" >Lista de Permissões</h3>
                 </div>
                 <div class="panel-body">
-                    <p:dataTable value="#{ctrPermissao.carregarPermissao()}" var="cargo"  id="tabela" widgetVar="table"
+                    <p:dataTable value="#{ctrPermissao.carregarPermissao()}" var="permissao"  id="tabela" widgetVar="table"
                                  paginator="true" rows="10" style="margin-bottom:20px" 
                                  rowsPerPageTemplate="5,10,15,20,25,30">
 
-                        <p:column filterBy="#{cargo.usuario.usuario}">
+                        <p:column filterBy="#{permissao.usuario.nome}">
                             <f:facet name="header">
                                 USUARIO:
                             </f:facet>
-                            <h:outputText value="#{cargo.usuario.usuario}"/>
+                            <h:outputText value="#{permissao.usuario.nome}"/>
                         </p:column>
 
 
 
-
-                        <f:facet name="header">
-                            AÇÔES
-                        </f:facet>
+                        <p:column style="width:50px">
+                            <h:commandLink value="Editar" action="#{ctrPermissao.paginaAlterarUnidade(permissao)}" immediate="true" />
+                        </p:column>
 
                         <p:growl id="messagem" showDetail="true" />
 
@@ -85,7 +84,7 @@
                         </p:confirmDialog>
 
 
-                        <p:commandButton value="Alterar" action="#" ajax="false" />
+                        <p:commandButton value="Alterar" action="#" ajax="false"  />
 
                     </p:dataTable>
 

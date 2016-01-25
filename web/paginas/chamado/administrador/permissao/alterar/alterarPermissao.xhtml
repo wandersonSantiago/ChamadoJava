@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central" >               
+        <h:form rendered="#{liberaAcesso.permissao() != false}">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Permissões</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                    </div>
+
+
+                    <div>
+                        <h:outputText value="Usuario *:" /> 
+                    </div>
+                    <div>
+                        <p:outputLabel id="permissaoUsuario" value="#{ctrPermissao.permissao.usuario.usuario}"   />
+                           
+                    </div>
+                              <div>
+                        <h:outputText value="Nome *:" /> 
+                    </div>
+                    <div>
+                        <p:outputLabel  value="#{ctrPermissao.permissao.usuario.nome}"   />
+                           
+                    </div>
+                    
+                             <div>
+                        <h:outputText value="unidade *:" /> 
+                    </div>
+                    <div>
+                        <p:outputLabel  value="#{ctrPermissao.permissao.usuario.unidade.nome}"   />
+                           
+                    </div>
+                    <p:separator/>
+                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:190px" >
+                        <f:converter converterId="paginaConverter" />
+                        <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
+                                        itemValue="#{pagina}"/>     
+                    </p:selectManyMenu>
+
+
+
+
+                    <p:separator/>
+                    <div>
+
+                        <h:commandButton value="Gravar"  action="#{ctrPermissao.gravarPermissao}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{permissao}" target="#{ctrPermissao.permissao}" />
+                        </h:commandButton>			
+
+                    </div>
+                </div> 
+            </div>
+            
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
