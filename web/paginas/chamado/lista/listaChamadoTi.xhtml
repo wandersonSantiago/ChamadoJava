@@ -28,12 +28,12 @@
                             <h:outputText value="#{chamadoc.codfuncsolic.nome}" />
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.data}">
-                           
+
                             <f:facet name="header">
                                 abertura:
                             </f:facet>
                             <h:outputText value="#{chamadoc.data}" >
-                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
                             </h:outputText>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
@@ -52,24 +52,42 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncatend}"/>
                         </p:column>
-                        <p:column headerText="atendido" style="max-height: 8px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems   var="chamadoFuncionario" 
-                                                     />
-                                </p:selectOneMenu>
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncatend}">
+                            <f:facet name="header">
+                                Atendente:
                             </f:facet>
-                            <h:outputText />
+                            <h:outputText value="#{chamadoc.codfuncatend}" />
                         </p:column>
 
-                                  
+
                         <p:column  style="max-height: 3px;width: 100px">
                             <f:facet name="header">
                                 AÇÔES:
                             </f:facet>
                             <p:growl id="messagem" showDetail="true" />
                             <p:commandButton value="Abrir"  update="tabela" action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
+                        </p:column>
+
+
+                        <p:column>
+                            <p:commandButton value="Atender" actionListener="#{ctrChamado.paginaChamadoAberto(chamadoc)}" update="tabela">
+                                <p:confirm header="Confirmação" message="Atender Chamado?" icon="ui-icon-alert"  />
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  >
+                                <div>
+                                    <p:selectOneMenu id="teste"  filter="true" value="#{ctrChamado.chamadoc.codfuncatend}"  style="width:190px" >
+                                        <f:converter converterId="usuarioConverter" />
+                                        <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
+                                                       itemValue="#{User}" />     
+                                    </p:selectOneMenu>
+                                </div>
+                                <div>
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </div>
+                            </p:confirmDialog>
+
                         </p:column>
                     </p:dataTable>
                 </div>
