@@ -6,12 +6,10 @@
 package br.com.chamado.model;
 
 import br.com.chamado.dao.DaoPermissao;
-import br.com.chamado.dao.DaoUsuario;
+import java.util.HashMap;
 import java.util.List;
-import static javassist.CtMethod.ConstParameter.string;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import org.hibernate.HibernateException;
 
 /**
  *
@@ -22,10 +20,21 @@ import org.hibernate.HibernateException;
 
 public class LiberaAcesso {
 
+    private HashMap<String, Pagina> keyPaginas;
+    private DaoPermissao daoPermissao = new DaoPermissao();
     public LiberaAcesso() {
 
+       keyPaginas = new HashMap<String,Pagina>();
+       adicionarPaginaHashMap();
     }
-
+    private void adicionarPaginaHashMap()
+    {
+      List<Pagina> paginas = daoPermissao.buscarPermissoes(SessionContext.getInstance().getUsuarioLogado());
+      for(int i = 0 ; i < paginas.size(); i++)
+      {
+        keyPaginas.put(paginas.get(i).getNomepagina(), paginas.get(i));
+      }
+    }
     public Boolean alterarPaginas() {
         return true;
     }
@@ -43,23 +52,24 @@ public class LiberaAcesso {
     }
 
     public Boolean cadastrarPaginas() {
-        return true;
+      return  keyPaginas.containsKey("cadastrarPaginas.xhtml");
+       
     }
 
     public Boolean cadastrarSetor() {
-        return true;
+         return  keyPaginas.containsKey("");
     }
 
     public Boolean permissao() {
-        return true;
+         return  keyPaginas.containsKey("");
     }
 
     public Boolean cadastrarUnidade() {
-        return true;
+        return  keyPaginas.containsKey("");
     }
 
     public Boolean cadastrarUsuarios() {
-        return true;
+         return  keyPaginas.containsKey("");
     }
 
     public Boolean chamadoAbertoCliente() {
@@ -75,7 +85,7 @@ public class LiberaAcesso {
     }
 
     public Boolean configuracao() {
-        return true;
+         return  keyPaginas.containsKey("");
     }
 
     public Boolean servicoEmail() {

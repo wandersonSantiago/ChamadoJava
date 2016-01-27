@@ -23,7 +23,7 @@ public class DaoPermissao extends DaoGenerico{
         }
        return "index.xhtml";
     }
-    public List buscarPermissoes(Usuario usuarioSessao)
+    public List<Pagina> buscarPermissoes(Usuario usuarioSessao)
     {
         daoGenerico = new DaoGenerico();
         hql = "from Permissao where codusuario =" + usuarioSessao.getId();
