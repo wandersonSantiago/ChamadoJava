@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.chamado.model;
 
 import br.com.chamado.dao.DaoPermissao;
@@ -36,19 +31,19 @@ public class LiberaAcesso {
       }
     }
     public Boolean alterarPaginas() {
-        return true;
+        return  keyPaginas.containsKey("alterarPaginas.xhtml");
     }
 
     public Boolean alterarSetor() {
-        return true;
+        return  keyPaginas.containsKey("alterarSetor.xhtml");
     }
 
     public Boolean alterarUnidade() {
-        return true;
+      return  keyPaginas.containsKey("alterarUnidade.xhtml");
     }
 
     public Boolean alterarUsuario() {
-        return true;
+      return  keyPaginas.containsKey("alterarUsuario.xhtml");
     }
 
     public Boolean cadastrarPaginas() {
@@ -57,54 +52,55 @@ public class LiberaAcesso {
     }
 
     public Boolean cadastrarSetor() {
-         return  keyPaginas.containsKey("");
+         return  keyPaginas.containsKey("cadastrarSetor.xhtml");
+         
     }
 
     public Boolean permissao() {
-         return  keyPaginas.containsKey("");
+         return  keyPaginas.containsKey("permissao.xhtml");
     }
 
     public Boolean cadastrarUnidade() {
-        return  keyPaginas.containsKey("");
+        return  keyPaginas.containsKey("unidade.xhtml");
     }
 
     public Boolean cadastrarUsuarios() {
-         return  keyPaginas.containsKey("");
+         return  keyPaginas.containsKey("cadastrarUsuarios.xhtml");
     }
 
     public Boolean chamadoAbertoCliente() {
-        return true;
+        return  keyPaginas.containsKey("chamadoAbertoCliente.xhtml");
     }
 
     public Boolean chamadoClienteManutenção() {
-        return true;
+       return  keyPaginas.containsKey("chamadoClienteManutencao.xhtml");
     }
 
     public Boolean chamadoClienteTi() {
-        return true;
+        return  keyPaginas.containsKey("chamadoClienteTi.xhtml");
     }
 
     public Boolean configuracao() {
-         return  keyPaginas.containsKey("");
+         return  keyPaginas.containsKey("configuracao.xhtml");
     }
-
+    //Não vai usar 
     public Boolean servicoEmail() {
-        return true;
+       return  keyPaginas.containsKey("servicoemail.xhtml");
     }
 
     public Boolean foneUnidades() {
-        return true;
+        return  keyPaginas.containsKey("foneUnidades.xhtml");
     }
 
     public Boolean listaChamadoManutencao() {
-        return true;
+        return  keyPaginas.containsKey("listaChamadoManutencao.xhtml");
     }
 
     public Boolean listaChamadoTi() {
-        return true;
+        return  keyPaginas.containsKey("listaChamadoTi.xhtml");
     }
 
     public Boolean ramalSetor() {
-        return true;
+        return  keyPaginas.containsKey("ramalSetor.xhtml");
     }
 }
