@@ -6,72 +6,86 @@
     <ui:define name="central" >  
 
         <h:form rendered="#{liberaAcesso.listaChamadoManutencao() != false}">
-            <div class="panel panel-primary">
+             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
 
-
-                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamado" id="tabela" widgetVar="table" 
+                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" widgetVar="table" 
                                   paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
-                    
-                        <p:column  style="max-height: 8px" >
+
+                        <p:column  style="max-height: 3px;width: 130px" filterBy="#{chamadoc.id}" >
                             <f:facet name="header">
                                 Numero:
                             </f:facet>
-                            <h:outputText  />
+                            <h:outputText  value="#{chamadoc.id}"/>
                         </p:column>
-                        <p:column  style="max-height: 8px" >
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic.nome}">
+                            <f:facet name="header">
+                                Usuario:
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.codfuncsolic.nome}" />
+                        </p:column>
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.data}">
+
                             <f:facet name="header">
                                 abertura:
                             </f:facet>
-                            <h:outputText  />
+                            <h:outputText value="#{chamadoc.data}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                            </h:outputText>
                         </p:column>
-                        <p:column  style="max-height: 8px" >
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
                             <f:facet name="header">
                                 titulo:
                             </f:facet>
-                            <h:outputText  />
+                            <h:outputText value="#{chamadoc.titulo}" />
                         </p:column>
-
-                        <p:column headerText="atendido" style="max-height: 8px" >
+                        <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido:" style="max-height: 8px" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems   var="chamadoFuncionario" 
-                                                     />
+                                    <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
+                                                   itemValue="#{User}" />
                                 </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText />
+                            <h:outputText value="#{chamadoc.codfuncatend}"/>
                         </p:column>
-
-                        <p:column headerText="Status" style="max-height: 8px" >
-                            <f:facet name="filter">
-                                <p:selectOneButton onchange="PF('table').filter()">
-                                    <f:converter converterId="javax.faces.Boolean" />
-                                    <f:selectItem itemLabel="A" itemValue="true" itemDescription="Chamados Ativos" />
-                                    <f:selectItem itemLabel="I" itemValue="false" itemDescription="Chamados Inativos" />
-                                    <f:selectItem itemLabel="T" itemValue="" itemDescription="Todos Chamados" />
-                                </p:selectOneButton>
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncatend}">
+                            <f:facet name="header">
+                                Atendente:
                             </f:facet>
-                            <h:outputText value="#{chamado.status ? 'Ativo': 'Inativo'}" />
+                            <h:outputText value="#{chamadoc.codfuncatend}" />
                         </p:column>
 
-                        <p:column >
+
+                        <p:column  style="max-height: 3px;width: 100px">
                             <f:facet name="header">
                                 AÇÔES:
                             </f:facet>
-
                             <p:growl id="messagem" showDetail="true" />
+                            <p:commandButton value="Abrir"   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
+                        </p:column>
 
-                            <p:commandButton value="Abrir"  update="tabela">
-                                <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
+
+                        <p:column >
+                            <p:commandButton value="Atender"  actionListener="#" update="tabela"  >
+                                <p:confirm header="Confirmação" message="Atender Chamado?" icon="ui-icon-alert"  />
                             </p:commandButton>
 
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  >
+                                <div>
+                                    <p:selectOneMenu id="teste"  filter="true"  style="width:190px" >
+                                        <f:converter converterId="usuarioConverter" />
+                                        <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
+                                                       itemValue="#{User}" />     
+                                    </p:selectOneMenu>
+                                </div>
+                                <div>
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </div>
                             </p:confirmDialog>
 
                         </p:column>

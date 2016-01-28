@@ -23,29 +23,29 @@
                     </div>
                     <div>
                         <p:outputLabel id="permissaoUsuario" value="#{ctrPermissao.permissao.usuario.usuario}"   />
-                           
+
                     </div>
-                              <div>
+                    <div>
                         <h:outputText value="Nome *:" /> 
                     </div>
                     <div>
                         <p:outputLabel  value="#{ctrPermissao.permissao.usuario.nome}"   />
-                           
+
                     </div>
-                    
-                             <div>
+
+                    <div>
                         <h:outputText value="unidade *:" /> 
                     </div>
                     <div>
                         <p:outputLabel  value="#{ctrPermissao.permissao.usuario.unidade.nome}"   />
-                           
+
                     </div>
                     <p:separator/>
-                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:190px" >
+                    <p:selectManyCheckbox id="grid2"  value="#{ctrPermissao.paginas}"  style="width:300px" columns="4" layout="grid" >
                         <f:converter converterId="paginaConverter" />
                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                         itemValue="#{pagina}"/>     
-                    </p:selectManyMenu>
+                    </p:selectManyCheckbox>
 
 
 
@@ -60,7 +60,7 @@
                     </div>
                 </div> 
             </div>
-            
+
 
         </h:form>
 
