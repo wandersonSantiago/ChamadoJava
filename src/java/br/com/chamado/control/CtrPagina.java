@@ -51,6 +51,16 @@ public class CtrPagina implements  Serializable{
         }
 
     }
+     public String excluirPagina(Pagina pagina) {
+        try {
+            acessoHibernate.deletar(pagina);
+              
+            return "/paginas/chamado/administrador/permissao/cadastrarPaginas";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+
+    }
 
     public String paginaAlterarPaginas(Pagina pag) {
         try {

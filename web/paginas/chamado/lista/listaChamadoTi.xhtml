@@ -65,18 +65,18 @@
                                 AÇÔES:
                             </f:facet>
                             <p:growl id="messagem" showDetail="true" />
-                            <p:commandButton value="Abrir"  update="tabela" action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
+                            <p:commandButton value="Abrir"   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
                         </p:column>
 
 
-                        <p:column>
-                            <p:commandButton value="Atender"  actionListener="#{ctrChamado.paginaChamadoAberto(chamadoc)}" update="tabela">
+                        <p:column >
+                            <p:commandButton value="Atender"  actionListener="#" update="tabela"  >
                                 <p:confirm header="Confirmação" message="Atender Chamado?" icon="ui-icon-alert"  />
                             </p:commandButton>
 
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  >
                                 <div>
-                                    <p:selectOneMenu id="teste"  filter="true" value="#{ctrChamado.chamadoc.codfuncatend}"  style="width:190px" >
+                                    <p:selectOneMenu id="teste"  filter="true"  style="width:190px" >
                                         <f:converter converterId="usuarioConverter" />
                                         <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
                                                        itemValue="#{User}" />     

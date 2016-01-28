@@ -31,7 +31,7 @@
                         </p:selectOneMenu>
                     </div>
                     <p:separator/>
-                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:190px" >
+                    <p:selectManyMenu id="basic" showCheckbox="true" filter="true" value="#{ctrPermissao.paginas}"  style="width:300px" >
                         <f:converter converterId="paginaConverter" />
                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                         itemValue="#{pagina}"/>     
@@ -70,6 +70,7 @@
 
                         <p:column style="width:50px">
                             <h:commandLink value="Editar" action="#{ctrPermissao.paginaAlterarUnidade(permissao)}" immediate="true" />
+                   
                         </p:column>
 
         

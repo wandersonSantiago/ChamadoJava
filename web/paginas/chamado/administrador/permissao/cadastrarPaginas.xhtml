@@ -4,27 +4,27 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >               
-  <h:form rendered="#{liberaAcesso.cadastrarPaginas() != false}">
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color:  #1E90FF">
-                <h3 class="panel-title" style="color: white" >Cadastro Paginas</h3>
-            </div>
-            <div class="panel-body">
-                <div>
-
-                    <h5 style="color: black" >
-                        *Campos Obrigatórios
-                    </h5>
+        <h:form rendered="#{liberaAcesso.cadastrarPaginas() != false}">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Paginas</h3>
                 </div>
-                <p:separator/>
-              
-                     <div>
+                <div class="panel-body">
+                    <div>
+
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+                    </div>
+                    <p:separator/>
+
+                    <div>
                         <h:outputText value="Descrição *" style="color: black" />
                     </div>
                     <div>
                         <p:inputText  id="descricao"  size="30" required="true" value="#{pagina.descricao}" label="Descrição"  />
                     </div>
-                    
+
                     <div>
                         <h:outputText value="Pagina *" style="color: black" />
                     </div>
@@ -39,16 +39,16 @@
 
                     </div>
 
-                
+
+                </div>
             </div>
-        </div>
-        <p:separator/>
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color:  #1E90FF">
-                <h3 class="panel-title" style="color: white" >Lista Paginas</h3>
-            </div>
-            <div class="panel-body">
-                
+            <p:separator/>
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Lista Paginas</h3>
+                </div>
+                <div class="panel-body">
+
                     <p:dataTable value="#{CtrPagina.carregarPagina()}" var="pagina" reflow="true" id="tabela" paginator="true"
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
@@ -58,16 +58,25 @@
                             </f:facet>
                             <h:outputText value="#{pagina.descricao}"/>
                         </p:column>
-                        <p:column style="width:50px">
-                            <h:commandLink value="Editar" action="#{CtrPagina.paginaAlterarPaginas(pagina)}" immediate="true" />
-                             
-                         
+                        <p:column style="width:200px">
+                            <p:commandButton value="Editar" action="#{CtrPagina.paginaAlterarPaginas(pagina)}" immediate="true" />
+
+                            <p:growl id="messagem" showDetail="true" />
+
+                            <p:commandButton value="Excluir" actionListener="#{CtrPagina.excluirPagina(pagina)}" update="tabela" immediate="true">
+                                <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
                         </p:column>
 
                     </p:dataTable>
-                
+
+                </div>
             </div>
-        </div>
         </h:form>
     </ui:define>
 </ui:composition>
