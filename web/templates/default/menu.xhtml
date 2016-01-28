@@ -18,7 +18,8 @@
             <li><h:commandLink value="Chamado Manutenção" rendered="#{liberaAcesso.listaChamadoManutencao() != false}" action="/paginas/chamado/lista/listaChamadoManutencao.xhtml"> </h:commandLink></li>
         </ul>        
         <ul class="nav nav-sidebar">
-            <li class="active"><h:commandLink value="Administrador" ></h:commandLink></li>
+            <li class="active"><h:commandLink rendered="#{liberaAcesso.cadastrarUnidade() != false || liberaAcesso.cadastrarPaginas() != false || liberaAcesso.permissao() != false
+|| liberaAcesso.cadastrarSetor() != false || liberaAcesso.cadastrarUsuarios() != false || liberaAcesso.servicoEmail() != false }" value="Administrador" ></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Unidade" rendered="#{liberaAcesso.cadastrarUnidade() != false}" action="/paginas/chamado/administrador/permissao/unidade.xhtml"></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Paginas" rendered="#{liberaAcesso.cadastrarPaginas() != false}" action="/paginas/chamado/administrador/permissao/cadastrarPaginas.xhtml"></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Setor" rendered="#{liberaAcesso.cadastrarSetor() != false}" action="/paginas/chamado/administrador/permissao/cadastrarSetor.xhtml"></h:commandLink></li>

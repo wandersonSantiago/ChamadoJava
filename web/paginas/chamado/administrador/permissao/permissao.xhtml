@@ -32,16 +32,12 @@
                         </p:selectOneMenu>
                     </div>
                     <p:separator/>
-                    <p:selectManyCheckbox id="grid2"  value="#{ctrPermissao.paginas}"  style="width:300px" columns="4" layout="grid" >
+                    <p:selectManyCheckbox id="grid2"  value="#{ctrPermissao.paginas}"  style="width:100%; min-width: 600px; min-height: 50px" columns="2"  layout="grid" >
                         <f:converter converterId="paginaConverter" />
                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                         itemValue="#{pagina}"/>     
                     </p:selectManyCheckbox>
-
-
-
-
-                    <p:separator/>
+                 <p:separator/>
                     <div>
 
                         <h:commandButton value="Gravar"  action="#{ctrPermissao.gravarPermissao}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
