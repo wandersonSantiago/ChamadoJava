@@ -42,8 +42,9 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "codfuncsolic", nullable = false)
     private Usuario codfuncsolic;
-    @Column(name = "codfuncatend")
-    private Integer codfuncatend;
+    @ManyToOne
+    @JoinColumn(name = "codfuncsolic", nullable = false)
+    private Usuario codfuncatend;
     @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
     @Temporal(TemporalType.DATE)
