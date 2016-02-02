@@ -16,14 +16,14 @@
                         </h5>
                     </div>
                     <div>
-                        <h:selectOneMenu id="teste" value="#{ctrChamado.chamadoc.codfuncatend}"   >
+                        <h:selectOneMenu id="atendente" value="#{ctrChamado.chamadoc.codfuncatend}"    > 
                             <f:converter converterId="usuarioConverter" />
                             <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
                                            itemValue="#{User}" />     
                         </h:selectOneMenu>
                     </div>
                     <div>
-                        <h:commandButton value="Sim" action="#{ctrChamado.alterarChamado}"  />
+                        <p:commandButton value="Sim" action="#{ctrChamado.alterarChamado}"  ajax="false" />
                     </div>
                 </div>
             </div> 
