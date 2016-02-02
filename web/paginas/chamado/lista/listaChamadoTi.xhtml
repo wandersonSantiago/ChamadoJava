@@ -29,11 +29,11 @@
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.data}">
 
-                            <f:facet name="header">
-                                abertura:
+                            <f:facet name="filter">
+                             data
                             </f:facet>
                             <h:outputText value="#{chamadoc.data}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+
                             </h:outputText>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
@@ -42,17 +42,17 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.titulo}" />
                         </p:column>
-                        <p:column filterBy="#{chamadoc.codfuncatend.usuario}" headerText="Atendido:" style="max-height: 8px" >
+                        <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido:" style="max-height: 8px" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
+                                    <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.usuario}"
                                                    itemValue="#{User}" />
                                 </p:selectOneMenu>
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncatend.usuario}"/>
                         </p:column>
-                       
+
 
 
                         <p:column  style="max-height: 3px;width: 100px">
@@ -64,8 +64,8 @@
                         </p:column>
 
 
-                 
-                         <p:column  style="max-height: 3px;width: 100px">
+
+                        <p:column  style="max-height: 3px;width: 100px">
                             <f:facet name="header">
                                 Atender:
                             </f:facet>

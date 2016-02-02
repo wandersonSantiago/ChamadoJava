@@ -15,7 +15,13 @@
                 <div class="panel-footer" style="background-color: white">
                     <div class="input-group">
 
-                        <p:panelGrid columns="7" style="width: 100%" >
+                        <h:panelGrid columns="2">
+                        <h:outputLabel value="Titulo:" style=" font-size: 15px" />
+                       
+                            <h:outputLabel value="#{ctrChamado.chamadoc.titulo}" style="font-weight: bold; font-size: 14px; color: #245269" />
+                      
+                        </h:panelGrid>
+                                                             <p:panelGrid columns="7" style="width: 100%" >
                             <h:panelGrid columns="2" >
                                 <div>
                                     <h:outputLabel value="Numero:"/>
@@ -42,17 +48,16 @@
                                     <h:outputLabel value="#{ctrChamado.chamadoc.datafechamento}"/>
                                 </div>
                             </h:panelGrid>
-                            <h:panelGrid columns="2" >
 
-                                <div>
-                                    <h:outputLabel value="Status:" /> 
-                                </div>
-                                <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.status}"/>
-                                    <f:selectItem itemLabel="Urgente" itemValue="1" />
-                                    <f:selectItem itemLabel="Media" itemValue="2" />
-                                    <f:selectItem itemLabel="Baixa" itemValue="3" />
-                                </div>
+                            <h:panelGrid columns="1">
+                                <p:outputLabel value="Status:"/>
+                                <p:selectOneMenu id="status" value="#{ctrChamado.chamadoc.status}" label="priori"  
+                                                 editable="false">
+                                    <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
+                                    <f:selectItem itemLabel="Aberto" itemValue="1" />
+                                    <f:selectItem itemLabel="Fechado" itemValue="2" />
+
+                                </p:selectOneMenu>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <p:outputLabel value="Prioridade:"/>
@@ -65,7 +70,7 @@
                                 </p:selectOneMenu>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
-                                <p:outputLabel value="Categoria"/>
+                                <p:outputLabel value="Categoria:"/>
                                 <p:selectOneMenu id="categoria" value="#{ctrChamado.chamadoc.categoria}" label="priori"  
                                                  required="false" requiredMessage="Campo categoria obrigatorio" >
                                     <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
@@ -78,7 +83,7 @@
 
                             <h:panelGrid columns="2">
                                 <div>
-                                    <h:outputLabel value="Atendido po:" />
+                                    <h:outputLabel value="Atendido por:" />
                                 </div>
 
                                 <div>
@@ -87,27 +92,22 @@
                             </h:panelGrid>
 
                         </p:panelGrid>
-                        <div>
-                            <h:outputLabel value="Titulo:" style="font-weight: bold; font-size: 20px" />
-                        </div>
-                        <div>
-                            <h:outputLabel value="#{ctrChamado.chamadoc.titulo}" style="font-weight: bold; font-size: 20px" />
-                        </div>
+                       
                         <p:inputTextarea  id="nome" style="width: 100%"   required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar Teste" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{ctrChamado.chamadoc}" target="#{CtrMensagem.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{CtrMensagem.mensagem}" />
-                            
+
                         </h:commandButton>
 
                     </h:panelGrid>
-                    <p:separator/>
+
                     <div>
                         <h:outputLabel value="Mensagens" style="font-weight: bold; font-size: 20px" />
                     </div>
-                    <p:separator style="color: black"/>
+
                 </div>
 
                 <p:dataScroller value="#{CtrMensagem.carregarMensagem(ctrChamado.chamadoc)}" var="mensagem" chunkSize="10" style="background-color: white">
