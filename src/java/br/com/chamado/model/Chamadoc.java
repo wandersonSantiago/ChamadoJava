@@ -43,7 +43,7 @@ public class Chamadoc implements Serializable {
     @JoinColumn(name = "codfuncsolic", nullable = false)
     private Usuario codfuncsolic;
     @ManyToOne
-    @JoinColumn(name = "codfuncsolic", nullable = false)
+    @JoinColumn(name = "codfuncatend")
     private Usuario codfuncatend;
     @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
@@ -117,11 +117,11 @@ public class Chamadoc implements Serializable {
         this.codfuncsolic = codfuncsolic;
     }
 
-    public Integer getCodfuncatend() {
+    public Usuario getCodfuncatend() {
         return this.codfuncatend;
     }
 
-    public void setCodfuncatend(Integer codfuncatend) {
+    public void setCodfuncatend(Usuario codfuncatend) {
 	this.codfuncatend = codfuncatend;
     }
 

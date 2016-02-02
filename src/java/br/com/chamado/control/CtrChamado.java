@@ -77,10 +77,10 @@ public class CtrChamado implements Serializable {
         }
     }
 
-    public String alterarChamado(Chamadoc chamdo) {
+    public String alterarChamado() {
         try {
-            acessoHibernate.alterar(chamdo);
-            return "";
+            acessoHibernate.alterar(chamadoc);
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
             return "falha";
         }
@@ -96,6 +96,14 @@ public class CtrChamado implements Serializable {
         }
     }
 
+      public String paginaChamadoAtende(Chamadoc chamado) {
+        try {
+            this.chamadoc = chamado;
+            return "/paginas/chamado/administrador/permissao/alterar/atendente";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
     public List carregarChamado() {
         try {
              Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
