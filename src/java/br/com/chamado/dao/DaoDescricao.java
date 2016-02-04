@@ -12,7 +12,7 @@ public class DaoDescricao extends DaoGenerico {
     
     private String hql;
 
-    public List carregaDescricao(int tipo) {
+    public List carregarDescricao(int tipo) {
 
         hql = "from Descricao where tipo = " + tipo;
         return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);

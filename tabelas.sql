@@ -112,7 +112,7 @@ CREATE TABLE justificativa(
       habilitado BOOLEAN NOT NULL DEFAULT(false));
  
       
- CREATE TABLE descricao(
-id serial PRIMARY KEY NOT NULL,
-descricao VARCHAR(30) NOT NULL,
-tipo INTEGER NOT NULL);
+CREATE TABLE descricao(
+ id serial PRIMARY KEY NOT NULL,
+ descricao VARCHAR(30) NOT NULL,
+ tipo INTEGER NOT NULL);
