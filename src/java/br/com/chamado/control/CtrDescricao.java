@@ -82,10 +82,10 @@ public class CtrDescricao implements  Serializable{
         }
     }
 
-    public List carregarDescricao() {
+    public List carregarDescricao(int tipo) {
         try {
         
-            return acessoHibernateDescricao.carregaDescricao(1);
+            return  acessoHibernateDescricao.carregaDescricao(tipo);
         } catch (HibernateException e) {
             return new ArrayList();
         }

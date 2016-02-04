@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class DaoDescricao extends DaoGenerico {
 
-    private DaoGenerico daoGenerico = new DaoDescricao();
+    private DaoGenerico daoGenerico ;
     
     private String hql;
 

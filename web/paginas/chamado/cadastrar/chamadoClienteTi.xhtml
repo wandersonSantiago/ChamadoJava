@@ -20,7 +20,7 @@
                                                  requiredMessage="Campo prioridade Obrigatorio" >
                                   <f:converter converterId="descricaoConverter" />
                             <f:selectItem itemLabel=""  />
-                            <f:selectItems value="#{ctrDescricao.descricaos}" var="descri" itemLabel="#{descri.descricao}"
+                            <f:selectItems value="#{ctrDescricao.carregarDescricao(1)}" var="descri" itemLabel="#{descri.tipo}"
                                            itemValue="#{descri}" />     
                                 </p:selectOneMenu>
                             </h:panelGrid>
