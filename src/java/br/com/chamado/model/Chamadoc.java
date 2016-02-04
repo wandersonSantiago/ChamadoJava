@@ -44,8 +44,9 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "codfuncsolic", nullable = false)
     private Usuario codfuncsolic;
-    @Column(name = "codfuncatend")
-    private Integer codfuncatend;
+    @ManyToOne
+    @JoinColumn(name = "codfuncatend")
+    private Usuario codfuncatend;
     @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
     @Temporal(TemporalType.DATE)
@@ -57,7 +58,7 @@ public class Chamadoc implements Serializable {
     
     public Chamadoc()
     {
-      
+     
     }
 
     public int getId() {
@@ -116,14 +117,14 @@ public class Chamadoc implements Serializable {
         this.codfuncsolic = codfuncsolic;
     }
 
-    public Integer getCodfuncatend() {
-        return this.codfuncatend;
+    public Usuario getCodfuncatend() {
+        return codfuncatend;
     }
 
-    public void setCodfuncatend(Integer codfuncatend) {
-	this.codfuncatend = codfuncatend;
+    public void setCodfuncatend(Usuario codfuncatend) {
+        this.codfuncatend = codfuncatend;
     }
-
+    
     public String getTitulo() {
 	return this.titulo;
     }

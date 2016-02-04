@@ -1,5 +1,6 @@
 package br.com.chamado.dao;
 
+import br.com.chamado.model.Descricao;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  */
 public class DaoDescricao extends DaoGenerico {
 
-    private DaoGenerico daoGenerico ;
+    private DaoGenerico daoGenerico  = new DaoGenerico();
     
     private String hql;
 
@@ -17,5 +18,12 @@ public class DaoDescricao extends DaoGenerico {
         hql = "from Descricao where tipo = " + tipo;
         return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
 
+    }
+    public Descricao carregarStatus(int id)
+    {
+        hql = "from Descricao where id = " + id + " and tipo = 2";
+        Descricao status = (Descricao) daoGenerico.carregaUm(hql);
+        return status;
+        
     }
 }

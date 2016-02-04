@@ -1,9 +1,12 @@
 package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoChamadoc;
+import br.com.chamado.dao.DaoDescricao;
 import br.com.chamado.dao.DaoEmail;
+import br.com.chamado.dao.DaoGenerico;
 import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.Descricao;
 import br.com.chamado.model.Email;
 import br.com.chamado.model.Mensagem;
 import br.com.chamado.model.SessionContext;
@@ -57,19 +60,17 @@ public class CtrChamado implements Serializable {
             chamadoc.setData(hojeData);
             chamadoc.setUnidade(user.getUnidade());
             chamadoc.setCodfuncsolic(user);
+            DaoDescricao daoDescricao = new DaoDescricao();
+            Descricao status  = daoDescricao.carregarStatus(8);
+            
+            chamadoc.setStatus(status);
+            
             acessoHibernate.salvar(chamadoc);
 
             mensagem.setNumeChamado(chamadoc.getId());
             mensagem.setData(hojeData);
             mensagem.setCodfuncautor(user);
             acessoHibernateMensagem.salvar(mensagem);
-
-            email.setData(hojeData);
-            email.setAssunto("Novo chamado por:" + user.getNome());
-            email.setDestinatari("eduardo@smcaetano.com.br");
-
-            email.setTexto(mensagem.getTexto());
-
             return "/index";
         } catch (HibernateException e) {
             System.out.println(e.getMessage());

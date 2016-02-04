@@ -16,22 +16,21 @@
                     <h:panelGrid columns="2">
                         <h:panelGrid columns="1">
                                 <p:outputLabel value="Prioridade:"/>
-                                <p:selectOneMenu id="prioridade" value="#{ctrChamado.chamadoc.prioridade}" editable="false" effect="fold" required="true" 
+                                <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold" required="true" 
                                                  requiredMessage="Campo prioridade Obrigatorio" >
                                   <f:converter converterId="descricaoConverter" />
-                            <f:selectItem itemLabel=""  />
-                            <f:selectItems value="#{ctrDescricao.carregarDescricao(1)}" var="descri" itemLabel="#{descri.tipo}"
-                                           itemValue="#{descri}" />     
+                                  <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
+                                           itemValue="#{descricaoPrioridade}" />     
                                 </p:selectOneMenu>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <p:outputLabel value="Categoria:"/>
-                                <p:selectOneMenu id="categoria" value="#{ctrChamado.chamadoc.categoria}" editable="false" effect="fold" required="true" 
+                                <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
                                                  requiredMessage="Campo categoria Obrigatorio" >
-                                    <f:converter converterId="usuarioConverter" />
+                                    <f:converter converterId="descricaoConverter" />
                                     <f:selectItem itemLabel=""   noSelectionOption="true" />
-                                    <f:selectItems  value="#"  var="usuario"  itemLabel="#" 
-                                                    itemValue="#"/>     
+                                    <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
+                                                    itemValue="#{descricaoCategoria}"/>     
                                 </p:selectOneMenu>
                             </h:panelGrid>
                     </h:panelGrid>
@@ -72,4 +71,3 @@
         </h:form>
     </ui:define>
 </ui:composition>
-

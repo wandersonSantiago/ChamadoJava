@@ -4,8 +4,7 @@ CREATE TABLE chamadoc
    unidade INTEGER NOT NULL 
    REFERENCES unidade(id),
    data TIMESTAMP NOT NULL,
-   status INTEGER NOT NULL DEFAULT(1) CONSTRAINT
-   chk_status CHECK(status >= 0 AND status <= 3),
+   status INTEGER NOT NULL ,
    prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT 
    chk_prioridade CHECK(prioridade >= 0 AND prioridade <=3),
    categoria INTEGER NOT NULL,    

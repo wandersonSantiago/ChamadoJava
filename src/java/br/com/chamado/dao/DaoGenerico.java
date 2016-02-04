@@ -1,7 +1,5 @@
 package br.com.chamado.dao;
 
-
-
 /**
  *
  * @author WandersonSantiago
@@ -68,6 +66,15 @@ public class DaoGenerico {
         List lista = query.list();
         session.close();
         return lista;
+    }
+    
+    public Object carregaUm(String hql)
+    {
+        Session session = hibernateConfiguracao.openSession();
+        Query query = session.createQuery(hql);
+        Object objeto = query.uniqueResult();
+        session.close();
+        return objeto;
     }
     public Object carregarUm(int id ,Class<?> classe)
     {

@@ -50,35 +50,30 @@
                             </h:panelGrid>
 
                             <h:panelGrid columns="1">
+                                <div>
                                 <p:outputLabel value="Status:"/>
-                                <p:selectOneMenu id="status" value="#{ctrChamado.chamadoc.status}" label="priori"  
-                                                 editable="false">
-                                    <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                    <f:selectItem itemLabel="Aberto" itemValue="1" />
-                                    <f:selectItem itemLabel="Fechado" itemValue="2" />
-
-                                </p:selectOneMenu>
+                                </div>
+                                <h:outputLabel value="#{ctrChamado.chamadoc.status.descricao}"/>
+                                <div>
+                                    
+                                    
+                                </div>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
+                                <div>
                                 <p:outputLabel value="Prioridade:"/>
-                                <p:selectOneMenu id="prioridade" value="#{ctrChamado.chamadoc.prioridade}" label="priori"  
-                                                 editable="false">
-                                    <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                    <f:selectItem itemLabel="Urgente" itemValue="1" />
-                                    <f:selectItem itemLabel="Media" itemValue="2" />
-                                    <f:selectItem itemLabel="Baixa" itemValue="3" />
-                                </p:selectOneMenu>
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.prioridade.descricao}"/>   
+                                </div>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
+                                <div>
                                 <p:outputLabel value="Categoria:"/>
-                                <p:selectOneMenu id="categoria" value="#{ctrChamado.chamadoc.categoria}" label="priori"  
-                                                 required="false" requiredMessage="Campo categoria obrigatorio" >
-                                    <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                    <f:selectItem itemLabel="duvida" itemValue="1" />
-                                    <f:selectItem itemLabel="problema" itemValue="2" />
-                                    <f:selectItem itemLabel="solicitação de serviços" itemValue="3" />
-                                    <f:selectItem itemLabel="sugestões" itemValue="4" />
-                                </p:selectOneMenu>
+                                </div>
+                                <div>
+                                    <h:outputLabel value="#{ctrChamado.chamadoc.categoria.descricao}"/>
+                                </div>
                             </h:panelGrid>
 
                             <h:panelGrid columns="2">
