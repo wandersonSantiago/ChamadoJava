@@ -18,10 +18,10 @@
                                 <p:outputLabel value="Prioridade:"/>
                                 <p:selectOneMenu id="prioridade" value="#{ctrChamado.chamadoc.prioridade}" editable="false" effect="fold" required="true" 
                                                  requiredMessage="Campo prioridade Obrigatorio" >
-                                  
-                                    <f:selectItem itemLabel=""   noSelectionOption="true" />
-                                    <f:selectItems  value="#"  var="desc"  itemLabel="#" 
-                                                    itemValue="#"/>     
+                                  <f:converter converterId="descricaoConverter" />
+                            <f:selectItem itemLabel=""  />
+                            <f:selectItems value="#{ctrDescricao.descricaos}" var="descri" itemLabel="#{descri.descricao}"
+                                           itemValue="#{descri}" />     
                                 </p:selectOneMenu>
                             </h:panelGrid>
                             <h:panelGrid columns="1">

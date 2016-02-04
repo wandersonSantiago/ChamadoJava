@@ -9,7 +9,7 @@ import java.util.List;
 public class DaoDescricao extends DaoGenerico {
 
     private DaoGenerico daoGenerico = new DaoDescricao();
-    ;
+    
     private String hql;
 
     public List carregaDescricao(int tipo) {

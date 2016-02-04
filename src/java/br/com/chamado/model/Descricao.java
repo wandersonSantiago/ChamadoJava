@@ -32,8 +32,10 @@ public class Descricao implements Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "descricao", nullable = false)
+    @Column(name = "descricao")
     private String descricao;
+    @Column(name = "tipo")
+    private int tipo;
 
     public int getId() {
         return id;
@@ -58,9 +60,6 @@ public class Descricao implements Serializable {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-
-    @Column(name = "tipo", nullable = false)
-    private int tipo;
 
     @Override
     public int hashCode() {
