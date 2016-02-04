@@ -15,26 +15,25 @@
                 <div class="panel-body">
                     <h:panelGrid columns="2">
                         <h:panelGrid columns="1">
-                            <p:outputLabel value="Prioridade:"/>
-                            <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" label="priori"  
-                                             required="false" requiredMessage="Campo prioridade obrigatorio" >
-                                <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                <f:selectItem itemLabel="Urgente" itemValue="1" />
-                                <f:selectItem itemLabel="Media" itemValue="2" />
-                                <f:selectItem itemLabel="Baixa" itemValue="3" />
-                            </p:selectOneMenu>
-                        </h:panelGrid>
-                        <h:panelGrid columns="1">
-                            <p:outputLabel value="Categoria"/>
-                            <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" label="priori"  
-                                             required="false" requiredMessage="Campo categoria obrigatorio" >
-                                <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
-                                <f:selectItem itemLabel="duvida" itemValue="1" />
-                                <f:selectItem itemLabel="problema" itemValue="2" />
-                                <f:selectItem itemLabel="solicitação de serviços" itemValue="3" />
-                                <f:selectItem itemLabel="sugestões" itemValue="4" />
-                            </p:selectOneMenu>
-                        </h:panelGrid>
+                                <p:outputLabel value="Prioridade:"/>
+                                <p:selectOneMenu id="prioridade" value="#{ctrChamado.chamadoc.prioridade}" editable="false" effect="fold" required="true" 
+                                                 requiredMessage="Campo prioridade Obrigatorio" >
+                                  
+                                    <f:selectItem itemLabel=""   noSelectionOption="true" />
+                                    <f:selectItems  value="#"  var="desc"  itemLabel="#" 
+                                                    itemValue="#"/>     
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1">
+                                <p:outputLabel value="Categoria:"/>
+                                <p:selectOneMenu id="categoria" value="#{ctrChamado.chamadoc.categoria}" editable="false" effect="fold" required="true" 
+                                                 requiredMessage="Campo categoria Obrigatorio" >
+                                    <f:converter converterId="usuarioConverter" />
+                                    <f:selectItem itemLabel=""   noSelectionOption="true" />
+                                    <f:selectItems  value="#"  var="usuario"  itemLabel="#" 
+                                                    itemValue="#"/>     
+                                </p:selectOneMenu>
+                            </h:panelGrid>
                     </h:panelGrid>
                     <p:separator/>
 

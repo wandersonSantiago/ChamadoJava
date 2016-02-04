@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @ManagedBean(name = "chamadoc")
 @SessionScoped
 @Entity
@@ -33,11 +32,14 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
-    @Column(name = "status",nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "descricao")
     private int status;
-    @Column(name = "prioridade", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "descricao")
     private int prioridade;
-    @Column(name = "categoria", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "descricao")
     private int categoria;
     @ManyToOne
     @JoinColumn(name = "codfuncsolic", nullable = false)
@@ -53,51 +55,50 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-   
-    public Chamadoc()
-    {
-       status = 1;
-       
+
+    public Chamadoc() {
+        status = 1;
+
     }
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
-    
+
     public Unidade getUnidade() {
-	return this.unidade;
+        return this.unidade;
     }
 
     public void setUnidade(Unidade unidade) {
-	this.unidade = unidade;
+        this.unidade = unidade;
     }
-    
+
     public Date getData() {
-	return this.data;
+        return this.data;
     }
 
     public void setData(Date data) {
-	this.data = data;
+        this.data = data;
     }
 
     public int getStatus() {
-	return this.status;
+        return this.status;
     }
 
     public void setStatus(int status) {
-	this.status = status;
+        this.status = status;
     }
 
     public int getPrioridade() {
-	return this.prioridade;
+        return this.prioridade;
     }
 
     public void setPrioridade(int prioridade) {
-	this.prioridade = prioridade;
+        this.prioridade = prioridade;
     }
 
     public int getCategoria() {
@@ -108,12 +109,11 @@ public class Chamadoc implements Serializable {
         this.categoria = categoria;
     }
 
-   
     public Usuario getCodfuncsolic() {
-	return codfuncsolic;
+        return codfuncsolic;
     }
 
-    public void setCodfuncsolic(Usuario codfuncsolic) {   
+    public void setCodfuncsolic(Usuario codfuncsolic) {
         this.codfuncsolic = codfuncsolic;
     }
 
@@ -122,55 +122,53 @@ public class Chamadoc implements Serializable {
     }
 
     public void setCodfuncatend(Usuario codfuncatend) {
-	this.codfuncatend = codfuncatend;
+        this.codfuncatend = codfuncatend;
     }
 
     public String getTitulo() {
-	return this.titulo;
+        return this.titulo;
     }
 
     public void setTitulo(String titulo) {
-	this.titulo = titulo;
+        this.titulo = titulo;
     }
 
     public Date getDataprevisao() {
-	return this.dataprevisao;
+        return this.dataprevisao;
     }
 
     public void setDataprevisao(Date dataprevisao) {
-	this.dataprevisao = dataprevisao;
+        this.dataprevisao = dataprevisao;
     }
 
     public Date getDatafechamento() {
-	return this.datafechamento;
+        return this.datafechamento;
     }
 
     public void setDatafechamento(Date datafechamento) {
-	this.datafechamento = datafechamento;
+        this.datafechamento = datafechamento;
     }
 
     @Override
     public int hashCode() {
-	int hash = 3;
-	hash = 59 * hash + this.id;
-	return hash;
+        int hash = 3;
+        hash = 59 * hash + this.id;
+        return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	final Chamadoc other = (Chamadoc) obj;
-	if (this.id != other.id) {
-	    return false;
-	}
-	return true;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Chamadoc other = (Chamadoc) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
-   
-    
-   
+
 }

@@ -5,10 +5,17 @@
  */
 package br.com.chamado.dao;
 
+import br.com.chamado.model.Descricao;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author CRC-TICWAN
  */
 public class DaoDescricao extends DaoGenerico{
-    
+    private DaoGenerico daoGenerico;
+    private String hql;
+     
+
 }

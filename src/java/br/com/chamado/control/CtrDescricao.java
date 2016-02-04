@@ -77,10 +77,19 @@ public class CtrDescricao implements  Serializable{
     public List carregarDescricao() {
         try {
 
-            return acessoHibernateDescricao.carregaTudoOrdernado(Descricao.class, "nome");
+          //  acessoHibernateDescricao.carregaTudoOrdernado(Descricao.class, "tipo").equals(1);
+            return acessoHibernateDescricao.carregaTudoOrdernado(Descricao.class, "tipo");
         } catch (HibernateException e) {
             return new ArrayList();
         }
+    }
+
+    public Descricao getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(Descricao descricao) {
+        this.descricao = descricao;
     }
     
 

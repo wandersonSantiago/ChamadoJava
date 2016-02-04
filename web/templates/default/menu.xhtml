@@ -19,14 +19,15 @@
         </ul>        
         <ul class="nav nav-sidebar">
             <li class="active"><h:commandLink rendered="#{liberaAcesso.cadastrarUnidade() != false || liberaAcesso.cadastrarPaginas() != false || liberaAcesso.permissao() != false
-|| liberaAcesso.cadastrarSetor() != false || liberaAcesso.cadastrarUsuarios() != false || liberaAcesso.servicoEmail() != false }" value="Administrador" ></h:commandLink></li>
+                                                          || liberaAcesso.cadastrarSetor() != false || liberaAcesso.cadastrarUsuarios() != false || liberaAcesso.servicoEmail() != false }" value="Administrador" ></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Unidade" rendered="#{liberaAcesso.cadastrarUnidade() != false}" action="/paginas/chamado/administrador/permissao/unidade.xhtml"></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Paginas" rendered="#{liberaAcesso.cadastrarPaginas() != false}" action="/paginas/chamado/administrador/permissao/cadastrarPaginas.xhtml"></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Setor" rendered="#{liberaAcesso.cadastrarSetor() != false}" action="/paginas/chamado/administrador/permissao/cadastrarSetor.xhtml"></h:commandLink></li>
             <li><h:commandLink value="Cadastrar Usuario" rendered="#{liberaAcesso.cadastrarUsuarios() != false}" action="/paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml"></h:commandLink></li>
             <li><h:commandLink value="Permissões" rendered="#{liberaAcesso.permissao() != false}" action="/paginas/chamado/administrador/permissao/permissao.xhtml"></h:commandLink></li>
-            <li><h:commandLink value="Servidor E-mail" rendered="#{liberaAcesso.servicoEmail() != false}" action="/paginas/chamado/config/configuracao.xhtml"></h:commandLink></li>
-            
+            <li><h:commandLink value="Servidor E-mail" rendered="#{liberaAcesso.servicoEmail() != false}" action="/paginas/chamado/config/servicoemail.xhtml"></h:commandLink></li>
+            <li><h:commandLink value="Configuração" rendered="#{liberaAcesso.configuracao() != false}" action="/paginas/chamado/config/configuracao.xhtml"></h:commandLink></li>
+            <li><h:commandLink value="Descrição" rendered="#{liberaAcesso.configuracao() != false}" action="/paginas/chamado/config/confDescricao.xhtml"></h:commandLink></li>
         </ul>      
     </h:form>
 </ui:composition>

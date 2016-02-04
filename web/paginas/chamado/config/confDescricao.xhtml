@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central" >  
+
+        <h:form rendered="#{liberaAcesso.configuracao() != false}">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white; font-size: 16px" >Servidor  de email</h3>
+                </div>
+                <div class="panel-body">
+                    <h:panelGrid columns="1" >
+                        <p:outputLabel value="Tipo:"/>
+                        <p:selectOneMenu id="status" value="#{descricao.tipo}" label="priori"  
+                                         editable="false">
+                            <f:selectItem itemLabel="-Selecione-" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Status" itemValue="1" />
+                            <f:selectItem itemLabel="Prioridade" itemValue="2" />
+                            <f:selectItem itemLabel="Categoria" itemValue="3" />
+                        </p:selectOneMenu>
+                        <h:outputLabel value="Descrição:" style="color: black; font-size: 15px" />
+                        <p:inputText  id="descricao"   size="30" required="true" value="#{descricao.descricao}"   />
+                        <h:commandButton value="Gravar"  action="#{ctrDescricao.gravarDescrcao()}"  class="btn-default" 
+                                         style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{descricao}" target="#{ctrDescricao.descricao}" />
+                        </h:commandButton>
+                    </h:panelGrid>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
