@@ -1,6 +1,5 @@
 package br.com.chamado.model;
 
-// Generated 04/12/2015 13:53:59 by Hibernate Tools 4.3.1
 import java.io.Serializable;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 @ManagedBean(name = "chamadoc")
 @SessionScoped
@@ -33,20 +33,19 @@ public class Chamadoc implements Serializable {
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
     @ManyToOne
-    @JoinColumn(name = "descricao")
-    private int status;
+    @JoinColumn(name = "status",nullable = false)
+    private Descricao status;
     @ManyToOne
-    @JoinColumn(name = "descricao")
-    private int prioridade;
+    @JoinColumn(name = "prioridade",nullable = false)
+    private Descricao prioridade;
     @ManyToOne
-    @JoinColumn(name = "descricao")
-    private int categoria;
+    @JoinColumn(name = "categoria", nullable = false)
+    private Descricao categoria;
     @ManyToOne
     @JoinColumn(name = "codfuncsolic", nullable = false)
     private Usuario codfuncsolic;
-    @ManyToOne
-    @JoinColumn(name = "codfuncatend")
-    private Usuario codfuncatend;
+    @Column(name = "codfuncatend")
+    private Integer codfuncatend;
     @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
     @Temporal(TemporalType.DATE)
@@ -55,120 +54,119 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
-
-    public Chamadoc() {
-        status = 1;
-
+    
+    public Chamadoc()
+    {
+      
     }
 
     public int getId() {
-        return id;
+	return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+	this.id = id;
     }
-
+    
     public Unidade getUnidade() {
-        return this.unidade;
+	return this.unidade;
     }
 
     public void setUnidade(Unidade unidade) {
-        this.unidade = unidade;
+	this.unidade = unidade;
     }
-
+    
     public Date getData() {
-        return this.data;
+	return this.data;
     }
 
     public void setData(Date data) {
-        this.data = data;
+	this.data = data;
     }
 
-    public int getStatus() {
-        return this.status;
+    public Descricao getStatus() {
+        return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Descricao status) {
         this.status = status;
     }
 
-    public int getPrioridade() {
-        return this.prioridade;
+    public Descricao getPrioridade() {
+        return prioridade;
     }
 
-    public void setPrioridade(int prioridade) {
+    public void setPrioridade(Descricao prioridade) {
         this.prioridade = prioridade;
     }
 
-    public int getCategoria() {
+    public Descricao getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(Descricao categoria) {
         this.categoria = categoria;
     }
-
+    
     public Usuario getCodfuncsolic() {
-        return codfuncsolic;
+	return codfuncsolic;
     }
 
-    public void setCodfuncsolic(Usuario codfuncsolic) {
+    public void setCodfuncsolic(Usuario codfuncsolic) {   
         this.codfuncsolic = codfuncsolic;
     }
 
-    public Usuario getCodfuncatend() {
+    public Integer getCodfuncatend() {
         return this.codfuncatend;
     }
 
-    public void setCodfuncatend(Usuario codfuncatend) {
-        this.codfuncatend = codfuncatend;
+    public void setCodfuncatend(Integer codfuncatend) {
+	this.codfuncatend = codfuncatend;
     }
 
     public String getTitulo() {
-        return this.titulo;
+	return this.titulo;
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+	this.titulo = titulo;
     }
 
     public Date getDataprevisao() {
-        return this.dataprevisao;
+	return this.dataprevisao;
     }
 
     public void setDataprevisao(Date dataprevisao) {
-        this.dataprevisao = dataprevisao;
+	this.dataprevisao = dataprevisao;
     }
 
     public Date getDatafechamento() {
-        return this.datafechamento;
+	return this.datafechamento;
     }
 
     public void setDatafechamento(Date datafechamento) {
-        this.datafechamento = datafechamento;
+	this.datafechamento = datafechamento;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + this.id;
-        return hash;
+	int hash = 3;
+	hash = 59 * hash + this.id;
+	return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Chamadoc other = (Chamadoc) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final Chamadoc other = (Chamadoc) obj;
+	if (this.id != other.id) {
+	    return false;
+	}
+	return true;
     }
-
 }
