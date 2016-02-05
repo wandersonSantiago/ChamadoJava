@@ -27,10 +27,10 @@
                             <h:outputText value="#{chamadoc.data}" />
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
-                               <f:facet name="filter">
+                            <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.usuario}"
+                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.nome}"
                                                    itemValue="#{User}" />
                                 </p:selectOneMenu>
                             </f:facet>
@@ -63,7 +63,7 @@
                             <h:outputText value="#{chamadoc.codfuncatend.nome}"/>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.status}"  headerText="Status">
-                              <f:facet name="filter">
+                            <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
                                     <f:selectItems value="#{ctrDescricao.carregarStatus()}"  var="desc" itemLabel="#{desc.descricao}"
@@ -89,8 +89,16 @@
                                 Atender:
                             </f:facet>
                             <div>
-                                <p:commandButton value="Sim" action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  />
+                                <p:commandButton value="Sim" action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"    />
+                                
+                                <p:commandButton value="Fechar" action="#" rendered="#{ctrLogin.logado != true}" >
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandButton>
 
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </div>
 
                         </p:column>

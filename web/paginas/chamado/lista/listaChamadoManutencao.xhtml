@@ -30,7 +30,7 @@
                                <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.usuario}"
+                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.nome}"
                                                    itemValue="#{User}" />
                                 </p:selectOneMenu>
                             </f:facet>
