@@ -83,9 +83,22 @@ public class CtrChamado implements Serializable {
 
     public String alterarChamado() {
         try {
+        
+            acessoHibernate.alterar(chamadoc);
+            limpar();
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+
+    }
+
+    public String alterarChamados() {
+        try {
             Descricao status = daoDescricao.carregarStatus(10);
             chamadoc.setStatus(status);
             acessoHibernate.alterar(chamadoc);
+            
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
             return "falha";
@@ -126,6 +139,7 @@ public class CtrChamado implements Serializable {
         this.chamadoc.setPrioridade(null);
         this.chamadoc.setTitulo(null);
         this.mensagem.setTexto(null);
+
     }
 
     public Chamadoc getChamadoc() {

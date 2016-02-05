@@ -35,7 +35,7 @@ public class CtrMensagem implements  Serializable{
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
             mensagem.setCodfuncautor(usuarioSessao);
             acessoHibernate.salvar(mensagem);
-	   
+	   limpar();
             return "index";
 	} catch (HibernateException e) {
 	    return "falha";
@@ -60,6 +60,9 @@ public class CtrMensagem implements  Serializable{
 	    return null;
 	}
     }
+  public void limpar(){
+      this.mensagem.setTexto(null);
+  }
    
     public Mensagem getMensagem() {
 	return mensagem;

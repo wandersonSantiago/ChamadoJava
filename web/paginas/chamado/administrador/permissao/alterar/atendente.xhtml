@@ -23,7 +23,14 @@
                         </h:selectOneMenu>
                     </div>
                     <div>
-                        <p:commandButton value="Sim" action="#{ctrChamado.alterarChamado}"  ajax="false" />
+                    <p:commandButton value="Atender" action="#{ctrChamado.alterarChamados}" >
+                            <p:confirm header="Confirmação" message="Deseja realmente atender este chamado?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
                     </div>
                 </div>
             </div> 
