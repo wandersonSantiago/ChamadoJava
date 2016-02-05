@@ -11,30 +11,40 @@
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
-
                     <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" widgetVar="table" 
                                   paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
-                        <p:column  style="max-height: 3px;width: 130px" filterBy="#{chamadoc.id}" >
+                        <p:column  style="max-height: 3px;width: 120px" filterBy="#{chamadoc.id}" >
                             <f:facet name="header">
-                                Numero:
+                                Nº:
                             </f:facet>
-                            <h:outputText  value="#{chamadoc.id}"/>
+                            <h:outputText  value="#{chamadoc.id}" style=""/>
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic.nome}">
+                        <p:column filterBy="#{chamadoc.data}" style="max-height: 3px;width: 120px" >
                             <f:facet name="header">
-                                Usuario:
+                                Data:
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.data}" />
+                        </p:column>
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
+                               <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.usuario}"
+                                                   itemValue="#{User}" />
+                                </p:selectOneMenu>
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncsolic.nome}" />
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.data}">
-
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic.setor}" headerText="Setor:">
                             <f:facet name="filter">
-                             data
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrSetor.setores}"  var="setor" itemLabel="#{setor.nome}"
+                                                   itemValue="#{setor}" />
+                                </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText value="#{chamadoc.data}" >
-
-                            </h:outputText>
+                            <h:outputText value="#{chamadoc.codfuncsolic.setor}" />
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
                             <f:facet name="header">
@@ -42,7 +52,7 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.titulo}" />
                         </p:column>
-                        <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido:" style="max-height: 8px" >
+                        <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido por:" style="max-height: 8px" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -52,14 +62,23 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncatend.usuario}"/>
                         </p:column>
-
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.status}"  headerText="Status">
+                              <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrDescricao.carregarStatus()}"  var="desc" itemLabel="#{desc.descricao}"
+                                                   itemValue="#{desc}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.status.descricao}" />
+                        </p:column>
 
 
                         <p:column  style="max-height: 3px;width: 100px">
                             <f:facet name="header">
                                 Visualizar:
                             </f:facet>
-                            <p:growl id="messagem" showDetail="true" />
+
                             <p:commandButton value="Sim"   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
                         </p:column>
 

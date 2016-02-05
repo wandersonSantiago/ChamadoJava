@@ -27,7 +27,7 @@
                                     <h:outputLabel value="Numero:"/>
                                 </div>
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.id}"/>
+                                    <h:outputText value="#{ctrChamado.chamadoc.id}"/>
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="2" >
@@ -35,9 +35,9 @@
                                     <h:outputLabel value="Data:" />
                                 </div>
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.data}">
+                                    <h:outputText value="#{ctrChamado.chamadoc.data}">
                                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
-                                    </h:outputLabel>
+                                    </h:outputText>
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="2" >
@@ -45,7 +45,7 @@
                                     <h:outputLabel value="Data Encerramento:"/>  
                                 </div>
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.datafechamento}"/>
+                                    <h:outputText value="#{ctrChamado.chamadoc.datafechamento}"/>
                                 </div>
                             </h:panelGrid>
 
@@ -53,7 +53,7 @@
                                 <div>
                                 <p:outputLabel value="Status:"/>
                                 </div>
-                                <h:outputLabel value="#{ctrChamado.chamadoc.status.descricao}"/>
+                                <h:outputText value="#{ctrChamado.chamadoc.status.descricao}"/>
                                 <div>
                                     
                                     
@@ -64,7 +64,7 @@
                                 <p:outputLabel value="Prioridade:"/>
                                 </div>
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.prioridade.descricao}"/>   
+                                    <h:outputText value="#{ctrChamado.chamadoc.prioridade.descricao}"/>   
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
@@ -72,7 +72,7 @@
                                 <p:outputLabel value="Categoria:"/>
                                 </div>
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.categoria.descricao}"/>
+                                    <h:outputText value="#{ctrChamado.chamadoc.categoria.descricao}"/>
                                 </div>
                             </h:panelGrid>
 
@@ -82,7 +82,7 @@
                                 </div>
 
                                 <div>
-                                    <h:outputLabel value="#{ctrChamado.chamadoc.codfuncatend.usuario}"/>
+                                    <h:outputText value="#{ctrChamado.chamadoc.codfuncatend.usuario}"/>
                                 </div>
                             </h:panelGrid>
 

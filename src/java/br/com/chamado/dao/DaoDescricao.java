@@ -26,4 +26,5 @@ public class DaoDescricao extends DaoGenerico {
         return status;
         
     }
+
 }

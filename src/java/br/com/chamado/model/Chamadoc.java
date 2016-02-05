@@ -58,6 +58,7 @@ public class Chamadoc implements Serializable {
     
     public Chamadoc()
     {
+        
      
     }
 
