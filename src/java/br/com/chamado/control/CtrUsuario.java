@@ -7,6 +7,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoPermissao;
 import br.com.chamado.dao.DaoUsuario;
+import br.com.chamado.model.Permissao;
 import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
 import java.io.Serializable;
@@ -26,6 +27,7 @@ public class CtrUsuario implements  Serializable{
 
     private final DaoUsuario acessoHibernate;
     private Usuario usuario;
+    private Permissao permissao;
    
     public CtrUsuario() {
 	
@@ -88,6 +90,14 @@ public class CtrUsuario implements  Serializable{
 
     public void setUsuario(Usuario usuario) {
 	this.usuario = usuario;
+    }
+
+    public Permissao getPermissao() {
+        return permissao;
+    }
+
+    public void setPermissao(Permissao permissao) {
+        this.permissao = permissao;
     }
     
 }

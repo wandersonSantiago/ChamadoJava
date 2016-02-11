@@ -123,11 +123,13 @@
                             </f:facet>
                             <h:outputText value="#{usuario.setor}"/>
                         </p:column>
-                        
                         <p:column style="width:50px">
                             <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
                         </p:column>
-
+                    
+                        <p:column style="width:50px">
+                            <h:commandLink value="permissao" action="#{ctrPermissao.paginaAlterarPermissao(usuario)}" immediate="true" />
+                        </p:column>
                     </p:dataTable>
                 </div>
             </div>

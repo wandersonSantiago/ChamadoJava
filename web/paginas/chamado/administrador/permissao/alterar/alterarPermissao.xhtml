@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central" >               
+        <h:form rendered="#{liberaAcesso.permissao() != false}">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Permissões</h3>
+                </div>
+                <div class="panel-body">
+
+
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="Usuario : " /> 
+                        <h:outputText  value="#{ctrPermissao.usuario.nome}" />
+                        <h:outputLabel value="Unidade : "/>
+                        <h:outputText value="#{ctrPermissao.usuario.unidade.mneumonico}"/>
+                        <h:outputLabel value="Setor : "/>
+                        <h:outputText value="#{ctrPermissao.usuario.setor.nome}"/>
+
+                    </h:panelGrid>
+                    <p:separator/>
+                    <p:selectManyCheckbox id="grid2"  value="#{ctrPermissao.carregarPaginasUser(ctrPermissao.usuario)}"  style="width:100%; min-width: 600px; min-height: 50px" columns="2"  layout="grid" >
+                        <f:converter converterId="paginaConverter" />
+                        
+                        <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
+                                        itemValue="#{pagina}"/>     
+                    </p:selectManyCheckbox>
+                    <p:separator/>
+                    <div>
+
+                        <h:commandButton value="Gravar"  action="#{ctrPermissao.gravarPermissao}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
+                            <f:setPropertyActionListener value="#{permissao}" target="#{ctrPermissao.permissao}" />
+                        </h:commandButton>			
+
+                    </div>
+                </div> 
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

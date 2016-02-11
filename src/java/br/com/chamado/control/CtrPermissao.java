@@ -8,6 +8,7 @@ package br.com.chamado.control;
 import br.com.chamado.dao.DaoPermissao;
 import br.com.chamado.model.Pagina;
 import br.com.chamado.model.Permissao;
+import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +22,17 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrPermissao")
 @SessionScoped
-public class CtrPermissao implements  Serializable{
-    
+public class CtrPermissao implements Serializable {
+
     private final DaoPermissao acessoHibernatePermissao;
     private Permissao permissao;
     private ArrayList<Pagina> paginas;
-    public CtrPermissao()
-    {
-      acessoHibernatePermissao = new DaoPermissao();
+    private Usuario usuario;
+
+    public CtrPermissao() {
+        acessoHibernatePermissao = new DaoPermissao();
     }
+
     public String gravarPermissao() {
         try {
             acessoHibernatePermissao.salvarPermissao(permissao, paginas);
@@ -40,29 +43,40 @@ public class CtrPermissao implements  Serializable{
             return "index";
         }
     }
+
     public String updatePermissao() {
         try {
-            acessoHibernatePermissao.alterar(permissao);
 
+            acessoHibernatePermissao.alterarPermissao(permissao, paginas);
+            paginas.clear();
             return "index";
         } catch (HibernateException e) {
             return "falha";
         }
+    }
+
+    public List carregarPaginasUser(Usuario usuario) {
+        try {
+            return acessoHibernatePermissao.buscarPermissoes(usuario);
+        } catch (HibernateException e) {
+            return new ArrayList();
+        }
 
     }
-      public String paginaAlterarUnidade(Permissao permission) {
+
+    public String paginaAlterarPermissao(Usuario usuario) {
         try {
-            this.permissao = permission;
+            this.usuario = usuario;
             return "/paginas/chamado/administrador/permissao/alterar/alterarPermissao";
         } catch (HibernateException e) {
             return "falha";
         }
     }
-    
+
     public List carregarPermissao() {
         try {
 
-            return  acessoHibernatePermissao.carregaTudoOrdernado(Permissao.class, "id");
+            return acessoHibernatePermissao.carregaTudoOrdernado(Permissao.class, "id");
         } catch (HibernateException e) {
             return new ArrayList();
         }
@@ -83,7 +97,12 @@ public class CtrPermissao implements  Serializable{
     public void setPaginas(ArrayList<Pagina> paginas) {
         this.paginas = paginas;
     }
-    
-    
-  
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

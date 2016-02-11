@@ -21,7 +21,18 @@ public class DaoPermissao extends DaoGenerico{
            permissao.setPagina(paginas.get(i));
            daoGenerico.salvar(permissao);
         }
-       return "index.xhtml";
+       return "index";
+    }
+    
+        public String alterarPermissao(Permissao permissao,ArrayList<Pagina> paginas)
+    {
+        daoGenerico = new DaoGenerico();
+        for(int i = 0 ; i < paginas.size(); i++)
+        {
+           permissao.setPagina(paginas.get(i));
+           daoGenerico.alterar(permissao);
+        }
+       return "index";
     }
     public List<Pagina> buscarPermissoes(Usuario usuarioSessao)
     {
