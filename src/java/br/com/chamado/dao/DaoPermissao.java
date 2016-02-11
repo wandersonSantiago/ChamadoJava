@@ -44,7 +44,9 @@ public class DaoPermissao extends DaoGenerico{
         {
            Permissao permissao = (Permissao) permissoes.get(i);
            paginas.add(permissao.getPagina());
+         
         }
         return paginas;
+        
     }
 }

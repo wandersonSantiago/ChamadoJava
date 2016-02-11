@@ -23,7 +23,7 @@
 
                     </h:panelGrid>
                     <p:separator/>
-                    <p:selectManyCheckbox id="grid2"  value="#{ctrPermissao.carregarPaginasUser(ctrPermissao.usuario)}"  style="width:100%; min-width: 600px; min-height: 50px" columns="2"  layout="grid" >
+                    <p:selectManyCheckbox id="grid2"   value="#{ctrPermissao.carregarPaginasUser(ctrPermissao.usuario)}"  style="width:100%; min-width: 600px; min-height: 50px" columns="2"  layout="grid" >
                         <f:converter converterId="paginaConverter" />
                         
                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
