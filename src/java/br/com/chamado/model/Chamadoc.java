@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 @ManagedBean(name = "chamadoc")
@@ -55,6 +56,8 @@ public class Chamadoc implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
+    @Transient
+    private final int ANDAMENTO = 10;
     
     public Chamadoc()
     {
@@ -148,14 +151,10 @@ public class Chamadoc implements Serializable {
     public void setDatafechamento(Date datafechamento) {
 	this.datafechamento = datafechamento;
     }
-
-    @Override
-    public int hashCode() {
-	int hash = 3;
-	hash = 59 * hash + this.id;
-	return hash;
+    public boolean isChamadoAndamento()
+    {
+       return status.getId() == ANDAMENTO;
     }
-
     @Override
     public boolean equals(Object obj) {
 	if (obj == null) {

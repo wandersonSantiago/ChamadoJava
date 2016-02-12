@@ -26,6 +26,8 @@ public class ControleLoginUsuario {
         
         if(autenticar.isResultadoAutenticacao()){
             logado = true;
+            autenticar = null;
+            loginUsuario = null;
             return "index";
         }
         return "erroAcesso";
