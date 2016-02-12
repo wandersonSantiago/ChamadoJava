@@ -16,7 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-
 @ManagedBean(name = "chamadoc")
 @SessionScoped
 @Entity
@@ -34,10 +33,10 @@ public class Chamadoc implements Serializable {
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
     @ManyToOne
-    @JoinColumn(name = "status",nullable = false)
+    @JoinColumn(name = "status", nullable = false)
     private Descricao status;
     @ManyToOne
-    @JoinColumn(name = "prioridade",nullable = false)
+    @JoinColumn(name = "prioridade", nullable = false)
     private Descricao prioridade;
     @ManyToOne
     @JoinColumn(name = "categoria", nullable = false)
@@ -58,34 +57,39 @@ public class Chamadoc implements Serializable {
     private Date datafechamento;
     @Transient
     private final int ANDAMENTO = 10;
+    @Transient
+    private final int FECHADO = 9;
+    @Transient
+    private final int REABERTO = 11;
+    @Transient
+    private final int ABERTO = 8;
     
-    public Chamadoc()
-    {
-     
+    public Chamadoc() {
+
     }
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
-    
+
     public Unidade getUnidade() {
-	return this.unidade;
+        return this.unidade;
     }
 
     public void setUnidade(Unidade unidade) {
-	this.unidade = unidade;
+        this.unidade = unidade;
     }
-    
+
     public Date getData() {
-	return this.data;
+        return this.data;
     }
 
     public void setData(Date data) {
-	this.data = data;
+        this.data = data;
     }
 
     public Descricao getStatus() {
@@ -111,12 +115,12 @@ public class Chamadoc implements Serializable {
     public void setCategoria(Descricao categoria) {
         this.categoria = categoria;
     }
-    
+
     public Usuario getCodfuncsolic() {
-	return codfuncsolic;
+        return codfuncsolic;
     }
 
-    public void setCodfuncsolic(Usuario codfuncsolic) {   
+    public void setCodfuncsolic(Usuario codfuncsolic) {
         this.codfuncsolic = codfuncsolic;
     }
 
@@ -127,46 +131,57 @@ public class Chamadoc implements Serializable {
     public void setCodfuncatend(Usuario codfuncatend) {
         this.codfuncatend = codfuncatend;
     }
-    
+
     public String getTitulo() {
-	return this.titulo;
+        return this.titulo;
     }
 
     public void setTitulo(String titulo) {
-	this.titulo = titulo;
+        this.titulo = titulo;
     }
 
     public Date getDataprevisao() {
-	return this.dataprevisao;
+        return this.dataprevisao;
     }
 
     public void setDataprevisao(Date dataprevisao) {
-	this.dataprevisao = dataprevisao;
+        this.dataprevisao = dataprevisao;
     }
 
     public Date getDatafechamento() {
-	return this.datafechamento;
+        return this.datafechamento;
     }
 
     public void setDatafechamento(Date datafechamento) {
-	this.datafechamento = datafechamento;
+        this.datafechamento = datafechamento;
     }
-    public boolean isChamadoAndamento()
-    {
-       return status.getId() == ANDAMENTO;
+
+    public boolean isChamadoAndamento() {
+        return status.getId() == ANDAMENTO;
     }
+
+    public boolean isChamadoFechado() {
+        return status.getId() == FECHADO;
+    }
+    public boolean isChamadoReaberto(){
+        return status.getId() == REABERTO;
+    }
+     public boolean isChamadoAberto(){
+        return status.getId() == ABERTO;
+    }
+
     @Override
     public boolean equals(Object obj) {
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	final Chamadoc other = (Chamadoc) obj;
-	if (this.id != other.id) {
-	    return false;
-	}
-	return true;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Chamadoc other = (Chamadoc) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 }

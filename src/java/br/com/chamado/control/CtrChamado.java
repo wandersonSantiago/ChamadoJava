@@ -105,6 +105,27 @@ public class CtrChamado implements Serializable {
         }
 
     }
+    public String fecharChamado(Chamadoc chamadoc){
+        try{
+            Descricao status = daoDescricao.carregarStatus(9);
+            chamadoc.setStatus(status);
+            acessoHibernate.alterar(chamadoc);
+            return "/paginas/chamado/lista/listaChamado";
+        }catch(HibernateException e){
+            return "erro404";
+        }
+    }
+    public String reabrirChamado(Chamadoc chamadoc){
+        try{
+            Descricao status = daoDescricao.carregarStatus(11);
+            chamadoc.setStatus(status);
+            acessoHibernate.alterar(chamadoc);
+            this.chamadoc = chamadoc;
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
+        }catch(HibernateException e){
+            return "erro404";
+        }
+    }
 
     public String paginaChamadoAberto(Chamadoc chamado) {
         try {

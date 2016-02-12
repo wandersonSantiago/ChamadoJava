@@ -50,8 +50,8 @@
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                  <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
-                                           itemValue="#{descricaoPrioridade}" /> 
+                                    <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
+                                                   itemValue="#{descricaoPrioridade}" /> 
                                 </p:selectOneMenu>
                             </f:facet>
                             <h:outputText value="#{chamadoc.prioridade.descricao}" />
@@ -85,7 +85,7 @@
 
 
                         <p:column  style="max-height: 3px;width: 50px">
-                         
+
                             <p:commandLink   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" title="Vizualizar" >
                                 <p:graphicImage value="/img/visualizar.png" />
                             </p:commandLink >
@@ -94,16 +94,34 @@
 
 
                         <p:column  style="max-height: 3px;width: 50px">
-                          
+
                             <div>
-                                <p:commandLink  action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado"  >
-                                    <p:graphicImage value="/img/atender.png" />
-                                </p:commandLink>
-                                
-                                <p:commandLink value="Fechar" action="#" rendered="#{ctrLogin.logado != true}" >
-                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                <p:commandLink   action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado" rendered="#{chamadoc.chamadoAberto != false }" ajax="false" >
+                                    <p:graphicImage value="/img/atend.png" />
                                 </p:commandLink>
 
+                                <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
+                                    <p:graphicImage value="/img/fechar.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+
+                                <p:commandLink  action="#{ctrChamado.reabrirChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoFechado != false}" title="Reabrir chamado" >
+                                    <p:graphicImage value="/img/atender1.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Reabrir este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+
+                                <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoReaberto != false}" title="Fechar chamado" >
+                                    <p:graphicImage value="/img/fechar.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
                                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                     <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                     <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
@@ -111,11 +129,11 @@
                             </div>
 
                         </p:column>
-                        
+
                     </p:dataTable>
                 </div>
             </div>
         </h:form>
-   </ui:define>
+    </ui:define>
 </ui:composition>
 
