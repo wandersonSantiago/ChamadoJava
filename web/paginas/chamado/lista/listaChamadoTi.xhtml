@@ -12,7 +12,7 @@
                 </div>
                 <div class="panel-body">
                     <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" widgetVar="table" 
-                                  paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+                                  paginator="true" rows="20" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
                         <p:column  style="max-height: 3px;width: 120px" filterBy="#{chamadoc.id}" >
                             <f:facet name="header">
@@ -93,7 +93,7 @@
 
 
 
-                        <p:column  style="max-height: 3px;width: 50px">
+                        <p:column  style="max-height: 3px;width: 50px" >
 
                             <div>
                                 <p:commandLink   action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado" rendered="#{chamadoc.chamadoAberto != false }" ajax="false" >
