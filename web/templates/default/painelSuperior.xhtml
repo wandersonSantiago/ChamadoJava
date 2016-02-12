@@ -5,33 +5,30 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <h:form>
+                        <h:commandLink  value="menu" action="menu.xhtml"/>
+                    </h:form>
                 </button>
-                <a class="navbar-brand" href="#" style="color: white">Sistema de Chamado Coordenadoria Central </a> 
-                <a href="#" style="color: white"><b>Versão alfa</b></a> 
+                <a  href="#" style="color: white"><b>Versão alfa</b></a>
+                <a class="navbar-brand" href="#" style="color: white"><h:outputLabel value="Sistema de Chamado Coordenadoria Central" style="font-size: 25px" /> </a> 
+
             </div>
             <div class="navbar-collapse collapse">
-
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li><a style="color: white" href="#">Inicio</a></li>
-
-                    <li><a style="color: white" href="#" >Perfil</a></li>
-                    <li><a style="color: white" href="#">Ajuda</a></li>
-                </ul>
-
+                <h:form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><h:commandLink style="color: white" value="Inicio" action="/index.xhtml"/></li>
+                    </ul>
+                </h:form>
                 <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Procurar..." />
                 </form>
-
                 <h:form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a style="color: white" href="#"><h:outputLabel value="Bem Vindo(a): #{ctrLogin.usuarioLogin.usuario}"/></a></li>
+                        <li><a style="color: white" href="#"><h:outputText value="Bem Vindo(a)" /></a></li>
+                        <li><a style="color: white" href="#"><h:outputLabel  ><h:graphicImage value="/img/miniavatar.png" /> </h:outputLabel></a></li>
+                        <li><a style="color: white" href="#"><h:outputLabel  value="#{ctrLogin.usuarioLogin.usuario}" /></a></li>
                         <li style="color: white"> <h:commandLink  style="color: white" action="#{ctrLogin.efetuarLogout()}" title="sair"  value="Logout"/></li>
-                   </ul>
+                    </ul>
                 </h:form>
             </div>
         </div>

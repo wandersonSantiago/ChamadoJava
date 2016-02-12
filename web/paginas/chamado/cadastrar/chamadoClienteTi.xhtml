@@ -19,7 +19,7 @@
                                 <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold" required="true" 
                                                  requiredMessage="Campo prioridade Obrigatorio" >
                                   <f:converter converterId="descricaoConverter" />
-                                  <f:selectItem itemLabel=""  itemValue="#{null}" noSelectionOption="true" />
+                                  <f:selectItem itemLabel="--selecione--"  itemValue="#{null}" noSelectionOption="true" />
                                   <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
                                            itemValue="#{descricaoPrioridade}" />     
                                 </p:selectOneMenu>
@@ -29,7 +29,7 @@
                                 <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
                                                  requiredMessage="Campo categoria Obrigatorio" >
                                     <f:converter converterId="descricaoConverter" />
-                                    <f:selectItem itemLabel="" itemValue="#{null}"  noSelectionOption="true" />
+                                    <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  noSelectionOption="true" />
                                     <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
                                                     itemValue="#{descricaoCategoria}"/>     
                                 </p:selectOneMenu>
