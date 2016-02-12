@@ -118,7 +118,9 @@
                             <h:outputText value="#{unid.cidade}"/>
                         </p:column>
                         <p:column style="width:50px">
-                            <h:commandLink value="Editar" action="#{ctrUnidade.paginaAlterarUnidade(unid)}" immediate="true" />
+                            <h:commandLink action="#{ctrUnidade.paginaAlterarUnidade(unid)}" immediate="true" title="Editar" >
+                                <p:graphicImage value="/img/editar.png" />
+                            </h:commandLink>
                         </p:column>
 
                     </p:dataTable>

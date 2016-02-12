@@ -58,14 +58,18 @@
                             </f:facet>
                             <h:outputText value="#{pagina.descricao}"/>
                         </p:column>
-                        <p:column style="width:200px">
-                            <p:commandButton value="Editar" action="#{CtrPagina.paginaAlterarPaginas(pagina)}" immediate="true" />
-
+                        <p:column style="width:50px">
+                            <p:commandLink  action="#{CtrPagina.paginaAlterarPaginas(pagina)}" immediate="true" title="Editar" >
+                                <p:graphicImage value="/img/editar.png" />
+                            </p:commandLink>
+                        </p:column>
+                        <p:column style="width:50px">
                             <p:growl id="messagem" showDetail="true" />
 
-                            <p:commandButton value="Excluir" actionListener="#{CtrPagina.excluirPagina(pagina)}" update="tabela" immediate="true">
+                            <p:commandLink  actionListener="#{CtrPagina.excluirPagina(pagina)}" update="tabela" title="Excluir" immediate="true">
+                                <p:graphicImage value="/img/excluir.png" />
                                 <p:confirm header="Confirmação" message="Deseja realmente excluir?" icon="ui-icon-alert" />
-                            </p:commandButton>
+                            </p:commandLink>
 
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                 <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />

@@ -16,12 +16,12 @@
                     <div class="input-group">
 
                         <h:panelGrid columns="2">
-                        <h:outputLabel value="Titulo:" style=" font-size: 15px" />
-                       
+                            <h:outputLabel value="Titulo:" style=" font-size: 15px" />
+
                             <h:outputLabel value="#{ctrChamado.chamadoc.titulo}" style="font-weight: bold; font-size: 14px; color: #245269" />
-                      
+
                         </h:panelGrid>
-                                                             <p:panelGrid columns="7" style="width: 100%" >
+                        <p:panelGrid columns="7" style="width: 100%" >
                             <h:panelGrid columns="2" >
                                 <div>
                                     <h:outputLabel value="Numero:"/>
@@ -51,17 +51,17 @@
 
                             <h:panelGrid columns="1">
                                 <div>
-                                <p:outputLabel value="Status:"/>
+                                    <p:outputLabel value="Status:"/>
                                 </div>
                                 <h:outputText value="#{ctrChamado.chamadoc.status.descricao}"/>
                                 <div>
-                                    
-                                    
+
+
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <div>
-                                <p:outputLabel value="Prioridade:"/>
+                                    <p:outputLabel value="Prioridade:"/>
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.prioridade.descricao}"/>   
@@ -69,7 +69,7 @@
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <div>
-                                <p:outputLabel value="Categoria:"/>
+                                    <p:outputLabel value="Categoria:"/>
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.categoria.descricao}"/>
@@ -87,7 +87,7 @@
                             </h:panelGrid>
 
                         </p:panelGrid>
-                       
+
                         <p:inputTextarea  id="nome" style="width: 100%"   required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" > 
@@ -110,13 +110,20 @@
 
 
                         <p:outputPanel style="background-color: white">
-                            <h:panelGrid columns="1" cellpadding="5" style="background-color: white">
-                                <h:outputLabel value=" data: #{mensagem.data}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
-                                </h:outputLabel>
-                                <h:outputText value=" Por: #{mensagem.codfuncautor.nome}"   style=" font-size: 20px; color: blue" />
+                            <h:panelGrid columns="2" cellpadding="5" style="background-color: white">
+                                <h:panelGrid columns="1" style="width: 100px">
+                                    <p:graphicImage value="/img/avatar.png" />
+                                </h:panelGrid>
+                                <h:panelGrid columns="1">
+                                    <h:panelGrid columns="2" style="width: 150px" >
+                                        <h:outputText value="  #{mensagem.codfuncautor.nome}" style="color: blue;font-weight: bold "   />
+                                        <h:outputText value=" #{mensagem.data}" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                        </h:outputText>
+                                    </h:panelGrid>
+                                    <h:outputText value="#{mensagem.texto}" />
+                                </h:panelGrid>
 
-                                <h:outputText value="#{mensagem.texto}" style=" font-size: 20px; color: black"/>
                             </h:panelGrid>
                             <p:separator style="color: black; background-color: black"/>
                             <br/>

@@ -11,16 +11,14 @@
                 </div>
                 <div class="panel-body">
 
-
+                    <p:graphicImage value="/img/avatar.png" />
                     <h:panelGrid  id="painelGridUsuer" columns="1" >
 
-
-                        <p:separator/>
 
                         <h5 style="color: black" >
                             *Campos Obrigatórios
                         </h5>
-                        <p:separator/>
+                      
 
                         <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
                         <p:selectOneMenu id="ativo"  required="true" label="erro" >
@@ -56,7 +54,7 @@
                         <p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Setor Obrigatorio" >
                             <f:converter converterId="setorConverter" />
-                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
                             <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
                                            itemValue="#{usuarioSetor}" />                                      
                         </p:selectOneMenu>
@@ -67,7 +65,7 @@
                         <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Unidade Obrigatorio" >
                             <f:converter converterId="unidadeConverter" />
-                            <f:selectItem itemLabel=""   noSelectionOption="true" />
+                           <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
                             <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
                                            itemValue="#{usuarioUnidade}" />                                    
                         </p:selectOneMenu>
@@ -124,11 +122,15 @@
                             <h:outputText value="#{usuario.setor}"/>
                         </p:column>
                         <p:column style="width:50px">
-                            <h:commandLink value="Editar" action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" />
+                            <h:commandLink action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" title="Editar" >
+                                <h:graphicImage value="/img/editar.png"/>
+                            </h:commandLink>
                         </p:column>
-                    
+
                         <p:column style="width:50px">
-                            <h:commandLink value="permissao" action="#{ctrPermissao.paginaAlterarPermissao(usuario)}" immediate="true" />
+                            <p:commandLink  action="#{ctrPermissao.paginaAlterarPermissao(usuario)}" immediate="true" title="permissões" >
+                                <p:graphicImage  value="/img/security.png" />
+                            </p:commandLink>
                         </p:column>
                     </p:dataTable>
                 </div>

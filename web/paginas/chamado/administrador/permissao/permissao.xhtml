@@ -67,7 +67,9 @@
 
 
                         <p:column style="width:50px">
-                            <h:commandLink value="Editar" action="#{ctrPermissao.paginaAlterarUnidade(permissao)}" immediate="true" />
+                            <h:commandLink  action="#{ctrPermissao.paginaAlterarUnidade(permissao)}" immediate="true" title="Editar" >
+                                <p:graphicImage value="/img/editar.png" />
+                            </h:commandLink>
                    
                         </p:column>
 

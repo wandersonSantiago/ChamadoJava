@@ -40,7 +40,7 @@
                         <p:selectOneMenu id="unidade" value="#{setor.unidade}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Setor Obrigatorio" >
                             <f:converter converterId="unidadeConverter" />
-                            <f:selectItem itemLabel=""  />
+                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
                             <f:selectItems value="#{ctrUnidade.unidades}" var="setorUnidade" itemLabel="#{setorUnidade.nome}"
                                            itemValue="#{setorUnidade}" />                                    
                         </p:selectOneMenu>
@@ -81,7 +81,9 @@
                         </p:column>
 
                         <p:column style="width:50px">
-                            <h:commandLink value="Editar" action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" />
+                            <h:commandLink  action="#{ctrSetor.paginaAlterarSetor(setor)}" immediate="true" title="Editar" >
+                                <p:graphicImage value="/img/editar.png" />
+                            </h:commandLink> 
                         </p:column>
 
                     </p:dataTable>

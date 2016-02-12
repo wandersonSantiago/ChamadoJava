@@ -46,6 +46,16 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncsolic.setor}" />
                         </p:column>
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.prioridade}"  headerText="Prioridade">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                  <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
+                                           itemValue="#{descricaoPrioridade}" /> 
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.prioridade.descricao}" />
+                        </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
                             <f:facet name="header">
                                 titulo:
@@ -74,26 +84,25 @@
                         </p:column>
 
 
-                        <p:column  style="max-height: 3px;width: 100px">
-                            <f:facet name="header">
-                                Visualizar:
-                            </f:facet>
-
-                            <p:commandButton value="Sim"   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
+                        <p:column  style="max-height: 3px;width: 50px">
+                         
+                            <p:commandLink   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" title="Vizualizar" >
+                                <p:graphicImage value="/img/visualizar.png" />
+                            </p:commandLink >
                         </p:column>
 
 
 
-                        <p:column  style="max-height: 3px;width: 100px">
-                            <f:facet name="header">
-                                Atender:
-                            </f:facet>
+                        <p:column  style="max-height: 3px;width: 50px">
+                          
                             <div>
-                                <p:commandButton value="Sim" action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"    />
+                                <p:commandLink  action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado"  >
+                                    <p:graphicImage value="/img/atender.png" />
+                                </p:commandLink>
                                 
-                                <p:commandButton value="Fechar" action="#" rendered="#{ctrLogin.logado != true}" >
+                                <p:commandLink value="Fechar" action="#" rendered="#{ctrLogin.logado != true}" >
                                     <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
-                                </p:commandButton>
+                                </p:commandLink>
 
                                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                     <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
@@ -102,11 +111,11 @@
                             </div>
 
                         </p:column>
+                        
                     </p:dataTable>
                 </div>
             </div>
         </h:form>
-
-    </ui:define>
+   </ui:define>
 </ui:composition>
 
