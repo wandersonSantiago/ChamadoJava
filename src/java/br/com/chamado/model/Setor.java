@@ -87,7 +87,14 @@ public class Setor implements Serializable {
 	    throw new IllegalArgumentException("Campo minimo 2 e maximo 30, TAMANHO[" + nome.length() + "]");
 	}
     }
-
+    public void limpar()
+    {
+       this.id = 0 ;
+       this.nome = "";
+       this.ramal = 0;
+       this.unidade = null;
+       
+    }
     @Override
     public String toString() {
 	return this.nome;

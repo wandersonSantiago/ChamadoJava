@@ -1,5 +1,6 @@
 package br.com.chamado.dao;
 
+import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -13,8 +14,8 @@ import org.hibernate.criterion.Restrictions;
  */
 public class DaoUsuario extends DaoGenerico {
 
-    private final DaoGenerico daoGenerico = new DaoGenerico();
     private String hql;
+    private final Usuario usuarioDaSessao = SessionContext.getInstance().getUsuarioLogado();
     public Usuario buscarUsuario(Usuario usuario) {
 
         Session session = hibernateConfiguracao.openSession();
@@ -27,25 +28,25 @@ public class DaoUsuario extends DaoGenerico {
         session.close();
         return objUsuario;
     }
-    public List carregaUsuarioOrdernado(Usuario usuarioSessao)
+    public List carregaUsuarioOrdernado()
     {
-      if(usuarioSessao.isTiCentral())
+      if(usuarioDaSessao.isTiCentral())
         {
-           return daoGenerico.carregaTudoOrdernado(Usuario.class,"id");
+           return carregaTudoOrdernado(Usuario.class,"id");
         }
-        hql = "from Usuario where unidade = " + usuarioSessao.getUnidade().getId();
-        return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        hql = "from Usuario where unidade = " + usuarioDaSessao.getUnidade().getId();
+        return carregaTudoOrdernadoUsandoHql(hql);
     }
-    public List carregaUsuarioTi(Usuario usuarioSessao)
+    public List carregaUsuarioTi()
     {
-        if(usuarioSessao.isTiCentral())
+        if(usuarioDaSessao.isTiCentral())
         {
           hql = "from Usuario where setor =  1";
         }
         else
         {
-         hql = "from Usuario where setor =  1 AND unidade = " + usuarioSessao.getUnidade().getId();
+         hql = "from Usuario where setor =  1 AND unidade = " + usuarioDaSessao.getUnidade().getId();
         }
-       return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+       return carregaTudoOrdernadoUsandoHql(hql);
     }
 }

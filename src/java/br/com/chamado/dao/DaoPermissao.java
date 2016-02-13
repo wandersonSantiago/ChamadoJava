@@ -11,34 +11,35 @@ import java.util.List;
  */
 public class DaoPermissao extends DaoGenerico{
  
-    private DaoGenerico daoGenerico;
+    
     private String hql;
     public String salvarPermissao(Permissao permissao,ArrayList<Pagina> paginas)
     {
-        daoGenerico = new DaoGenerico();
+       
         for(int i = 0 ; i < paginas.size(); i++)
         {
            permissao.setPagina(paginas.get(i));
-           daoGenerico.salvar(permissao);
+           salvar(permissao);
+           
         }
        return "index";
     }
     
         public String alterarPermissao(Permissao permissao,ArrayList<Pagina> paginas)
     {
-        daoGenerico = new DaoGenerico();
+        
         for(int i = 0 ; i < paginas.size(); i++)
         {
            permissao.setPagina(paginas.get(i));
-           daoGenerico.alterar(permissao);
+           alterar(permissao);
         }
        return "index";
     }
     public List<Pagina> buscarPermissoes(Usuario usuarioSessao)
     {
-        daoGenerico = new DaoGenerico();
+        
         hql = "from Permissao where codusuario =" + usuarioSessao.getId();
-        List permissoes = daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        List permissoes = carregaTudoOrdernadoUsandoHql(hql);
         List paginas = new ArrayList<Pagina>();
         for(int i = 0 ; i < permissoes.size(); i++)
         {

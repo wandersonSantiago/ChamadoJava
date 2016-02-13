@@ -1,21 +1,12 @@
 package br.com.chamado.control;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import br.com.chamado.dao.DaoSetor;
 import br.com.chamado.model.Setor;
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-
 import org.hibernate.HibernateException;
 
 /**
@@ -36,7 +27,7 @@ public class CtrSetor implements  Serializable{
     public String gravarSetor() {
         try {
             acessoHibernateSetor.salvar(setor);
-
+            setor.limpar();
             return "index";
         } catch (HibernateException e) {
 
@@ -73,7 +64,7 @@ public class CtrSetor implements  Serializable{
     public String updateSetor() {
         try {
             acessoHibernateSetor.alterar(setor);
-
+            setor.limpar();
             return "/paginas/chamado/administrador/permissao/cadastrarSetor";
         } catch (HibernateException e) {
             return "falha";

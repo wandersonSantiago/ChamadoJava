@@ -63,7 +63,7 @@ public class Chamadoc implements Serializable {
     private final int REABERTO = 11;
     @Transient
     private final int ABERTO = 8;
-    
+
     public Chamadoc() {
 
     }
@@ -163,11 +163,29 @@ public class Chamadoc implements Serializable {
     public boolean isChamadoFechado() {
         return status.getId() == FECHADO;
     }
-    public boolean isChamadoReaberto(){
+
+    public boolean isChamadoReaberto() {
         return status.getId() == REABERTO;
     }
-     public boolean isChamadoAberto(){
+
+    public boolean isChamadoAberto() {
         return status.getId() == ABERTO;
+    }
+
+    public void limpar() {
+
+        this.id = 0;
+        this.unidade = null;
+        this.data = null;
+        this.status = null;
+        this.prioridade = null;
+        this.categoria = null;
+        this.codfuncsolic = null;
+        this.codfuncatend = null;
+        this.titulo = "";
+        this.dataprevisao = null;
+        this.datafechamento = null;
+
     }
 
     @Override

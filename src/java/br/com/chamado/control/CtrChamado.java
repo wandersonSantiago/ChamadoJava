@@ -3,7 +3,6 @@ package br.com.chamado.control;
 import br.com.chamado.dao.DaoChamadoc;
 import br.com.chamado.dao.DaoDescricao;
 import br.com.chamado.dao.DaoEmail;
-import br.com.chamado.dao.DaoGenerico;
 import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.Descricao;
@@ -65,7 +64,8 @@ public class CtrChamado implements Serializable {
             mensagem.setData(hojeData);
             mensagem.setCodfuncautor(user);
             acessoHibernateMensagem.salvar(mensagem);
-            limpar();
+            chamadoc.limpar();
+            mensagem.limpar();
             return "/index";
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
@@ -85,7 +85,6 @@ public class CtrChamado implements Serializable {
         try {
         
             acessoHibernate.alterar(chamadoc);
-            limpar();
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
             return "falha";
@@ -98,7 +97,6 @@ public class CtrChamado implements Serializable {
             Descricao status = daoDescricao.carregarStatus(10);
             chamadoc.setStatus(status);
             acessoHibernate.alterar(chamadoc);
-            
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
             return "falha";
@@ -156,16 +154,7 @@ public class CtrChamado implements Serializable {
             return Collections.emptyList();
         }
     }
-
-    public void limpar() {
-        this.chamadoc.setCategoria(null);
-        this.chamadoc.setPrioridade(null);
-        this.chamadoc.setTitulo(null);
-        this.mensagem.setTexto(null);
-
-    }
-
-    public Chamadoc getChamadoc() {
+   public Chamadoc getChamadoc() {
         return chamadoc;
     }
 

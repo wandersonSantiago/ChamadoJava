@@ -74,62 +74,73 @@ public class Unidade implements java.io.Serializable {
     }
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
-    
+
     public String getEndereco() {
-	return this.endereco;
+        return this.endereco;
     }
 
     public void setEndereco(String endereco) {
-	this.endereco = endereco;
+        this.endereco = endereco;
     }
 
     public String getBairro() {
-	return this.bairro;
+        return this.bairro;
     }
 
     public void setBairro(String bairro) {
-	this.bairro = bairro;
+        this.bairro = bairro;
     }
 
     public String getCidade() {
-	return this.cidade;
+        return this.cidade;
     }
 
     public void setCidade(String cidade) {
-	this.cidade = cidade;
+        this.cidade = cidade;
+    }
+
+    public void limpar() {
+        this.id = 0;
+        this.nome = "";
+        this.mneumonico = "";
+        this.fonePabx = "";
+        this.foneDiretor = "";
+        this.endereco = "";
+        this.bairro = "";
+        this.cidade = "";
     }
 
     @Override
     public String toString() {
-	return "Unidade{" + "nome=" + nome + '}';
+        return "Unidade{" + "nome=" + nome + '}';
     }
-    
+
     @Override
     public int hashCode() {
-	int hash = 5;
-	hash = 29 * hash + this.id;
-	return hash;
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	final Unidade other = (Unidade) obj;
-	if (this.id != other.id) {
-	    return false;
-	}
-	return true;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Unidade other = (Unidade) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
-    
+
 }

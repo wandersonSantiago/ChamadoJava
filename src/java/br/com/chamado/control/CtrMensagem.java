@@ -35,7 +35,7 @@ public class CtrMensagem implements  Serializable{
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
             mensagem.setCodfuncautor(usuarioSessao);
             acessoHibernate.salvar(mensagem);
-	   limpar();
+	    mensagem.limpar();
             return "index";
 	} catch (HibernateException e) {
 	    return "falha";
@@ -45,6 +45,7 @@ public class CtrMensagem implements  Serializable{
     public String alterarMensagem(Mensagem mensagem) {
 	try {
             acessoHibernate.alterar(mensagem);
+            mensagem.limpar();
 	    return "";
 	} catch (HibernateException e) {
 	    return "falha";
@@ -54,7 +55,7 @@ public class CtrMensagem implements  Serializable{
   public List carregarMensagem(Chamadoc chamado) {
 	try {
               return acessoHibernate.carregaMensagemOrdernado(chamado);
-	  // return acessoHibernate.carregaTudoOrdernado(Mensagem.class, "nummensagem");
+	  
            
 	} catch (HibernateException e) {
 	    return null;

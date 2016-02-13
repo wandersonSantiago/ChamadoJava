@@ -10,15 +10,14 @@ import java.util.List;
  */
 public class DaoSetor extends  DaoGenerico{
     
-   private final DaoGenerico daoGenerico = new DaoGenerico();
    private String hql;
    public List carregaSetorrdernado(Usuario usuario)
       {
         if(usuario.isTiCentral())
         {
-           return new DaoGenerico().carregaTudoOrdernado(Setor.class,"id");
+           return carregaTudoOrdernado(Setor.class,"id");
         }
         hql ="";
-        return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        return carregaTudoOrdernadoUsandoHql(hql);
     }
 }

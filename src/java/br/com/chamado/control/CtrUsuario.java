@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoPermissao;
@@ -67,7 +62,7 @@ public class CtrUsuario implements  Serializable{
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();      
             
             new DaoPermissao().buscarPermissoes(usuarioSessao);
-            return acessoHibernate.carregaUsuarioOrdernado(usuarioSessao);
+            return acessoHibernate.carregaUsuarioOrdernado();
          } catch (HibernateException e) {
 	    
              System.out.println(e.getMessage());
@@ -77,8 +72,7 @@ public class CtrUsuario implements  Serializable{
    public List carregaUsuarioTi()
    {
          try {
-            Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();      
-            return acessoHibernate.carregaUsuarioTi(usuarioSessao);
+            return acessoHibernate.carregaUsuarioTi();
          } catch (HibernateException e) {
 	    
             return Collections.emptyList();

@@ -9,9 +9,8 @@ import java.util.List;
  */
 public class DaoMensagem extends DaoGenerico{
     
-   private final DaoGenerico daoGenerico = new DaoGenerico();
    public List carregaMensagemOrdernado(Chamadoc chamado)
    {
-     return daoGenerico.carregaTudoOrdernadoUsandoHql("from Mensagem where  numchamado = " + chamado.getId());
+     return carregaTudoOrdernadoUsandoHql("from Mensagem where  numchamado = " + chamado.getId());
    }
 }

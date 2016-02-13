@@ -9,20 +9,17 @@ import java.util.List;
  */
 public class DaoDescricao extends DaoGenerico {
 
-    private DaoGenerico daoGenerico  = new DaoGenerico();
-    
     private String hql;
-
     public List carregarDescricao(int tipo) {
 
         hql = "from Descricao where tipo = " + tipo;
-        return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        return carregaTudoOrdernadoUsandoHql(hql);
 
     }
     public Descricao carregarStatus(int id)
     {
         hql = "from Descricao where id = " + id + " and tipo = 2";
-        Descricao status = (Descricao) daoGenerico.carregaUm(hql);
+        Descricao status = (Descricao) carregaUm(hql);
         return status;
         
     }

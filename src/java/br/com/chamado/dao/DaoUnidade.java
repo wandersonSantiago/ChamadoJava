@@ -1,5 +1,6 @@
 package br.com.chamado.dao;
 
+import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Unidade;
 import br.com.chamado.model.Usuario;
 import java.util.List;
@@ -9,16 +10,15 @@ import java.util.List;
  */
 public class DaoUnidade extends DaoGenerico{
     
-    
-      private final DaoGenerico daoGenerico = new DaoGenerico();
       private String hql;
-      public List carregaUnidaedOrdernado(Usuario usuario)
+      private final Usuario usuarioDaSessao = SessionContext.getInstance().getUsuarioLogado();
+      public List carregaUnidaedOrdernado()
       {
-        if(usuario.isTiCentral())
+        if(usuarioDaSessao.isTiCentral())
         {
-           return new DaoGenerico().carregaTudoOrdernado(Unidade.class,"id");
+           return carregaTudoOrdernado(Unidade.class,"id");
         }
-        hql = "from Unidade where id = " + usuario.getUnidade().getId();
-        return daoGenerico.carregaTudoOrdernadoUsandoHql(hql);
+        hql = "from Unidade where id = " + usuarioDaSessao.getUnidade().getId();
+        return carregaTudoOrdernadoUsandoHql(hql);
     }
 }
