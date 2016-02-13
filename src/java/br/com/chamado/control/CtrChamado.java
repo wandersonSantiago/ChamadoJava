@@ -36,7 +36,7 @@ public class CtrChamado implements Serializable {
     private Mensagem mensagem;
     private Usuario usuario;
     private DaoDescricao daoDescricao;
-
+    private Usuario usuarioDaSessao = SessionContext.getInstance().getUsuarioLogado();
     public CtrChamado() {
         acessoHibernate = new DaoChamadoc();
         acessoHibernateMensagem = new DaoMensagem();
@@ -109,6 +109,8 @@ public class CtrChamado implements Serializable {
         try{
             Descricao status = daoDescricao.carregarStatus(9);
             chamadoc.setStatus(status);
+            Date dataDoFechamento = new Date();
+            chamadoc.setDatafechamento(dataDoFechamento);
             acessoHibernate.alterar(chamadoc);
             return "/paginas/chamado/lista/listaChamado";
         }catch(HibernateException e){
@@ -179,4 +181,12 @@ public class CtrChamado implements Serializable {
         this.mensagem = mensagem;
     }
 
+    public Usuario getUsuarioDaSessao() {
+        return usuarioDaSessao;
+    }
+
+    public void setUsuarioDaSessao(Usuario usuarioDaSessao) {
+        this.usuarioDaSessao = usuarioDaSessao;
+    }
+    
 }
