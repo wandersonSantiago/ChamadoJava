@@ -93,7 +93,7 @@
 
 
 
-                        <p:column  style="max-height: 3px;width: 50px" >
+                        <p:column  style="max-height: 3px;width: 50px" rendered="#{ctrChamado.usuario.ti != false}">
 
                             <div>
                                 <p:commandLink   action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado" rendered="#{chamadoc.chamadoAberto != false }" ajax="false" >

@@ -128,7 +128,8 @@ public class Usuario implements Serializable {
     }
     public boolean isTi()
     {
-        return SETOR_TI == setor.getId();
+       return SETOR_TI == setor.getId();
+       
     }
     @Override
     public String toString() {
