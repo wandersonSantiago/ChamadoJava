@@ -59,6 +59,12 @@ public class LiberaAcesso {
     public Boolean permissao() {
          return  keyPaginas.containsKey("permissao.xhtml");
     }
+    public Boolean fecharChamado(){
+        return keyPaginas.containsKey("fecharChamado");
+    }
+    public Boolean gerenciarChamado(){
+        return keyPaginas.containsKey("gerenciarChamado");
+    }
 
     public Boolean cadastrarUnidade() {
         return  keyPaginas.containsKey("unidade.xhtml");

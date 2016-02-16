@@ -93,7 +93,7 @@
 
 
 
-                        <p:column  style="max-height: 3px;width: 50px" rendered="#{ctrChamado.usuario.ti != false}">
+                        <p:column  style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.gerenciarChamado() != false}">
 
                             <div>
                                 <p:commandLink   action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado" rendered="#{chamadoc.chamadoAberto != false }" ajax="false" >
@@ -128,6 +128,19 @@
                                 </p:confirmDialog>
                             </div>
 
+                        </p:column>
+                     
+                        <p:column style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.fecharChamado() != false}" >
+                             
+                                  <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
+                                    <p:graphicImage value="/img/fechar.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+                            
                         </p:column>
 
                     </p:dataTable>
