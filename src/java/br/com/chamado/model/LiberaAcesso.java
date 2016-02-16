@@ -13,100 +13,115 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "liberaAcesso")
 @SessionScoped
 
+
+
 public class LiberaAcesso {
 
+   
     private HashMap<String, Pagina> keyPaginas;
     private DaoPermissao daoPermissao = new DaoPermissao();
+
     public LiberaAcesso() {
 
-       keyPaginas = new HashMap<String,Pagina>();
-       adicionarPaginaHashMap();
+        keyPaginas = new HashMap<String, Pagina>();
+        adicionarPaginaHashMap();
     }
-    private void adicionarPaginaHashMap()
-    {
-      List<Pagina> paginas = daoPermissao.buscarPermissoes(SessionContext.getInstance().getUsuarioLogado());
-      for(int i = 0 ; i < paginas.size(); i++)
-      {
-        keyPaginas.put(paginas.get(i).getNomepagina(), paginas.get(i));
-      }
+
+    private void adicionarPaginaHashMap() {
+        List<Pagina> paginas = daoPermissao.buscarPermissoes(SessionContext.getInstance().getUsuarioLogado());
+        for (int i = 0; i < paginas.size(); i++) {
+            keyPaginas.put(paginas.get(i).getNomepagina(), paginas.get(i));
+        }
     }
+
+    //Paginas de acesso
     public Boolean alterarPaginas() {
-        return  keyPaginas.containsKey("alterarPaginas.xhtml");
+        return keyPaginas.containsKey("alterarPaginas.xhtml");
     }
 
     public Boolean alterarSetor() {
-        return  keyPaginas.containsKey("alterarSetor.xhtml");
+        return keyPaginas.containsKey("alterarSetor.xhtml");
     }
 
     public Boolean alterarUnidade() {
-      return  keyPaginas.containsKey("alterarUnidade.xhtml");
+        return keyPaginas.containsKey("alterarUnidade.xhtml");
     }
 
     public Boolean alterarUsuario() {
-      return  keyPaginas.containsKey("alterarUsuario.xhtml");
+        return keyPaginas.containsKey("alterarUsuario.xhtml");
     }
 
     public Boolean cadastrarPaginas() {
-      return  keyPaginas.containsKey("cadastrarPaginas.xhtml");
-       
+        return keyPaginas.containsKey("cadastrarPaginas.xhtml");
+
     }
 
     public Boolean cadastrarSetor() {
-         return  keyPaginas.containsKey("cadastrarSetor.xhtml");
-         
+        return keyPaginas.containsKey("cadastrarSetor.xhtml");
+
     }
 
     public Boolean permissao() {
-         return  keyPaginas.containsKey("permissao.xhtml");
-    }
-    public Boolean fecharChamado(){
-        return keyPaginas.containsKey("fecharChamado");
-    }
-    public Boolean gerenciarChamado(){
-        return keyPaginas.containsKey("gerenciarChamado");
+        return keyPaginas.containsKey("permissao.xhtml");
     }
 
     public Boolean cadastrarUnidade() {
-        return  keyPaginas.containsKey("unidade.xhtml");
+        return keyPaginas.containsKey("unidade.xhtml");
     }
 
     public Boolean cadastrarUsuarios() {
-         return  keyPaginas.containsKey("cadastrarUsuarios.xhtml");
+        return keyPaginas.containsKey("cadastrarUsuarios.xhtml");
     }
 
     public Boolean chamadoAbertoCliente() {
-        return  keyPaginas.containsKey("chamadoAbertoCliente.xhtml");
+        return keyPaginas.containsKey("chamadoAbertoCliente.xhtml");
     }
 
     public Boolean chamadoClienteManutenção() {
-       return  keyPaginas.containsKey("chamadoClienteManutencao.xhtml");
+        return keyPaginas.containsKey("chamadoClienteManutencao.xhtml");
     }
 
     public Boolean chamadoClienteTi() {
-        return  keyPaginas.containsKey("chamadoClienteTi.xhtml");
+        return keyPaginas.containsKey("chamadoClienteTi.xhtml");
     }
 
     public Boolean configuracao() {
-         return  keyPaginas.containsKey("configuracao.xhtml");
+        return keyPaginas.containsKey("configuracao.xhtml");
     }
+
     //Não vai usar 
     public Boolean servicoEmail() {
-       return  keyPaginas.containsKey("servicoemail.xhtml");
+        return keyPaginas.containsKey("servicoemail.xhtml");
     }
 
     public Boolean foneUnidades() {
-        return  keyPaginas.containsKey("foneUnidades.xhtml");
+        return keyPaginas.containsKey("foneUnidades.xhtml");
     }
 
     public Boolean listaChamadoManutencao() {
-        return  keyPaginas.containsKey("listaChamadoManutencao.xhtml");
+        return keyPaginas.containsKey("listaChamadoManutencao.xhtml");
     }
 
     public Boolean listaChamadoTi() {
-        return  keyPaginas.containsKey("listaChamadoTi.xhtml");
+        return keyPaginas.containsKey("listaChamadoTi.xhtml");
     }
 
     public Boolean ramalSetor() {
-        return  keyPaginas.containsKey("ramalSetor.xhtml");
+        return keyPaginas.containsKey("ramalSetor.xhtml");
     }
+    
+    
+    //permissões de usuarios
+
+    public Boolean fecharChamado() {
+        return keyPaginas.containsKey("fecharChamado");
+    }
+
+    public Boolean gerenciarChamado() {
+        return keyPaginas.containsKey("gerenciarChamado");
+    }
+    public Boolean permissaoUsuario(){
+        return keyPaginas.containsKey("permissaoUsuario");
+    }
+ 
 }

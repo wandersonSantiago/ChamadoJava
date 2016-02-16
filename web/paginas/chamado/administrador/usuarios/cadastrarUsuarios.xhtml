@@ -123,11 +123,11 @@
                         </p:column>
                         <p:column style="width:50px">
                             <h:commandLink action="#{ctrUsuario.paginaAlterarUsuario(usuario)}" immediate="true" title="Editar" >
-                                <h:graphicImage value="/img/edit.png"/>
+                                <h:graphicImage value="/img/editar.png"/>
                             </h:commandLink>
                         </p:column>
 
-                        <p:column style="width:50px">
+                        <p:column style="width:50px" rendered="#{liberaAcesso.permissaoUsuario() != false}">
                             <p:commandLink  action="#{ctrPermissao.paginaAlterarPermissao(usuario)}" immediate="true" title="permissões" >
                                 <p:graphicImage  value="/img/security.png" />
                             </p:commandLink>
