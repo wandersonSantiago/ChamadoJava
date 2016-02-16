@@ -109,8 +109,7 @@ public class LiberaAcesso {
     public Boolean ramalSetor() {
         return keyPaginas.containsKey("ramalSetor.xhtml");
     }
-    
-    
+   
     //permissões de usuarios
 
     public Boolean fecharChamado() {
@@ -123,5 +122,12 @@ public class LiberaAcesso {
     public Boolean permissaoUsuario(){
         return keyPaginas.containsKey("permissaoUsuario");
     }
- 
+ //permissão grupos
+    
+    public boolean grupoSuporte(){
+        return keyPaginas.containsKey("suporte");
+    }
+    public boolean userRoot(){
+        return keyPaginas.containsKey("root");
+    }
 }

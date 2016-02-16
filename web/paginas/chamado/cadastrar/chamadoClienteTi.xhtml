@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
-        <h:form enctype="multipart/form-data" rendered="#{liberaAcesso.chamadoClienteTi() != false}">
+        <h:form enctype="multipart/form-data" rendered="#{liberaAcesso.chamadoClienteTi() != false || liberaAcesso.userRoot() != false}">
 
 
             <div class="panel panel-primary">

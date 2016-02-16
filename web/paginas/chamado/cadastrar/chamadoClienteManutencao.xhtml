@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
-        <h:form rendered="#{liberaAcesso.chamadoClienteManutenção() != false}">
+        <h:form rendered="#{liberaAcesso.chamadoClienteManutenção() != false || liberaAcesso.userRoot() != false}">
 
 
             <div class="panel panel-primary">

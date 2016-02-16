@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
-        <h:form rendered="#{liberaAcesso.listaChamadoTi() != false}">
+        <h:form rendered="#{liberaAcesso.listaChamadoTi() != false || liberaAcesso.userRoot() != false}">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
@@ -93,7 +93,7 @@
 
 
 
-                        <p:column  style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.gerenciarChamado() != false}">
+                        <p:column  style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.gerenciarChamado() != false || liberaAcesso.userRoot() != false}">
 
                             <div>
                                 <p:commandLink   action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado" rendered="#{chamadoc.chamadoAberto != false }" ajax="false" >
@@ -130,7 +130,7 @@
 
                         </p:column>
                      
-                        <p:column style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.fecharChamado() != false}" >
+                        <p:column style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.fecharChamado() != false || liberaAcesso.userRoot() != false}" >
                              
                                   <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
                                     <p:graphicImage value="/img/fechar.png"/>

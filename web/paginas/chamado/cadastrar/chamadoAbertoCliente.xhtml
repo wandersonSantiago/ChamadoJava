@@ -6,7 +6,7 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:define name="central">  
 
-        <h:form rendered="#{liberaAcesso.chamadoAbertoCliente() != false}">
+        <h:form rendered="#{liberaAcesso.chamadoAbertoCliente() != false || liberaAcesso.userRoot() != false}">
 
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
