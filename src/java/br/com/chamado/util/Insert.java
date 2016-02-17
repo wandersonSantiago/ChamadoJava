@@ -31,7 +31,8 @@ public class Insert {
             criarSetor();
             criarUnidade();
             criarUsuario();
-           
+            criarPagina();
+            criarPermissao();
         }
 
     }
@@ -64,10 +65,12 @@ public class Insert {
         pagina.setNomepagina("root");
         acessoHibernate.salvar(pagina);
     }
-   /* private void criarPermissao(){
-        permissao = new Permissao(pagina,usuario);
+    private void criarPermissao(){
+        permissao = new Permissao();
+        permissao.setUsuario(usuario);
+        permissao.setPagina(pagina);
         acessoHibernate.salvar(permissao);
         
-    }*/
+    }
 
 }
