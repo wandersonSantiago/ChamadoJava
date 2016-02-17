@@ -127,7 +127,7 @@
                             </h:commandLink>
                         </p:column>
 
-                        <p:column style="width:50px" rendered="#{liberaAcesso.permissaoUsuario() != false || liberaAcesso.userRoot() != false}}">
+                        <p:column style="width:50px" rendered="#{liberaAcesso.permissaoUsuario() != false || liberaAcesso.userRoot() != false}">
                             <p:commandLink  action="#{ctrPermissao.paginaAlterarPermissao(usuario)}" immediate="true" title="permissões" >
                                 <p:graphicImage  value="/img/security.png" />
                             </p:commandLink>

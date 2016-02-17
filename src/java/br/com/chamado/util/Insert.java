@@ -1,6 +1,8 @@
 package br.com.chamado.util;
 
 import br.com.chamado.dao.DaoGenerico;
+import br.com.chamado.model.Pagina;
+import br.com.chamado.model.Permissao;
 import br.com.chamado.model.Setor;
 import br.com.chamado.model.Unidade;
 import br.com.chamado.model.Usuario;
@@ -15,6 +17,8 @@ public class Insert {
     private Setor setor;
     private Unidade unidade;
     private Usuario usuario;
+    private Pagina pagina;
+    private Permissao permissao;
 
     public Insert() {
         
@@ -27,6 +31,7 @@ public class Insert {
             criarSetor();
             criarUnidade();
             criarUsuario();
+           
         }
 
     }
@@ -44,6 +49,7 @@ public class Insert {
         unidade.setFonePabx("0000000000");
         unidade.setMneumonico("informacao");
         unidade.setNome("Seu nome");
+        
         acessoHibernate.salvar(unidade);
     }
 
@@ -52,5 +58,16 @@ public class Insert {
         usuario.criptografar();  
         acessoHibernate.salvar(usuario);
     }
+    private void criarPagina(){
+        pagina = new Pagina();
+        pagina.setDescricao("root");
+        pagina.setNomepagina("root");
+        acessoHibernate.salvar(pagina);
+    }
+   /* private void criarPermissao(){
+        permissao = new Permissao(pagina,usuario);
+        acessoHibernate.salvar(permissao);
+        
+    }*/
 
 }

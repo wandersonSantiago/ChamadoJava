@@ -42,6 +42,8 @@ public class Permissao implements  Serializable{
     @ManyToOne
     @JoinColumn(name = "codpagina")
     private Pagina pagina;
+
+ 
     
     public int getId() {
         return id;
