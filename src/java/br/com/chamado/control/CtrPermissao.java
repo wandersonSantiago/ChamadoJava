@@ -40,10 +40,10 @@ public class CtrPermissao implements Serializable {
             acessoHibernatePermissao.salvarPermissao(permissao, paginas);
             paginas.clear();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Permissao gravada"));
-            return "index";
+            return "/paginas/chamado/administrador/permissao/permissao";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Permissao Não gravada"));
-            return "index";
+            return "/paginas/chamado/administrador/permissao/permissao";
         }
     }
 
@@ -53,10 +53,10 @@ public class CtrPermissao implements Serializable {
             acessoHibernatePermissao.alterarPermissao(permissao, paginas);
             paginas.clear();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Permissao Alterada"));
-            return "index";
+            return "/paginas/chamado/administrador/permissao/alterar/alterarPermissao";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Permissao não Alterada"));
-            return "falha";
+            return "/paginas/chamado/administrador/permissao/alterar/alterarPermissao";
         }
     }
 

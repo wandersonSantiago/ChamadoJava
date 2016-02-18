@@ -13,28 +13,28 @@
                     <h3 class="panel-title" style="color: white" >Chamado Tecnologia da Informação</h3>
                 </div>
                 <div class="panel-body">
-                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <h:panelGrid columns="2">
                         <h:panelGrid columns="1">
-                                <p:outputLabel value="Prioridade:"/>
-                                <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold" required="true" 
-                                                 requiredMessage="Campo prioridade Obrigatorio" >
-                                  <f:converter converterId="descricaoConverter" />
-                                  <f:selectItem itemLabel="--selecione--"  itemValue="#{null}" noSelectionOption="true" />
-                                  <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
-                                           itemValue="#{descricaoPrioridade}" />     
-                                </p:selectOneMenu>
-                            </h:panelGrid>
-                            <h:panelGrid columns="1">
-                                <p:outputLabel value="Categoria:"/>
-                                <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
-                                                 requiredMessage="Campo categoria Obrigatorio" >
-                                    <f:converter converterId="descricaoConverter" />
-                                    <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  noSelectionOption="true" />
-                                    <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
-                                                    itemValue="#{descricaoCategoria}"/>     
-                                </p:selectOneMenu>
-                            </h:panelGrid>
+                            <p:outputLabel value="Prioridade:"/>
+                            <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
+                                             requiredMessage="Campo prioridade Obrigatorio" >
+                                <f:converter converterId="descricaoConverter" />
+                                <f:selectItem itemLabel=""  itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
+                                               itemValue="#{descricaoPrioridade}" />     
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Categoria:"/>
+                            <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
+                                             requiredMessage="Campo categoria Obrigatorio" >
+                                <f:converter converterId="descricaoConverter" />
+                                <f:selectItem itemLabel="" itemValue="#{null}"  noSelectionOption="true" />
+                                <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
+                                                itemValue="#{descricaoCategoria}"/>     
+                            </p:selectOneMenu>
+                        </h:panelGrid>
                     </h:panelGrid>
                     <p:separator/>
 
@@ -42,21 +42,23 @@
                         <h:outputLabel value="Titulo:"/>
                     </div>
                     <div>
-                        <p:inputText id="titulo"  value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" />
+                        <p:inputText id="titulo"  value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" required="true" 
+                                     requiredMessage="Campo Titulo Obrigatório"/>
                     </div>
                     <p:separator/>
                     <div>
                         <h:outputLabel value="Mensagem:"  />
                     </div>
                     <div>
-                        <p:inputTextarea id="mensagem"  style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" /> 
+                        <p:inputTextarea id="mensagem"  style="min-width: 500px; min-height: 300px" value="#{mensagem.texto}" required="true" 
+                                     requiredMessage="Campo Texo Obrigatório"/> 
                     </div>
                     <p:separator/>
-                   
-                  <p:growl id="messagesteste" showDetail="true" />
- 
-               
-            <p:growl id="messagess" showDetail="true" />
+
+                    <p:growl id="messagesteste" showDetail="true" />
+
+
+                    <p:growl id="messagess" showDetail="true" />
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
@@ -68,6 +70,6 @@
                 </div>
             </div>
         </h:form>
-  
+
     </ui:define>
 </ui:composition>
