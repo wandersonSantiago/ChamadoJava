@@ -2,6 +2,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"  
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
@@ -18,9 +19,9 @@
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Prioridade:"/>
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
-                                             requiredMessage="Campo prioridade Obrigatorio" >
+                                             requiredMessage="Campo prioridade Obrigatorio"  label="teste" >
                                 <f:converter converterId="descricaoConverter" />
-                                <f:selectItem itemLabel=""  itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                 <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
                                                itemValue="#{descricaoPrioridade}" />     
                             </p:selectOneMenu>
@@ -30,7 +31,7 @@
                             <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
                                              requiredMessage="Campo categoria Obrigatorio" >
                                 <f:converter converterId="descricaoConverter" />
-                                <f:selectItem itemLabel="" itemValue="#{null}"  noSelectionOption="true" />
+                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                 <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
                                                 itemValue="#{descricaoCategoria}"/>     
                             </p:selectOneMenu>
@@ -42,7 +43,7 @@
                         <h:outputLabel value="Titulo:"/>
                     </div>
                     <div>
-                        <p:inputText id="titulo"  value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" required="true" 
+                        <p:inputText id="titulo"  value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" pt:placeholder="Máximo 30 caractres" required="true" 
                                      requiredMessage="Campo Titulo Obrigatório"/>
                     </div>
                     <p:separator/>
