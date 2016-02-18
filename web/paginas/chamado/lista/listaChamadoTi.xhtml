@@ -11,7 +11,8 @@
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
-                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" widgetVar="table" 
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" resizableColumns="true" widgetVar="table" 
                                   paginator="true" rows="20" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
                         <p:column  style="max-height: 3px;width: 120px" filterBy="#{chamadoc.id}" >

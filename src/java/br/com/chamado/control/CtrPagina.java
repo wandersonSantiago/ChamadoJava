@@ -34,8 +34,10 @@ public class CtrPagina implements  Serializable{
     public String gravarPagina() {
         try {
             acessoHibernate.salvar(pagina);
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Pagina gravada"));
             return "cadastrarPaginas";
         } catch (HibernateException e) {
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Página não gravada"));
             return "falha";
         }
     }
@@ -43,10 +45,10 @@ public class CtrPagina implements  Serializable{
     public String alterarPagina() {
         try {
             acessoHibernate.alterar(pagina);
-               FacesMessage mensagem = new FacesMessage("Pagina Alterado", "Alterado");
-	    FacesContext.getCurrentInstance().addMessage("From:message", mensagem);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Pagina Alterada"));
             return "/paginas/chamado/administrador/permissao/cadastrarPaginas";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Pagina não Alterada"));
             return "falha";
         }
 

@@ -23,6 +23,7 @@
                             *Campos Obrigatórios
                         </h5>
                         <p:separator/>
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
                         <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
                         <p:selectOneMenu id="ativo"  required="true" label="erro" >
@@ -76,6 +77,7 @@
 
                     </h:panelGrid>
                     <p:separator />
+                    
                     <div>
                         <h:commandButton value="Gravar"  action="#{ctrUsuario.alterarUsuario}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
                         <h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/usuarios/cadastrarUsuarios.xhtml"  immediate="true" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />

@@ -26,7 +26,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrDescricao")
 @SessionScoped
-public class CtrDescricao implements  Serializable{
+public class CtrDescricao implements Serializable {
 
     private final DaoDescricao acessoHibernateDescricao;
     private Descricao descricao;
@@ -38,10 +38,10 @@ public class CtrDescricao implements  Serializable{
     public String gravarDescrcao() {
         try {
             acessoHibernateDescricao.salvar(descricao);
-
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Descrição Gravada"));
             return "index";
         } catch (HibernateException e) {
-
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Descrição não gravada"));
             return "index";
         }
     }
@@ -49,12 +49,15 @@ public class CtrDescricao implements  Serializable{
     public String alterarDescricao(Descricao descricao) {
         try {
             this.descricao = descricao;
+
             return "index";
         } catch (HibernateException e) {
+
             return "falha";
         }
     }
-   public String paginaAlterarDescricao(Descricao descricao) {
+
+    public String paginaAlterarDescricao(Descricao descricao) {
         try {
             this.descricao = descricao;
             return "index";
@@ -66,14 +69,16 @@ public class CtrDescricao implements  Serializable{
     public String updateDescricao() {
         try {
             acessoHibernateDescricao.alterar(descricao);
-
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Descrição Alterada"));
             return "index";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Desrcição Não Alterada"));
             return "falha";
         }
 
     }
-            public List getDescricaos() {
+
+    public List getDescricaos() {
         try {
 
             return acessoHibernateDescricao.carregaTudoOrdernado(Descricao.class, "descricao");
@@ -84,31 +89,31 @@ public class CtrDescricao implements  Serializable{
 
     public List carregarPrioridade() {
         try {
-        
-            return  acessoHibernateDescricao.carregarDescricao(1);
+
+            return acessoHibernateDescricao.carregarDescricao(1);
         } catch (HibernateException e) {
             return new ArrayList();
         }
     }
-    public List carregarStatus()
-    {
-       try {
-        
-            return  acessoHibernateDescricao.carregarDescricao(2);
+
+    public List carregarStatus() {
+        try {
+
+            return acessoHibernateDescricao.carregarDescricao(2);
         } catch (HibernateException e) {
             return new ArrayList();
         }
     }
-    public List carregarCategoria()
-    {
-      try {
-        
-           return  acessoHibernateDescricao.carregarDescricao(3);
+
+    public List carregarCategoria() {
+        try {
+
+            return acessoHibernateDescricao.carregarDescricao(3);
         } catch (HibernateException e) {
             return new ArrayList();
         }
     }
-        
+
     public Descricao getDescricao() {
         return descricao;
     }
@@ -116,6 +121,5 @@ public class CtrDescricao implements  Serializable{
     public void setDescricao(Descricao descricao) {
         this.descricao = descricao;
     }
-    
 
 }

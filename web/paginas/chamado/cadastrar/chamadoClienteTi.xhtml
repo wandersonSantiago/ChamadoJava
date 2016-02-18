@@ -13,6 +13,7 @@
                     <h3 class="panel-title" style="color: white" >Chamado Tecnologia da Informação</h3>
                 </div>
                 <div class="panel-body">
+                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <h:panelGrid columns="2">
                         <h:panelGrid columns="1">
                                 <p:outputLabel value="Prioridade:"/>
@@ -55,7 +56,7 @@
                   <p:growl id="messagesteste" showDetail="true" />
  
                
-            <p:growl id="messages" showDetail="true" />
+            <p:growl id="messagess" showDetail="true" />
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">

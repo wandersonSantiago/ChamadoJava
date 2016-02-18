@@ -5,20 +5,20 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >               
 
-<h:form rendered="#{liberaAcesso.cadastrarSetor() != false || liberaAcesso.userRoot() != false}">
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color:  #1E90FF">
-                <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
-            </div>
-            <div class="panel-body">
-                <p:separator/>
-                
+        <h:form rendered="#{liberaAcesso.cadastrarSetor() != false || liberaAcesso.userRoot() != false}">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
+                </div>
+                <div class="panel-body">
+                    <p:separator/>
+
                     <div>
                         <h5>
                             *Campos Obrigatórios
                         </h5>
                     </div>
-            
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <p:separator/>
                     <div>
                         <h:outputText value="Nome: *" style="color: black" />
@@ -54,15 +54,15 @@
                         </h:commandButton>	
                     </div>
 
-             
+
+                </div>
             </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color:  #1E90FF">
-                <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
-            </div>
-            <div class="panel-body">
-           
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Setor</h3>
+                </div>
+                <div class="panel-body">
+
                     <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
 
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
@@ -87,9 +87,9 @@
                         </p:column>
 
                     </p:dataTable>
-              
+
+                </div>
             </div>
-        </div>
-       </h:form>
+        </h:form>
     </ui:define>
 </ui:composition>

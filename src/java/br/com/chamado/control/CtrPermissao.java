@@ -12,8 +12,10 @@ import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -37,9 +39,10 @@ public class CtrPermissao implements Serializable {
         try {
             acessoHibernatePermissao.salvarPermissao(permissao, paginas);
             paginas.clear();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Permissao gravada"));
             return "index";
         } catch (HibernateException e) {
-
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Permissao Não gravada"));
             return "index";
         }
     }
@@ -49,8 +52,10 @@ public class CtrPermissao implements Serializable {
 
             acessoHibernatePermissao.alterarPermissao(permissao, paginas);
             paginas.clear();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Permissao Alterada"));
             return "index";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Permissao não Alterada"));
             return "falha";
         }
     }

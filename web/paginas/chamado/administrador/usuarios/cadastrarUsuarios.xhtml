@@ -18,7 +18,7 @@
                         <h5 style="color: black" >
                             *Campos Obrigatórios
                         </h5>
-                      
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
                         <h:outputLabel for="user" value="Ativo:"  style="color: black"/>
                         <p:selectOneMenu id="ativo"  required="true" label="erro" >
@@ -65,7 +65,7 @@
                         <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Unidade Obrigatorio" >
                             <f:converter converterId="unidadeConverter" />
-                           <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
+                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
                             <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
                                            itemValue="#{usuarioUnidade}" />                                    
                         </p:selectOneMenu>
@@ -77,6 +77,7 @@
                     <h:commandButton value="Gravar"  action="#{ctrUsuario.gravarUsuario}" actionListener="#{usuario.criptografar}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
                         <f:setPropertyActionListener value="#{usuario}" target="#{ctrUsuario.usuario}" />
                     </h:commandButton>	
+
                 </div>
             </div>
             <div class="panel panel-primary">

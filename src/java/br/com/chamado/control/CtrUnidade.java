@@ -4,8 +4,10 @@ import br.com.chamado.dao.DaoUnidade;
 import br.com.chamado.model.Unidade;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -28,8 +30,10 @@ public class CtrUnidade implements  Serializable{
         try {
             acessoHibernate.salvar(unidade);
             unidade.limpar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Unidade gravada"));
             return "/paginas/chamado/administrador/permissao/unidade";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Unidade não gravada"));
             return "falha";
         }
     }
@@ -38,8 +42,10 @@ public class CtrUnidade implements  Serializable{
         try {
             acessoHibernate.alterar(unidade);
             unidade.limpar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Unidade Alterada"));
             return "/paginas/chamado/administrador/permissao/unidade";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Unidade não Alterada"));
             return "falha";
         }
 

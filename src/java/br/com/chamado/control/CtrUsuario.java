@@ -8,8 +8,10 @@ import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -33,7 +35,8 @@ public class CtrUsuario implements  Serializable{
     public String gravarUsuario() {
 	try {
             acessoHibernate.salvar(usuario);
-	    return "index";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario Gravado"));
+	    return "/paginas/chamado/administrador/usuarios/cadastrarUsuarios";
 	} catch (HibernateException e) {
 	    return "falha";
 	}
@@ -43,6 +46,7 @@ public class CtrUsuario implements  Serializable{
 	try {
             usuario.criptografar();
             acessoHibernate.alterar(usuario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario Alterado"));
 	   return "/paginas/chamado/administrador/usuarios/cadastrarUsuarios";
 	} catch (HibernateException e) {
 	     return "falha";

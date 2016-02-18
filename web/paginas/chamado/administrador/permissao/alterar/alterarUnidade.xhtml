@@ -17,7 +17,7 @@
                             *Campos Obrigatórios
                         </h5>
                     </div>
-
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <p:separator/>
 
                     <div>
@@ -37,7 +37,7 @@
                     </div>
                     <div>
                         <p:inputMask mask="(99)9999-9999" id="fonePabx" required="true"  size="14" value="#{ctrUnidade.unidade.fonePabx}"/>
-                       
+
                     </div>
                     <div>
                         <h:outputLabel value="Tel-Diretor" style="color: black" />
@@ -66,9 +66,9 @@
                     <div>
                         <p:separator/>
                         <h:commandButton value="Alterar"  action="#{ctrUnidade.alterarUnidade()}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
-                            
+
                         <h:commandButton value="Cancelar"  action="/paginas/chamado/administrador/permissao/unidade"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
-   
+
                     </div>
                 </div>
             </div>

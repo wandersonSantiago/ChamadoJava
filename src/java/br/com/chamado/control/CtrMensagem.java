@@ -8,8 +8,10 @@ import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -36,9 +38,11 @@ public class CtrMensagem implements  Serializable{
             mensagem.setCodfuncautor(usuarioSessao);
             acessoHibernate.salvar(mensagem);
 	    mensagem.limpar();
-            return "index";
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Mensagem enviada"));
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
 	} catch (HibernateException e) {
-	    return "falha";
+	     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Mensagem Não enviada"));
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
 	}
     }
 

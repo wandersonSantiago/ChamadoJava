@@ -22,8 +22,9 @@
                                            itemValue="#{User}" />     
                         </h:selectOneMenu>
                     </div>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <div>
-                    <p:commandButton value="Atender" action="#{ctrChamado.alterarChamados}" >
+                        <p:commandButton value="Atender" action="#{ctrChamado.alterarChamados}" >
                             <p:confirm header="Confirmação" message="Deseja realmente atender este chamado?" icon="ui-icon-alert" />
                         </p:commandButton>
 

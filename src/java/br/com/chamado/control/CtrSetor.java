@@ -5,8 +5,10 @@ import br.com.chamado.model.Setor;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.hibernate.HibernateException;
 
 /**
@@ -15,7 +17,7 @@ import org.hibernate.HibernateException;
  */
 @ManagedBean(name = "ctrSetor")
 @SessionScoped
-public class CtrSetor implements  Serializable{
+public class CtrSetor implements Serializable {
 
     private final DaoSetor acessoHibernateSetor;
     private Setor setor;
@@ -28,9 +30,10 @@ public class CtrSetor implements  Serializable{
         try {
             acessoHibernateSetor.salvar(setor);
             setor.limpar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor gravada"));
             return "index";
         } catch (HibernateException e) {
-
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor não gravada"));
             return "index";
         }
     }
@@ -65,8 +68,10 @@ public class CtrSetor implements  Serializable{
         try {
             acessoHibernateSetor.alterar(setor);
             setor.limpar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor Alterado"));
             return "/paginas/chamado/administrador/permissao/cadastrarSetor";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Setor não Alterado"));
             return "falha";
         }
 

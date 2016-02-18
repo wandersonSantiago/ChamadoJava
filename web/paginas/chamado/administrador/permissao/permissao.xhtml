@@ -13,16 +13,16 @@
                     <div>
 
                         <h5 style="color: black" >
-                            
+
                             *Campos Obrigatórios
                         </h5>
                     </div>
-
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
                     <div>
                         <h:outputText value="Usuarios *:" /> 
                     </div>
-                  
+
                     <div>
                         <p:selectOneMenu id="permissaoUsuario" value="#{permissao.usuario}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Usuario Obrigatorio" >
@@ -38,7 +38,7 @@
                         <f:selectItems  value="#{CtrPagina.carregarPagina()}"  var="pagina"  itemLabel="#{pagina.descricao}" 
                                         itemValue="#{pagina}"/>     
                     </p:selectManyCheckbox>
-                 <p:separator/>
+                    <p:separator/>
                     <div>
 
                         <h:commandButton value="Gravar"  action="#{ctrPermissao.gravarPermissao}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" >
@@ -70,10 +70,10 @@
                             <h:commandLink  action="#{ctrPermissao.paginaAlterarUnidade(permissao)}" immediate="true" title="Editar" >
                                 <p:graphicImage value="/img/editar.png" />
                             </h:commandLink>
-                   
+
                         </p:column>
 
-        
+
                     </p:dataTable>
 
 

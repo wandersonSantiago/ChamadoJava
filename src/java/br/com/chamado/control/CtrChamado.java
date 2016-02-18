@@ -14,8 +14,11 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.HibernateException;
 
@@ -36,6 +39,7 @@ public class CtrChamado implements Serializable {
     private Usuario usuario;
     private DaoDescricao daoDescricao;
     private Usuario usuarioDaSessao = SessionContext.getInstance().getUsuarioLogado();
+
     public CtrChamado() {
         acessoHibernate = new DaoChamadoc();
         acessoHibernateMensagem = new DaoMensagem();
@@ -66,10 +70,11 @@ public class CtrChamado implements Serializable {
             acessoHibernateMensagem.salvar(mensagem);
             chamadoc.limpar();
             mensagem.limpar();
-            return "/index";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Enviado"));
+            return "/paginas/chamado/cadastrar/chamadoClienteTi";
         } catch (HibernateException e) {
-            System.out.println(e.getMessage());
-            return "erro404";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado não Enviado"));
+            return "/paginas/chamado/cadastrar/chamadoClienteTi";
         }
     }
 
@@ -83,11 +88,13 @@ public class CtrChamado implements Serializable {
 
     public String alterarChamado() {
         try {
-        
+
             acessoHibernate.alterar(chamadoc);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Mensagem enviada"));
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
-            return "falha";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Mensagem não enviada"));
+            return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         }
 
     }
@@ -97,33 +104,42 @@ public class CtrChamado implements Serializable {
             Descricao status = daoDescricao.carregarStatus(10);
             chamadoc.setStatus(status);
             acessoHibernate.alterar(chamadoc);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Em Andamento"));
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado não alterado"));
+
             return "falha";
         }
 
     }
-    public String fecharChamado(Chamadoc chamadoc){
-        try{
+
+    public String fecharChamado(Chamadoc chamadoc) {
+        try {
             Descricao status = daoDescricao.carregarStatus(9);
             chamadoc.setStatus(status);
             Date dataDoFechamento = new Date();
             chamadoc.setDatafechamento(dataDoFechamento);
             acessoHibernate.alterar(chamadoc);
-            return "/paginas/chamado/lista/listaChamado";
-        }catch(HibernateException e){
-            return "erro404";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Fechado"));
+            return "/paginas/chamado/lista/listaChamadoTi";
+        } catch (HibernateException e) {
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado Não Fechado"));
+            return "/paginas/chamado/lista/listaChamadoTi";
         }
     }
-    public String reabrirChamado(Chamadoc chamadoc){
-        try{
+
+    public String reabrirChamado(Chamadoc chamadoc) {
+        try {
             Descricao status = daoDescricao.carregarStatus(11);
             chamadoc.setStatus(status);
             acessoHibernate.alterar(chamadoc);
             this.chamadoc = chamadoc;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Reaberto"));
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
-        }catch(HibernateException e){
-            return "erro404";
+        } catch (HibernateException e) {
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Erro não foi possivel reabrir o chamado"));
+            return "/paginas/chamado/lista/listaChamadoTi";
         }
     }
 
@@ -154,7 +170,8 @@ public class CtrChamado implements Serializable {
             return Collections.emptyList();
         }
     }
-   public Chamadoc getChamadoc() {
+
+    public Chamadoc getChamadoc() {
         return chamadoc;
     }
 
@@ -177,5 +194,5 @@ public class CtrChamado implements Serializable {
     public void setUsuarioDaSessao(Usuario usuarioDaSessao) {
         this.usuarioDaSessao = usuarioDaSessao;
     }
-    
+
 }
