@@ -88,7 +88,7 @@
 
                         </p:panelGrid>
 
-                        <p:inputTextarea  id="nome" style="width: 100%"   required="true" value="#{mensagem.texto}"   /></div>
+                        <p:editor  id="nome" style="width: 100%; size: 50px; background-color: white"  height="130" required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar Teste" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
@@ -121,7 +121,9 @@
                                             <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
                                         </h:outputText>
                                     </h:panelGrid>
-                                    <h:outputText value="#{mensagem.texto}" />
+                                    <h:outputText  style="width: 100px" escape="false"
+                                               value="#{mensagem.texto}" />
+                                  
                                 </h:panelGrid>
 
                             </h:panelGrid>
