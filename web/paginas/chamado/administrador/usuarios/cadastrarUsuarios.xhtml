@@ -54,7 +54,7 @@
                         <p:selectOneMenu id="setor"  value="#{usuario.setor}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Setor Obrigatorio" >
                             <f:converter converterId="setorConverter" />
-                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
+                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}" itemDisabled="true" />
                             <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
                                            itemValue="#{usuarioSetor}" />                                      
                         </p:selectOneMenu>
@@ -65,7 +65,7 @@
                         <p:selectOneMenu id="unidade" value="#{usuario.unidade}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Unidade Obrigatorio" >
                             <f:converter converterId="unidadeConverter" />
-                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
+                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}" itemDisabled="true" />
                             <f:selectItems value="#{ctrUnidade.carregarUnidade()}" var="usuarioUnidade" itemLabel="#{usuarioUnidade.nome}"
                                            itemValue="#{usuarioUnidade}" />                                    
                         </p:selectOneMenu>

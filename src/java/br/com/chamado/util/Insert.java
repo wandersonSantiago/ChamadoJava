@@ -43,19 +43,19 @@ public class Insert {
 
     private void criarUnidade() {
         unidade = new Unidade();
-        unidade.setBairro("Seu Bairro");
-        unidade.setCidade("Sua Cidade");
-        unidade.setEndereco("Seu Endereco");
+        unidade.setBairro("root");
+        unidade.setCidade("root");
+        unidade.setEndereco("root");
         unidade.setFoneDiretor("0000000000");
         unidade.setFonePabx("0000000000");
-        unidade.setMneumonico("informacao");
-        unidade.setNome("Seu nome");
+        unidade.setMneumonico("root");
+        unidade.setNome("root");
         
         acessoHibernate.salvar(unidade);
     }
 
     private void criarUsuario() {
-        usuario = new Usuario(unidade,"Root","root","root1989","root@seuemail.com.br",setor);
+        usuario = new Usuario(unidade,"Root","root","root","root@seuemail.com.br",setor);
         usuario.criptografar();  
         acessoHibernate.salvar(usuario);
     }
@@ -67,8 +67,8 @@ public class Insert {
     }
     private void criarPermissao(){
         permissao = new Permissao();
-        permissao.setUsuario(usuario);
         permissao.setPagina(pagina);
+        permissao.setUsuario(usuario);
         acessoHibernate.salvar(permissao);
         
     }

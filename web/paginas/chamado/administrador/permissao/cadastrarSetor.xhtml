@@ -40,7 +40,7 @@
                         <p:selectOneMenu id="unidade" value="#{setor.unidade}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Setor Obrigatorio" >
                             <f:converter converterId="unidadeConverter" />
-                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  />
+                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}"  itemDisabled="true" />
                             <f:selectItems value="#{ctrUnidade.unidades}" var="setorUnidade" itemLabel="#{setorUnidade.nome}"
                                            itemValue="#{setorUnidade}" />                                    
                         </p:selectOneMenu>

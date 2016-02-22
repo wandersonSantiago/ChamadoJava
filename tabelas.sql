@@ -5,8 +5,7 @@ CREATE TABLE chamadoc
    REFERENCES unidade(id),
    data TIMESTAMP NOT NULL,
    status INTEGER NOT NULL ,
-   prioridade INTEGER NOT NULL DEFAULT(1) CONSTRAINT 
-   chk_prioridade CHECK(prioridade >= 0 AND prioridade <=3),
+   prioridade INTEGER NOT NULL, 
    categoria INTEGER NOT NULL,    
    codfuncsolic INTEGER NOT NULL,
    codfuncatend INTEGER,
@@ -43,10 +42,10 @@ CREATE TABLE usuario(
 CREATE TABLE unidade(
    
     id serial PRIMARY KEY NOT NULL, 
-    nome VARCHAR(30) NOT NULL,
-    razaosocial VARCHAR(30) ,
-    endereco VARCHAR(30) NOT NULL,
-    bairro VARCHAR(30) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    razaosocial VARCHAR(50) ,
+    endereco VARCHAR(100) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
     cidade VARCHAR(30) NOT NULL,
     mneumonico VARCHAR(30) NOT NULL,
     fonediretor VARCHAR(30) NOT NULL,
