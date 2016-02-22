@@ -27,7 +27,7 @@ public class Setor implements Serializable {
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 50)
     @NotNull
     private String nome;
     @Column(nullable = false, length = 15)

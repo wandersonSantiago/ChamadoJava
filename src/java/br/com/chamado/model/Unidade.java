@@ -25,7 +25,7 @@ public class Unidade implements java.io.Serializable {
     private int id;
     @Column(nullable = false, length = 100)
     private String nome;
-    @Column(name = "mneumonico", nullable = false, length = 30)
+    @Column(name = "mneumonico", nullable = false, length = 50)
     private String mneumonico;
     @Column(name = "fonePabx", nullable = false, length = 30)
     private String fonePabx;
@@ -33,9 +33,9 @@ public class Unidade implements java.io.Serializable {
     private String foneDiretor;
     @Column(name = "endereco", nullable = false, length = 100)
     private String endereco;
-    @Column(name = "bairro", nullable = false, length = 30)
+    @Column(name = "bairro", nullable = false, length = 50)
     private String bairro;
-    @Column(name = "cidade", nullable = false, length = 30)
+    @Column(name = "cidade", nullable = false, length = 50)
     private String cidade;
 
     public Unidade() {

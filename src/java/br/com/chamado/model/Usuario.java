@@ -30,9 +30,9 @@ public class Usuario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "unidade")
     private Unidade unidade;
-    @Column(name = "nome", unique = true, nullable = false)
+    @Column(name = "nome", unique = true, nullable = false,length = 50)
     private String nome;
-    @Column(name = "usuario", unique = true, nullable = false, length = 30)
+    @Column(name = "usuario", unique = true, nullable = false, length = 50)
     private String usuario;
     @Column(name = "senha", nullable = false, length = 256)
     private String senha;

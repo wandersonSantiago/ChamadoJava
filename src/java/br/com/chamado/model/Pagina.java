@@ -25,9 +25,9 @@ public class Pagina implements Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 50)
     private String descricao;
-    @Column(name = "nomepagina", nullable = false, length = 30)
+    @Column(name = "nomepagina", nullable = false, length = 50)
     private String nomepagina;
     
    //@ManyToOne

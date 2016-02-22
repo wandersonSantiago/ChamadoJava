@@ -11,20 +11,30 @@
                     <h3 class="panel-title" style="color: white" > Lista de Ramal Setores</h3>
                 </div>
                 <div class="panel-body">
-                   
-                    <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true"
+
+                    <p:dataTable value="#{ctrSetor.carregarSetor()}" var="setor" reflow="true" id="tabela" paginator="true" widgetVar="table" 
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30" rowKey="#{setor.id}" selectionMode="single">
-                        <p:column  filterBy="#{setor.unidade.mneumonico}">
-                            <f:facet name="header">
-                                Unidade:
+
+
+                        <p:column  style="max-height: 8px" filterBy="#{setor.unidade}" headerText="Unidade:">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrUnidade.unidades}"  var="unidade" itemLabel="#{unidade.mneumonico}"
+                                                   itemValue="#{unidade}" />
+                                </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText value="#{setor.unidade.mneumonico}"/>
+                            <h:outputText value="#{setor.unidade.mneumonico}" />
                         </p:column>
-                        <p:column  filterBy="#{setor.nome}">
-                            <f:facet name="header">
-                                Setor:
+                        <p:column  style="max-height: 8px" filterBy="#{setor}" headerText="Setor:">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrSetor.setores}"  var="setor" itemLabel="#{setor.nome}"
+                                                   itemValue="#{setor}" />
+                                </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText value="#{setor.nome}"/>
+                            <h:outputText value="#{setor.nome}" />
                         </p:column>
 
                         <p:column  >

@@ -39,10 +39,10 @@ public class CtrDescricao implements Serializable {
         try {
             acessoHibernateDescricao.salvar(descricao);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Descrição Gravada"));
-            return "index";
+            return "/paginas/chamado/config/confDescricao";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Descrição não gravada"));
-            return "index";
+            return "/paginas/chamado/config/confDescricao";
         }
     }
 
@@ -70,10 +70,10 @@ public class CtrDescricao implements Serializable {
         try {
             acessoHibernateDescricao.alterar(descricao);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Descrição Alterada"));
-            return "index";
+            return "/paginas/chamado/config/confDescricao";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Desrcição Não Alterada"));
-            return "falha";
+            return "/paginas/chamado/config/confDescricao";
         }
 
     }

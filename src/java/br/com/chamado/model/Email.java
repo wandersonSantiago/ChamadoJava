@@ -34,13 +34,13 @@ public class Email implements  Serializable{
     private Date data;
     @Column(name = "enviado")
     private boolean enviado;
-    @Column(name = "remetente",length = 30)
+    @Column(name = "remetente",length = 50)
     private String remetente;
      @Column(name = "assunto",length = 60)
     private String assunto;
      @Column(name = "texto",length = 255)
      private String texto;
-     @Column(name = "destinatario",length = 30)
+     @Column(name = "destinatario",length = 50)
      private String destinatario;
 
     public int getId() {

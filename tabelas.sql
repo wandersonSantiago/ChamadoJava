@@ -21,7 +21,7 @@ CREATE TABLE mensagem
    data TIMESTAMP ,
    codfuncautor INTEGER NOT NULL
    REFERENCES usuario(id), 
-   nomearquivo VARCHAR(10),
+   nomearquivo VARCHAR(30),
    arquivo OID,
    texto TEXT NOT NULL
 );
@@ -32,8 +32,8 @@ CREATE TABLE usuario(
   id serial PRIMARY KEY NOT NULL,
   unidade INTEGER NOT NULL 
   REFERENCES unidade(id),
-  nome VARCHAR(30) NOT NULL ,
-  usuario VARCHAR(30) NOT NULL CONSTRAINT
+  nome VARCHAR(50) NOT NULL ,
+  usuario VARCHAR(50) NOT NULL CONSTRAINT
   uniqueusuario UNIQUE,
   senha VARCHAR(256) NOT NULL,
   email VARCHAR(50) NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE unidade(
     razaosocial VARCHAR(50) ,
     endereco VARCHAR(100) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
-    cidade VARCHAR(30) NOT NULL,
-    mneumonico VARCHAR(30) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    mneumonico VARCHAR(50) NOT NULL,
     fonediretor VARCHAR(30) NOT NULL,
     fonepabx VARCHAR(30) NOT NULL
 );
@@ -55,8 +55,8 @@ CREATE TABLE unidade(
 CREATE TABLE pagina(
    
    id serial PRIMARY KEY NOT NULL,
-   descricao  VARCHAR(30) NOT NULL,
-   nomepagina VARCHAR(30) NOT NULL);
+   descricao  VARCHAR(50) NOT NULL,
+   nomepagina VARCHAR(50) NOT NULL);
 
 CREATE TABLE permissao(
    
@@ -67,19 +67,19 @@ CREATE TABLE permissao(
 CREATE TABLE confemail(
  
   id serial PRIMARY KEY NOT NULL,
-  host VARCHAR(30) NOT NULL,
-  usuarioemail VARCHAR(30) NOT NULL ,
-  senhaemail VARCHAR(30) NOT NULL,
+  host VARCHAR(50) NOT NULL,
+  usuarioemail VARCHAR(50) NOT NULL ,
+  senhaemail VARCHAR(50) NOT NULL,
   porta INTEGER NOT NULL,
   ssl  BOOLEAN DEFAULT(false) NOT NULL,  
   tls  BOOLEAN DEFAULT(false) NOT NULL,
-  msgfrom VARCHAR(10) NOT NULL);
+  msgfrom VARCHAR(50) NOT NULL);
   
 CREATE TABLE setor(
    
    id serial PRIMARY KEY NOT NULL,
-   nome VARCHAR(30) NOT NULL,
-   ramal VARCHAR(30) NOT NULL);
+   nome VARCHAR(50) NOT NULL,
+   ramal VARCHAR(50) NOT NULL);
    
 CREATE TABLE email(
    
@@ -93,24 +93,24 @@ CREATE TABLE email(
    
 CREATE TABLE urgencia(
     id serial PRIMARY KEY NOT NULL,
-    nome VARCHAR(30) NOT NULL,
+    nome VARCHAR(50) NOT NULL,
     habilitado BOOLEAN NOT NULL DEFAULT(false));
     
 CREATE TABLE status (
       
       id serial PRIMARY KEY NOT NULL,
-      nome VARCHAR(30) NOT NULL,
+      nome VARCHAR(50) NOT NULL,
       habilitado BOOLEAN NOT NULL DEFAULT(false));
       
 
 CREATE TABLE justificativa(
       id serial PRIMARY KEY NOT NULL,
-      nome VARCHAR(30) NOT NULL,
+      nome VARCHAR(50) NOT NULL,
       validostatus INTEGER NOT NULL,
       habilitado BOOLEAN NOT NULL DEFAULT(false));
  
       
 CREATE TABLE descricao(
  id serial PRIMARY KEY NOT NULL,
- descricao VARCHAR(30) NOT NULL,
+ descricao VARCHAR(50) NOT NULL,
  tipo INTEGER NOT NULL);

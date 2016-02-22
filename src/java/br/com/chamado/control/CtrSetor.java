@@ -31,10 +31,10 @@ public class CtrSetor implements Serializable {
             acessoHibernateSetor.salvar(setor);
             setor.limpar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor gravada"));
-            return "index";
+            return "/paginas/chamado/administrador/permissao/cadastrarSetor";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor não gravada"));
-            return "index";
+            return "/paginas/chamado/administrador/permissao/cadastrarSetor";
         }
     }
 

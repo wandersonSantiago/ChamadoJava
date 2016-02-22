@@ -56,13 +56,14 @@
                                   " value="#{mensagem.texto}" required="true" 
                                   requiredMessage="Campo Texo Obrigatório"/> 
                     </div>
+                   <p:fileUpload value="#"  mode="simple" />
                     <p:separator/>
 
                     <p:growl id="messagesteste" showDetail="true" />
 
 
-                    <p:growl id="messagess" showDetail="true" />
-
+                    
+                    
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
@@ -70,6 +71,7 @@
                         </h:commandButton>
                         <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                     </h:panelGrid>
+
                 </div>
             </div>
         </h:form>

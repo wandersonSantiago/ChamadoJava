@@ -35,7 +35,7 @@ public class Mensagem implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "data", length = 13)
     private Date data;
-    @Column(name = "nomearquivo", length = 10)
+    @Column(name = "nomearquivo", length = 50)
     private String nomearquivo;
     @Lob
     @Column(name = "arquivo")
