@@ -53,7 +53,7 @@ public class DaoGenerico {
     {
           Session session = hibernateConfiguracao.openSession();
 	  Criteria criterica = session.createCriteria(classe);
-	  criterica.addOrder(Order.asc(ordem));
+	  criterica.addOrder(Order.desc(ordem));
 	  List lista = criterica.list();
           criterica.list();
           session.close();
