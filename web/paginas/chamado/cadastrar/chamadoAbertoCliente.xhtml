@@ -82,16 +82,16 @@
                                 </div>
 
                                 <div>
-                                    <h:outputText value="#{ctrChamado.chamadoc.codfuncatend.nome}"/>
+                                    <h:outputText value="#{ctrChamado.chamadoc.codfuncatend.nome}" />
                                 </div>
                             </h:panelGrid>
 
                         </p:panelGrid>
 
-                        <p:editor  id="nome" style="width: 100%; size: 50px; background-color: white"  height="130" required="true" value="#{mensagem.texto}"   /></div>
+                        <p:editor  id="nome" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" style="width: 100%; size: 50px; background-color: white"  height="130" required="true" value="#{mensagem.texto}"   /></div>
 
-                    <h:panelGrid columns="2" > 
-                        <h:commandButton value="Enviar Teste" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
+                        <h:panelGrid columns="2" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" > 
+                        <h:commandButton value="Enviar Mensagem" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{ctrChamado.chamadoc}" target="#{CtrMensagem.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{CtrMensagem.mensagem}" />
 
@@ -122,14 +122,15 @@
                                         </h:outputText>
                                     </h:panelGrid>
                                     <h:outputText  style="width: 100px" escape="false"
-                                               value="#{mensagem.texto}" />
-                                  
-                                </h:panelGrid>
+                                                   value="#{mensagem.texto}" />
 
+                                </h:panelGrid>
+                                
                             </h:panelGrid>
-                            <p:separator style="color: black; background-color: black"/>
+                            
                             <br/>
                         </p:outputPanel>
+                        <p:separator style="width:100%;height:3px; color: black" />
                     </h:panelGrid>
                 </p:dataScroller>
             </div>
