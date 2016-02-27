@@ -1,6 +1,7 @@
  package br.com.chamado.dao;
 
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
 import java.util.List;
 /**
@@ -10,20 +11,21 @@ import java.util.List;
 public class DaoChamadoc extends DaoGenerico{
     
       private String hql;
-      public List carregaChamadoOrdernado(Usuario usuario)
+      private Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
+      public List carregaChamadoOrdernado()
       {
-        if(usuario.isTiCentral())
+        if(usuarioSessao.isTiCentral())
         {
            return carregaTudoOrdernado(Chamadoc.class,"id");
         }
-        else if(usuario.isTi())
+        else if(usuarioSessao.isTi())
         {
-           hql = "from Chamadoc where unidade = " + usuario.getUnidade().getId();
+           hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId();
            return carregaTudoOrdernadoUsandoHql(hql);
         }
         else
         {
-        hql = "from Chamadoc where  codfuncsolic = " + usuario.getId();
+        hql = "from Chamadoc where  codfuncsolic = " + usuarioSessao.getId();
         return carregaTudoOrdernadoUsandoHql(hql);
         }
     }

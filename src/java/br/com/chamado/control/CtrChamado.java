@@ -7,12 +7,11 @@ import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.Descricao;
 import br.com.chamado.model.Email;
+import br.com.chamado.model.FuncaoChamado;
 import br.com.chamado.model.Mensagem;
-import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -38,8 +37,7 @@ public class CtrChamado implements Serializable {
     private Mensagem mensagem;
     private Usuario usuario;
     private DaoDescricao daoDescricao;
-    private Usuario usuarioDaSessao = SessionContext.getInstance().getUsuarioLogado();
-
+   
     public CtrChamado() {
         acessoHibernate = new DaoChamadoc();
         acessoHibernateMensagem = new DaoMensagem();
@@ -51,39 +49,15 @@ public class CtrChamado implements Serializable {
     public String gravarChamado() {
 
         try {
-            Usuario user = SessionContext.getInstance().getUsuarioLogado();
-            Date hojeData = new Date();
-
-            chamadoc.setData(hojeData);
-            chamadoc.setUnidade(user.getUnidade());
-            chamadoc.setCodfuncsolic(user);
-
-            Descricao status = daoDescricao.carregarStatus(8);
-
-            chamadoc.setStatus(status);
-
-            acessoHibernate.salvar(chamadoc);
-
-            mensagem.setNumeChamado(chamadoc.getId());
-            mensagem.setData(hojeData);
-            mensagem.setCodfuncautor(user);
-            acessoHibernateMensagem.salvar(mensagem);
-            chamadoc.limpar();
-            mensagem.limpar();
+            FuncaoChamado chamadoAbrir = new FuncaoChamado();
+            chamadoAbrir.abrir(chamadoc,mensagem);
+            
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Enviado"));
             return "/paginas/chamado/cadastrar/chamadoClienteTi";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado não Enviado"));
             return "/paginas/chamado/cadastrar/chamadoClienteTi";
         }
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public String alterarChamado() {
@@ -101,10 +75,10 @@ public class CtrChamado implements Serializable {
 
     public String alterarChamados() {
         try {
-            Descricao status = daoDescricao.carregarStatus(10);
-            chamadoc.setStatus(status);
-            acessoHibernate.alterar(chamadoc);
+            FuncaoChamado atenderChamado = new FuncaoChamado();
+            atenderChamado.atenderChamada(chamadoc);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Em Andamento"));
+            
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado não alterado"));
@@ -116,11 +90,9 @@ public class CtrChamado implements Serializable {
 
     public String fecharChamado(Chamadoc chamadoc) {
         try {
-            Descricao status = daoDescricao.carregarStatus(9);
-            chamadoc.setStatus(status);
-            Date dataDoFechamento = new Date();
-            chamadoc.setDatafechamento(dataDoFechamento);
-            acessoHibernate.alterar(chamadoc);
+            FuncaoChamado fecharChamado = new FuncaoChamado();
+            fecharChamado.fechar(chamadoc);
+            
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Fechado"));
             return "/paginas/chamado/lista/listaChamadoTi";
         } catch (HibernateException e) {
@@ -131,10 +103,8 @@ public class CtrChamado implements Serializable {
 
     public String reabrirChamado(Chamadoc chamadoc) {
         try {
-            Descricao status = daoDescricao.carregarStatus(11);
-            chamadoc.setStatus(status);
-            acessoHibernate.alterar(chamadoc);
-            this.chamadoc = chamadoc;
+            FuncaoChamado reabrirChamado = new FuncaoChamado();
+            this.chamadoc = reabrirChamado.reabrirChamado(chamadoc);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Reaberto"));
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
@@ -163,12 +133,19 @@ public class CtrChamado implements Serializable {
 
     public List carregarChamado() {
         try {
-            Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
-            return acessoHibernate.carregaChamadoOrdernado(usuarioSessao);
+            return acessoHibernate.carregaChamadoOrdernado();
         } catch (HibernateException e) {
 
             return Collections.emptyList();
         }
+    }
+   
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Chamadoc getChamadoc() {
@@ -186,13 +163,5 @@ public class CtrChamado implements Serializable {
     public void setMensagem(Mensagem mensagem) {
         this.mensagem = mensagem;
     }
-
-    public Usuario getUsuarioDaSessao() {
-        return usuarioDaSessao;
-    }
-
-    public void setUsuarioDaSessao(Usuario usuarioDaSessao) {
-        this.usuarioDaSessao = usuarioDaSessao;
-    }
-
+   
 }
