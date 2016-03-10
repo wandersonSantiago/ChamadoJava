@@ -60,8 +60,9 @@ public class CtrPermissao implements Serializable {
         }
     }
 
-    public List carregarPaginasUser(Usuario usuario) {
+    public List carregarPaginasUser() {
         try {
+           
             return acessoHibernatePermissao.buscarPermissoes(usuario);
         } catch (HibernateException e) {
             return new ArrayList();

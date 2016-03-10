@@ -24,7 +24,7 @@
                     </div>
 
                     <div>
-                        <p:selectOneMenu id="permissaoUsuario" value="#{permissao.usuario}" editable="false" effect="fold" required="true" 
+                        <p:selectOneMenu id="permissaoUsuario" value="#{permissao.usuario}" editable="false" effect="fold" required="false" 
                                          requiredMessage="Campo Usuario Obrigatorio" >
                             <f:converter converterId="usuarioConverter" />
                             <f:selectItem itemLabel="--Selecione--"   noSelectionOption="true"  itemDisabled="true"/>

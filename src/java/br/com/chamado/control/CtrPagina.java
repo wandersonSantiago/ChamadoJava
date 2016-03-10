@@ -8,11 +8,13 @@ package br.com.chamado.control;
 import br.com.chamado.dao.DaoPagina;
 import br.com.chamado.model.Pagina;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import org.hibernate.HibernateException;
 
 /**
@@ -81,6 +83,7 @@ public class CtrPagina implements  Serializable{
             return null;
         }
     }
+   
 
     public Pagina getPagina() {
         return pagina;
