@@ -17,18 +17,24 @@
                 <h:form>
                     <ul class="nav navbar-nav navbar-right">
                         <li><h:commandLink style="color: white" value="Inicio" action="/index.xhtml"/></li>
+                        <li style="color: white"> <h:commandLink  style="color: white" action="#{ctrLogin.efetuarLogout()}" title="sair"  value="Logout"/></li>
                     </ul>
+                  
                 </h:form>
                 <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Procurar..." />
                 </form>
                 <h:form>
                     <ul class="nav navbar-nav navbar-right">
+                         <ul class="nav navbar-nav navbar-right">
+                             <li><h:commandLink style="color: white" value="Perfil" action="#{ctrUsuario.paginaAlterarUsuarioPerfil(controleSessao.usuarioDaSessao)}"/></li>
+                    </ul>
                         <li><a style="color: white" href="#"><h:outputText value="Bem Vindo(a)" /></a></li>
                         <li><a style="color: white" href="#"><h:outputLabel  ><h:graphicImage value="/img/miniavatar.png" /> </h:outputLabel></a></li>
                         <li><a style="color: white" href="#"><h:outputLabel  value="#{controleSessao.usuarioDaSessao.nome}" /></a></li>
-                        <li style="color: white"> <h:commandLink  style="color: white" action="#{ctrLogin.efetuarLogout()}" title="sair"  value="Logout"/></li>
+                        
                     </ul>
+                     
                 </h:form>
             </div>
         </div>

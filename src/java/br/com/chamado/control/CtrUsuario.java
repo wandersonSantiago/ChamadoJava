@@ -47,9 +47,10 @@ public class CtrUsuario implements  Serializable{
             usuario.criptografar();
             acessoHibernate.alterar(usuario);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario Alterado"));
-	   return "/paginas/chamado/administrador/usuarios/cadastrarUsuarios";
+	   return "";
 	} catch (HibernateException e) {
-	     return "falha";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario não Alterado"));
+	     return "";
 	}
 
     }
@@ -57,6 +58,14 @@ public class CtrUsuario implements  Serializable{
         try {
             this.usuario = user;
             return "/paginas/chamado/administrador/permissao/alterar/alterarUsuario";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
+        public String paginaAlterarUsuarioPerfil(Usuario user) {
+        try {
+            this.usuario = user;
+            return "/paginas/chamado/administrador/permissao/alterar/userAlterarDadosUsuario";
         } catch (HibernateException e) {
             return "falha";
         }

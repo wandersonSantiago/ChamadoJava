@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="central" >               
+        <h:form id="form" rendered="#{liberaAcesso.alterarUsuario() != false || liberaAcesso.userRoot() != false}">
+            <p:growl id="msgs" showDetail="true"/>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:  #1E90FF">
+                    <h3 class="panel-title" style="color: white" >Cadastro Unidade</h3>
+                </div>
+                <div class="panel-body">
+                    <h:panelGrid columns="1">
+                        <h3 style="color: black" >
+                            Dados Usuario
+                        </h3>
+
+                        <p:separator/>
+
+                        <h5 style="color: black" >
+                            *Campos Obrigatórios
+                        </h5>
+
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                        <h:panelGrid columns="2">
+
+                            <h:outputLabel value="Nome usuario:" />
+                            <h:outputText  value="#{ctrUsuario.usuario.nome}" style="color: black ; font-size: 20px" />
+
+                            <h:outputLabel value="Usuario:" />
+                            <h:outputText value="#{ctrUsuario.usuario.usuario}" style="color: black; font-size: 20px" />
+
+
+
+                            <h:outputLabel value="Email: *" style="color: black" />
+                            <p:inputText  id="userEmail"  size="150" required="true"  value="#{ctrUsuario.usuario.email}" label="Email Usuario" />
+
+                            <h:outputLabel value="Senha*:" for="senha"  style="color: black"/>
+
+                            <p:password id="senha" size="15" required="true" value="#{ctrUsuario.usuario.senha}" requiredMessage="campo senha obrigatorio"  >
+                                <f:validateLength maximum="12" minimum="6" />
+                            </p:password>
+
+                            <h:outputLabel value=" Repete Senha: " for="repeteSenha" style="color: black" />
+
+                            <p:password id="repeteSenha" size="15" required="false" requiredMessage="Campo obrigadtorio"  >
+                                <f:validateLength maximum="12" minimum="6" />
+                            </p:password>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <p:separator />
+
+                    <div>
+                        <h:commandButton value="Atualizar"  action="#{ctrUsuario.alterarUsuario}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
+                        <h:commandButton value="Cancelar"  action="/index.xhtml"  immediate="true" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  />
+                    </div>
+                </div>
+            </div>
+
+
+        </h:form>
+    </ui:define>
+</ui:composition>
