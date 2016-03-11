@@ -29,7 +29,7 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "unidade", nullable = false)
     private Unidade unidade;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
     @ManyToOne
@@ -47,12 +47,15 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "codfuncatend")
     private Usuario codfuncatend;
+    @ManyToOne
+    @JoinColumn(name = "impressora")
+    private Impressora impressora;
     @Column(name = "titulo", nullable = false, length = 30)
     private String titulo;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP )
     @Column(name = "dataprevisao", length = 13)
     private Date dataprevisao;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
     @Transient
@@ -170,6 +173,14 @@ public class Chamadoc implements Serializable {
 
     public boolean isChamadoAberto() {
         return status.getId() == ABERTO;
+    }
+
+    public Impressora getImpressora() {
+        return impressora;
+    }
+
+    public void setImpressora(Impressora impressora) {
+        this.impressora = impressora;
     }
 
     public void limpar() {

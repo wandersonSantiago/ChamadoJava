@@ -39,6 +39,20 @@ CREATE TABLE usuario(
   email VARCHAR(50) NOT NULL,
   setor INTEGER NOT NULL);
 
+CREATE TABLE impressora(
+
+id serial PRIMARY KEY NOT NULL,
+  
+nome VARCHAR(50) NOT NULL ,
+marca VARCHAR(50) NOT NULL ,
+ip INTEGER ,
+contador INTEGER ,
+ordemServico INTEGER,
+ativo BOOLEAN DEFAULT(false) NOT NULL,  
+locada BOOLEAN DEFAULT(false) NOT NULL,  
+
+  setor INTEGER NOT NULL);
+
 CREATE TABLE unidade(
    
     id serial PRIMARY KEY NOT NULL, 

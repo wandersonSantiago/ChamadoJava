@@ -4,6 +4,7 @@ import br.com.chamado.model.Chamadoc;
 import br.com.chamado.model.Descricao;
 import br.com.chamado.model.Email;
 import br.com.chamado.model.EmailConfig;
+import br.com.chamado.model.Impressora;
 import br.com.chamado.model.Mensagem;
 import br.com.chamado.model.Pagina;
 import br.com.chamado.model.Permissao;
@@ -46,6 +47,7 @@ public class HibernateConfiguracao {
         configuracao.addAnnotatedClass(Setor.class);
         configuracao.addAnnotatedClass(Email.class);
         configuracao.addAnnotatedClass(Descricao.class);
+        configuracao.addAnnotatedClass(Impressora.class);
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuracao.getProperties()).build();
         sessionFactory = configuracao.buildSessionFactory(serviceRegistry);
     }

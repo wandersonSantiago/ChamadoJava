@@ -53,10 +53,10 @@
                                 <div>
                                     <p:outputLabel value="Status:"/>
                                 </div>
-                                <h:outputText value="#{ctrChamado.chamadoc.status.descricao}"/>
+
                                 <div>
 
-
+                                    <h:outputText value="#{ctrChamado.chamadoc.status.descricao}"/>
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
@@ -87,67 +87,49 @@
                             </h:panelGrid>
 
                         </p:panelGrid>
-                        
+
                         <p:panelGrid columns="7" style="width: 100%" >
                             <h:panelGrid columns="2" >
                                 <div>
-                                    <h:outputLabel value="Numero:"/>
+                                    <h:outputLabel value="impressora nome"/>
                                 </div>
                                 <div>
-                                   
-                                </div>
-                            </h:panelGrid>
-                            <h:panelGrid columns="2" >
-                                <div>
-                                    <h:outputLabel value="Data:" />
-                                </div>
-                                <div>
-                                    
+                                    <h:outputText value="#{ctrChamado.chamadoc.impressora.nome}"/>
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="2" >
                                 <div>
-                                    <h:outputLabel value="Data Encerramento:"/>  
+                                    <h:outputLabel value="setor" />
                                 </div>
                                 <div>
-                                    
+                                    <h:outputText value="#{ctrChamado.chamadoc.impressora.setor}"/>
+                                </div>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" >
+                                <div>
+                                    <h:outputLabel value="locada"/>  
+                                </div>
+                                <div>
+                                    <h:outputText value="#{ctrChamado.chamadoc.impressora.locada}"/>
                                 </div>
                             </h:panelGrid>
 
                             <h:panelGrid columns="1">
                                 <div>
-                                    <p:outputLabel value="Status:"/>
+                                    <p:outputLabel value="IP"/>
                                 </div>
-                                
-                                <div>
 
+                                <div>
+                                    <h:outputText value="#{ctrChamado.chamadoc.impressora.ip}"/>
 
                                 </div>
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <div>
-                                    <p:outputLabel value="Prioridade:"/>
+                                    <p:outputLabel value="contador"/>
                                 </div>
                                 <div>
-                                   
-                                </div>
-                            </h:panelGrid>
-                            <h:panelGrid columns="1">
-                                <div>
-                                    <p:outputLabel value="Categoria:"/>
-                                </div>
-                                <div>
-                                    
-                                </div>
-                            </h:panelGrid>
-
-                            <h:panelGrid columns="2">
-                                <div>
-                                    <h:outputLabel value="Atendido por:" />
-                                </div>
-
-                                <div>
-                                    
+                                    <h:outputText value="#{ctrChamado.chamadoc.impressora.contador}"/>
                                 </div>
                             </h:panelGrid>
 
@@ -155,7 +137,7 @@
 
                         <p:editor  id="nome" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" style="width: 100%; size: 50px; background-color: white"  height="130" required="true" value="#{mensagem.texto}"   /></div>
 
-                        <h:panelGrid columns="2" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" > 
+                    <h:panelGrid columns="2" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" > 
                         <h:commandButton value="Enviar Mensagem" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{ctrChamado.chamadoc}" target="#{CtrMensagem.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{CtrMensagem.mensagem}" />
@@ -190,9 +172,9 @@
                                                    value="#{mensagem.texto}" />
 
                                 </h:panelGrid>
-                                
+
                             </h:panelGrid>
-                            
+
                             <br/>
                         </p:outputPanel>
                         <p:separator style="width:100%;height:3px; color: black" />

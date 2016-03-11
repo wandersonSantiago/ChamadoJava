@@ -15,7 +15,7 @@
                 </div>
                 <div class="panel-body">
                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="4">
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Prioridade:"/>
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
@@ -27,6 +27,16 @@
                             </p:selectOneMenu>
                         </h:panelGrid>
                         <h:panelGrid columns="1">
+                            <p:outputLabel value="Equipamento"/>
+                            <p:selectOneMenu id="equipmento" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
+                                             requiredMessage="Campo equipamento Obrigatorio" >
+                                <f:converter converterId="descricaoConverter" />
+                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+                                <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
+                                                itemValue="#{descricaoCategoria}"/>     
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1">
                             <p:outputLabel value="Categoria:"/>
                             <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
                                              requiredMessage="Campo categoria Obrigatorio" >
@@ -34,6 +44,16 @@
                                 <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                 <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
                                                 itemValue="#{descricaoCategoria}"/>     
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Impressora"/>
+                            <p:selectOneMenu id="impressora" value="#{chamadoc.impressora}" editable="false" effect="fold" required="true" 
+                                             requiredMessage="Campo impressora Obrigatorio" >
+                                 <f:converter converterId="impressoraConverter" />
+                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+                                <f:selectItems  value="#{ctrImpressora.carregarImpressora()}"  var="chamadoImpressora"  itemLabel="#{chamadoImpressora.nome}" 
+                                                itemValue="#{chamadoImpressora}"/>     
                             </p:selectOneMenu>
                         </h:panelGrid>
                     </h:panelGrid>
@@ -56,14 +76,14 @@
                                   " value="#{mensagem.texto}" required="true" 
                                   requiredMessage="Campo Texo Obrigatório"/> 
                     </div>
-                   <p:fileUpload value="#"  mode="simple" />
+                    <p:fileUpload value="#"  mode="simple" />
                     <p:separator/>
 
                     <p:growl id="messagesteste" showDetail="true" />
 
 
-                    
-                    
+
+
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
