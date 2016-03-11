@@ -48,9 +48,9 @@
                         </h:panelGrid>
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Impressora"/>
-                            <p:selectOneMenu id="impressora" value="#{chamadoc.impressora}" editable="false" effect="fold" required="true" 
+                            <p:selectOneMenu id="impressora" value="#{chamadoc.impressora}" editable="false" effect="fold" required="false" 
                                              requiredMessage="Campo impressora Obrigatorio" >
-                                 <f:converter converterId="impressoraConverter" />
+                                 
                                 <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                 <f:selectItems  value="#{ctrImpressora.carregarImpressora()}"  var="chamadoImpressora"  itemLabel="#{chamadoImpressora.nome}" 
                                                 itemValue="#{chamadoImpressora}"/>     

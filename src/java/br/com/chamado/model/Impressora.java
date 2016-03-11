@@ -27,12 +27,12 @@ public class Impressora implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "ativo")
-     private boolean ativo;
+    private boolean ativo;
     @Column(name = "locada")
     private boolean locada;
     @Column(name = "nome", unique = true,  length = 50)
     private String nome;
-    @Column(name = "marca", unique = true, length = 50)
+    @Column(name = "marca", length = 50)
     private String marca;
     @Column(name = "ip", unique = true,  length = 50)
     private int ip;

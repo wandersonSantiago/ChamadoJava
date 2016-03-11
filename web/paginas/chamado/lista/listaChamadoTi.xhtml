@@ -20,11 +20,14 @@
                             </f:facet>
                             <h:outputText  value="#{chamadoc.id}" style=""/>
                         </p:column>
-                        <p:column filterBy="#{chamadoc.data}" style="max-height: 3px;width: 120px" >
+                        <p:column filterBy="#{chamadoc.data}"  style="max-height: 3px;width: 120px" >
+                            
                             <f:facet name="header">
                                 Data:
                             </f:facet>
-                            <h:outputText value="#{chamadoc.data}" />
+                            <h:outputText value="#{chamadoc.data}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy " />
+                            </h:outputText>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
                             <f:facet name="filter">

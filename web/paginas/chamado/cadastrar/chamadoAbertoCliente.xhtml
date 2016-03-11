@@ -36,7 +36,7 @@
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.data}">
-                                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                       <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
                                     </h:outputText>
                                 </div>
                             </h:panelGrid>
@@ -45,7 +45,9 @@
                                     <h:outputLabel value="Data Encerramento:"/>  
                                 </div>
                                 <div>
-                                    <h:outputText value="#{ctrChamado.chamadoc.datafechamento}"/>
+                                    <h:outputText value="#{ctrChamado.chamadoc.datafechamento}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
+                                    </h:outputText>
                                 </div>
                             </h:panelGrid>
 
@@ -164,8 +166,8 @@
                                 <h:panelGrid columns="1">
                                     <h:panelGrid columns="2" style="width: 300px" >
                                         <h:outputText value="  #{mensagem.codfuncautor.nome}" style="color: blue;font-weight: bold "   />
-                                        <h:outputText value=" #{mensagem.data}" >
-                                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                                        <h:outputText value="#{mensagem.data}" >
+                                           <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
                                         </h:outputText>
                                     </h:panelGrid>
                                     <h:outputText  style="width: 100px" escape="false"

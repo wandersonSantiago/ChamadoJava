@@ -32,7 +32,7 @@ public class Mensagem implements Serializable {
     @ManyToOne
     @JoinColumn(name = "codfuncautor", nullable = false)
     private Usuario codfuncautor;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data", length = 13)
     private Date data;
     @Column(name = "nomearquivo", length = 50)
