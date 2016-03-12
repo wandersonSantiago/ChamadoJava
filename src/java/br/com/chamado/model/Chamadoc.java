@@ -42,6 +42,9 @@ public class Chamadoc implements Serializable {
     @JoinColumn(name = "categoria", nullable = false)
     private Descricao categoria;
     @ManyToOne
+    @JoinColumn(name = "equipamento", nullable = false)
+    private Descricao equipamento;
+    @ManyToOne
     @JoinColumn(name = "codfuncsolic", nullable = false)
     private Usuario codfuncsolic;
     @ManyToOne
@@ -182,6 +185,15 @@ public class Chamadoc implements Serializable {
     public void setImpressora(Impressora impressora) {
         this.impressora = impressora;
     }
+
+    public Descricao getEquipamento() {
+        return equipamento;
+    }
+
+    public void setEquipamento(Descricao equipamento) {
+        this.equipamento = equipamento;
+    }
+    
 
     public void limpar() {
 

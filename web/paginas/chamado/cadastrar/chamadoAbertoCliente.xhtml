@@ -2,6 +2,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"  
                 xmlns:f="http://java.sun.com/jsf/core"  
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml"
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:define name="central">  
@@ -36,7 +37,7 @@
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.data}">
-                                       <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
                                     </h:outputText>
                                 </div>
                             </h:panelGrid>
@@ -46,7 +47,7 @@
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.datafechamento}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
                                     </h:outputText>
                                 </div>
                             </h:panelGrid>
@@ -134,10 +135,19 @@
                                     <h:outputText value="#{ctrChamado.chamadoc.impressora.contador}"/>
                                 </div>
                             </h:panelGrid>
+                                <h:panelGrid columns="1">
+                                <div>
+                                    <p:outputLabel value="ordem de serviço"/>
+                                </div>
+                                <div>
+                                    <h:outputText value="#{ctrChamado.chamadoc.impressora.ordemServico}"/>
+                                </div>
+                            </h:panelGrid>
 
                         </p:panelGrid>
-
-                        <p:editor  id="nome" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" style="width: 100%; size: 50px; background-color: white"  height="130" required="true" value="#{mensagem.texto}"   /></div>
+                  
+                        <p:editor  id="nome" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" style="width: 100%; size: 50px; background-color: white" 
+                                   height="130" required="true" value="#{mensagem.texto}"   /></div>
 
                     <h:panelGrid columns="2" rendered="#{ctrChamado.chamadoc.chamadoFechado != true}" > 
                         <h:commandButton value="Enviar Mensagem" action="#{CtrMensagem.gravarMensagem}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">
@@ -167,7 +177,7 @@
                                     <h:panelGrid columns="2" style="width: 300px" >
                                         <h:outputText value="  #{mensagem.codfuncautor.nome}" style="color: blue;font-weight: bold "   />
                                         <h:outputText value="#{mensagem.data}" >
-                                           <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
+                                            <f:convertDateTime pattern="dd/MM/yyyy  'horário' hh:mm:ss"  timeZone="America/Fortaleza" />
                                         </h:outputText>
                                     </h:panelGrid>
                                     <h:outputText  style="width: 100px" escape="false"

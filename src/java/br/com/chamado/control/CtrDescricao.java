@@ -113,6 +113,14 @@ public class CtrDescricao implements Serializable {
             return new ArrayList();
         }
     }
+     public List carregarEquipamento() {
+        try {
+
+            return acessoHibernateDescricao.carregarDescricao(4);
+        } catch (HibernateException e) {
+            return new ArrayList();
+        }
+    }
 
     public Descricao getDescricao() {
         return descricao;

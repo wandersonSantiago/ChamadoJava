@@ -30,12 +30,13 @@ public class Impressora implements Serializable {
     private boolean ativo;
     @Column(name = "locada")
     private boolean locada;
-    @Column(name = "nome", unique = true,  length = 50)
+    @Column(name = "nome",  length = 50)
     private String nome;
     @Column(name = "marca", length = 50)
     private String marca;
+  
     @Column(name = "ip", unique = true,  length = 50)
-    private int ip;
+    private String ip;
     @Column(name = "contador",  length = 256)
     private int contador;
     @Column(name = "ordemServico",  length = 50)
@@ -60,11 +61,11 @@ public class Impressora implements Serializable {
         this.nome = nome;
     }
 
-    public int getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(int ip) {
+    public void setIp(String ip) {
         this.ip = ip;
     }
 

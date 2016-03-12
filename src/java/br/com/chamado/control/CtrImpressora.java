@@ -32,24 +32,29 @@ public class CtrImpressora implements Serializable {
         try {
             acessoHibernateSetor.salvar(impressora);
             
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor gravada"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Impressora gravada"));
             return "";
         } catch (HibernateException e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor não gravada"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Impressora não gravada"));
             return "";
         }
     }
 
-    public String alterarImpressora(Impressora impressora) {
+    public String alterarImpressora() {
         try {
-            this.impressora = impressora;
-            return "/paginas/chamado/";
+            
+            acessoHibernateSetor.alterar(impressora);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Impressora alterada"));
+           
+            return "/paginas/chamado/administrador/permissao/cadastrarImpressora";
         } catch (HibernateException e) {
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Impressora NÃO alterada"));
+           
             return "";
         }
     }
 
-    public List getImpressora() {
+    public List Impressora() {
         try {
             return acessoHibernateSetor.carregaTudoOrdernado(Impressora.class, "nome");
         } catch (HibernateException e) {
@@ -65,15 +70,23 @@ public class CtrImpressora implements Serializable {
             return "falha";
         }
     }
+        public String paginaCadastrarOrdemServiço(Impressora impressora) {
+        try {
+            this.impressora = impressora;
+            return "/paginas/chamado/cadastrar/servicoImpressora";
+        } catch (HibernateException e) {
+            return "falha";
+        }
+    }
 
     public String updateImpressora() {
         try {
             acessoHibernateSetor.alterar(impressora);
             
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Setor Alterado"));
-            return "/paginas/chamado/administrador/permissao/cadastrarSetor";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "ordem de serviço / contador cadastrado SUCESSO"));
+            return "/paginas/chamado/lista/impressora";
         } catch (HibernateException e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Setor não Alterado"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "ordem de serviço / contador não cadastrado"));
             return "falha";
         }
 
@@ -86,6 +99,14 @@ public class CtrImpressora implements Serializable {
         } catch (HibernateException e) {
             return new ArrayList();
         }
+    }
+
+    public Impressora getImpressora() {
+        return impressora;
+    }
+
+    public void setImpressora(Impressora impressora) {
+        this.impressora = impressora;
     }
 
 

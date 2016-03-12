@@ -28,12 +28,12 @@
                         </h:panelGrid>
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Equipamento"/>
-                            <p:selectOneMenu id="equipmento" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
+                            <p:selectOneMenu id="equipmento" value="#{chamadoc.equipamento}" editable="false" effect="fold" required="true" 
                                              requiredMessage="Campo equipamento Obrigatorio" >
                                 <f:converter converterId="descricaoConverter" />
                                 <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
-                                <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
-                                                itemValue="#{descricaoCategoria}"/>     
+                                <f:selectItems  value="#{ctrDescricao.carregarEquipamento()}"  var="descricaoEquipamento"  itemLabel="#{descricaoEquipamento.descricao}" 
+                                                itemValue="#{descricaoEquipamento}"/>     
                             </p:selectOneMenu>
                         </h:panelGrid>
                         <h:panelGrid columns="1">
@@ -50,7 +50,7 @@
                             <p:outputLabel value="Impressora"/>
                             <p:selectOneMenu id="impressora" value="#{chamadoc.impressora}" editable="false" effect="fold" required="false" 
                                              requiredMessage="Campo impressora Obrigatorio" >
-                                 
+                                 <f:converter converterId="impressoraConverter" />
                                 <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                 <f:selectItems  value="#{ctrImpressora.carregarImpressora()}"  var="chamadoImpressora"  itemLabel="#{chamadoImpressora.nome}" 
                                                 itemValue="#{chamadoImpressora}"/>     

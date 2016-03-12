@@ -10,66 +10,7 @@
                     <h3 class="panel-title" style="color: white" >Cadastro Impressora</h3>
                 </div>
                 <div class="panel-body">
-
-
-                    <h:panelGrid  id="painelGridUsuer" columns="1" >
-
-
-                        <h5 style="color: black" >
-                            *Campos Obrigatórios
-                        </h5>
-                        <p:messages id="messages"  showDetail="true" autoUpdate="true" closable="true" />
-
-                        <h:panelGrid columns="2">
-                            <h:outputText value="Status *" />
-                            <p:selectOneRadio id="status" value="#{impressora.ativo}" required="false" label="erro">
-                                <f:selectItem itemLabel="Ativo" itemValue="true" />
-                                <f:selectItem itemLabel="Inativo" itemValue="false" />                                  
-                            </p:selectOneRadio> 
-                            <h:outputText value="Locada *" />
-                            <p:selectOneRadio id="locada" value="#{impressora.locada}" required="false" label="erro">
-                                <f:selectItem itemLabel="sim" itemValue="true" />
-                                <f:selectItem itemLabel="não" itemValue="false" />                                  
-                            </p:selectOneRadio>
-
-                        </h:panelGrid>
-                        <h:outputLabel value="Nome impressora *" style="color: black" />
-                        <p:inputText  id="nomeImpressora"  size="150" required="true"  value="#{impressora.nome}" label="Nome Usuario" />
-
-                        <h:outputLabel value="Marca *" style="color: black" />
-                        <p:inputText  id="marca"  size="150" required="true"  value="#{impressora.marca}" label="marca" />
-
-                        <h:outputText value="Ip *" style="color: black" />
-                        <p:inputText  id="ip"  size="40" required="true" value="#{impressora.ip}" label="ip" />
-
-                        <h:outputLabel value="Setor " style="color: black" />
-                        <p:selectOneMenu id="setor"  value="#{impressora.setor}" editable="false" effect="fold" required="true" 
-                                         requiredMessage="Campo Setor Obrigatorio" >
-                            <f:converter converterId="setorConverter" />
-                            <f:selectItem itemLabel="--selecione--" itemValue="#{null}" itemDisabled="true" />
-                            <f:selectItems value="#{ctrSetor.carregarSetor()}" var="impressoraSetor" itemLabel="#{impressoraSetor.nome}"
-                                           itemValue="#{impressoraSetor}" />                                      
-                        </p:selectOneMenu>
-
-
-                    </h:panelGrid>
-                    <h1>
-
-                    </h1>
-                    <h:commandButton value="Gravar"  action="#{ctrImpressora.gravarImpressora}" class="btn-default" 
-                                     style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
-                        <f:setPropertyActionListener value="#{impressora}" target="#{ctrImpressora.impressora}" />
-                    </h:commandButton>	
-
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading" style="background-color:  #1E90FF">
-                    <h3 class="panel-title" style="color: white" >Lista de Usuarios</h3>
-                </div>
-                <div class="panel-body">
-
-
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <p:dataTable value="#{ctrImpressora.carregarImpressora()}" var="impressora" reflow="true" id="tabela" paginator="true" widgetVar="table"
                                  rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
 
@@ -126,7 +67,8 @@
                             <h:outputText value="#{impressora.ativo ? 'Ativo': 'Inativo'}" />
                         </p:column>
                         <p:column style="width:50px">
-                            <h:commandLink action="#{ctrImpressora.paginaAlterarImpressora(impressora)}" immediate="true" title="Editar" >
+                            <h:commandLink action="#{ctrImpressora.paginaCadastrarOrdemServiço(impressora)}" 
+                                           immediate="true" title="Editar ordem de serviço e contador de paginas" >
                                 <h:graphicImage value="/img/editar.png"/>
                             </h:commandLink>
                         </p:column>

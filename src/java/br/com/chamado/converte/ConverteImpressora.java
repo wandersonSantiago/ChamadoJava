@@ -6,6 +6,7 @@ import br.com.chamado.model.Impressora;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 /**
@@ -13,7 +14,7 @@ import javax.faces.convert.FacesConverter;
  * @author wandersonSantiago
  */
 @FacesConverter(forClass = Impressora.class, value = "impressoraConverter")
-public class ConverteImpressora {
+public class ConverteImpressora implements Converter{
 
     public ConverteImpressora() {
 

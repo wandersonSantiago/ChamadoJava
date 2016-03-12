@@ -33,29 +33,34 @@
 
                         </h:panelGrid>
                         <h:outputLabel value="Nome impressora *" style="color: black" />
-                        <p:inputText  id="nomeImpressora"  size="150" required="true"  value="#{ctrImpressora.impressora.nome}" label="Nome Usuario" />
+                        <p:inputText  id="nomeImpressora" disabled="true"  size="150" required="true"  value="#{ctrImpressora.impressora.nome}" label="Nome Usuario" />
 
                         <h:outputLabel value="Marca *" style="color: black" />
-                        <p:inputText  id="marca"  size="150" required="true"  value="#{ctrImpressora.impressora.marca}" label="marca" />
+                        <p:inputText  id="marca" disabled="true" size="150" required="true"  value="#{ctrImpressora.impressora.marca}" label="marca" />
 
                         <h:outputText value="Ip *" style="color: black" />
-                        <p:inputText  id="ip"  size="40" required="true" value="#{ctrImpressora.impressora.ip}" label="ip" />
+                        <p:inputText  id="ip" disabled="true" size="40" required="true" value="#{ctrImpressora.impressora.ip}" label="ip" />
 
                         <h:outputLabel value="Setor " style="color: black" />
-                        <p:selectOneMenu id="setor"  value="#{ctrImpressora.impressora.setor}" editable="false" effect="fold" required="true" 
+                        <p:selectOneMenu id="setor" disabled="true"  value="#{ctrImpressora.impressora.setor}" editable="false" effect="fold" required="true" 
                                          requiredMessage="Campo Setor Obrigatorio" >
                             <f:converter converterId="setorConverter" />
                             <f:selectItem itemLabel="--selecione--" itemValue="#{null}" itemDisabled="true" />
                             <f:selectItems value="#{ctrSetor.carregarSetor()}" var="usuarioSetor" itemLabel="#{usuarioSetor.nome}"
                                            itemValue="#{usuarioSetor}" />                                      
                         </p:selectOneMenu>
+                         <h:outputText value="Contador *" style="color: black" />
+                        <p:inputText  id="cont"  size="40" required="true" value="#{ctrImpressora.impressora.contador}"  />
+                        
+                         <h:outputText value="Ordem de serviço" style="color: black" />
+                        <p:inputText  id="ordem"  size="40" required="true" value="#{ctrImpressora.impressora.ordemServico}"  />
 
 
                     </h:panelGrid>
                     <h1>
 
                     </h1>
-                    <h:commandButton value="ALterar"  action="#{ctrImpressora.alterarImpressora}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
+                    <h:commandButton value="ALterar"  action="#{ctrImpressora.updateImpressora}" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white"  >
                     </h:commandButton>	
 
                 </div>

@@ -45,16 +45,20 @@ public class Usuario implements Serializable {
     @Transient
     private final int SETOR_TI;
     @Transient
+    private final int SETOR_MANUTENCAO;
+    @Transient
     private final int UNIDADE_CENTRAL;
     
     public Usuario() {
         this.SETOR_TI = 1;
         this.UNIDADE_CENTRAL = 1;
+        this.SETOR_MANUTENCAO = 2;
     }
     public Usuario(Unidade unidade,String nome,String usuario,String senha,String email,Setor setor)
     {
        this.SETOR_TI = 1;
        this.UNIDADE_CENTRAL = 1;
+       this.SETOR_MANUTENCAO = 2;
        this.unidade = unidade;
        this.nome = nome;
        this.usuario = usuario;
@@ -122,6 +126,11 @@ public class Usuario implements Serializable {
         this.senha = tempSenha;
 
     }
+    
+    public boolean isManutencao(){
+        return SETOR_MANUTENCAO == setor.getId();
+    }
+    
     public boolean isTiCentral()
     {
        return (UNIDADE_CENTRAL == unidade.getId()  &&  SETOR_TI == setor.getId());
