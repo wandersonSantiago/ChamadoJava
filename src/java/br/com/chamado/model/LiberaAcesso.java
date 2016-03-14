@@ -33,86 +33,86 @@ public class LiberaAcesso {
 
     //Paginas de acesso
     public Boolean alterarPaginas() {
-        return keyPaginas.containsKey("alterarPaginas.xhtml");
+        return keyPaginas.containsKey("root");
     }
 
     public Boolean alterarSenhaUser() {
-        return keyPaginas.containsKey("userAlterarDadosUsuario.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     public Boolean servicoImpressora() {
-        return keyPaginas.containsKey("servicoImpressora.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean alterarSetor() {
-        return keyPaginas.containsKey("alterarSetor.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean alterarUnidade() {
-        return keyPaginas.containsKey("alterarUnidade.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean alterarUsuario() {
-        return keyPaginas.containsKey("alterarUsuario.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean cadastrarPaginas() {
-        return keyPaginas.containsKey("cadastrarPaginas.xhtml");
+        return keyPaginas.containsKey("root");
 
     }
 
     public Boolean cadastrarSetor() {
-        return keyPaginas.containsKey("cadastrarSetor.xhtml");
+        return keyPaginas.containsKey("suporte");
 
     }
 
     public Boolean permissao() {
-        return keyPaginas.containsKey("permissao.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean cadastrarUnidade() {
-        return keyPaginas.containsKey("unidade.xhtml");
+        return keyPaginas.containsKey("root");
     }
 
     public Boolean cadastrarUsuarios() {
-        return keyPaginas.containsKey("cadastrarUsuarios.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean chamadoAbertoCliente() {
-        return keyPaginas.containsKey("chamadoAbertoCliente.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     public Boolean chamadoClienteManutenção() {
-        return keyPaginas.containsKey("chamadoClienteManutencao.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     public Boolean chamadoClienteTi() {
-        return keyPaginas.containsKey("chamadoClienteTi.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     public Boolean configuracao() {
-        return keyPaginas.containsKey("configuracao.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     //Não vai usar 
     public Boolean servicoEmail() {
-        return keyPaginas.containsKey("servicoemail.xhtml");
+        return keyPaginas.containsKey("root");
     }
 
     public Boolean foneUnidades() {
-        return keyPaginas.containsKey("foneUnidades.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     public Boolean listaChamadoManutencao() {
-        return keyPaginas.containsKey("listaChamadoManutencao.xhtml");
+        return keyPaginas.containsKey("suporte");
     }
 
     public Boolean listaChamadoTi() {
-        return keyPaginas.containsKey("listaChamadoTi.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     public Boolean ramalSetor() {
-        return keyPaginas.containsKey("ramalSetor.xhtml");
+        return keyPaginas.containsKey("usuario");
     }
 
     //permissões de usuarios
@@ -129,6 +129,12 @@ public class LiberaAcesso {
     }
     //permissão grupos
 
+     public boolean atendeChamadoTi() {
+        return keyPaginas.containsKey("atendeTi");
+    }
+      public boolean atendeChamadoManutencao() {
+        return keyPaginas.containsKey("atendeManu");
+    }
     public boolean grupoSuporte() {
         return keyPaginas.containsKey("suporte");
     }

@@ -49,4 +49,16 @@ public class DaoUsuario extends DaoGenerico {
         }
        return carregaTudoOrdernadoUsandoHql(hql);
     }
+    public List carregaUsuarioManu()
+    {
+        if(usuarioDaSessao.isTiCentral())
+        {
+          hql = "from Usuario where setor =  2";
+        }
+        else
+        {
+         hql = "from Usuario where setor =  2 AND unidade = " + usuarioDaSessao.getUnidade().getId();
+        }
+       return carregaTudoOrdernadoUsandoHql(hql);
+    }
 }

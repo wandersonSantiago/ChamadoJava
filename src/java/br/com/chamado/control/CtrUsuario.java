@@ -85,7 +85,18 @@ public class CtrUsuario implements  Serializable{
    public List carregaUsuarioTi()
    {
          try {
+             
             return acessoHibernate.carregaUsuarioTi();
+         } catch (HibernateException e) {
+	    
+            return Collections.emptyList();
+	}
+   }
+      public List carregaUsuarioManu()
+   {
+         try {
+             
+            return acessoHibernate.carregaUsuarioManu();
          } catch (HibernateException e) {
 	    
             return Collections.emptyList();

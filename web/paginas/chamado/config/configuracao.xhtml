@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
-        <h:form rendered="#{liberaAcesso.configuracao() != false || liberaAcesso.userRoot() != false}">
+        <h:form rendered="#{ liberaAcesso.userRoot() != false}">
 
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">

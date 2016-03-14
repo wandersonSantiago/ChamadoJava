@@ -4,7 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >               
-        <h:form rendered="#{liberaAcesso.permissao() != false || liberaAcesso.userRoot() != false}">
+        <h:form rendered="#{liberaAcesso.gerenciarChamado() != false || liberaAcesso.userRoot() != false}">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
                     <h3 class="panel-title" style="color: white" >Cadastro Permissões</h3>
@@ -16,9 +16,15 @@
                         </h5>
                     </div>
                     <div>
-                        <h:selectOneMenu id="atendente" value="#{ctrChamado.chamadoc.codfuncatend}"    > 
+                        <h:selectOneMenu rendered="#{liberaAcesso.atendeChamadoTi() != false || liberaAcesso.userRoot() != false}" id="ti" value="#{ctrChamado.chamadoc.codfuncatend}"    > 
                             <f:converter converterId="usuarioConverter" />
                             <f:selectItems value="#{ctrUsuario.carregaUsuarioTi()}"  var="User" itemLabel="#{User.nome}"
+                                           itemValue="#{User}" />     
+                        </h:selectOneMenu>
+                        
+                        <h:selectOneMenu rendered="#{liberaAcesso.atendeChamadoManutencao() != false || liberaAcesso.userRoot() != false}" id="manu" value="#{ctrChamado.chamadoc.codfuncatend}"    > 
+                            <f:converter converterId="usuarioConverter" />
+                            <f:selectItems value="#{ctrUsuario.carregaUsuarioManu()}"  var="User" itemLabel="#{User.nome}"
                                            itemValue="#{User}" />     
                         </h:selectOneMenu>
                     </div>

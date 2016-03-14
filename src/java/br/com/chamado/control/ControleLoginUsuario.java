@@ -3,8 +3,10 @@ package br.com.chamado.control;
 import br.com.chamado.model.AutenticarUsuario;
 import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -30,7 +32,8 @@ public class ControleLoginUsuario {
             loginUsuario = null;
             return "index";
         }
-        return "erroAcesso";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario ou senha inválido"));
+        return "";
     }
 
     public Usuario usuariLogado() {
