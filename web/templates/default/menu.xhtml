@@ -9,14 +9,13 @@
         </ul>
         <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Abrir Chamado</a></li>
-            <li><h:commandLink value="Chamado T.I" rendered="#{liberaAcesso.chamadoClienteTi() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/cadastrar/chamadoClienteTi.xhtml"> </h:commandLink></li>
-            <li><h:commandLink value="Chamado Manutenção" rendered="#{liberaAcesso.chamadoClienteManutenção() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/cadastrar/chamadoClienteManutencao.xhtml"> </h:commandLink></li>
+            <li><h:commandLink value="Chamado" rendered="#{liberaAcesso.chamadoClienteTi() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/cadastrar/chamadoClienteTi.xhtml"> </h:commandLink></li>
+            <li><h:commandLink value="Impressora" rendered="#{liberaAcesso.chamadoClienteManutenção() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/cadastrar/chamadoClienteManutencao.xhtml"> </h:commandLink></li>
         </ul>
         <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Listar Chamado</a></li>
-            <li><h:commandLink value="Chamado T.I" rendered="#{liberaAcesso.listaChamadoTi() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/lista/listaChamadoTi.xhtml"> </h:commandLink></li>
-            <li><h:commandLink value="Chamado Manutenção" rendered="#{liberaAcesso.listaChamadoManutencao() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/lista/listaChamadoManutencao.xhtml"> </h:commandLink></li>
-        </ul>        
+            <li><h:commandLink value="Chamado" rendered="#{liberaAcesso.listaChamadoTi() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/lista/listaChamadoTi.xhtml"> </h:commandLink></li>
+                </ul>        
         <ul class="nav nav-sidebar">
             <li class="active"><h:commandLink rendered="#{liberaAcesso.cadastrarUnidade() != false || liberaAcesso.cadastrarPaginas() != false || liberaAcesso.permissao() != false
                                                           || liberaAcesso.cadastrarSetor() != false || liberaAcesso.cadastrarUsuarios() != false || liberaAcesso.servicoEmail() != false

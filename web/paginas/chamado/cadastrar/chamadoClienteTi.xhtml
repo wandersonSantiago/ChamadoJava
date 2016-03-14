@@ -11,7 +11,7 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
-                    <h3 class="panel-title" style="color: white" >Chamado Tecnologia da Informação</h3>
+                    <h3 class="panel-title" style="color: white" >Chamado</h3>
                 </div>
                 <div class="panel-body">
                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
@@ -26,36 +26,17 @@
                                                itemValue="#{descricaoPrioridade}" />     
                             </p:selectOneMenu>
                         </h:panelGrid>
-                        <h:panelGrid columns="1">
-                            <p:outputLabel value="Equipamento"/>
-                            <p:selectOneMenu id="equipmento" value="#{chamadoc.equipamento}" editable="false" effect="fold" required="true" 
-                                             requiredMessage="Campo equipamento Obrigatorio" >
-                                <f:converter converterId="descricaoConverter" />
-                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
-                                <f:selectItems  value="#{ctrDescricao.carregarEquipamento()}"  var="descricaoEquipamento"  itemLabel="#{descricaoEquipamento.descricao}" 
-                                                itemValue="#{descricaoEquipamento}"/>     
-                            </p:selectOneMenu>
-                        </h:panelGrid>
+               
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Categoria:"/>
-                            <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
+                            <p:selectOneMenu id="categoria" value="#{chamadoc.tipoChamado}" editable="false" effect="fold" required="true" 
                                              requiredMessage="Campo categoria Obrigatorio" >
-                                <f:converter converterId="descricaoConverter" />
                                 <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
-                                <f:selectItems  value="#{ctrDescricao.carregarCategoria()}"  var="descricaoCategoria"  itemLabel="#{descricaoCategoria.descricao}" 
-                                                itemValue="#{descricaoCategoria}"/>     
+                                <f:selectItem itemLabel="Tecnologia da Informação" itemValue="1" />
+                                <f:selectItem itemLabel="Manutenção" itemValue="2" />
                             </p:selectOneMenu>
                         </h:panelGrid>
-                        <h:panelGrid columns="1">
-                            <p:outputLabel value="Impressora"/>
-                            <p:selectOneMenu id="impressora" value="#{chamadoc.impressora}" editable="false" effect="fold" required="false" 
-                                             requiredMessage="Campo impressora Obrigatorio" >
-                                 <f:converter converterId="impressoraConverter" />
-                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
-                                <f:selectItems  value="#{ctrImpressora.carregarImpressora()}"  var="chamadoImpressora"  itemLabel="#{chamadoImpressora.nome}" 
-                                                itemValue="#{chamadoImpressora}"/>     
-                            </p:selectOneMenu>
-                        </h:panelGrid>
+              
                     </h:panelGrid>
                     <p:separator/>
 

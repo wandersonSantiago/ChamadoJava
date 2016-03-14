@@ -33,19 +33,18 @@ public class Chamadoc implements Serializable {
     @Column(name = "data", nullable = false, length = 13)
     private Date data;
     @ManyToOne
-    @JoinColumn(name = "status", nullable = false)
+    @JoinColumn(name = "status")
     private Descricao status;
     @ManyToOne
-    @JoinColumn(name = "prioridade", nullable = false)
+    @JoinColumn(name = "prioridade")
     private Descricao prioridade;
     @ManyToOne
-    @JoinColumn(name = "categoria", nullable = false)
+    @JoinColumn(name = "categoria")
     private Descricao categoria;
+    @Column(name = "tipoChamado")
+    private int tipoChamado;
     @ManyToOne
-    @JoinColumn(name = "equipamento", nullable = false)
-    private Descricao equipamento;
-    @ManyToOne
-    @JoinColumn(name = "codfuncsolic", nullable = false)
+    @JoinColumn(name = "codfuncsolic")
     private Usuario codfuncsolic;
     @ManyToOne
     @JoinColumn(name = "codfuncatend")
@@ -53,7 +52,7 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "impressora")
     private Impressora impressora;
-    @Column(name = "titulo", nullable = false, length = 30)
+    @Column(name = "titulo", length = 30)
     private String titulo;
     @Temporal(TemporalType.TIMESTAMP )
     @Column(name = "dataprevisao", length = 13)
@@ -186,12 +185,12 @@ public class Chamadoc implements Serializable {
         this.impressora = impressora;
     }
 
-    public Descricao getEquipamento() {
-        return equipamento;
+    public int getTipoChamado() {
+        return tipoChamado;
     }
 
-    public void setEquipamento(Descricao equipamento) {
-        this.equipamento = equipamento;
+    public void setTipoChamado(int tipoChamado) {
+        this.tipoChamado = tipoChamado;
     }
     
 
