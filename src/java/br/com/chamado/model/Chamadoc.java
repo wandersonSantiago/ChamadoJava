@@ -41,6 +41,7 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "categoria")
     private Descricao categoria;
+    
     @Column(name = "tipoChamado")
     private int tipoChamado;
     @ManyToOne
@@ -207,6 +208,7 @@ public class Chamadoc implements Serializable {
         this.titulo = "";
         this.dataprevisao = null;
         this.datafechamento = null;
+        this.tipoChamado =  0;
 
     }
 

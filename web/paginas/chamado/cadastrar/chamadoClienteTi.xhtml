@@ -17,6 +17,17 @@
                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <h:panelGrid columns="4">
                         <h:panelGrid columns="1">
+
+                            <h:panelGrid columns="1">
+                                <p:outputLabel value="Categoria:"/>
+                                <p:selectOneMenu id="categoria" value="#{chamadoc.tipoChamado}" editable="false" effect="fold" required="true" 
+                                                 requiredMessage="Campo categoria Obrigatorio" >
+                                    <f:selectItem itemLabel="--selecione--" itemValue="0" noSelectionOption="true" itemDisabled="true" />
+                                    <f:selectItem itemLabel="CPD-Tecnologia da Informação" itemValue="1" />
+                                    <f:selectItem itemLabel="INFRA-Manutenção" itemValue="2" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                            
                             <p:outputLabel value="Prioridade:"/>
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
                                              requiredMessage="Campo prioridade Obrigatorio"  label="teste" >
@@ -26,17 +37,8 @@
                                                itemValue="#{descricaoPrioridade}" />     
                             </p:selectOneMenu>
                         </h:panelGrid>
-               
-                        <h:panelGrid columns="1">
-                            <p:outputLabel value="Categoria:"/>
-                            <p:selectOneMenu id="categoria" value="#{chamadoc.tipoChamado}" editable="false" effect="fold" required="true" 
-                                             requiredMessage="Campo categoria Obrigatorio" >
-                                <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
-                                <f:selectItem itemLabel="Tecnologia da Informação" itemValue="1" />
-                                <f:selectItem itemLabel="Manutenção" itemValue="2" />
-                            </p:selectOneMenu>
-                        </h:panelGrid>
-              
+
+
                     </h:panelGrid>
                     <p:separator/>
 

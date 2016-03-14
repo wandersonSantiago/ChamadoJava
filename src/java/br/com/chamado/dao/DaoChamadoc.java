@@ -20,13 +20,21 @@ public class DaoChamadoc extends DaoGenerico{
         }
         else if(usuarioSessao.isTi())
         {
-           hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId();
+           hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 1" + "OR codfuncsolic = " + usuarioSessao.getId();
+           
            return carregaTudoOrdernadoUsandoHql(hql);
+        }
+        else if(usuarioSessao.isManutencao())
+        {
+            
+            hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 2" + "OR codfuncsolic = " + usuarioSessao.getId();
+            return carregaTudoOrdernadoUsandoHql(hql);
         }
         else
         {
         hql = "from Chamadoc where  codfuncsolic = " + usuarioSessao.getId();
         return carregaTudoOrdernadoUsandoHql(hql);
+        
         }
-    }
+      }
 }
