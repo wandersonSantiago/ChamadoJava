@@ -4,7 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >               
-        <h:form id="form" rendered="#{liberaAcesso.alterarUsuario() != false || liberaAcesso.userRoot() != false}">
+        <h:form id="form" rendered="#{liberaAcesso.alterarSenhaUser() != false || liberaAcesso.userRoot() != false}">
             <p:growl id="msgs" showDetail="true"/>
 
             <div class="panel panel-primary">

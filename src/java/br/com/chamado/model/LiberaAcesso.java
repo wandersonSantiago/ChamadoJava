@@ -13,11 +13,8 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "liberaAcesso")
 @SessionScoped
 
-
-
 public class LiberaAcesso {
 
-   
     private HashMap<String, Pagina> keyPaginas;
     private DaoPermissao daoPermissao = new DaoPermissao();
 
@@ -37,6 +34,14 @@ public class LiberaAcesso {
     //Paginas de acesso
     public Boolean alterarPaginas() {
         return keyPaginas.containsKey("alterarPaginas.xhtml");
+    }
+
+    public Boolean alterarSenhaUser() {
+        return keyPaginas.containsKey("userAlterarDadosUsuario.xhtml");
+    }
+
+    public Boolean servicoImpressora() {
+        return keyPaginas.containsKey("servicoImpressora.xhtml");
     }
 
     public Boolean alterarSetor() {
@@ -109,9 +114,8 @@ public class LiberaAcesso {
     public Boolean ramalSetor() {
         return keyPaginas.containsKey("ramalSetor.xhtml");
     }
-   
-    //permissões de usuarios
 
+    //permissões de usuarios
     public Boolean fecharChamado() {
         return keyPaginas.containsKey("fecharChamado");
     }
@@ -119,15 +123,17 @@ public class LiberaAcesso {
     public Boolean gerenciarChamado() {
         return keyPaginas.containsKey("gerenciarChamado");
     }
-    public Boolean permissaoUsuario(){
+
+    public Boolean permissaoUsuario() {
         return keyPaginas.containsKey("permissaoUsuario");
     }
- //permissão grupos
-    
-    public boolean grupoSuporte(){
+    //permissão grupos
+
+    public boolean grupoSuporte() {
         return keyPaginas.containsKey("suporte");
     }
-    public boolean userRoot(){
+
+    public boolean userRoot() {
         return keyPaginas.containsKey("root");
     }
 }
