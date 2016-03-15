@@ -27,7 +27,7 @@ public class Mensagem implements Serializable {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "numchamado", unique = true, nullable = false)
+    @Column(name = "numchamado", nullable = false)
     private int numeChamado;
     @ManyToOne
     @JoinColumn(name = "codfuncautor", nullable = false)
