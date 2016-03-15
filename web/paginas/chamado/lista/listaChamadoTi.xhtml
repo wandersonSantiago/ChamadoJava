@@ -75,6 +75,16 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncatend.usuario}"/>
                         </p:column>
+                        <p:column filterBy="#{chamadoc.impressora}" headerText="Atendido por:" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrImpressora.carregarImpressora()}"  var="impre" itemLabel="#{impre.nome}"
+                                                   itemValue="#{impre}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.codfuncatend.usuario}"/>
+                        </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.status}"  headerText="Status">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >

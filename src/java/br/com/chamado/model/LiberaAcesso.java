@@ -132,13 +132,14 @@ public class LiberaAcesso {
      public boolean atendeChamadoTi() {
         return keyPaginas.containsKey("atendeChamadoTi");
     }
-   
-     public boolean atendeChamadoManutencao() {
+      public boolean atendeChamadoManutencao() {
         return keyPaginas.containsKey("atendeChamadoManutencao");
     }
-   
+    public boolean grupoSuporte() {
+        return keyPaginas.containsKey("grupoSuporte");
+    }
 
     public boolean userRoot() {
-        return keyPaginas.containsKey("userRoot");
+        return keyPaginas.containsKey("root");
     }
 }
