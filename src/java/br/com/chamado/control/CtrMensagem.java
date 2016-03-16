@@ -2,6 +2,7 @@ package br.com.chamado.control;
 
 import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Chamadoc;
+import br.com.chamado.model.EnviaEmail;
 import br.com.chamado.model.Mensagem;
 import br.com.chamado.model.SessionContext;
 import br.com.chamado.model.Usuario;
@@ -12,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.apache.commons.mail.EmailException;
 import org.hibernate.HibernateException;
 
 /**
@@ -25,17 +27,19 @@ public class CtrMensagem implements  Serializable{
     private final DaoMensagem acessoHibernate;
     private Mensagem mensagem;
     private Chamadoc chamadoc;
+    private EnviaEmail mail;
     public CtrMensagem() {
 	acessoHibernate = new DaoMensagem();
     }
 
-    public String gravarMensagem() {
+    public String gravarMensagem() throws EmailException {
 	try {
             Date hojeData = new Date();
             mensagem.setData(hojeData);
             mensagem.setNumeChamado(chamadoc.getId());
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
             mensagem.setCodfuncautor(usuarioSessao);
+            mail.enviar();
             acessoHibernate.salvar(mensagem);
 	    mensagem.limpar();
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Mensagem enviada"));
