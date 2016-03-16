@@ -139,6 +139,14 @@ public class CtrChamado implements Serializable {
             return Collections.emptyList();
         }
     }
+        public List carregarChamadoManutencaoTi() {
+        try {
+            return acessoHibernate.carregaChamadoOrdernadoChamadoTi();
+        } catch (HibernateException e) {
+
+            return Collections.emptyList();
+        }
+    }
    
     public Usuario getUsuario() {
         return usuario;

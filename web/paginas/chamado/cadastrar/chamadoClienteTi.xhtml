@@ -19,7 +19,7 @@
                         <h:panelGrid columns="1">
 
                             <h:panelGrid columns="1">
-                                <p:outputLabel value="Categoria:"/>
+                                <p:outputLabel value="Categoria"/>
                                 <p:selectOneMenu id="categoria" value="#{chamadoc.tipoChamado}" editable="false" effect="fold" required="true" 
                                                  requiredMessage="Campo categoria Obrigatorio" >
                                     <f:selectItem itemLabel="--selecione--" itemValue="0" noSelectionOption="true" itemDisabled="true" />
@@ -28,7 +28,7 @@
                                 </p:selectOneMenu>
                             </h:panelGrid>
                             
-                            <p:outputLabel value="Prioridade:"/>
+                            <p:outputLabel value="Prioridade"/>
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
                                              requiredMessage="Campo prioridade Obrigatorio"  label="teste" >
                                 <f:converter converterId="descricaoConverter" />
@@ -43,7 +43,7 @@
                     <p:separator/>
 
                     <div>
-                        <h:outputLabel value="Titulo:"/>
+                        <h:outputLabel value="Titulo"/>
                     </div>
                     <div>
                         <p:inputText id="titulo"  value="#{chamadoc.titulo}" style="min-width: 500px; min-height: 30px" pt:placeholder="Máximo 30 caractres" required="true" 
@@ -51,7 +51,7 @@
                     </div>
                     <p:separator/>
                     <div>
-                        <h:outputLabel value="Mensagem:"  />
+                        <h:outputLabel value="Mensagem"  />
                     </div>
                     <div>
                         <p:editor id="mensagem"  style="min-width: 500px; min-height: 300px
@@ -59,7 +59,7 @@
                                   " value="#{mensagem.texto}" required="true" 
                                   requiredMessage="Campo Texo Obrigatório"/> 
                     </div>
-                    <p:fileUpload value="#"  mode="simple" />
+               
                     <p:separator/>
 
                     <p:growl id="messagesteste" showDetail="true" />
@@ -72,7 +72,7 @@
                             <f:setPropertyActionListener value="#{chamadoc}" target="#{ctrChamado.chamadoc}" />
                             <f:setPropertyActionListener value="#{mensagem}" target="#{ctrChamado.mensagem}" />
                         </h:commandButton>
-                        <h:commandButton value="Cancelar" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
+                        <h:commandButton value="Cancelar" action="/index.xhtml" immediate="true" class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white" />
                     </h:panelGrid>
 
                 </div>

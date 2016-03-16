@@ -5,14 +5,14 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
-        <h:form rendered="#{liberaAcesso.listaChamadoManutencao() != false || liberaAcesso.userRoot() != false}">
+        <h:form rendered="#{liberaAcesso.listaChamadoManutencaoParaTi() != false || liberaAcesso.userRoot() != false}">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
-                    <p:dataTable  value="#{ctrChamado.carregarChamado()}" var="chamadoc" id="tabela" widgetVar="table" 
-                                  paginator="true" rows="10" style="margin-bottom:20px" rowsPerPageTemplate="5,10,15,20,25,30">
+                    <p:dataTable  value="#{ctrChamado.carregarChamadoManutencaoTi()}"   var="chamadoc" id="tabela" resizableColumns="true" widgetVar="table" 
+                                  paginator="true" rows="20" style="margin-bottom:20px "  rowsPerPageTemplate="5,10,15,20,25,30">
 
                         <p:column  style="max-height: 3px;width: 120px" filterBy="#{chamadoc.id}" >
                             <f:facet name="header">
@@ -20,21 +20,24 @@
                             </f:facet>
                             <h:outputText  value="#{chamadoc.id}" style=""/>
                         </p:column>
-                        <p:column filterBy="#{chamadoc.data}" style="max-height: 3px;width: 120px" >
+                        <p:column filterBy="#{chamadoc.data}"  style="max-height: 3px;width: 120px" >
+                            
                             <f:facet name="header">
                                 Data:
                             </f:facet>
-                            <h:outputText value="#{chamadoc.data}" />
+                            <h:outputText value="#{chamadoc.data}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy " />
+                            </h:outputText>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
-                               <f:facet name="filter">
+                            <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.nome}"
+                                    <f:selectItems value="#{ctrUsuario.carregarUsuario()}"  var="User" itemLabel="#{User.usuario}"
                                                    itemValue="#{User}" />
                                 </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText value="#{chamadoc.codfuncsolic.nome}" />
+                            <h:outputText value="#{chamadoc.codfuncsolic.usuario}" />
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic.setor}" headerText="Setor:">
                             <f:facet name="filter">
@@ -45,6 +48,16 @@
                                 </p:selectOneMenu>
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncsolic.setor}" />
+                        </p:column>
+                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.prioridade}"  headerText="Prioridade">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrDescricao.carregarPrioridade()}" var="descricaoPrioridade" itemLabel="#{descricaoPrioridade.descricao}"
+                                                   itemValue="#{descricaoPrioridade}" /> 
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.prioridade.descricao}" />
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
                             <f:facet name="header">
@@ -62,8 +75,18 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncatend.usuario}"/>
                         </p:column>
+                        <p:column filterBy="#{chamadoc.impressora}" headerText="Equipamento" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrImpressora.carregarImpressora()}"  var="impre" itemLabel="#{impre.nome}"
+                                                   itemValue="#{impre}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{chamadoc.impressora.nome}"/>
+                        </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.status}"  headerText="Status">
-                              <f:facet name="filter">
+                            <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
                                     <f:selectItems value="#{ctrDescricao.carregarStatus()}"  var="desc" itemLabel="#{desc.descricao}"
@@ -74,31 +97,69 @@
                         </p:column>
 
 
-                        <p:column  style="max-height: 3px;width: 100px">
-                            <f:facet name="header">
-                                Visualizar:
-                            </f:facet>
+                        <p:column  style="max-height: 3px;width: 50px">
 
-                            <p:commandButton value="Sim"   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" />
+                            <p:commandLink   action="#{ctrChamado.paginaChamadoAberto(chamadoc)}" title="Vizualizar" >
+                                <p:graphicImage value="/img/visualizar.png" />
+                            </p:commandLink >
                         </p:column>
 
 
 
-                        <p:column  style="max-height: 3px;width: 100px">
-                            <f:facet name="header">
-                                Atender:
-                            </f:facet>
-                            <div>
-                                <p:commandButton value="Sim" action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  />
+                        <p:column  style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.gerenciarChamado() != false || liberaAcesso.userRoot() != false}">
 
+                            <div>
+                                <p:commandLink   action="#{ctrChamado.paginaChamadoAtende(chamadoc)}"  title="Atender Chamado" rendered="#{chamadoc.chamadoAberto != false }" ajax="false" >
+                                    <p:graphicImage value="/img/atend.png" />
+                                </p:commandLink>
+
+                                <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
+                                    <p:graphicImage value="/img/fechar.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+
+                                <p:commandLink  action="#{ctrChamado.reabrirChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoFechado != false}" title="Reabrir chamado" >
+                                    <p:graphicImage value="/img/atender1.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Reabrir este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+
+                                <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoReaberto != false}" title="Fechar chamado" >
+                                    <p:graphicImage value="/img/fechar.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </div>
 
                         </p:column>
+                     
+                        <p:column style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.fecharChamado() != false }" >
+                             
+                                  <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
+                                    <p:graphicImage value="/img/fechar.png"/>
+                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+                            
+                        </p:column>
+
                     </p:dataTable>
                 </div>
             </div>
         </h:form>
-
     </ui:define>
 </ui:composition>
 

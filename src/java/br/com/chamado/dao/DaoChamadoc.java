@@ -37,4 +37,29 @@ public class DaoChamadoc extends DaoGenerico{
         
         }
       }
+      public List carregaChamadoOrdernadoChamadoTi()
+      {
+        if(usuarioSessao.isTiCentral())
+        {
+           return carregaTudoOrdernado(Chamadoc.class,"id");
+        }
+        else if(usuarioSessao.isTi())
+        {
+           hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 2" + "OR codfuncsolic = " + usuarioSessao.getId();
+           
+           return carregaTudoOrdernadoUsandoHql(hql);
+        }
+        else if(usuarioSessao.isManutencao())
+        {
+            
+            hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 2" + "OR codfuncsolic = " + usuarioSessao.getId();
+            return carregaTudoOrdernadoUsandoHql(hql);
+        }
+        else
+        {
+        hql = "from Chamadoc where  codfuncsolic = " + usuarioSessao.getId();
+        return carregaTudoOrdernadoUsandoHql(hql);
+        
+        }
+      }
 }

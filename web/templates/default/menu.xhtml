@@ -15,7 +15,11 @@
         <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Listar Chamado</a></li>
             <li><h:commandLink value="Chamado" rendered="#{liberaAcesso.listaChamadoTi() != false || liberaAcesso.userRoot() != false}" action="/paginas/chamado/lista/listaChamadoTi.xhtml"> </h:commandLink></li>
+                   
+        <li><h:commandLink value="Chamado Manutenção" rendered="#{liberaAcesso.listaChamadoManutencaoParaTi() != false || liberaAcesso.userRoot() != false}"
+                           action="/paginas/chamado/lista/listaChamadoManutencao.xhtml"> </h:commandLink></li>
                 </ul>        
+       
         <ul class="nav nav-sidebar">
             <li class="active"><h:commandLink rendered="#{liberaAcesso.cadastrarUnidade() != false || liberaAcesso.cadastrarPaginas() != false || liberaAcesso.permissao() != false
                                                           || liberaAcesso.cadastrarSetor() != false || liberaAcesso.cadastrarUsuarios() != false || liberaAcesso.servicoEmail() != false

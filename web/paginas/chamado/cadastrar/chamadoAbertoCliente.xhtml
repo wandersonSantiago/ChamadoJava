@@ -25,7 +25,7 @@
                         <p:panelGrid columns="7" style="width: 100%" >
                             <h:panelGrid columns="2" >
                                 <div>
-                                    <h:outputLabel value="Numero:"/>
+                                    <h:outputLabel value="Numero"/>
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.id}"/>
@@ -33,7 +33,7 @@
                             </h:panelGrid>
                             <h:panelGrid columns="2" >
                                 <div>
-                                    <h:outputLabel value="Data:" />
+                                    <h:outputLabel value="Data abertura" />
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.data}">
@@ -43,7 +43,7 @@
                             </h:panelGrid>
                             <h:panelGrid columns="2" >
                                 <div>
-                                    <h:outputLabel value="Data Encerramento:"/>  
+                                    <h:outputLabel value="Data Encerramento"/>  
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.datafechamento}">
@@ -54,7 +54,7 @@
 
                             <h:panelGrid columns="1">
                                 <div>
-                                    <p:outputLabel value="Status:"/>
+                                    <p:outputLabel value="Status"/>
                                 </div>
 
                                 <div>
@@ -64,7 +64,7 @@
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <div>
-                                    <p:outputLabel value="Prioridade:"/>
+                                    <p:outputLabel value="Prioridade"/>
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.prioridade.descricao}"/>   
@@ -72,7 +72,7 @@
                             </h:panelGrid>
                             <h:panelGrid columns="1">
                                 <div>
-                                    <p:outputLabel value="Categoria:"/>
+                                    <p:outputLabel value="Categoria"/>
                                 </div>
                                 <div>
                                     <h:outputText value="#{ctrChamado.chamadoc.categoria.descricao}"/>
@@ -81,7 +81,7 @@
 
                             <h:panelGrid columns="2">
                                 <div>
-                                    <h:outputLabel value="Atendido por:" />
+                                    <h:outputLabel value="Atendido por" />
                                 </div>
 
                                 <div>
@@ -91,7 +91,7 @@
 
                         </p:panelGrid>
 
-                        <p:panelGrid columns="7" style="width: 100%" rendered="#{liberaAcesso.servicoImpressora() != true}" >
+                        <p:panelGrid columns="7" style="width: 100%" rendered="#{liberaAcesso.servicoImpressora() != false}" >
                             <h:panelGrid columns="2" >
                                 <div>
                                     <h:outputLabel value="impressora nome"/>

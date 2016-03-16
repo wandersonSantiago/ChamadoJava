@@ -103,8 +103,8 @@ public class LiberaAcesso {
         return keyPaginas.containsKey("foneUnidades");
     }
 
-    public Boolean listaChamadoManutencao() {
-        return keyPaginas.containsKey("listaChamadoManutencao");
+    public Boolean listaChamadoManutencaoParaTi() {
+        return keyPaginas.containsKey("listaChamadoManutencaoParaTi");
     }
 
     public Boolean listaChamadoTi() {
