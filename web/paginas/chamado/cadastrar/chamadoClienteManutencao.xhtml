@@ -15,9 +15,9 @@
                 </div>
                 <div class="panel-body">
                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-                   
+
                     <h:panelGrid columns="4">
-                        
+
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Prioridade"/>
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
@@ -28,7 +28,7 @@
                                                itemValue="#{descricaoPrioridade}" />     
                             </p:selectOneMenu>
                         </h:panelGrid>
-              
+
                         <h:panelGrid columns="1">
                             <p:outputLabel value="Problema"/>
                             <p:selectOneMenu id="categoria" value="#{chamadoc.categoria}" editable="false" effect="fold" required="true" 
@@ -43,7 +43,7 @@
                             <p:outputLabel value="Impressora"/>
                             <p:selectOneMenu id="impressora" value="#{chamadoc.impressora}" editable="false" effect="fold" required="false" 
                                              requiredMessage="Campo impressora Obrigatorio" >
-                                 <f:converter converterId="impressoraConverter" />
+                                <f:converter converterId="impressoraConverter" />
                                 <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                 <f:selectItems  value="#{ctrImpressora.carregarImpressora()}"  var="chamadoImpressora"  itemLabel="#{chamadoImpressora.nome}" 
                                                 itemValue="#{chamadoImpressora}"/>     
@@ -61,13 +61,10 @@
                                   " value="#{mensagem.texto}" required="true" 
                                   requiredMessage="Campo Texo Obrigatório"/> 
                     </div>
-                   
+
                     <p:separator/>
 
                     <p:growl id="messagesteste" showDetail="true" />
-
-
-
 
                     <h:panelGrid columns="2" > 
                         <h:commandButton value="Enviar" action="#{ctrChamado.gravarChamado}"  class="btn-default" style="min-width: 200px; min-height: 50px; background-color: #1E90FF; color: white">

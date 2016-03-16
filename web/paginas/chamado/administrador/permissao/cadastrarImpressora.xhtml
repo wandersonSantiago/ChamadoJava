@@ -20,6 +20,19 @@
                         </h5>
                         <p:messages id="messages"  showDetail="true" autoUpdate="true" closable="true" />
 
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Status *" />
+                            <p:selectOneRadio id="status" value="#{impressora.ativo}" required="false" label="erro">
+                                <f:selectItem itemLabel="Ativo" itemValue="true" />
+                                <f:selectItem itemLabel="Inativo" itemValue="false" />                                  
+                            </p:selectOneRadio> 
+                            <h:outputText value="Locada *" />
+                            <p:selectOneRadio id="locada" value="#{impressora.locada}" required="false" label="erro">
+                                <f:selectItem itemLabel="sim" itemValue="true" />
+                                <f:selectItem itemLabel="não" itemValue="false" />                                  
+                            </p:selectOneRadio>
+
+                        </h:panelGrid>
                         <h:outputLabel value="Nome impressora *" style="color: black" />
                         <p:inputText  id="nomeImpressora"  size="150" required="true"  value="#{impressora.nome}" label="Nome Usuario" />
 
@@ -101,7 +114,7 @@
                             </f:facet>
                             <h:outputText value="#{impressora.setor}"/>
                         </p:column>
-          
+
                         <p:column style="width:50px">
                             <h:commandLink action="#{ctrImpressora.paginaAlterarImpressora(impressora)}" immediate="true" title="Editar" >
                                 <h:graphicImage value="/img/editar.png"/>
