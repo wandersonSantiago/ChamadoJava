@@ -32,14 +32,14 @@ public class CtrMensagem implements  Serializable{
 	acessoHibernate = new DaoMensagem();
     }
 
-    public String gravarMensagem() throws EmailException {
+    public String gravarMensagem()  {
 	try {
             Date hojeData = new Date();
             mensagem.setData(hojeData);
             mensagem.setNumeChamado(chamadoc.getId());
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
             mensagem.setCodfuncautor(usuarioSessao);
-            mail.enviar();
+            
             acessoHibernate.salvar(mensagem);
 	    mensagem.limpar();
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Mensagem enviada"));
