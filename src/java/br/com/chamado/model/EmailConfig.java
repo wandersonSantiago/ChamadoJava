@@ -22,9 +22,7 @@ import javax.persistence.Table;
 @Table(name="confemail")
 public class EmailConfig implements  Serializable{
 
-    static EmailConfig getInstancia() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+   
     
     @Id 
     @Column(unique=true, nullable=false)
@@ -63,6 +61,10 @@ public class EmailConfig implements  Serializable{
 	this.servidor = servidor;
     }
     
+    public String getHost(){
+        
+        return servidor;
+    }
 
     public int getPorta() {
 	return porta;
@@ -134,9 +136,6 @@ public class EmailConfig implements  Serializable{
 	return true;
     }
 
-    String getHost() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
    
      
 }

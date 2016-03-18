@@ -39,9 +39,9 @@ public class CtrChamado implements Serializable {
     private final DaoEmail acessoHibernateEmail;
     private Mensagem mensagem;
     private Usuario usuario;
-    private EnviaEmail mail;
+    private EnviaEmail mail = EnviaEmail.getInstancia();
     private DaoDescricao daoDescricao;
-   
+
     public CtrChamado() {
         acessoHibernate = new DaoChamadoc();
         acessoHibernateMensagem = new DaoMensagem();
@@ -50,12 +50,16 @@ public class CtrChamado implements Serializable {
         daoDescricao = new DaoDescricao();
     }
 
-    public String gravarChamado()  {
+    public String gravarChamado() throws EmailException {
 
         try {
             FuncaoChamado chamadoAbrir = new FuncaoChamado();
-            chamadoAbrir.abrir(chamadoc,mensagem);
-           
+            chamadoAbrir.abrir(chamadoc, mensagem);
+
+            mail.setAssunto("oioio");
+            mail.setMsg("Teste msg");
+            mail.setEmailDe("wandersonsantiago86@gmail.com");
+            mail.enviar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Enviado"));
             return "/paginas/chamado/cadastrar/chamadoClienteTi";
         } catch (HibernateException e) {
@@ -82,7 +86,7 @@ public class CtrChamado implements Serializable {
             FuncaoChamado atenderChamado = new FuncaoChamado();
             atenderChamado.atenderChamada(chamadoc);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Em Andamento"));
-            
+
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado não alterado"));
@@ -96,11 +100,11 @@ public class CtrChamado implements Serializable {
         try {
             FuncaoChamado fecharChamado = new FuncaoChamado();
             fecharChamado.fechar(chamadoc);
-            
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Fechado"));
             return "/paginas/chamado/lista/listaChamadoTi";
         } catch (HibernateException e) {
-             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado Não Fechado"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado Não Fechado"));
             return "/paginas/chamado/lista/listaChamadoTi";
         }
     }
@@ -112,7 +116,7 @@ public class CtrChamado implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Reaberto"));
             return "/paginas/chamado/cadastrar/chamadoAbertoCliente";
         } catch (HibernateException e) {
-             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Erro não foi possivel reabrir o chamado"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Erro não foi possivel reabrir o chamado"));
             return "/paginas/chamado/lista/listaChamadoTi";
         }
     }
@@ -143,7 +147,8 @@ public class CtrChamado implements Serializable {
             return Collections.emptyList();
         }
     }
-        public List carregarChamadoManutencaoTi() {
+
+    public List carregarChamadoManutencaoTi() {
         try {
             return acessoHibernate.carregaChamadoOrdernadoChamadoTi();
         } catch (HibernateException e) {
@@ -151,7 +156,7 @@ public class CtrChamado implements Serializable {
             return Collections.emptyList();
         }
     }
-   
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -175,5 +180,5 @@ public class CtrChamado implements Serializable {
     public void setMensagem(Mensagem mensagem) {
         this.mensagem = mensagem;
     }
-   
+
 }

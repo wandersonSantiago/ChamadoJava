@@ -5,6 +5,7 @@
  */
 package br.com.chamado.model;
 
+import br.com.chamado.dao.DaoEmailConfig;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
@@ -29,7 +30,8 @@ public class EnviaEmail {
        if(instancia == null)
        {
          instancia = new EnviaEmail();
- 	 config = EmailConfig.getInstancia();
+ 	 
+         config = (EmailConfig) new DaoEmailConfig().carregarUm(1,EmailConfig.class);
        }
        return instancia;
     }
