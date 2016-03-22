@@ -17,9 +17,9 @@ public class EnviaEmail {
     private static EmailConfig config;
     private static EnviaEmail instancia = null;
    
-    private  String emailDe = "wandersonsantiago86@gmail.com";
-    private  String assunto = "chamado";
-    private  String msg = "teste chamado";
+    private  String emailDe ;
+    private  String assunto;
+    private  String msg ;
    
     private EnviaEmail()
     {
@@ -48,19 +48,26 @@ public class EnviaEmail {
 	this.msg = msg;
     }
     
-    public  synchronized  void enviar()  throws EmailException
+    public  synchronized  void enviar() 
     {
-        SimpleEmail email = new SimpleEmail(); 
-	email.setHostName(config.getHost());
+       SimpleEmail email = new SimpleEmail(); 
+        try
+        {
+        email.setHostName(config.getHost());
 	email.setAuthentication(config.getUsuario(),config.getSenha());  
-        email.setSmtpPort(config.getPorta());  
+        email.setSslSmtpPort(String.valueOf(config.getPorta()));
         email.setSSLOnConnect(config.isSsl());
 	email.setStartTLSRequired(config.isTls());
-	email.addTo(emailDe);
-	email.setFrom(config.getUsuario(),config.getMsgFrom());
+        email.addTo(config.getUsuario());
 	email.setSubject(assunto);
-	email.setMsg(msg);
+        email.setFrom(config.getUsuario(),config.getMsgFrom());
+        email.setMsg(msg);
         email.send();
-	}
+        }catch( EmailException e)
+        {
+          System.out.println(e.getLocalizedMessage());
+        }
+     
+    }
 
 }

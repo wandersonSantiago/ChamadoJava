@@ -20,14 +20,15 @@ public class FuncaoChamado {
     private final DaoChamadoc daoChamado = new DaoChamadoc();
     private final DaoDescricao daoDescricao = new DaoDescricao();
     private final DaoMensagem daoMensagem = new DaoMensagem();
-   
+    private final EnviaEmail mail = EnviaEmail.getInstancia();
+
     public void abrir(Chamadoc chamadoc, Mensagem mensagem) {
 
         Date dataAbertura = new Date();
         chamadoc.setData(dataAbertura);
         chamadoc.setUnidade(usuarioDaSessao.getUnidade());
         chamadoc.setCodfuncsolic(usuarioDaSessao);
-        
+
         Descricao status = daoDescricao.carregarStatus(8);
 
         chamadoc.setStatus(status);
@@ -38,11 +39,19 @@ public class FuncaoChamado {
         mensagem.setData(dataAbertura);
         mensagem.setCodfuncautor(usuarioDaSessao);
         daoMensagem.salvar(mensagem);
+        
+        mail.setAssunto("Novo chamado por: " + usuarioDaSessao.getNome());
+        mail.setMsg(mensagem.getTexto());
+        mail.enviar();
+        
         chamadoc.limpar();
         mensagem.limpar();
 
+       
+
     }
-     public void abrirChamadoImpressora(Chamadoc chamadoc, Mensagem mensagem) {
+
+    public void abrirChamadoImpressora(Chamadoc chamadoc, Mensagem mensagem) {
 
         Date dataAbertura = new Date();
         chamadoc.setData(dataAbertura);
@@ -65,6 +74,7 @@ public class FuncaoChamado {
         mensagem.limpar();
 
     }
+
     public void fechar(Chamadoc chamadoc) {
 
         Descricao status = daoDescricao.carregarStatus(9);
@@ -80,8 +90,8 @@ public class FuncaoChamado {
         daoChamado.alterar(chamadoc);
         return chamadoc;
     }
-    public void atenderChamada(Chamadoc chamadoc)
-    {
+
+    public void atenderChamada(Chamadoc chamadoc) {
         Descricao status = daoDescricao.carregarStatus(10);
         chamadoc.setStatus(status);
         daoChamado.alterar(chamadoc);

@@ -5,9 +5,7 @@ import br.com.chamado.dao.DaoDescricao;
 import br.com.chamado.dao.DaoEmail;
 import br.com.chamado.dao.DaoMensagem;
 import br.com.chamado.model.Chamadoc;
-import br.com.chamado.model.Descricao;
 import br.com.chamado.model.Email;
-import br.com.chamado.model.EmailConfig;
 import br.com.chamado.model.EnviaEmail;
 import br.com.chamado.model.FuncaoChamado;
 import br.com.chamado.model.Mensagem;
@@ -35,18 +33,14 @@ public class CtrChamado implements Serializable {
     private final DaoChamadoc acessoHibernate;
     private final DaoMensagem acessoHibernateMensagem;
     private Chamadoc chamadoc;
-    private final Email email;
-    private final DaoEmail acessoHibernateEmail;
     private Mensagem mensagem;
     private Usuario usuario;
-    private EnviaEmail mail = EnviaEmail.getInstancia();
-    private DaoDescricao daoDescricao;
+   
+    private final DaoDescricao daoDescricao;
 
     public CtrChamado() {
         acessoHibernate = new DaoChamadoc();
         acessoHibernateMensagem = new DaoMensagem();
-        email = new Email();
-        acessoHibernateEmail = new DaoEmail();
         daoDescricao = new DaoDescricao();
     }
 
@@ -55,8 +49,8 @@ public class CtrChamado implements Serializable {
         try {
             FuncaoChamado chamadoAbrir = new FuncaoChamado();
             chamadoAbrir.abrir(chamadoc, mensagem);
-          
-          //  mail.enviar(); 
+            
+           
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Enviado"));
             return "/paginas/chamado/cadastrar/chamadoClienteTi";
         } catch (HibernateException e) {
