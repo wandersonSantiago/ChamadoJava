@@ -41,9 +41,9 @@ public class Chamadoc implements Serializable {
     @ManyToOne
     @JoinColumn(name = "categoria")
     private Descricao categoria;
-    
-    @Column(name = "tipoChamado")
-    private int tipoChamado;
+    @ManyToOne 
+    @JoinColumn(name = "tipoChamado")
+    private Descricao tipoChamado;
     @ManyToOne
     @JoinColumn(name = "codfuncsolic")
     private Usuario codfuncsolic;
@@ -69,7 +69,7 @@ public class Chamadoc implements Serializable {
     private final int REABERTO = 11;
     @Transient
     private final int ABERTO = 8;
-
+  
     public Chamadoc() {
 
     }
@@ -186,11 +186,11 @@ public class Chamadoc implements Serializable {
         this.impressora = impressora;
     }
 
-    public int getTipoChamado() {
+    public Descricao getTipoChamado() {
         return tipoChamado;
     }
 
-    public void setTipoChamado(int tipoChamado) {
+    public void setTipoChamado(Descricao tipoChamado) {
         this.tipoChamado = tipoChamado;
     }
     
@@ -208,7 +208,8 @@ public class Chamadoc implements Serializable {
         this.titulo = "";
         this.dataprevisao = null;
         this.datafechamento = null;
-        this.tipoChamado =  0;
+        this.tipoChamado =  null;
+        this.impressora = null;
 
     }
 

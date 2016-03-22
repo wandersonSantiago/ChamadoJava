@@ -23,5 +23,11 @@ public class DaoDescricao extends DaoGenerico {
         return status;
         
     }
+    public Descricao setarTipoChamado(int id){
+        
+         hql = "from Descricao where id = " + id + " and tipo = 6";
+        Descricao tipochamado = (Descricao) carregaUm(hql);
+        return tipochamado;
+    }
 
 }

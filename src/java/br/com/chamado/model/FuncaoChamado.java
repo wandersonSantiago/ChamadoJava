@@ -42,6 +42,29 @@ public class FuncaoChamado {
         mensagem.limpar();
 
     }
+     public void abrirChamadoImpressora(Chamadoc chamadoc, Mensagem mensagem) {
+
+        Date dataAbertura = new Date();
+        chamadoc.setData(dataAbertura);
+        chamadoc.setUnidade(usuarioDaSessao.getUnidade());
+        chamadoc.setCodfuncsolic(usuarioDaSessao);
+        Descricao status = daoDescricao.carregarStatus(8);
+
+        chamadoc.setStatus(status);
+        Descricao tipo = daoDescricao.setarTipoChamado(14);
+
+        chamadoc.setTipoChamado(tipo);
+
+        daoChamado.salvar(chamadoc);
+
+        mensagem.setNumeChamado(chamadoc.getId());
+        mensagem.setData(dataAbertura);
+        mensagem.setCodfuncautor(usuarioDaSessao);
+        daoMensagem.salvar(mensagem);
+        chamadoc.limpar();
+        mensagem.limpar();
+
+    }
     public void fechar(Chamadoc chamadoc) {
 
         Descricao status = daoDescricao.carregarStatus(9);

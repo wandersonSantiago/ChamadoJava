@@ -21,12 +21,12 @@
                             <h:outputText  value="#{chamadoc.id}" style=""/>
                         </p:column>
                         <p:column filterBy="#{chamadoc.data}"  style="max-height: 3px;width: 120px" >
-                            
+
                             <f:facet name="header">
                                 Data:
                             </f:facet>
                             <h:outputText value="#{chamadoc.data}" >
-                            <f:convertDateTime pattern="dd/MM/yyyy " />
+                                <f:convertDateTime pattern="dd/MM/yyyy " />
                             </h:outputText>
                         </p:column>
                         <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
@@ -59,11 +59,15 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.prioridade.descricao}" />
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
-                            <f:facet name="header">
-                                titulo:
+                        <p:column filterBy="#{chamadoc.tipoChamado}" headerText="tipo Chamado" style="max-height: 8px" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('table').filter()" >
+                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{ctrDescricao.carregarTipoChamado()}" var="descricaoTipoChamado" itemLabel="#{descricaoTipoChamado.descricao}"
+                                                   itemValue="#{descricaoTipoChamado}" /> 
+                                </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText value="#{chamadoc.titulo}" />
+                            <h:outputText value="#{chamadoc.tipoChamado.descricao}"/>
                         </p:column>
                         <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido por:" style="max-height: 8px" >
                             <f:facet name="filter">
@@ -142,18 +146,18 @@
                             </div>
 
                         </p:column>
-                     
+
                         <p:column style="max-height: 3px;width: 50px" rendered="#{liberaAcesso.fecharChamado() != false }" >
-                             
-                                  <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
-                                    <p:graphicImage value="/img/fechar.png"/>
-                                    <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
-                                </p:commandLink>
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
-                            
+
+                            <p:commandLink  action="#{ctrChamado.fecharChamado(chamadoc)}" ajax="false" rendered="#{chamadoc.chamadoAndamento != false}" title="Fechar chamado" >
+                                <p:graphicImage value="/img/fechar.png"/>
+                                <p:confirm header="Confirmação" message="Deseja realmente Fechar este chamado?" icon="ui-icon-alert" />
+                            </p:commandLink>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+
                         </p:column>
 
                     </p:dataTable>

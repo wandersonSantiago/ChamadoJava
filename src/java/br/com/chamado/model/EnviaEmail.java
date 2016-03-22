@@ -17,9 +17,9 @@ public class EnviaEmail {
     private static EmailConfig config;
     private static EnviaEmail instancia = null;
    
-    private  String emailDe = "";
-    private  String assunto = "";
-    private  String msg = "";
+    private  String emailDe = "wandersonsantiago86@gmail.com";
+    private  String assunto = "chamado";
+    private  String msg = "teste chamado";
    
     private EnviaEmail()
     {
@@ -56,11 +56,11 @@ public class EnviaEmail {
         email.setSmtpPort(config.getPorta());  
         email.setSSLOnConnect(config.isSsl());
 	email.setStartTLSRequired(config.isTls());
-	email.addTo(emailDe,"Teste");
+	email.addTo(emailDe);
 	email.setFrom(config.getUsuario(),config.getMsgFrom());
 	email.setSubject(assunto);
 	email.setMsg(msg);
         email.send();
 	}
-    
+
 }

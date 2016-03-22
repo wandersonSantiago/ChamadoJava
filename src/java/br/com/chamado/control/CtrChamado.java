@@ -55,11 +55,22 @@ public class CtrChamado implements Serializable {
         try {
             FuncaoChamado chamadoAbrir = new FuncaoChamado();
             chamadoAbrir.abrir(chamadoc, mensagem);
+          
+          //  mail.enviar(); 
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Enviado"));
+            return "/paginas/chamado/cadastrar/chamadoClienteTi";
+        } catch (HibernateException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Chamado não Enviado"));
+            return "/paginas/chamado/cadastrar/chamadoClienteTi";
+        }
+    }
+     public String gravarChamadoImpressora() throws EmailException {
 
-            mail.setAssunto("oioio");
-            mail.setMsg("Teste msg");
-            mail.setEmailDe("wandersonsantiago86@gmail.com");
-            mail.enviar();
+        try {
+            FuncaoChamado chamadoAbrir = new FuncaoChamado();
+            chamadoAbrir.abrirChamadoImpressora(chamadoc, mensagem);
+          
+          //  mail.enviar(); 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Chamado Enviado"));
             return "/paginas/chamado/cadastrar/chamadoClienteTi";
         } catch (HibernateException e) {

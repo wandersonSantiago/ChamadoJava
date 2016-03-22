@@ -59,12 +59,7 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.prioridade.descricao}" />
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.titulo}">
-                            <f:facet name="header">
-                                titulo:
-                            </f:facet>
-                            <h:outputText value="#{chamadoc.titulo}" />
-                        </p:column>
+                 
                         <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido por:" style="max-height: 8px" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >

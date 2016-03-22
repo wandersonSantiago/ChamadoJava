@@ -39,7 +39,6 @@ public class CtrMensagem implements Serializable {
             mensagem.setNumeChamado(chamadoc.getId());
             Usuario usuarioSessao = SessionContext.getInstance().getUsuarioLogado();
             mensagem.setCodfuncautor(usuarioSessao);
-
             acessoHibernate.salvar(mensagem);
             mensagem.limpar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Mensagem enviada"));
