@@ -12,15 +12,15 @@
                 </div>
                 <div class="panel-body">
                     <p:dataTable  value="#{ctrChamado.carregarChamado()}"   var="chamadoc" id="tabela" resizableColumns="true" widgetVar="table" 
-                                  paginator="true" rows="20" style="margin-bottom:20px "  rowsPerPageTemplate="5,10,15,20,25,30">
+                                  paginator="true" rows="20" style="margin-bottom:20px " rowKey="#{chamadoc.id}" selectionMode="single" rowsPerPageTemplate="5,10,15,20,25,30">
 
-                        <p:column  style="max-height: 3px;width: 120px" filterBy="#{chamadoc.id}" >
+                        <p:column  style="width: 3%"  >
                             <f:facet name="header">
                                 Nº:
                             </f:facet>
                             <h:outputText  value="#{chamadoc.id}" style=""/>
                         </p:column>
-                        <p:column filterBy="#{chamadoc.data}"  style="max-height: 3px;width: 120px" >
+                        <p:column filterBy="#{chamadoc.data}"  style="width: 8%" >
 
                             <f:facet name="header">
                                 Data:
@@ -29,7 +29,7 @@
                                 <f:convertDateTime pattern="dd/MM/yyyy " />
                             </h:outputText>
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
+                        <p:column  style="width: 9%" filterBy="#{chamadoc.codfuncsolic}" headerText="Aberto por:">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -39,7 +39,7 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncsolic.usuario}" />
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.codfuncsolic.setor}" headerText="Setor:">
+                        <p:column  style="width: 16%" filterBy="#{chamadoc.codfuncsolic.setor}" headerText="Setor:">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -49,7 +49,7 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncsolic.setor}" />
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.prioridade}"  headerText="Prioridade">
+                        <p:column  style="width: 7%" filterBy="#{chamadoc.prioridade}"  headerText="Prioridade">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -59,17 +59,11 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.prioridade.descricao}" />
                         </p:column>
-                        <p:column filterBy="#{chamadoc.tipoChamado}" headerText="tipo Chamado" style="max-height: 8px" >
-                            <f:facet name="filter">
-                                <p:selectOneMenu onchange="PF('table').filter()" >
-                                    <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{ctrDescricao.carregarTipoChamado()}" var="descricaoTipoChamado" itemLabel="#{descricaoTipoChamado.descricao}"
-                                                   itemValue="#{descricaoTipoChamado}" /> 
-                                </p:selectOneMenu>
-                            </f:facet>
+                        <p:column headerText="tipo Chamado" style="width: 15%" >
+                         
                             <h:outputText value="#{chamadoc.tipoChamado.descricao}"/>
                         </p:column>
-                        <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido por:" style="max-height: 8px" >
+                        <p:column filterBy="#{chamadoc.codfuncatend}" headerText="Atendido por:" style="width: 10%" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -79,7 +73,7 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.codfuncatend.usuario}"/>
                         </p:column>
-                        <p:column filterBy="#{chamadoc.impressora}" headerText="Equipamento" style="max-height: 8px" >
+                        <p:column filterBy="#{chamadoc.impressora}" headerText="Equipamento" style="width: 10%" >
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
@@ -89,7 +83,7 @@
                             </f:facet>
                             <h:outputText value="#{chamadoc.impressora.nome}"/>
                         </p:column>
-                        <p:column  style="max-height: 8px" filterBy="#{chamadoc.status}"  headerText="Status">
+                        <p:column  style="width: 10%" filterBy="#{chamadoc.status}"  headerText="Status">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('table').filter()" >
                                     <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />

@@ -70,6 +70,11 @@ public class FuncaoChamado {
         mensagem.setData(dataAbertura);
         mensagem.setCodfuncautor(usuarioDaSessao);
         daoMensagem.salvar(mensagem);
+        
+        mail.setAssunto("Novo chamado por: " + usuarioDaSessao.getNome());
+        mail.setMsg(mensagem.getTexto());
+        mail.enviar();
+        
         chamadoc.limpar();
         mensagem.limpar();
 
