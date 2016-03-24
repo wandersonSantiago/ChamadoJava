@@ -1,6 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                 xmlns:p="http://primefaces.org/ui" >
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1E90FF" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -29,7 +30,9 @@
                         <li><a style="color: white" href="#"><h:outputText value="Bem Vindo(a)" /></a></li>
                         <li><a style="color: white" href="#"><h:outputLabel  ><h:graphicImage value="/img/miniavatar.png" /> </h:outputLabel></a></li>
                         <li><a style="color: white" href="#"><h:outputLabel  value="#{controleSessao.usuarioDaSessao.nome}" /></a></li>
-                        
+                       <!-- <p:poll interval="1" listener="#" update="tempo" /> 
+                        <li><a style="color: white" href="#"><h:outputText  value="Expira em:" /></a></li>
+                        <li><a style="color: white" href="#"><h:outputText  id="tempo"  value="#" /></a></li>-->
                     </ul>
                      
                 </h:form>

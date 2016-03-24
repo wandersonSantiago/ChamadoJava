@@ -11,6 +11,7 @@
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
+                    <p:poll  interval="3" listener="#{ctrChamado.carregarChamadoManutencaoTi}" update="tabela"/>
                     <p:dataTable  value="#{ctrChamado.carregarChamadoManutencaoTi()}"   var="chamadoc" id="tabela"  resizableColumns="true" widgetVar="table" 
                                   paginator="true" rows="20" style="margin-bottom:20px " rowKey="#{chamadoc.id}" selectionMode="single" rowsPerPageTemplate="5,10,15,20,25,30">
 

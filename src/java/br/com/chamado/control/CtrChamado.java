@@ -35,6 +35,7 @@ public class CtrChamado implements Serializable {
     private Chamadoc chamadoc;
     private Mensagem mensagem;
     private Usuario usuario;
+    private int teste = 30;
    
     private final DaoDescricao daoDescricao;
 
@@ -43,6 +44,16 @@ public class CtrChamado implements Serializable {
         acessoHibernateMensagem = new DaoMensagem();
         daoDescricao = new DaoDescricao();
     }
+    
+    public int getTeste(){
+        
+        return teste;
+    }
+    
+    public void updateTeste(){
+            
+    teste --;
+}
 
     public String gravarChamado() throws EmailException {
 

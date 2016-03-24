@@ -5,15 +5,17 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="central" >  
 
-        <h:form rendered="#{liberaAcesso.listaChamadoTi() != false || liberaAcesso.userRoot() != false}">
+        <h:form id="updateTotal" rendered="#{liberaAcesso.listaChamadoTi() != false || liberaAcesso.userRoot() != false}">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:  #1E90FF">
                     <h3 class="panel-title" style="color: white" > Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
+                   <p:poll interval="3" listener="#{ctrChamado.carregarChamado}" update="tabela" />
                     <p:dataTable  value="#{ctrChamado.carregarChamado()}"   var="chamadoc" id="tabela" resizableColumns="true" widgetVar="table" 
-                                  paginator="true" rows="20" style="margin-bottom:20px " rowKey="#{chamadoc.id}" selectionMode="single" rowsPerPageTemplate="5,10,15,20,25,30">
-
+                                  paginator="true" rows="15" style="margin-bottom:20px " rowKey="#{chamadoc.id}" selectionMode="single" rowsPerPageTemplate="5,10,15,20,25,30">
+                        
+                        
                         <p:column  style="width: 3%"  >
                             <f:facet name="header">
                                 Nº:
