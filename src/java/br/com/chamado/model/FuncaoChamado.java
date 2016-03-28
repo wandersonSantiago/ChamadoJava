@@ -82,7 +82,7 @@ public class FuncaoChamado {
 
     public void fechar(Chamadoc chamadoc) {
 
-        Descricao status = daoDescricao.carregarStatus(9);
+        Descricao status = daoDescricao.carregarStatus(11);
         chamadoc.setStatus(status);
         Date dataDoFechamento = new Date();
         chamadoc.setDatafechamento(dataDoFechamento);
@@ -90,14 +90,14 @@ public class FuncaoChamado {
     }
 
     public Chamadoc reabrirChamado(Chamadoc chamadoc) {
-        Descricao status = daoDescricao.carregarStatus(11);
+        Descricao status = daoDescricao.carregarStatus(10);
         chamadoc.setStatus(status);
         daoChamado.alterar(chamadoc);
         return chamadoc;
     }
 
     public void atenderChamada(Chamadoc chamadoc) {
-        Descricao status = daoDescricao.carregarStatus(10);
+        Descricao status = daoDescricao.carregarStatus(9);
         chamadoc.setStatus(status);
         daoChamado.alterar(chamadoc);
     }

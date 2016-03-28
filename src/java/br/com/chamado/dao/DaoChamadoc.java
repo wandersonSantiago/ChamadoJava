@@ -22,19 +22,19 @@ public class DaoChamadoc extends DaoGenerico {
         
         } else if (usuarioSessao.isTi()) {
         
-            hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 12" + "OR tipoChamado = 14";
+            hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 12" + "OR tipoChamado = 14 order by status, prioridade desc, data desc ";
            
             return carregaTudoOrdernadoUsandoHql(hql);
        
         } else if (usuarioSessao.isManutencao()) {
 
-            hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 13" + "OR codfuncsolic = " + usuarioSessao.getId();
+            hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 13" + "OR codfuncsolic = " + usuarioSessao.getId() + "order by status, prioridade, data desc ";
         
             return carregaTudoOrdernadoUsandoHql(hql);
         
         } else {
          
-            hql = "from Chamadoc where  codfuncsolic = " + usuarioSessao.getId();
+            hql = "from Chamadoc where  codfuncsolic = " + usuarioSessao.getId() + "order by status, prioridade desc, data desc";
             
             return carregaTudoOrdernadoUsandoHql(hql);
 
@@ -43,7 +43,7 @@ public class DaoChamadoc extends DaoGenerico {
 
     public List carregaChamadoOrdernadoChamadoTi() {
 
-        hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 13" + "OR codfuncsolic = " + usuarioSessao.getId();
+        hql = "from Chamadoc where unidade = " + usuarioSessao.getUnidade().getId() + "AND tipoChamado = 13" + "OR codfuncsolic = " + usuarioSessao.getId() + "order by status, prioridade, data desc ";
 
         return carregaTudoOrdernadoUsandoHql(hql);
     }

@@ -25,10 +25,9 @@
                                     <f:converter converterId="descricaoConverter" />
                                     <f:selectItem itemLabel="--selecione--" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
                                     <f:selectItems value="#{ctrDescricao.carregarTipoChamado()}" var="descricaoTipoChamado" itemLabel="#{descricaoTipoChamado.descricao}"
-                                               itemValue="#{descricaoTipoChamado}" />  
+                                                   itemValue="#{descricaoTipoChamado}" />  
                                 </p:selectOneMenu>
                             </h:panelGrid>
-                            
                             <p:outputLabel value="Prioridade"/>
                             <p:selectOneMenu id="prioridade" value="#{chamadoc.prioridade}" editable="false" effect="fold"  required="true" 
                                              requiredMessage="Campo prioridade Obrigatorio"  label="teste" >
@@ -38,8 +37,6 @@
                                                itemValue="#{descricaoPrioridade}" />     
                             </p:selectOneMenu>
                         </h:panelGrid>
-
-
                     </h:panelGrid>
                     <p:separator/>
 
@@ -60,7 +57,7 @@
                                   " value="#{mensagem.texto}" required="true" 
                                   requiredMessage="Campo Texo Obrigatório"/> 
                     </div>
-               
+
                     <p:separator/>
 
                     <p:growl id="messagesteste" showDetail="true" />

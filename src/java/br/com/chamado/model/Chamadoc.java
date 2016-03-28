@@ -62,11 +62,11 @@ public class Chamadoc implements Serializable {
     @Column(name = "datafechamento", length = 13)
     private Date datafechamento;
     @Transient
-    private final int ANDAMENTO = 10;
+    private final int ANDAMENTO = 9;
     @Transient
-    private final int FECHADO = 9;
+    private final int FECHADO = 11;
     @Transient
-    private final int REABERTO = 11;
+    private final int REABERTO = 10;
     @Transient
     private final int ABERTO = 8;
   
